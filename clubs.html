@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clubs affiliés - la pagaie près de l'eau, partout au Togo</title>
+  <meta name="description" content="Annuaire des clubs affiliés à la FETOC : Lomé, Baguida, Aného, Togoville, Atakpamé, Kpalimé, Sokodé, Kara et Dapaong. Disciplines, sites de pratique et contacts.">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js?v=20261017g"></script>
+  <link rel="stylesheet" href="css/styles.css?v=20261017g">
+  <meta name="theme-color" content="#0E7048">
+  <link rel="canonical" href="http://localhost:8125/clubs.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fédération Togolaise de Canoë">
+  <meta property="og:title" content="Clubs affiliés - FETOC">
+  <meta property="og:description" content="Annuaire des clubs affiliés à la Fédération Togolaise de Canoë, par région.">
+  <meta property="og:url" content="http://localhost:8125/clubs.html">
+  <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <meta property="og:locale" content="fr_TG">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Clubs affiliés - FETOC">
+  <meta name="twitter:description" content="Annuaire des clubs affiliés à la Fédération Togolaise de Canoë, par région.">
+  <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="clubs" data-entete="transparent" class="bg-white font-sans text-encre antialiased">
+  <a class="lien-evitement" href="#main">Aller au contenu principal</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <div data-zone="bandeau"></div>
+    <div data-zone="essentiel"></div>
+
+    <!-- Introduction -->
+    <section class="bg-white py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele mx-auto max-w-3xl text-center">
+          <p data-zone="entete-chapeau" class="text-lg font-medium leading-relaxed text-vert-800"></p>
+          <p data-zone="entete-texte" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Annuaire -->
+    <section class="bg-sable-50 py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele rounded-2xl border border-sable-200 bg-white p-6 sm:p-8">
+          <div class="grid gap-6 lg:grid-cols-[1fr_1fr_1.2fr]">
+            <div>
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Région</p>
+              <div data-zone="filtres-regions" class="mt-3 flex flex-wrap gap-2"></div>
+            </div>
+            <div>
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Discipline</p>
+              <div data-zone="filtres-disciplines" class="mt-3 flex flex-wrap gap-2"></div>
+            </div>
+            <div>
+              <label for="recherche-clubs" class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Recherche</label>
+              <div class="relative mt-3 flex items-center">
+                <input id="recherche-clubs" type="search" placeholder="Nom, ville, quartier…"
+                  class="w-full rounded-full border border-sable-200 bg-white px-5 py-3 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none">
+                <span data-icone-recherche class="pointer-events-none absolute right-4 text-encre-clair"></span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-sable-200 pt-5">
+            <p data-zone="compteur-clubs" class="text-sm text-encre-clair"></p>
+            <button type="button" data-zone="reinitialiser" class="text-sm font-semibold text-vert-700 transition hover:text-vert-900">Réinitialiser les filtres</button>
+          </div>
+        </div>
+
+        <div data-zone="clubs-grille" class="mt-10 grid gap-6"></div>
+      </div>
+    </section>
+
+    <!-- Répartition régionale -->
+    <section class="bg-white py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Couverture nationale</p>
+          <h2 data-zone="regions-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">La fédération accompagne le développement de la pagaie dans les cinq régions du Togo. La répartition ci-dessous reflète les clubs affiliés enregistrés.</p>
+        </header>
+        <div data-zone="regions-liste" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"></div>
+      </div>
+    </section>
+
+    <!-- Devenir club -->
+    <section id="devenir-club" class="scroll-mt-32 bg-sable-50 py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
+          <div class="revele">
+            <p class="etiquette text-vert-600">Affiliation</p>
+            <h2 data-zone="devenir-titre" class="mt-5 titre-section text-vert-950"></h2>
+            <p data-zone="devenir-texte" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+            <ul data-zone="devenir-conditions" class="mt-8 space-y-3 text-sm text-encre-doux"></ul>
+            <a href="contact.html#adhesion" class="btn btn--vert mt-8">Lancer une demande d'affiliation</a>
+          </div>
+          <div class="revele revele--droite">
+            <ol data-zone="devenir-etapes" class="space-y-6"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script type="module" src="js/pages/clubs.js"></script>
+</body>
+</html>

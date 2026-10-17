@@ -1,0 +1,160 @@
+{
+  "entete": {
+    "titre": "Partenaires",
+    "chapeau": "La fédération conduit ses missions avec le soutien des institutions sportives nationales et de partenaires engagés à ses côtés.",
+    "texte": "Seuls figurent ci-dessous les partenaires dont la collaboration est effective et dont l'utilisation de l'identité visuelle a été expressément autorisée.",
+    "emplacement_libre": "Vous souhaitez soutenir la pagaie togolaise ? Écrivez-nous : partenariats@fetoc.tg",
+    "categories": [
+      { "id": "institutionnel", "libelle": "Partenaires institutionnels" },
+      { "id": "institutionnel-sportif", "libelle": "Institutions sportives" },
+      { "id": "technique", "libelle": "Appuis techniques" },
+      { "id": "prive", "libelle": "Entreprises partenaires" },
+      { "id": "media", "libelle": "Partenaires médias" }
+    ]
+  },
+
+  "liste": [
+    {
+      "id": "ministere-sports",
+      "nom": "Ministère des Sports et des Loisirs",
+      "sigle": "MSL",
+      "categorie": "institutionnel",
+      "logo": "assets/img/partenaire-ministere.svg",
+      "url": null,
+      "depuis": "2013",
+      "apport": "Tutelle sportive, subvention de fonctionnement et appui à l'organisation des compétitions nationales.",
+      "participation_confirmee": true,
+      "utilisation_logo_autorisee": true,
+      "niveau": "principal"
+    },
+    {
+      "id": "cnot",
+      "nom": "Comité National Olympique du Togo",
+      "sigle": "CNOT",
+      "categorie": "institutionnel-sportif",
+      "logo": "assets/img/partenaire-cnot.svg",
+      "url": null,
+      "depuis": "2006",
+      "apport": "Appui à la préparation des athlètes, accompagnement des sélections nationales et formation des cadres.",
+      "participation_confirmee": true,
+      "utilisation_logo_autorisee": true,
+      "niveau": "principal"
+    },
+    {
+      "id": "icf",
+      "nom": "Fédération Internationale de Canoë",
+      "sigle": "ICF",
+      "categorie": "institutionnel-sportif",
+      "logo": "assets/img/partenaire-icf.svg",
+      "url": null,
+      "depuis": "2016",
+      "apport": "Cadre réglementaire international, accès aux compétitions continentales et mondiales, ressources techniques.",
+      "participation_confirmee": true,
+      "utilisation_logo_autorisee": true,
+      "niveau": "principal"
+    },
+    {
+      "id": "commune-golfe",
+      "nom": "Commune du Golfe - Mairie de Lomé",
+      "sigle": null,
+      "categorie": "institutionnel",
+      "logo": "assets/img/partenaire-mairie.svg",
+      "url": null,
+      "depuis": "2021",
+      "apport": "Mise à disposition d'espaces sur le domaine lagunaire et appui logistique aux manifestations nautiques urbaines.",
+      "participation_confirmee": true,
+      "utilisation_logo_autorisee": true,
+      "niveau": "soutien"
+    },
+    {
+      "id": "lagune-eco-tourisme",
+      "nom": "Lagune Éco-Tourisme",
+      "sigle": null,
+      "categorie": "prive",
+      "logo": "assets/img/partenaire-lagune.svg",
+      "url": null,
+      "depuis": "2024",
+      "apport": "Transport des embarcations lors des déplacements inter-régions et accueil des stages à Togoville.",
+      "participation_confirmee": true,
+      "utilisation_logo_autorisee": true,
+      "niveau": "soutien"
+    },
+    {
+      "id": "aquatogo",
+      "nom": "AquaTogo",
+      "sigle": null,
+      "categorie": "technique",
+      "logo": "assets/img/partenaire-aquatogo.svg",
+      "url": null,
+      "depuis": "2025",
+      "apport": "Fourniture de gilets de flottaison, de pagaies et d'équipements de sécurité pour les clubs.",
+      "participation_confirmee": true,
+      "utilisation_logo_autorisee": true,
+      "niveau": "soutien"
+    },
+    {
+      "id": "port-lome",
+      "nom": "Port Autonome de Lomé",
+      "sigle": "PAL",
+      "categorie": "prive",
+      "logo": "assets/img/partenaire-port.svg",
+      "url": null,
+      "depuis": "2026",
+      "apport": "Accompagnement logistique et sécurisation des plans d'eau pour les manifestations nautiques du littoral.",
+      "participation_confirmee": true,
+      "utilisation_logo_autorisee": true,
+      "niveau": "soutien"
+    },
+    {
+      "id": "academie-pagaia",
+      "nom": "Académie de la Pagaia",
+      "sigle": null,
+      "categorie": "technique",
+      "logo": "assets/img/partenaire-academie.svg",
+      "url": null,
+      "depuis": "2022",
+      "apport": "Appui pédagogique, mise à disposition d'experts et co-organisation des sessions de formation fédérale.",
+      "participation_confirmee": true,
+      "utilisation_logo_autorisee": true,
+      "niveau": "soutien"
+    },
+    {
+      "id": "radio-lagune",
+      "nom": "Radio Lagune FM",
+      "sigle": null,
+      "categorie": "media",
+      "logo": null,
+      "url": null,
+      "depuis": "2025",
+      "apport": "Couverture des compétitions nationales et émission mensuelle consacrée à la pagaie togolaise.",
+      "participation_confirmee": false,
+      "utilisation_logo_autorisee": false,
+      "niveau": "en négociation"
+    },
+    {
+      "id": "banque-regionale",
+      "nom": "Banque Régionale de Développement",
+      "sigle": "BRD",
+      "categorie": "prive",
+      "logo": null,
+      "url": null,
+      "depuis": null,
+      "apport": "Discussion en cours sur le parrainage du championnat national des jeunes.",
+      "participation_confirmee": false,
+      "utilisation_logo_autorisee": false,
+      "niveau": "en négociation"
+    }
+  ],
+
+  "devenir_partenaire": {
+    "titre": "Devenir partenaire",
+    "texte": "La fédération propose plusieurs niveaux d'engagement : partenariat de titre, soutien matériel ou technique, parrainage d'une épreuve ou d'un programme jeunesse, appui média.",
+    "contreparties": [
+      "Présence de votre identité sur les supports de communication de la fédération",
+      "Visibilité lors des compétitions nationales et des rassemblements de clubs",
+      "Participation aux cérémonies et remises de prix officielles",
+      "Rapport annuel d'utilisation des ressources confiées à la fédération"
+    ],
+    "contact": "partenariats@fetoc.tg"
+  }
+}

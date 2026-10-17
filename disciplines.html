@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Disciplines &amp; activités - ce que l'on pratique sur l'eau togolaise</title>
+  <meta name="description" content="Course en ligne, descente et eau vive, slalom, kayak-polo, dragon boat, va'a et pirogue, stand-up paddle, randonnée, paracanoë : les disciplines encadrées par la FETOC au Togo.">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js?v=20261017g"></script>
+  <link rel="stylesheet" href="css/styles.css?v=20261017g">
+  <meta name="theme-color" content="#0E7048">
+  <link rel="canonical" href="http://localhost:8125/disciplines.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fédération Togolaise de Canoë">
+  <meta property="og:title" content="Disciplines & activités - FETOC">
+  <meta property="og:description" content="Canoë-kayak, slalom, pirogue, SUP, kayak-polo, eaux vives et autres sports de pagaie encadrés par la FETOC.">
+  <meta property="og:url" content="http://localhost:8125/disciplines.html">
+  <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <meta property="og:locale" content="fr_TG">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Disciplines & activités - FETOC">
+  <meta name="twitter:description" content="Canoë-kayak, slalom, pirogue, SUP, kayak-polo, eaux vives et autres sports de pagaie encadrés par la FETOC.">
+  <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="disciplines" data-entete="transparent" class="bg-white font-sans text-encre antialiased">
+  <a class="lien-evitement" href="#main">Aller au contenu principal</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <div data-zone="bandeau"></div>
+    <div data-zone="essentiel"></div>
+
+    <!-- Introduction -->
+    <section class="bg-white py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele mx-auto max-w-3xl text-center">
+          <p data-zone="entete-chapeau" class="text-lg font-medium leading-relaxed text-vert-800"></p>
+          <p data-zone="entete-texte" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grille filtrable -->
+    <section class="bg-sable-50 py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div data-zone="filtres-familles" class="flex flex-wrap gap-2"></div>
+          <label class="relative flex w-full flex-none items-center lg:w-80">
+            <span class="sr-only">Rechercher une discipline</span>
+            <input id="recherche-disciplines" type="search" placeholder="Rechercher une discipline…"
+              class="w-full rounded-full border border-sable-200 bg-white px-5 py-3 pr-12 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none">
+            <span data-icone-recherche class="pointer-events-none absolute right-4 text-encre-clair"></span>
+          </label>
+        </div>
+
+        <p data-zone="compteur-disciplines" class="revele mt-6 text-sm text-encre-clair"></p>
+        <div data-zone="disciplines-grille" class="mt-6 grid gap-7 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- Fiches détaillées -->
+    <section class="bg-white py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Le détail</p>
+          <h2 class="mt-5 titre-section text-vert-950">Chaque discipline en pratique</h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">Public concerné, niveau, saison, embarcations et sites de pratique : retrouvez l'essentiel de chaque activité encadrée par la fédération.</p>
+        </header>
+        <div data-zone="disciplines-fiches" class="mt-12 space-y-12"></div>
+      </div>
+    </section>
+
+    <!-- Parcours -->
+    <section class="relative overflow-hidden bg-vert-950 py-16 text-white lg:py-24">
+      <div class="pointille absolute inset-0 opacity-20" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-soleil-300">Progression</p>
+          <h2 data-zone="parcours-titre" class="mt-5 titre-section text-white"></h2>
+          <p data-zone="parcours-intro" class="mt-5 text-base leading-relaxed text-vert-50/85"></p>
+        </header>
+        <div data-zone="parcours-etapes" class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4"></div>
+      </div>
+    </section>
+
+    <!-- Formations -->
+    <section class="bg-white py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Formations</p>
+          <h2 data-zone="formations-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <p data-zone="formations-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </header>
+        <div data-zone="formations-liste" class="mt-10 overflow-hidden rounded-2xl border border-sable-200"></div>
+        <p data-zone="formations-note" class="mt-6 flex items-start gap-2 rounded-xl border border-soleil-300 bg-soleil-50 px-4 py-3 text-sm text-encre-doux hidden"></p>
+      </div>
+    </section>
+
+    <!-- Sites de pratique -->
+    <section class="bg-sable-50 py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Territoires</p>
+          <h2 data-zone="sites-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <p data-zone="sites-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </header>
+        <div data-zone="sites-grille" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- Appel -->
+    <section class="bg-white py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele flex flex-col items-start gap-6 rounded-3xl bg-vert-900 px-8 py-10 text-white sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="font-display text-xl font-bold sm:text-2xl">Envie d'essayer la pagaie ?</h2>
+            <p class="mt-2 max-w-xl text-sm text-vert-50/85">Les clubs affiliés organisent des séances d'initiation encadrées. Trouvez le club le plus proche de chez vous.</p>
+          </div>
+          <div class="flex flex-none flex-wrap gap-3">
+            <a href="clubs.html" class="btn btn--soleil">Trouver un club</a>
+            <a href="contact.html" class="btn btn--fantome">Nous contacter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script type="module" src="js/pages/disciplines.js"></script>
+</body>
+</html>

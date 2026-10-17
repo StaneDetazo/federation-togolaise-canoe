@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Actualités - la vie de la pagaie togolaise</title>
+  <meta name="description" content="Communiqués, résultats, formations, reportages et galeries photo de la Fédération Togolaise de Canoë.">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js?v=20261017g"></script>
+  <link rel="stylesheet" href="css/styles.css?v=20261017g">
+  <meta name="theme-color" content="#0E7048">
+  <link rel="canonical" href="http://localhost:8125/actualites.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fédération Togolaise de Canoë">
+  <meta property="og:title" content="Actualités - FETOC">
+  <meta property="og:description" content="Communiqués, reportages et actualités de la Fédération Togolaise de Canoë.">
+  <meta property="og:url" content="http://localhost:8125/actualites.html">
+  <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <meta property="og:locale" content="fr_TG">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Actualités - FETOC">
+  <meta name="twitter:description" content="Communiqués, reportages et actualités de la Fédération Togolaise de Canoë.">
+  <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="actualites" data-entete="transparent" class="bg-white font-sans text-encre antialiased">
+  <a class="lien-evitement" href="#main">Aller au contenu principal</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <div data-zone="bandeau"></div>
+    <div data-zone="essentiel"></div>
+
+    <!-- Introduction -->
+    <section class="bg-white py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele mx-auto max-w-3xl text-center">
+          <p data-zone="entete-chapeau" class="text-lg font-medium leading-relaxed text-vert-800"></p>
+          <p data-zone="entete-texte" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles -->
+    <section class="bg-sable-50 py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div data-zone="filtres-categories" class="flex flex-wrap gap-2"></div>
+          <label class="relative flex w-full flex-none items-center lg:w-80">
+            <span class="sr-only">Rechercher une actualité</span>
+            <input id="recherche-actualites" type="search" placeholder="Rechercher une actualité…"
+              class="w-full rounded-full border border-sable-200 bg-white px-5 py-3 pr-12 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none">
+            <span data-icone-recherche class="pointer-events-none absolute right-4 text-encre-clair"></span>
+          </label>
+        </div>
+        <p data-zone="compteur-actualites" class="revele mt-6 text-sm text-encre-clair"></p>
+        <div data-zone="actualites-grille" class="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="scroll-mt-32 bg-white py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <p class="etiquette text-vert-600">Galerie</p>
+            <h2 data-zone="galerie-titre" class="mt-5 titre-section text-vert-950"></h2>
+            <p data-zone="galerie-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+          </div>
+        </header>
+        <div data-zone="filtres-galerie" class="revele mt-8 flex flex-wrap gap-2"></div>
+        <div data-zone="galerie-grille" class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4"></div>
+      </div>
+    </section>
+
+    <!-- Appel -->
+    <section class="bg-sable-50 py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele flex flex-col items-start gap-6 rounded-3xl bg-vert-900 px-8 py-10 text-white sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="font-display text-xl font-bold sm:text-2xl">Restez informé de la pagaie togolaise</h2>
+            <p class="mt-2 max-w-xl text-sm text-vert-50/85">Recevez le calendrier, les résultats et les actualités de la fédération une fois par mois.</p>
+          </div>
+          <div class="flex flex-none flex-wrap gap-3">
+            <a href="competitions.html" class="btn btn--soleil">Voir le calendrier</a>
+            <a href="contact.html" class="btn btn--fantome">Nous écrire</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script type="module" src="js/pages/actualites.js"></script>
+</body>
+</html>

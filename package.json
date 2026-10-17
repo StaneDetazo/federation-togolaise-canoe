@@ -1,0 +1,15 @@
+{
+  "name": "site-fetoc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institutionnel de la Fédération Togolaise de Canoë (FETOC) - HTML, Tailwind CSS (CDN), JavaScript modulaire et données JSON.",
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "npx --yes serve -l 8000 .",
+    "url": "node outils/url-site.mjs",
+    "verifier": "node outils/verification.mjs"
+  },
+  "keywords": ["canoë", "kayak", "Togo", "FETOC", "fédération sportive"],
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compétitions &amp; calendrier - la saison de la pagaie togolaise</title>
+  <meta name="description" content="Calendrier officiel de la FETOC : championnats, coupes, trophées, régates et stages. Résultats publiés et classements par discipline.">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js?v=20261017g"></script>
+  <link rel="stylesheet" href="css/styles.css?v=20261017g">
+  <meta name="theme-color" content="#0E7048">
+  <link rel="canonical" href="http://localhost:8125/competitions.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fédération Togolaise de Canoë">
+  <meta property="og:title" content="Compétitions & calendrier - FETOC">
+  <meta property="og:description" content="Calendrier officiel, résultats et classements des compétitions de la FETOC.">
+  <meta property="og:url" content="http://localhost:8125/competitions.html">
+  <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <meta property="og:locale" content="fr_TG">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Compétitions & calendrier - FETOC">
+  <meta name="twitter:description" content="Calendrier officiel, résultats et classements des compétitions de la FETOC.">
+  <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="competitions" data-entete="transparent" class="bg-white font-sans text-encre antialiased">
+  <a class="lien-evitement" href="#main">Aller au contenu principal</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <div data-zone="bandeau"></div>
+    <div data-zone="essentiel"></div>
+
+    <!-- Introduction -->
+    <section class="bg-white py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele mx-auto max-w-3xl text-center">
+          <p data-zone="entete-chapeau" class="text-lg font-medium leading-relaxed text-vert-800"></p>
+          <p data-zone="entete-texte" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendrier -->
+    <section class="bg-sable-50 py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele flex flex-col gap-6">
+          <div>
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Saison</p>
+            <div data-zone="filtres-saisons" class="mt-3 flex flex-wrap gap-2"></div>
+          </div>
+          <div>
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Type de rendez-vous</p>
+            <div data-zone="filtres-types" class="mt-3 flex flex-wrap gap-2"></div>
+          </div>
+        </div>
+
+        <p data-zone="compteur-evenements" class="revele mt-6 text-sm text-encre-clair"></p>
+        <div data-zone="agenda-liste" class="mt-8 grid gap-6 lg:grid-cols-2"></div>
+      </div>
+    </section>
+
+    <!-- Résultats -->
+    <section id="resultats" class="scroll-mt-32 bg-white py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Résultats</p>
+          <h2 data-zone="resultats-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">Les podiums publiés par la commission sportive au fil de la saison.</p>
+        </header>
+        <div data-zone="resultats-liste" class="mt-10 grid gap-6 lg:grid-cols-2"></div>
+      </div>
+    </section>
+
+    <!-- Classements -->
+    <section class="bg-sable-50 py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Classements</p>
+          <h2 data-zone="classements-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">Classements par discipline, établis sur l'ensemble des manches de la saison.</p>
+        </header>
+        <div data-zone="classements-liste" class="mt-10 space-y-8"></div>
+      </div>
+    </section>
+
+    <!-- Informations pratiques -->
+    <section class="bg-white py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Engagements</p>
+          <h2 data-zone="infos-titre" class="mt-5 titre-section text-vert-950"></h2>
+        </header>
+        <div class="mt-10 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+          <div class="revele">
+            <ul data-zone="infos-licences" class="space-y-3"></ul>
+          </div>
+          <div class="revele revele--droite space-y-5">
+            <div class="rounded-2xl border border-sable-200 bg-sable-50 p-6">
+              <p class="flex items-center gap-2 font-display text-sm font-bold text-vert-900">
+                <span data-icone-reglement></span>Le règlement sportif
+              </p>
+              <p data-zone="infos-reglement" class="mt-2 text-sm leading-relaxed text-encre-doux"></p>
+            </div>
+            <div class="rounded-2xl border border-soleil-300 bg-soleil-50 p-6">
+              <p class="font-display text-sm font-bold text-vert-900">Une question ?</p>
+              <p data-zone="infos-contact" class="mt-2 text-sm leading-relaxed text-encre-doux"></p>
+              <a href="contact.html" class="btn btn--vert btn--sm mt-5">Contacter le secrétariat</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script type="module" src="js/pages/competitions.js"></script>
+</body>
+</html>

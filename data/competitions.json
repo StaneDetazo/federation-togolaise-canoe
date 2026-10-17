@@ -1,0 +1,426 @@
+{
+  "entete": {
+    "titre": "Compétitions & calendrier",
+    "chapeau": "Le calendrier fédéral structure la saison des clubs togolais : championnats, coupes, trophées, régates et stages de préparation, du Lac Togo aux rapides du Mono.",
+    "texte": "Les épreuves sont ouvertes aux licenciés FETOC, par catégorie d'âge et par discipline. Les clubs engagés doivent confirmer leur participation et présenter une licence en cours de validité le jour de la course."
+  },
+
+  "saison_courante": "2026-2027",
+
+  "saisons": [
+    { "id": "2026-2027", "libelle": "Saison 2026 – 2027", "statut": "en cours" },
+    { "id": "2025-2026", "libelle": "Saison 2025 – 2026", "statut": "archivée" }
+  ],
+
+  "types": [
+    { "id": "toutes", "libelle": "Tous les types" },
+    { "id": "championnat", "libelle": "Championnats" },
+    { "id": "coupe", "libelle": "Coupes et trophées" },
+    { "id": "regate", "libelle": "Régates" },
+    { "id": "stage", "libelle": "Stages" },
+    { "id": "formation", "libelle": "Formations" },
+    { "id": "institutionnel", "libelle": "Rendez-vous institutionnels" }
+  ],
+
+  "statuts": {
+    "a_venir": "À venir",
+    "en_cours": "En cours",
+    "termine": "Terminé",
+    "reporte": "Reporté",
+    "annule": "Annulé"
+  },
+
+  "evenements": [
+    {
+      "id": "ev-2026-11-ag-ordinaire",
+      "titre": "Assemblée générale ordinaire",
+      "type": "institutionnel",
+      "discipline_id": null,
+      "saison": "2026-2027",
+      "date_debut": "2026-11-14",
+      "date_fin": null,
+      "heure": "09:00",
+      "lieu": "Maison des Fédérations Sportives",
+      "ville": "Lomé",
+      "region": "Maritime",
+      "organisateur": "Bureau exécutif FETOC",
+      "statut": "a_venir",
+      "description": "Bilan de la saison écoulée, vote du budget et validation du calendrier de la saison 2026-2027. Tous les clubs affiliés sont convoqués.",
+      "inscription": { "ouverte": false, "date_limite": null, "contact": "licences@fetoc.tg", "frais": "Gratuit", "note": "Sur convocation, un représentant par club." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/banner-federation.svg",
+      "a_la_une": true
+    },
+    {
+      "id": "ev-2026-11-trophee-lagunes-1",
+      "titre": "Trophée des Lagunes - manche 1",
+      "type": "coupe",
+      "discipline_id": "course-en-ligne",
+      "saison": "2026-2027",
+      "date_debut": "2026-11-21",
+      "date_fin": "2026-11-22",
+      "heure": "08:00",
+      "lieu": "Lagune de Lomé - plan d'eau de Bè",
+      "ville": "Lomé",
+      "region": "Maritime",
+      "organisateur": "Club Nautique de Lomé",
+      "statut": "a_venir",
+      "description": "Première manche du circuit national de course en ligne : 200 m, 500 m et 2 000 m en K1, K2 et C1. Épreuves jeunes le samedi matin, finales seniors le dimanche.",
+      "inscription": { "ouverte": true, "date_limite": "2026-11-10", "contact": "licences@fetoc.tg", "frais": "2 000 FCFA par embarcation", "note": "Engagements par club, via la fiche d'engagement fédérale." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/discipline-course-en-ligne.svg",
+      "a_la_une": true
+    },
+    {
+      "id": "ev-2026-12-stage-national",
+      "titre": "Stage national de préparation hivernale",
+      "type": "stage",
+      "discipline_id": "course-en-ligne",
+      "saison": "2026-2027",
+      "date_debut": "2026-12-12",
+      "date_fin": "2026-12-19",
+      "heure": "07:30",
+      "lieu": "Base nautique fédérale de Togoville",
+      "ville": "Togoville",
+      "region": "Maritime",
+      "organisateur": "Direction technique nationale",
+      "statut": "a_venir",
+      "description": "Semaine de regroupement pour le collectif national et les meilleurs espoirs : volume d'entraînement sur l'eau, préparation physique, récupération et ateliers techniques.",
+      "inscription": { "ouverte": true, "date_limite": "2026-11-28", "contact": "dtn@fetoc.tg", "frais": "Pris en charge par la fédération", "note": "Sélection sur proposition des clubs." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/club-togoville.svg",
+      "a_la_une": false
+    },
+    {
+      "id": "ev-2027-01-coupe-mono",
+      "titre": "Coupe du Togo de descente de rivière",
+      "type": "coupe",
+      "discipline_id": "descente-eau-vive",
+      "saison": "2026-2027",
+      "date_debut": "2027-01-16",
+      "date_fin": "2027-01-17",
+      "heure": "09:00",
+      "lieu": "Fleuve Mono - secteur d'Aného",
+      "ville": "Aného",
+      "region": "Maritime",
+      "organisateur": "Pagaies du Mono",
+      "statut": "a_venir",
+      "description": "Épreuve de descente sur un parcours de 8 km avec passages de rapides. Manche chronométrée individuelle puis course en ligne par équipes de clubs.",
+      "inscription": { "ouverte": false, "date_limite": "2027-01-04", "contact": "licences@fetoc.tg", "frais": "2 500 FCFA par embarcation", "note": "Niveau d'eau et faisabilité confirmés une semaine avant." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/discipline-descente-eau-vive.svg",
+      "a_la_une": true
+    },
+    {
+      "id": "ev-2027-02-formation-educateur",
+      "titre": "Formation Éducateur sportif 1er degré",
+      "type": "formation",
+      "discipline_id": null,
+      "saison": "2026-2027",
+      "date_debut": "2027-02-08",
+      "date_fin": "2027-02-13",
+      "heure": "08:00",
+      "lieu": "Base nautique de Togoville et salle fédérale",
+      "ville": "Togoville",
+      "region": "Maritime",
+      "organisateur": "Commission formation et arbitrage",
+      "statut": "a_venir",
+      "description": "Cycle de qualification de 60 heures destiné aux encadrants de clubs : technique, pédagogie, planification et sécurité nautique. Évaluation finale en situation.",
+      "inscription": { "ouverte": true, "date_limite": "2027-01-20", "contact": "formation@fetoc.tg", "frais": "Frais pédagogiques partagés fédération / club", "note": "12 places, priorité aux clubs sans éducateur diplômé." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/banner-disciplines.svg",
+      "a_la_une": false
+    },
+    {
+      "id": "ev-2027-03-regate-dragon-boat",
+      "titre": "Régate de dragon boat du Lac Togo",
+      "type": "regate",
+      "discipline_id": "dragon-boat",
+      "saison": "2026-2027",
+      "date_debut": "2027-03-06",
+      "date_fin": "2027-03-07",
+      "heure": "08:30",
+      "lieu": "Lac Togo - rive sud, Togoville",
+      "ville": "Togoville",
+      "region": "Maritime",
+      "organisateur": "Club des Pagaies du Lac Togo",
+      "statut": "a_venir",
+      "description": "Régate ouverte aux équipes de clubs, d'entreprises et d'associations : 200 m et 500 m en dragon boat 20, catégories open et mixte. Village d'animation et démonstrations de pirogue.",
+      "inscription": { "ouverte": true, "date_limite": "2027-02-20", "contact": "evenements@fetoc.tg", "frais": "15 000 FCFA par équipe", "note": "Équipes de 20 rameurs + 1 barreur + 1 tambour." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/discipline-dragon-boat.svg",
+      "a_la_une": true
+    },
+    {
+      "id": "ev-2027-04-pagaie-ecole",
+      "titre": "Festival national « Pagaie à l'école »",
+      "type": "regate",
+      "discipline_id": "stand-up-paddle",
+      "saison": "2026-2027",
+      "date_debut": "2027-04-10",
+      "date_fin": null,
+      "heure": "08:00",
+      "lieu": "Lagune de Lomé - front de lagune",
+      "ville": "Lomé",
+      "region": "Maritime",
+      "organisateur": "Commission développement",
+      "statut": "a_venir",
+      "description": "Rassemblement des classes engagées dans le programme scolaire : parcours d'habileté, relais de stand-up paddle et démonstrations de kayak-polo. Journée ouverte aux familles.",
+      "inscription": { "ouverte": true, "date_limite": "2027-03-27", "contact": "developpement@fetoc.tg", "frais": "Gratuit", "note": "Établissements scolaires et clubs encadrants." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/discipline-stand-up-paddle.svg",
+      "a_la_une": false
+    },
+    {
+      "id": "ev-2027-05-championnat-national",
+      "titre": "Championnat national de course en ligne",
+      "type": "championnat",
+      "discipline_id": "course-en-ligne",
+      "saison": "2026-2027",
+      "date_debut": "2027-05-22",
+      "date_fin": "2027-05-23",
+      "heure": "07:30",
+      "lieu": "Lac Togo - base nautique de Togoville",
+      "ville": "Togoville",
+      "region": "Maritime",
+      "organisateur": "FETOC",
+      "statut": "a_venir",
+      "description": "Rendez-vous majeur de la saison : toutes les catégories d'âge et toutes les embarcations, de U12 à Master. Les titres nationaux et les sélections en équipe nationale y sont attribués.",
+      "inscription": { "ouverte": false, "date_limite": "2027-05-08", "contact": "licences@fetoc.tg", "frais": "3 000 FCFA par embarcation", "note": "Engagements ouverts deux mois avant l'épreuve." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/news-3.svg",
+      "a_la_une": true
+    },
+    {
+      "id": "ev-2027-06-kayak-polo",
+      "titre": "Tournoi national de kayak-polo",
+      "type": "championnat",
+      "discipline_id": "kayak-polo",
+      "saison": "2026-2027",
+      "date_debut": "2027-06-12",
+      "date_fin": "2027-06-13",
+      "heure": "09:00",
+      "lieu": "Lagune de Lomé",
+      "ville": "Lomé",
+      "region": "Maritime",
+      "organisateur": "Club Nautique de Lomé et Canoë Club de Sokodé",
+      "statut": "a_venir",
+      "description": "Tournoi en poules puis phase finale à élimination directe, en catégories U16, U18 et Senior, mixte. Une journée découverte est réservée aux débutants.",
+      "inscription": { "ouverte": false, "date_limite": "2027-05-29", "contact": "licences@fetoc.tg", "frais": "5 000 FCFA par équipe", "note": "Équipes de 5 joueurs + 3 remplaçants." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/discipline-kayak-polo.svg",
+      "a_la_une": false
+    },
+    {
+      "id": "ev-2027-07-trophee-sup",
+      "titre": "Trophée SUP de Baguida",
+      "type": "coupe",
+      "discipline_id": "stand-up-paddle",
+      "saison": "2026-2027",
+      "date_debut": "2027-07-03",
+      "date_fin": null,
+      "heure": "08:00",
+      "lieu": "Plage de Baguida - plan d'eau abrité",
+      "ville": "Lomé",
+      "region": "Maritime",
+      "organisateur": "Club Dzogbényui Sport Nautique",
+      "statut": "a_venir",
+      "description": "Épreuves de course (2 km et 5 km) et de technique, complétées par une balade découverte ouverte au public. Nettoyage du littoral en fin de journée.",
+      "inscription": { "ouverte": false, "date_limite": "2027-06-19", "contact": "evenements@fetoc.tg", "frais": "2 000 FCFA", "note": "Planches personnelles acceptées après contrôle." },
+      "resultats": { "publies": false, "podium": [], "documents": [] },
+      "image": "assets/img/news-6.svg",
+      "a_la_une": false
+    },
+    {
+      "id": "ev-2026-01-coupe-mono",
+      "titre": "Coupe du Togo de descente - édition 2026",
+      "type": "coupe",
+      "discipline_id": "descente-eau-vive",
+      "saison": "2025-2026",
+      "date_debut": "2026-01-17",
+      "date_fin": "2026-01-18",
+      "heure": "09:00",
+      "lieu": "Fleuve Mono - secteur d'Aného",
+      "ville": "Aného",
+      "region": "Maritime",
+      "organisateur": "Pagaies du Mono",
+      "statut": "termine",
+      "description": "Parcours de 8 km avec deux passages de rapides, couru en K1 et C1 seniors et en relais de clubs.",
+      "inscription": { "ouverte": false, "date_limite": null, "contact": null, "frais": null, "note": null },
+      "resultats": {
+        "publies": true,
+        "podium": [
+          { "rang": 1, "nom": "Sena DOGBÉ", "club": "Kpalimé Kayak Club", "marque": "41 min 12 s" },
+          { "rang": 2, "nom": "Kossi AMOUZOU", "club": "Pagaies du Mono", "marque": "42 min 05 s" },
+          { "rang": 3, "nom": "Dodji KPODAR", "club": "Canoë Club d'Atakpamé", "marque": "43 min 47 s" }
+        ],
+        "documents": []
+      },
+      "image": "assets/img/discipline-descente-eau-vive.svg",
+      "a_la_une": false
+    },
+    {
+      "id": "ev-2026-03-regate-dragon-boat",
+      "titre": "Régate de dragon boat du Lac Togo - édition 2026",
+      "type": "regate",
+      "discipline_id": "dragon-boat",
+      "saison": "2025-2026",
+      "date_debut": "2026-03-07",
+      "date_fin": null,
+      "heure": "08:30",
+      "lieu": "Lac Togo - Togoville",
+      "ville": "Togoville",
+      "region": "Maritime",
+      "organisateur": "Club des Pagaies du Lac Togo",
+      "statut": "termine",
+      "description": "Douze équipes engagées sur 200 m et 500 m, catégories open, mixte et entreprises.",
+      "inscription": { "ouverte": false, "date_limite": null, "contact": null, "frais": null, "note": null },
+      "resultats": {
+        "publies": true,
+        "podium": [
+          { "rang": 1, "nom": "Pagaies du Lac Togo", "club": "Togoville", "marque": "1 min 48 s (500 m)" },
+          { "rang": 2, "nom": "Équipe AquaTogo", "club": "Entreprise partenaire", "marque": "1 min 52 s" },
+          { "rang": 3, "nom": "Club Nautique de Lomé", "club": "Lomé", "marque": "1 min 56 s" }
+        ],
+        "documents": []
+      },
+      "image": "assets/img/discipline-dragon-boat.svg",
+      "a_la_une": false
+    },
+    {
+      "id": "ev-2026-05-championnat-national",
+      "titre": "Championnat national de course en ligne - édition 2026",
+      "type": "championnat",
+      "discipline_id": "course-en-ligne",
+      "saison": "2025-2026",
+      "date_debut": "2026-05-23",
+      "date_fin": "2026-05-24",
+      "heure": "07:30",
+      "lieu": "Lac Togo - base nautique de Togoville",
+      "ville": "Togoville",
+      "region": "Maritime",
+      "organisateur": "FETOC",
+      "statut": "termine",
+      "description": "Deux journées de compétition réunissant sept clubs et près de 120 embarcations engagées, de U12 à Master.",
+      "inscription": { "ouverte": false, "date_limite": null, "contact": null, "frais": null, "note": null },
+      "resultats": {
+        "publies": true,
+        "podium": [
+          { "rang": 1, "nom": "Club des Pagaies du Lac Togo", "club": "Togoville", "marque": "Classement général clubs" },
+          { "rang": 2, "nom": "Club Nautique de Lomé", "club": "Lomé", "marque": "Classement général clubs" },
+          { "rang": 3, "nom": "Club Dzogbényui Sport Nautique", "club": "Baguida", "marque": "Classement général clubs" }
+        ],
+        "documents": []
+      },
+      "image": "assets/img/news-2.svg",
+      "a_la_une": false
+    },
+    {
+      "id": "ev-2026-06-kayak-polo",
+      "titre": "Tournoi national de kayak-polo - édition 2026",
+      "type": "championnat",
+      "discipline_id": "kayak-polo",
+      "saison": "2025-2026",
+      "date_debut": "2026-06-13",
+      "date_fin": "2026-06-14",
+      "heure": "09:00",
+      "lieu": "Lagune de Lomé",
+      "ville": "Lomé",
+      "region": "Maritime",
+      "organisateur": "Club Nautique de Lomé",
+      "statut": "termine",
+      "description": "Huit équipes engagées en U16 et Senior ; victoire du club de Sokodé chez les U16.",
+      "inscription": { "ouverte": false, "date_limite": null, "contact": null, "frais": null, "note": null },
+      "resultats": {
+        "publies": true,
+        "podium": [
+          { "rang": 1, "nom": "Club Nautique de Lomé", "club": "Lomé", "marque": "Seniors" },
+          { "rang": 2, "nom": "Canoë Club de Sokodé", "club": "Sokodé", "marque": "Seniors" },
+          { "rang": 3, "nom": "Club Dzogbényui Sport Nautique", "club": "Baguida", "marque": "Seniors" }
+        ],
+        "documents": []
+      },
+      "image": "assets/img/discipline-kayak-polo.svg",
+      "a_la_une": false
+    }
+  ],
+
+  "classements": [
+    {
+      "id": "cl-course-en-ligne-2025-2026",
+      "titre": "Classement général - Course en ligne",
+      "saison": "2025-2026",
+      "discipline_id": "course-en-ligne",
+      "type": "clubs",
+      "note": "Cumul des points obtenus sur l'ensemble des manches de la saison, toutes catégories confondues.",
+      "colonnes": ["Rang", "Club", "Manches courues", "Points"],
+      "lignes": [
+        { "rang": 1, "club_id": "pagaies-du-lac", "nom": "Club des Pagaies du Lac Togo", "manches": 5, "points": 428 },
+        { "rang": 2, "club_id": "club-nautique-lome", "nom": "Club Nautique de Lomé", "manches": 5, "points": 391 },
+        { "rang": 3, "club_id": "dzogbenyui", "nom": "Club Dzogbényui Sport Nautique", "manches": 5, "points": 344 },
+        { "rang": 4, "club_id": "canoe-atakpame", "nom": "Canoë Club d'Atakpamé", "manches": 4, "points": 268 },
+        { "rang": 5, "club_id": "canoe-sokode", "nom": "Canoë Club de Sokodé", "manches": 4, "points": 241 },
+        { "rang": 6, "club_id": "kara-paddle", "nom": "Kara Paddle Club", "manches": 3, "points": 152 }
+      ]
+    },
+    {
+      "id": "cl-eau-vive-2025-2026",
+      "titre": "Classement général - Eau vive et descente",
+      "saison": "2025-2026",
+      "discipline_id": "descente-eau-vive",
+      "type": "clubs",
+      "note": "Classement établi sur les deux manches du circuit de rivière.",
+      "colonnes": ["Rang", "Club", "Manches courues", "Points"],
+      "lignes": [
+        { "rang": 1, "club_id": "kpalime-kayak", "nom": "Kpalimé Kayak Club", "manches": 2, "points": 186 },
+        { "rang": 2, "club_id": "pagaies-du-mono", "nom": "Pagaies du Mono", "manches": 2, "points": 174 },
+        { "rang": 3, "club_id": "canoe-atakpame", "nom": "Canoë Club d'Atakpamé", "manches": 2, "points": 121 },
+        { "rang": 4, "club_id": "club-nautique-lome", "nom": "Club Nautique de Lomé", "manches": 1, "points": 64 }
+      ]
+    },
+    {
+      "id": "cl-kayak-polo-2025-2026",
+      "titre": "Classement - Kayak-polo",
+      "saison": "2025-2026",
+      "discipline_id": "kayak-polo",
+      "type": "clubs",
+      "note": "Classement du tournoi national, toutes catégories.",
+      "colonnes": ["Rang", "Club", "Matchs joués", "Points"],
+      "lignes": [
+        { "rang": 1, "club_id": "club-nautique-lome", "nom": "Club Nautique de Lomé", "manches": 6, "points": 16 },
+        { "rang": 2, "club_id": "canoe-sokode", "nom": "Canoë Club de Sokodé", "manches": 6, "points": 13 },
+        { "rang": 3, "club_id": "dzogbenyui", "nom": "Club Dzogbényui Sport Nautique", "manches": 5, "points": 9 },
+        { "rang": 4, "club_id": "pagaies-du-lac", "nom": "Club des Pagaies du Lac Togo", "manches": 5, "points": 7 }
+      ]
+    },
+    {
+      "id": "cl-dragon-boat-2025-2026",
+      "titre": "Classement - Dragon boat",
+      "saison": "2025-2026",
+      "discipline_id": "dragon-boat",
+      "type": "equipes",
+      "note": "Classement de la régate du Lac Togo, catégories open et mixte.",
+      "colonnes": ["Rang", "Équipe", "Catégorie", "Points"],
+      "lignes": [
+        { "rang": 1, "nom": "Pagaies du Lac Togo", "categorie": "Open", "points": 30 },
+        { "rang": 2, "nom": "Équipe AquaTogo", "categorie": "Entreprises", "points": 26 },
+        { "rang": 3, "nom": "Club Nautique de Lomé", "categorie": "Open", "points": 22 },
+        { "rang": 4, "nom": "Canoë Club de Sokodé", "categorie": "Mixte", "points": 18 },
+        { "rang": 5, "nom": "Kara Paddle Club", "categorie": "Mixte", "points": 14 }
+      ]
+    }
+  ],
+
+  "informations_pratiques": {
+    "titre": "Informations pratiques",
+    "licences": [
+      "Tout compétiteur doit être titulaire d'une licence FETOC en cours de validité pour la saison en cours.",
+      "L'engagement des embarcations se fait par club, au moyen de la fiche d'engagement transmise par le secrétariat.",
+      "Les frais d'engagement sont réglés au plus tard le jour du contrôle technique.",
+      "Un contrôle du matériel et des équipements de sécurité est effectué avant chaque épreuve.",
+      "Tout athlète mineur doit présenter une autorisation parentale et un certificat médical d'aptitude."
+    ],
+    "reglement": "Le règlement sportif et technique de la fédération précise les catégories d'âge, les formats de course, les systèmes de classement et les procédures de réclamation.",
+    "contact": "Pour toute question sur le calendrier, écrivez à licences@fetoc.tg ou appelez le secrétariat fédéral."
+  }
+}

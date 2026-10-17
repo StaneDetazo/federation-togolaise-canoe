@@ -1,0 +1,20 @@
+# Dépendances
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environnement
+.env
+.env.*
+
+# Système / éditeurs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Divers
+*.tmp
+.cache/

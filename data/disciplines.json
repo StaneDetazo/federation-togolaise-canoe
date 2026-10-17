@@ -1,0 +1,262 @@
+{
+  "entete": {
+    "titre": "Disciplines & activités",
+    "chapeau": "Du sprint sur le Lac Togo à la descente du Mono, la pagaie togolaise se pratique sur l'eau calme, en rivière et en équipe. Chaque discipline possède ses embarcations, ses catégories et ses rendez-vous.",
+    "texte": "Les disciplines présentées ci-dessous sont celles encadrées par la fédération et ses clubs affiliés. L'initiation est ouverte dès 8 ans sur les plans d'eau sécurisés ; la compétition s'organise par catégories d'âge et par niveau."
+  },
+
+  "familles": [
+    { "id": "toutes", "libelle": "Toutes les disciplines" },
+    { "id": "course", "libelle": "Course & vitesse" },
+    { "id": "riviere", "libelle": "Eau vive & rivière" },
+    { "id": "collectif", "libelle": "Sports collectifs" },
+    { "id": "tradition", "libelle": "Tradition & patrimoine" },
+    { "id": "loisir", "libelle": "Loisir & nature" },
+    { "id": "inclusif", "libelle": "Pagaie pour tous" },
+    { "id": "expression", "libelle": "Technique & expression" }
+  ],
+
+  "liste": [
+    {
+      "id": "course-en-ligne",
+      "nom": "Canoë-kayak de course en ligne",
+      "nom_court": "Course en ligne",
+      "famille": "course",
+      "icone": "kayak",
+      "olympique": true,
+      "a_la_une": true,
+      "accroche": "La vitesse à la pagaie, sur 200 à 5 000 mètres.",
+      "description": "Discipline de référence de la fédération, la course en ligne se pratique sur plan d'eau calme, en ligne droite, sur des distances réglementaires. Le kayak se pagaie assis avec une pagaie double ; le canoë, à genoux, avec une pagaie simple.",
+      "pratique": "Entraînements hebdomadaires sur le Lac Togo et la lagune de Lomé, avec préparation physique à sec et travail technique en bateau. Les clubs organisent des séances de vitesse, de fond et de relais.",
+      "public": "À partir de 8 ans, garçons et filles, en loisir comme en compétition.",
+      "niveau": "Initiation, compétition régionale et nationale",
+      "saison": "Septembre à juillet",
+      "categories": ["U12", "U14", "U16", "U18", "Senior", "Master"],
+      "embarcations": ["K1", "K2", "K4", "C1", "C2"],
+      "sites": ["Lac Togo", "Lagune de Lomé", "Retenue de Nangbéto"],
+      "image": "assets/img/discipline-course-en-ligne.svg"
+    },
+    {
+      "id": "descente-eau-vive",
+      "nom": "Descente de rivière et eau vive",
+      "nom_court": "Descente & eau vive",
+      "famille": "riviere",
+      "icone": "riviere",
+      "a_la_une": true,
+      "accroche": "Lire le courant, choisir sa ligne, descendre vite et juste.",
+      "description": "La descente consiste à parcourir un tronçon de rivière le plus rapidement possible. Elle demande une lecture fine du courant, une bonne condition physique et une solide maîtrise technique en eau agitée.",
+      "pratique": "Sorties encadrées sur le fleuve Mono et ses rapides, reconnaissance de parcours, travail de trajectoire et de sécurité. La pratique est conditionnée au niveau d'eau et à l'autorisation préalable.",
+      "public": "À partir de 12 ans, avec test de natation et attestation d'aisance aquatique.",
+      "niveau": "Perfectionnement et compétition",
+      "saison": "Selon la période de crue",
+      "categories": ["U16", "U18", "Senior", "Master"],
+      "embarcations": ["K1 descente", "C1 descente", "C2 descente"],
+      "sites": ["Fleuve Mono", "Rapides de Kpimé"],
+      "image": "assets/img/discipline-descente-eau-vive.svg"
+    },
+    {
+      "id": "slalom",
+      "nom": "Slalom",
+      "nom_court": "Slalom",
+      "famille": "riviere",
+      "icone": "slalom",
+      "accroche": "Négocier les portes, gérer le chronomètre.",
+      "description": "Le slalom se pratique sur un parcours délimité par des portes que l'athlète doit franchir dans l'ordre, dans le bon sens, le plus vite possible. Précision, anticipation et technique sont déterminantes.",
+      "pratique": "Parcours installés sur plan d'eau calme ou en rivière aménagée, séances de maniabilité, de giration et de chronométrage.",
+      "public": "À partir de 10 ans.",
+      "niveau": "Initiation avancée et compétition",
+      "saison": "Octobre à juin",
+      "categories": ["U14", "U16", "U18", "Senior"],
+      "embarcations": ["K1 slalom", "C1 slalom", "C2 slalom"],
+      "sites": ["Lagune de Lomé", "Fleuve Mono"],
+      "image": "assets/img/discipline-slalom.svg"
+    },
+    {
+      "id": "kayak-polo",
+      "nom": "Kayak-polo",
+      "nom_court": "Kayak-polo",
+      "famille": "collectif",
+      "icone": "ballon",
+      "a_la_une": true,
+      "accroche": "Cinq contre cinq, un ballon, deux buts suspendus.",
+      "description": "Sport collectif spectaculaire : deux équipes de cinq joueurs s'affrontent en kayak sur un plan d'eau délimité et tentent de marquer dans un but surélevé, à la main ou à la pagaie.",
+      "pratique": "Séances de jeu réduit, travail du geste de passe et de tir, préparation physique spécifique. La discipline est très appréciée des jeunes et fonctionne bien en tournois.",
+      "public": "À partir de 10 ans, mixte.",
+      "niveau": "Loisir et compétition par équipes",
+      "saison": "Toute l'année",
+      "categories": ["U14", "U16", "U18", "Senior"],
+      "embarcations": ["Kayak-polo"],
+      "sites": ["Lagune de Lomé", "Lac Togo"],
+      "image": "assets/img/discipline-kayak-polo.svg"
+    },
+    {
+      "id": "dragon-boat",
+      "nom": "Dragon boat",
+      "nom_court": "Dragon boat",
+      "famille": "collectif",
+      "icone": "equipage",
+      "a_la_une": true,
+      "accroche": "Un tambour, vingt pagaies, un seul rythme.",
+      "description": "Pirogue longue de 12 à 20 rameurs, rythmée par un tambour et guidée par un barreur. Discipline collective par excellence, elle fédère entreprises, associations et sélections régionales autour d'un même tempo.",
+      "pratique": "Séances de synchronisation, préparation physique collective, régates sur 200 et 500 mètres. La fédération dispose d'une embarcation de 20 pagaies à la base de Togoville.",
+      "public": "À partir de 12 ans, équipes mixtes constituées.",
+      "niveau": "Loisir, entreprises et compétition",
+      "saison": "Toute l'année",
+      "categories": ["Junior", "Open", "Mixte", "Senior", "Entreprises"],
+      "embarcations": ["Dragon boat 10", "Dragon boat 20"],
+      "sites": ["Lac Togo", "Lagune de Lomé"],
+      "image": "assets/img/discipline-dragon-boat.svg"
+    },
+    {
+      "id": "vaa-pirogue",
+      "nom": "Va'a et pirogue de course traditionnelle",
+      "nom_court": "Va'a & pirogue",
+      "famille": "tradition",
+      "icone": "pirogue",
+      "a_la_une": true,
+      "accroche": "L'héritage des pêcheurs togolais, transformé en sport.",
+      "description": "La pirogue à balancier et la pirogue monoxyle de course sont au cœur de l'histoire nautique togolaise. La fédération encadre des épreuves de vitesse et de fond sur ces embarcations, en lien avec les communautés de pêcheurs.",
+      "pratique": "Apprentissage de la pagaie simple, de l'équilibre et de la coordination, puis courses de 500 à 8 000 mètres. Matériel en bois local entretenu par les clubs.",
+      "public": "À partir de 12 ans, pratique intergénérationnelle.",
+      "niveau": "Initiation, tradition et compétition",
+      "saison": "Octobre à juillet",
+      "categories": ["U16", "Senior", "Master"],
+      "embarcations": ["Va'a V1", "Va'a V6", "Pirogue monoxyle"],
+      "sites": ["Lac Togo", "Fleuve Mono", "Lagune d'Aného"],
+      "image": "assets/img/discipline-vaa-pirogue.svg"
+    },
+    {
+      "id": "stand-up-paddle",
+      "nom": "Stand-up paddle",
+      "nom_court": "Stand-up paddle",
+      "famille": "loisir",
+      "icone": "sup",
+      "accroche": "Debout sur la planche, pagaie simple en main.",
+      "description": "Accessible et ludique, le stand-up paddle se pratique sur planche, debout ou à genoux. Utilisé pour l'initiation, la remise en forme et la balade, il permet aussi des épreuves de course et de technique.",
+      "pratique": "Séances d'équilibre, de pagaie et de sécurité, balades découvertes sur la lagune, épreuves de 2 à 10 km lors des festivals nautiques.",
+      "public": "À partir de 8 ans, sans condition physique particulière.",
+      "niveau": "Découverte et loisir sportif",
+      "saison": "Toute l'année",
+      "categories": ["U12", "U16", "Open", "Loisir"],
+      "embarcations": ["SUP rigide", "SUP gonflable"],
+      "sites": ["Lagune de Lomé", "Lac Togo", "Plage de Baguida"],
+      "image": "assets/img/discipline-stand-up-paddle.svg"
+    },
+    {
+      "id": "randonnee-nautique",
+      "nom": "Randonnée nautique et kayak de mer",
+      "nom_court": "Randonnée nautique",
+      "famille": "loisir",
+      "icone": "boussole",
+      "accroche": "Pagayer loin, longtemps, en sécurité.",
+      "description": "La randonnée consiste à parcourir de longues distances sur un plan d'eau, une rivière ou en bord de mer, en autonomie ou accompagné. Elle combine technique, endurance et connaissance du milieu.",
+      "pratique": "Sorties à la journée ou sur plusieurs étapes, navigation, préparation du matériel et respect des zones sensibles. Encadrement obligatoire par un éducateur fédéral.",
+      "public": "À partir de 14 ans, savoir nager obligatoire.",
+      "niveau": "Loisir nature et endurance",
+      "saison": "Novembre à mai",
+      "categories": ["U16", "Senior", "Master", "Famille"],
+      "embarcations": ["Kayak de mer", "Kayak de randonnée", "SUP touring"],
+      "sites": ["Lagune de Lomé", "Lac Togo", "Littoral du Golfe de Guinée"],
+      "image": "assets/img/discipline-randonnee-nautique.svg"
+    },
+    {
+      "id": "paracanoe",
+      "nom": "Paracanoë",
+      "nom_court": "Paracanoë",
+      "famille": "inclusif",
+      "icone": "inclusion",
+      "a_la_une": true,
+      "accroche": "L'eau ne fait aucune différence.",
+      "description": "Le paracanoë adapte la pratique aux personnes en situation de handicap moteur ou visuel : embarcations stabilisées, sièges spécifiques, matériel de maintien et encadrement formé.",
+      "pratique": "Séances adaptées sur plan d'eau calme, en lien avec les structures de rééducation et les associations de personnes handicapées. Objectif : intégration progressive aux compétitions nationales.",
+      "public": "À partir de 12 ans, tous niveaux de mobilité.",
+      "niveau": "Initiation, loisir et compétition adaptée",
+      "saison": "Toute l'année",
+      "categories": ["KL1", "KL2", "KL3", "VL1", "VL2", "VL3"],
+      "embarcations": ["Kayak stabilisé", "Va'a adapté"],
+      "sites": ["Lagune de Lomé", "Lac Togo"],
+      "image": "assets/img/discipline-paracanoe.svg"
+    },
+    {
+      "id": "freestyle",
+      "nom": "Freestyle et kayak acrobatique",
+      "nom_court": "Freestyle",
+      "famille": "expression",
+      "icone": "figure",
+      "accroche": "La vague comme terrain d'expression.",
+      "description": "Le freestyle consiste à enchaîner des figures sur une vague ou un rouleau, notées par un jury. Discipline spectaculaire, elle développe un contrôle total du bateau.",
+      "pratique": "Ateliers d'esquimautage, de surf de rouleau et de figures, démonstrations lors des festivals nautiques.",
+      "public": "À partir de 12 ans, maîtrise de l'esquimautage requise.",
+      "niveau": "Perfectionnement",
+      "saison": "Selon le niveau d'eau",
+      "categories": ["U16", "U18", "Senior"],
+      "embarcations": ["Kayak freestyle"],
+      "sites": ["Rouleaux du Mono", "Lagune de Lomé"],
+      "image": "assets/img/discipline-freestyle.svg"
+    }
+  ],
+
+  "parcours": {
+    "titre": "De la première pagaie à la compétition",
+    "introduction": "La fédération organise la progression des pratiquants en quatre étapes, du bassin d'initiation au haut niveau. Chaque étape correspond à des compétences validées par un encadrant fédéral.",
+    "etapes": [
+      {
+        "numero": "01",
+        "titre": "Découverte et initiation",
+        "texte": "Premier contact avec l'eau et le bateau : équilibre, sécurité, gestes de base de la pagaie. Encadrement par les clubs, sur plan d'eau calme et sécurisé.",
+        "public": "8 – 12 ans",
+        "duree": "1 séance à 1 trimestre",
+        "icone": "pagaie"
+      },
+      {
+        "numero": "02",
+        "titre": "Perfectionnement technique",
+        "texte": "Maîtrise de l'esquimautage, de la trajectoire et de l'endurance. Entrée dans les catégories d'âge et premières compétitions internes aux clubs.",
+        "public": "10 – 16 ans",
+        "duree": "1 à 3 saisons",
+        "icone": "vague"
+      },
+      {
+        "numero": "03",
+        "titre": "Entraînement et compétition",
+        "texte": "Préparation structurée, suivi physique, participation au calendrier national et régional, intégration des collectifs régionaux de la fédération.",
+        "public": "14 ans et plus",
+        "duree": "Selon le projet de l'athlète",
+        "icone": "chrono"
+      },
+      {
+        "numero": "04",
+        "titre": "Haut niveau et sélection",
+        "texte": "Collectif national, stages fédéraux, préparation aux compétitions continentales et internationales, accompagnement médical et suivi individualisé.",
+        "public": "Sur sélection",
+        "duree": "Cycle olympique",
+        "icone": "medaille"
+      }
+    ]
+  },
+
+  "formations": {
+    "titre": "Formations fédérales",
+    "introduction": "La fédération forme ses encadrants, ses arbitres et ses dirigeants. Les stages sont organisés au siège et sur la base nautique de Togoville.",
+    "liste": [
+      { "nom": "Initiateur fédéral de pagaie", "duree": "4 jours", "public": "Licenciés majeurs et bénévoles de clubs", "contenu": "Sécurité, pédagogie de l'initiation, encadrement de groupes débutants sur plan d'eau calme." },
+      { "nom": "Éducateur sportif 1er degré", "duree": "Cycle de 60 heures", "public": "Encadrants de clubs, professeurs d'EPS", "contenu": "Technique des disciplines, planification, préparation physique, réglementation des compétitions." },
+      { "nom": "Arbitre fédéral", "duree": "2 jours + évaluation", "public": "Licenciés et dirigeants", "contenu": "Règlements ICF, gestion des courses, chronométrage, jugement et gestion des incidents." },
+      { "nom": "Dirigeant de club", "duree": "3 jours", "public": "Responsables associatifs", "contenu": "Gouvernance, gestion administrative, recherche de financements, projets de développement." }
+    ],
+    "calendrier_note": "Le calendrier des formations est publié chaque saison dans la rubrique Compétitions & calendrier."
+  },
+
+  "sites_de_pratique": {
+    "titre": "Où pratiquer",
+    "introduction": "Les sites ouverts au public encadré, avec les conditions d'accès précisées par le club gestionnaire.",
+    "liste": [
+      { "nom": "Lac Togo - base de Togoville", "region": "Maritime", "type": "Plan d'eau calme", "usage": ["Course en ligne", "Dragon boat", "Va'a", "Initiation"], "image": "assets/img/club-togoville.svg" },
+      { "nom": "Lagune de Lomé", "region": "Maritime", "type": "Lagune urbaine", "usage": ["Kayak-polo", "Slalom", "SUP", "Paracanoë"], "image": "assets/img/club-lome.svg" },
+      { "nom": "Fleuve Mono - secteur d'Aného", "region": "Maritime", "type": "Rivière côtière", "usage": ["Descente", "Randonnée nautique", "Va'a"], "image": "assets/img/club-aneho.svg" },
+      { "nom": "Rapides de Kpimé", "region": "Plateaux", "type": "Eau vive", "usage": ["Descente", "Freestyle", "Slalom"], "image": "assets/img/club-kpalime.svg" },
+      { "nom": "Retenue de Nangbéto", "region": "Plateaux", "type": "Retenue hydroélectrique", "usage": ["Course en ligne", "Randonnée"], "image": "assets/img/club-atakpame.svg" },
+      { "nom": "Lac d'Oti - secteur de Mango", "region": "Savanes", "type": "Plan d'eau fluvial", "usage": ["Initiation", "Va'a", "Randonnée"], "image": "assets/img/club-dapaong.svg" }
+    ]
+  }
+}

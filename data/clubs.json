@@ -1,0 +1,265 @@
+{
+  "entete": {
+    "titre": "Clubs affiliés",
+    "chapeau": "Les clubs sont le cœur de la vie fédérale. Répartis sur le littoral, autour du Lac Togo, le long du Mono et jusqu'au nord du pays, ils accueillent les pratiquants, organisent les entraînements et forment les jeunes générations de pagayeurs.",
+    "texte": "Chaque club affilié dispose d'un encadrant diplômé, d'un parc d'embarcations et d'un site de pratique autorisé. Pour rejoindre un club, contactez directement son responsable ou le secrétariat fédéral."
+  },
+
+  "regions": [
+    { "id": "maritime", "libelle": "Maritime" },
+    { "id": "plateaux", "libelle": "Plateaux" },
+    { "id": "centrale", "libelle": "Centrale" },
+    { "id": "kara", "libelle": "Kara" },
+    { "id": "savanes", "libelle": "Savanes" }
+  ],
+
+  "liste": [
+    {
+      "id": "club-nautique-lome",
+      "nom": "Club Nautique de Lomé",
+      "sigle": "CNL",
+      "region": "maritime",
+      "ville": "Lomé",
+      "quartier": "Bè - lagune de Lomé",
+      "annee_creation": 1998,
+      "a_la_une": true,
+      "site_pratique": "Lagune de Lomé",
+      "disciplines": ["course-en-ligne", "kayak-polo", "stand-up-paddle", "paracanoe"],
+      "presentation": "Club historique du canoë togolais, le CNL forme les jeunes de l'agglomération de Lomé sur la lagune et organise les tournois de kayak-polo de la capitale.",
+      "effectif": "Environ 60 licenciés",
+      "encadrement": "2 éducateurs fédéraux, 1 stagiaire en formation",
+      "materiel": "14 kayaks de course, 8 kayaks-polo, 6 stand-up paddles, 1 remorque",
+      "contact": {
+        "responsable": "Yao KODJO",
+        "fonction": "Président du club",
+        "telephone": "+228 90 00 00 01",
+        "email": "contact@cnl.tg"
+      },
+      "horaires": "Mercredi et samedi matin, dimanche pour les compétiteurs",
+      "geo": { "lat": 6.1321, "lng": 1.2274 },
+      "image": "assets/img/club-lome.svg",
+      "labels": ["Club formateur", "Pagaie pour tous"]
+    },
+    {
+      "id": "dzogbenyui",
+      "nom": "Club Dzogbényui Sport Nautique",
+      "sigle": "CDSN",
+      "region": "maritime",
+      "ville": "Lomé",
+      "quartier": "Baguida - front de mer",
+      "annee_creation": 2005,
+      "a_la_une": true,
+      "site_pratique": "Littoral de Baguida et lagune",
+      "disciplines": ["course-en-ligne", "randonnee-nautique", "stand-up-paddle", "vaa-pirogue"],
+      "presentation": "Issu d'une association de quartier de Baguida, le club Dzogbényui associe sport nautique et action sociale : initiation gratuite pour les enfants du village et ramassage des déchets sur le littoral.",
+      "effectif": "Environ 45 licenciés",
+      "encadrement": "2 éducateurs, 4 bénévoles",
+      "materiel": "10 kayaks de mer, 5 kayaks de course, 2 pirogues, 4 stand-up paddles",
+      "contact": {
+        "responsable": "Essosimna BALOUKI",
+        "fonction": "Coordinateur sportif",
+        "telephone": "+228 90 00 00 02",
+        "email": "contact@dzogbenyui.tg"
+      },
+      "horaires": "Samedi toute la journée, initiation scolaire le mardi",
+      "geo": { "lat": 6.1762, "lng": 1.3521 },
+      "image": "assets/img/club-lome.svg",
+      "labels": ["Club formateur", "Projet environnement"]
+    },
+    {
+      "id": "pagaies-du-mono",
+      "nom": "Pagaies du Mono",
+      "sigle": "PM",
+      "region": "maritime",
+      "ville": "Aného",
+      "quartier": "Embouchure du Mono",
+      "annee_creation": 2009,
+      "a_la_une": true,
+      "site_pratique": "Fleuve Mono",
+      "disciplines": ["descente-eau-vive", "randonnee-nautique", "vaa-pirogue", "slalom"],
+      "presentation": "Spécialiste de la rivière, le club d'Aného est le point d'appui de la fédération pour la descente et la randonnée nautique sur le Mono. Il travaille étroitement avec les pêcheurs du fleuve.",
+      "effectif": "Environ 35 licenciés",
+      "encadrement": "1 éducateur fédéral, 2 guides de randonnée",
+      "materiel": "12 kayaks de rivière, 3 canoës descente, 2 va'a, 1 véhicule de transport",
+      "contact": {
+        "responsable": "Kossi AMOUZOU",
+        "fonction": "Président du club",
+        "telephone": "+228 90 00 00 03",
+        "email": "contact@pagaiesdumono.tg"
+      },
+      "horaires": "En fonction du niveau d'eau, sorties le week-end",
+      "geo": { "lat": 6.2286, "lng": 1.5961 },
+      "image": "assets/img/club-aneho.svg",
+      "labels": ["Descente", "Écotourisme"]
+    },
+    {
+      "id": "pagaies-du-lac",
+      "nom": "Club des Pagaies du Lac Togo",
+      "sigle": "CPL",
+      "region": "maritime",
+      "ville": "Togoville",
+      "quartier": "Rive sud du lac",
+      "annee_creation": 2012,
+      "site_pratique": "Lac Togo",
+      "disciplines": ["course-en-ligne", "dragon-boat", "vaa-pirogue", "stand-up-paddle"],
+      "presentation": "Club gestionnaire de la base nautique fédérale de Togoville. Il accueille les stages fédéraux, les régates et les rassemblements de dragon boat, et fait vivre la tradition de pirogue du lac.",
+      "effectif": "Environ 50 licenciés",
+      "encadrement": "2 éducateurs, 1 responsable de base",
+      "materiel": "16 kayaks de course, 1 dragon boat 20, 3 va'a, 8 stand-up paddles",
+      "contact": {
+        "responsable": "Ama DOSSEH",
+        "fonction": "Présidente du club",
+        "telephone": "+228 90 00 00 04",
+        "email": "contact@pagaiesdulac.tg"
+      },
+      "horaires": "Tous les jours à partir de 15h, week-end le matin",
+      "geo": { "lat": 6.2217, "lng": 1.4708 },
+      "image": "assets/img/club-togoville.svg",
+      "labels": ["Base fédérale", "Dragon boat"]
+    },
+    {
+      "id": "canoe-atakpame",
+      "nom": "Canoë Club d'Atakpamé",
+      "sigle": "CCA",
+      "region": "plateaux",
+      "ville": "Atakpamé",
+      "quartier": "Vallée de l'Ogou",
+      "annee_creation": 2014,
+      "site_pratique": "Retenue de Nangbéto",
+      "disciplines": ["course-en-ligne", "randonnee-nautique", "slalom"],
+      "presentation": "Premier club des Plateaux, basé à proximité de la retenue hydroélectrique de Nangbéto. Il développe la pratique scolaire dans les établissements de la ville.",
+      "effectif": "Environ 30 licenciés",
+      "encadrement": "1 éducateur fédéral, 2 bénévoles",
+      "materiel": "9 kayaks, 1 canoë, 1 remorque",
+      "contact": {
+        "responsable": "Dodji KPODAR",
+        "fonction": "Responsable technique",
+        "telephone": "+228 90 00 00 05",
+        "email": "contact@cca.tg"
+      },
+      "horaires": "Samedi matin et vacances scolaires",
+      "geo": { "lat": 7.5269, "lng": 1.1266 },
+      "image": "assets/img/club-atakpame.svg",
+      "labels": ["Pagaie à l'école"]
+    },
+    {
+      "id": "kpalime-kayak",
+      "nom": "Kpalimé Kayak Club",
+      "sigle": "KKC",
+      "region": "plateaux",
+      "ville": "Kpalimé",
+      "quartier": "Rapides de Kpimé",
+      "annee_creation": 2017,
+      "site_pratique": "Rapides de Kpimé",
+      "disciplines": ["descente-eau-vive", "freestyle", "slalom"],
+      "presentation": "Club d'eau vive adossé au relief du sud-ouest, le KKC est le laboratoire de la fédération pour la descente et le freestyle. Il organise une manche du circuit national de rivière.",
+      "effectif": "Environ 25 licenciés",
+      "encadrement": "1 éducateur spécialisé eau vive",
+      "materiel": "11 kayaks de rivière, 2 canoës, matériel de sécurité collectif",
+      "contact": {
+        "responsable": "Sena DOGBÉ",
+        "fonction": "Présidente du club",
+        "telephone": "+228 90 00 00 06",
+        "email": "contact@kpalimekayak.tg"
+      },
+      "horaires": "Week-ends en période de crue",
+      "geo": { "lat": 6.9000, "lng": 0.6300 },
+      "image": "assets/img/club-kpalime.svg",
+      "labels": ["Eau vive"]
+    },
+    {
+      "id": "canoe-sokode",
+      "nom": "Canoë Club de Sokodé",
+      "sigle": "CCS",
+      "region": "centrale",
+      "ville": "Sokodé",
+      "quartier": "Barrage de Tcharé",
+      "annee_creation": 2019,
+      "site_pratique": "Plan d'eau de Tcharé",
+      "disciplines": ["course-en-ligne", "stand-up-paddle", "kayak-polo"],
+      "presentation": "Né d'un projet scolaire porté par des enseignants d'EPS, le club de Sokodé ouvre la pagaie au centre du pays. Il mise sur le kayak-polo pour attirer les jeunes filles.",
+      "effectif": "Environ 28 licenciés",
+      "encadrement": "2 professeurs d'EPS formés, 1 bénévole",
+      "materiel": "7 kayaks-polo, 6 kayaks de course, 4 stand-up paddles",
+      "contact": {
+        "responsable": "Nadège AKAKPO",
+        "fonction": "Coordinatrice",
+        "telephone": "+228 90 00 00 07",
+        "email": "contact@ccsokode.tg"
+      },
+      "horaires": "Mercredi après-midi et samedi",
+      "geo": { "lat": 8.9833, "lng": 1.1333 },
+      "image": "assets/img/club-sokode.svg",
+      "labels": ["Pagaie à l'école"]
+    },
+    {
+      "id": "kara-paddle",
+      "nom": "Kara Paddle Club",
+      "sigle": "KPC",
+      "region": "kara",
+      "ville": "Kara",
+      "quartier": "Rives de la Kara",
+      "annee_creation": 2022,
+      "site_pratique": "Fleuve Kara",
+      "disciplines": ["randonnee-nautique", "stand-up-paddle", "vaa-pirogue"],
+      "presentation": "Le plus jeune club affilié, installé sur les rives du fleuve Kara. Il développe des sorties découverte et un projet de randonnée nautique avec les villages riverains.",
+      "effectif": "Environ 20 licenciés",
+      "encadrement": "1 éducateur fédéral",
+      "materiel": "6 kayaks de randonnée, 4 stand-up paddles, 1 pirogue",
+      "contact": {
+        "responsable": "Komlan TCHALLA",
+        "fonction": "Président du club",
+        "telephone": "+228 90 00 00 08",
+        "email": "contact@karapaddle.tg"
+      },
+      "horaires": "Samedi matin, sorties événementielles",
+      "geo": { "lat": 9.5511, "lng": 1.1861 },
+      "image": "assets/img/club-kara.svg",
+      "labels": ["Club en développement"]
+    },
+    {
+      "id": "dapaong-nautique",
+      "nom": "Dapaong Nautique",
+      "sigle": "DN",
+      "region": "savanes",
+      "ville": "Dapaong",
+      "quartier": "Secteur du lac d'Oti",
+      "annee_creation": 2023,
+      "site_pratique": "Lac d'Oti - secteur de Mango",
+      "disciplines": ["stand-up-paddle", "vaa-pirogue", "randonnee-nautique"],
+      "presentation": "Antenne la plus septentrionale de la fédération, Dapaong Nautique travaille avec les communautés de pêcheurs autour du lac d'Oti pour structurer la première offre de pagaie des Savanes.",
+      "effectif": "Environ 15 licenciés",
+      "encadrement": "1 éducateur, 2 accompagnateurs locaux",
+      "materiel": "5 stand-up paddles, 3 kayaks, 2 pirogues",
+      "contact": {
+        "responsable": "Folly ADANLÉ",
+        "fonction": "Responsable de l'antenne",
+        "telephone": "+228 90 00 00 09",
+        "email": "contact@dapaongnautique.tg"
+      },
+      "horaires": "Sorties mensuelles encadrées",
+      "geo": { "lat": 10.8622, "lng": 0.2069 },
+      "image": "assets/img/club-dapaong.svg",
+      "labels": ["Antenne régionale"]
+    }
+  ],
+
+  "devenir_club": {
+    "titre": "Créer ou affilier un club",
+    "texte": "Toute association souhaitant organiser la pratique du canoë-kayak au Togo peut solliciter son affiliation auprès du bureau exécutif. La demande est examinée par la commission développement, qui vérifie les conditions d'encadrement, de sécurité et d'accès au site de pratique.",
+    "conditions": [
+      "Disposer de statuts associatifs déclarés et d'un bureau élu",
+      "Justifier d'un site de pratique autorisé et d'une convention d'accès",
+      "Employer ou conventionner au moins un encadrant diplômé",
+      "Disposer d'un parc d'embarcations et de matériel de sécurité conforme",
+      "Souscrire une assurance couvrant les activités nautiques",
+      "S'engager à respecter les statuts et règlements de la FETOC"
+    ],
+    "etapes": [
+      { "numero": "01", "titre": "Prise de contact", "texte": "Écrire au secrétariat fédéral en présentant le projet et le site envisagé." },
+      { "numero": "02", "titre": "Dossier d'affiliation", "texte": "Transmettre les pièces administratives, techniques et assurantielles demandées." },
+      { "numero": "03", "titre": "Visite technique", "texte": "La commission développement évalue le site et l'encadrement." },
+      { "numero": "04", "titre": "Décision du bureau", "texte": "Le bureau exécutif prononce l'affiliation ; le club est inscrit au registre fédéral." }
+    ]
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "presentation": {
+    "titre": "Une fédération au service de la pagaie togolaise",
+    "chapeau": "La Fédération Togolaise de Canoë (FETOC) est l'association nationale chargée d'organiser, de réguler et de développer la pratique du canoë-kayak, du dragon boat, de la pirogue de course et des autres sports de pagaie au Togo.",
+    "paragraphes": [
+      "Créée à Lomé par des passionnés de rivière, la FETOC rassemble aujourd'hui les clubs, les encadrants, les arbitres et les pratiquants de toutes les régions du pays. Elle travaille en lien avec le Ministère des Sports et des Loisirs, le Comité National Olympique du Togo et la Fédération Internationale de Canoë.",
+      "Sa raison d'être tient en trois mots : organiser la compétition, transmettre la technique et ouvrir l'accès à l'eau au plus grand nombre. Du Lac Togo au fleuve Mono, en passant par les retenues du centre et du nord du pays, notre territoire offre un potentiel nautique considérable, encore largement à révéler.",
+      "La fédération accompagne les clubs dans leur structuration, forme les cadres et les arbitres, encadre les équipes nationales et met en œuvre des programmes d'initiation destinés aux jeunes, aux scolaires et aux personnes en situation de handicap."
+    ],
+    "citation": {
+      "texte": "Le Togo est un pays d'eau. Notre mission est de faire en sorte que chaque jeune Togolais puisse, un jour, tenir une pagaie entre ses mains.",
+      "auteur": "Le Président de la FETOC",
+      "fonction": "Bureau exécutif fédéral"
+    }
+  },
+
+  "identite_officielle": [
+    { "libelle": "Dénomination", "valeur": "Fédération Togolaise de Canoë" },
+    { "libelle": "Sigle", "valeur": "FETOC" },
+    { "libelle": "Forme juridique", "valeur": "Association sportive nationale régie par la loi sur les associations" },
+    { "libelle": "Siège social", "valeur": "Lomé, Région Maritime, Togo" },
+    { "libelle": "Tutelle sportive", "valeur": "Ministère des Sports et des Loisirs" },
+    { "libelle": "Affiliation internationale", "valeur": "Fédération Internationale de Canoë (ICF)" },
+    { "libelle": "Affiliation olympique", "valeur": "Comité National Olympique du Togo (CNOT)" },
+    { "libelle": "Aire de compétence", "valeur": "Territoire national - 5 régions couvertes" }
+  ],
+
+  "histoire": {
+    "titre": "Histoire de la fédération",
+    "introduction": "Née de l'engagement de quelques pagayeurs et de leurs clubs, la FETOC s'est construite par étapes, au rythme des rivières et des hommes qui les pratiquent.",
+    "etapes": [
+      {
+        "annee": "1996",
+        "titre": "Les premières pagaies",
+        "texte": "Des clubs de l'ouest du pays et de la lagune de Lomé organisent les premières descentes du fleuve Mono et les premières sorties encadrées sur le Lac Togo."
+      },
+      {
+        "annee": "2003",
+        "titre": "Naissance de la FETOC",
+        "texte": "Réunis en assemblée générale constitutive à Lomé, les clubs fondateurs adoptent les statuts de la Fédération Togolaise de Canoë et désignent le premier bureau exécutif."
+      },
+      {
+        "annee": "2006",
+        "titre": "Reconnaissance olympique",
+        "texte": "La fédération est admise comme membre affilié du Comité National Olympique du Togo, ouvrant la voie à la représentation du canoë togolais dans le mouvement olympique national."
+      },
+      {
+        "annee": "2009",
+        "titre": "Première sortie continentale",
+        "texte": "Une délégation togolaise participe pour la première fois à des championnats d'Afrique de canoë-kayak, avec des représentants en course en ligne et en kayak de mer."
+      },
+      {
+        "annee": "2013",
+        "titre": "Arrêté de reconnaissance",
+        "texte": "La fédération obtient la reconnaissance officielle du Ministère des Sports et des Loisirs comme seul organe dirigeant du canoë-kayak au Togo."
+      },
+      {
+        "annee": "2016",
+        "titre": "Affiliation à l'ICF",
+        "texte": "La FETOC rejoint la Fédération Internationale de Canoë, condition indispensable pour l'inscription des athlètes aux compétitions internationales."
+      },
+      {
+        "annee": "2019",
+        "titre": "Programme « Pagaie à l'école »",
+        "texte": "Lancement d'un dispositif d'initiation destiné aux établissements scolaires des zones littorales et lacustres, en partenariat avec les clubs locaux."
+      },
+      {
+        "annee": "2021",
+        "titre": "Base nautique de Togoville",
+        "texte": "Ouverture de la base nautique fédérale sur la rive sud du Lac Togo : stockage du matériel, stages fédéraux et régates y trouvent leur port d'attache."
+      },
+      {
+        "annee": "2023",
+        "titre": "Vingt ans, un championnat national",
+        "texte": "Pour ses vingt ans, la fédération organise la première édition du Championnat national de course en ligne réunissant les clubs de toutes les régions."
+      },
+      {
+        "annee": "2025",
+        "titre": "Ouvrir la pagaie à tous",
+        "texte": "Structuration d'une section paracanoë, création d'une équipe nationale de dragon boat et généralisation du stand-up paddle dans les clubs affiliés."
+      }
+    ]
+  },
+
+  "missions": {
+    "titre": "Nos missions",
+    "introduction": "Les missions de la FETOC sont fixées par ses statuts et par la réglementation sportive nationale.",
+    "liste": [
+      {
+        "titre": "Organiser la pratique sportive",
+        "texte": "Élaborer et publier le calendrier officiel, homologuer les compétitions, établir les classements et faire appliquer les règlements techniques.",
+        "icone": "trophee"
+      },
+      {
+        "titre": "Développer la pratique",
+        "texte": "Soutenir la création de clubs, accompagner les bases nautiques et promouvoir la découverte de la pagaie auprès de tous les publics.",
+        "icone": "pousse"
+      },
+      {
+        "titre": "Former les cadres",
+        "texte": "Organiser les formations d'éducateurs, d'entraîneurs, d'arbitres et de dirigeants, et délivrer les qualifications fédérales.",
+        "icone": "diplome"
+      },
+      {
+        "titre": "Représenter le Togo",
+        "texte": "Sélectionner et encadrer les équipes nationales, et représenter le canoë togolais auprès de l'ICF et des instances olympiques.",
+        "icone": "globe"
+      },
+      {
+        "titre": "Protéger les pratiquants",
+        "texte": "Veiller à la sécurité des activités nautiques, coordonner le suivi médical et lutter contre toute forme de violence dans le sport.",
+        "icone": "bouclier"
+      },
+      {
+        "titre": "Préserver les milieux aquatiques",
+        "texte": "Sensibiliser aux enjeux de l'eau, promouvoir une pratique respectueuse des lagunes, fleuves et lacs du Togo.",
+        "icone": "feuille"
+      }
+    ]
+  },
+
+  "vision": {
+    "titre": "Notre vision",
+    "texte": "Faire du Togo une nation de pagaie reconnue en Afrique de l'Ouest : un pays où le canoë se pratique dans chaque région, où les clubs sont autonomes et structurés, et où les athlètes togolais participent régulièrement aux grands rendez-vous continentaux et mondiaux.",
+    "objectifs": [
+      "Un club affilié actif dans chacune des cinq régions du pays",
+      "Une filière de formation complète, de l'initiation à l'entraînement de haut niveau",
+      "Une pratique sécurisée, encadrée et ouverte aux personnes en situation de handicap",
+      "Des équipes nationales présentes sur les compétitions africaines",
+      "Une gouvernance transparente et un patrimoine nautique entretenu"
+    ],
+    "valeurs": [
+      { "nom": "Solidarité", "texte": "La pagaie se pratique ensemble : la fédération défend l'entraide entre clubs, régions et générations." },
+      { "nom": "Excellence", "texte": "Chaque athlète et chaque encadrant est accompagné vers son meilleur niveau, dans le respect de la progressivité." },
+      { "nom": "Respect", "texte": "Des milieux aquatiques comme des adversaires et des arbitres : c'est la condition de notre crédibilité." },
+      { "nom": "Inclusion", "texte": "L'eau doit être accessible à tous, quels que soient l'âge, le genre, le handicap ou les moyens." },
+      { "nom": "Transparence", "texte": "Les comptes, les instances et les décisions de la fédération sont documentés et publiés." }
+    ]
+  },
+
+  "organisation": {
+    "titre": "Organisation et gouvernance",
+    "introduction": "La FETOC s'organise autour de trois niveaux : l'assemblée générale, qui décide ; le bureau exécutif, qui met en œuvre ; les commissions et le siège, qui exécutent au quotidien.",
+    "instances": [
+      {
+        "nom": "Assemblée générale",
+        "role": "Organe souverain",
+        "texte": "Elle réunit les clubs affiliés et les membres qualifiés. Elle approuve les statuts, les règlements, le programme d'action, le budget et les comptes, et élit le bureau exécutif.",
+        "frequence": "Assemblée ordinaire annuelle"
+      },
+      {
+        "nom": "Bureau exécutif",
+        "role": "Organe de direction",
+        "texte": "Il exécute les décisions de l'assemblée générale, dirige la fédération au quotidien, nomme les sélectionneurs et rend compte de sa gestion.",
+        "frequence": "Réunion mensuelle"
+      },
+      {
+        "nom": "Commissions techniques",
+        "role": "Organes consultatifs et opérationnels",
+        "texte": "Elles instruisent les dossiers sportifs : calendrier et règlements, formation, haut niveau, arbitrage, médical, développement et communication.",
+        "frequence": "Selon le calendrier sportif"
+      },
+      {
+        "nom": "Siège fédéral et secrétariat",
+        "role": "Administration permanente",
+        "texte": "Il assure les licences, l'affiliation des clubs, la gestion du matériel, la logistique des compétitions et l'information des pratiquants.",
+        "frequence": "Permanence hebdomadaire"
+      }
+    ],
+    "commissions": [
+      { "nom": "Commission sportive et technique", "responsable": "DTN", "mission": "Calendrier, règlements, sélections, classements." },
+      { "nom": "Commission formation et arbitrage", "responsable": "Responsable formation", "mission": "Stages, examens, qualifications fédérales, désignations d'arbitres." },
+      { "nom": "Commission développement et clubs", "responsable": "Responsable développement", "mission": "Affiliation, projets de clubs, pagaie à l'école, pagaie pour tous." },
+      { "nom": "Commission médicale et sécurité", "responsable": "Médecin fédéral", "mission": "Suivi médical, prévention, protocoles de sécurité nautique." },
+      { "nom": "Commission communication et événements", "responsable": "Responsable communication", "mission": "Réseaux, presse, image, organisation des cérémonies." },
+      { "nom": "Commission finances et audit", "responsable": "Trésorier général", "mission": "Budget, comptes, subventions, contrôle interne." }
+    ]
+  },
+
+  "bureau_executif": {
+    "titre": "Bureau exécutif",
+    "introduction": "Composition du bureau exécutif en exercice, élue par l'assemblée générale. Les attributions sont précisées dans le règlement intérieur.",
+    "membres": [
+      { "poste": "Président", "nom": "Komlan AGBÉKO", "attribution": "Direction générale, représentation officielle et relations institutionnelles", "initiale": "KA", "type": "bureau" },
+      { "poste": "1re Vice-présidente", "nom": "Ama ADJOVI", "attribution": "Développement des clubs, pagaie féminine et pagaie pour tous", "initiale": "AA", "type": "bureau" },
+      { "poste": "Secrétaire général", "nom": "Kossi MENSAH", "attribution": "Assemblées, procès-verbaux, statuts, affaires administratives", "initiale": "KM", "type": "bureau" },
+      { "poste": "Secrétaire générale adjointe", "nom": "Sena DOGBÉ", "attribution": "Licences, affiliation des clubs, suivi des dossiers", "initiale": "SD", "type": "bureau" },
+      { "poste": "Trésorière générale", "nom": "Afi AMÉGAN", "attribution": "Budget, comptes, subventions et rapports financiers", "initiale": "AF", "type": "bureau" },
+      { "poste": "Trésorier adjoint", "nom": "Yao KODJO", "attribution": "Matériel nautique, logistique et patrimoine fédéral", "initiale": "YK", "type": "bureau" },
+      { "poste": "Directeur technique national", "nom": "Kwami SEDDOH", "attribution": "Entraînement, sélections, filière de performance et encadrement des stages", "initiale": "KS", "type": "technique" },
+      { "poste": "Responsable du développement", "nom": "Essosimna BALOUKI", "attribution": "Création de clubs, pagaie à l'école, projets régionaux", "initiale": "EB", "type": "technique" },
+      { "poste": "Responsable de la communication", "nom": "Nadège AKAKPO", "attribution": "Information, réseaux sociaux, presse et rayonnement", "initiale": "NA", "type": "technique" },
+      { "poste": "Responsable de l'arbitrage", "nom": "Dodji KPODAR", "attribution": "Formation et désignation des arbitres, respect des règlements", "initiale": "DK", "type": "technique" },
+      { "poste": "Médecin fédéral", "nom": "Dr Folly ADANLÉ", "attribution": "Suivi médical des athlètes et prévention des risques", "initiale": "FA", "type": "technique" },
+      { "poste": "Représentante des athlètes", "nom": "Akossiwa TÉVI", "attribution": "Porte-voix des pratiquants auprès du bureau exécutif", "initiale": "AT", "type": "athlete" }
+    ]
+  },
+
+  "affiliations": {
+    "titre": "Affiliations et partenaires institutionnels",
+    "liste": [
+      { "organisation": "Fédération Internationale de Canoë", "sigle": "ICF", "depuis": "2016", "statut": "Membre affilié", "logo": "assets/img/partenaire-icf.svg" },
+      { "organisation": "Comité National Olympique du Togo", "sigle": "CNOT", "depuis": "2006", "statut": "Fédération membre", "logo": "assets/img/partenaire-cnot.svg" },
+      { "organisation": "Ministère des Sports et des Loisirs", "sigle": "MSL", "depuis": "2013", "statut": "Fédération reconnue", "logo": "assets/img/partenaire-ministere.svg" },
+      { "organisation": "Association Africaine de Canoë", "sigle": "ACA", "depuis": "2017", "statut": "Fédération membre", "logo": null }
+    ]
+  },
+
+  "documents": {
+    "titre": "Documents officiels",
+    "introduction": "Statuts, règlements et rapports de la fédération, publiés après adoption par les instances compétentes.",
+    "liste": [
+      { "id": "statuts", "titre": "Statuts de la FETOC", "categorie": "Statuts", "description": "Statuts en vigueur adoptés par l'assemblée générale constitutive, incluant les modifications successives.", "disponible": false, "fichier": "documents/statuts-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2023-06-18", "statut": "en vigueur" },
+      { "id": "reglement-interieur", "titre": "Règlement intérieur", "categorie": "Règlement", "description": "Fonctionnement des instances, des commissions, des obligations des clubs affiliés et des licenciés.", "disponible": false, "fichier": "documents/reglement-interieur-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2024-01-20", "statut": "en vigueur" },
+      { "id": "reglement-sportif", "titre": "Règlement sportif et technique", "categorie": "Règlement", "description": "Catégories d'âge, formats de course, classements, qualifications et engagement des équipes.", "disponible": false, "fichier": "documents/reglement-sportif-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2025-02-08", "statut": "en vigueur" },
+      { "id": "rapport-moral", "titre": "Rapport moral et d'activité", "categorie": "Rapport", "description": "Bilan annuel des activités sportives, de la formation et du développement présenté à l'assemblée générale.", "disponible": false, "fichier": "documents/rapport-activite-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2025-12-14", "statut": "validé en AG" },
+      { "id": "rapport-financier", "titre": "Rapport financier annuel", "categorie": "Rapport", "description": "Comptes annuels, subventions perçues et affectation des ressources de la fédération.", "disponible": false, "fichier": "documents/rapport-financier-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2025-12-14", "statut": "validé en AG" },
+      { "id": "charte-ethique", "titre": "Charte éthique et prévention", "categorie": "Cadre déontologique", "description": "Engagements de la fédération en matière d'intégrité, de protection des pratiquants et de lutte contre les violences.", "disponible": false, "fichier": "documents/charte-ethique-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2024-09-02", "statut": "en vigueur" }
+    ]
+  },
+
+  "chiffres_cles": {
+    "titre": "La fédération en bref",
+    "indicatifs": [
+      { "id": "clubs", "libelle": "Clubs affiliés", "source": "calcule", "cle": "clubs", "suffixe": "" },
+      { "id": "regions", "libelle": "Régions couvertes", "source": "calcule", "cle": "regions", "suffixe": "" },
+      { "id": "disciplines", "libelle": "Disciplines encadrées", "source": "calcule", "cle": "disciplines", "suffixe": "" },
+      { "id": "site", "libelle": "Base nautique fédérale", "source": "fixe", "valeur": "Togoville", "suffixe": "" }
+    ]
+  }
+}

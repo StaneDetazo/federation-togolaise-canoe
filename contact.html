@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact &amp; adhésion - rejoindre la pagaie togolaise</title>
+  <meta name="description" content="Contacter la Fédération Togolaise de Canoë : coordonnées du secrétariat, demande d'adhésion d'un club, licences des pratiquants et partenariats.">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js?v=20261017g"></script>
+  <link rel="stylesheet" href="css/styles.css?v=20261017g">
+  <meta name="theme-color" content="#0E7048">
+  <link rel="canonical" href="http://localhost:8125/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fédération Togolaise de Canoë">
+  <meta property="og:title" content="Contact & adhésion - FETOC">
+  <meta property="og:description" content="Contacter la FETOC : adhésion d'un club, licences, partenariats et coordonnées du secrétariat.">
+  <meta property="og:url" content="http://localhost:8125/contact.html">
+  <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <meta property="og:locale" content="fr_TG">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact & adhésion - FETOC">
+  <meta name="twitter:description" content="Contacter la FETOC : adhésion d'un club, licences, partenariats et coordonnées du secrétariat.">
+  <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="contact" data-entete="transparent" class="bg-white font-sans text-encre antialiased">
+  <a class="lien-evitement" href="#main">Aller au contenu principal</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <div data-zone="bandeau"></div>
+    <div data-zone="essentiel"></div>
+
+    <!-- Coordonnées -->
+    <section class="bg-white py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Nous joindre</p>
+          <h2 class="mt-5 titre-section text-vert-950">Le secrétariat fédéral à votre écoute</h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">
+            Clubs, pratiquants, établissements scolaires, collectivités, médias et partenaires : voici comment
+            joindre la fédération et organiser votre visite.
+          </p>
+        </header>
+        <div data-zone="coordonnees-grille" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- Formulaire -->
+    <section id="formulaire" class="scroll-mt-32 bg-sable-50 py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+          <div class="revele">
+            <p class="etiquette text-vert-600">Formulaire</p>
+            <h2 class="mt-5 titre-section text-vert-950">Écrivez-nous</h2>
+            <p class="mt-5 text-base leading-relaxed text-encre-doux">
+              Décrivez votre demande : le secrétariat l'oriente vers la commission compétente et vous répond
+              dans les meilleurs délais.
+            </p>
+            <ul data-zone="formulaire-sujets" class="mt-8 space-y-3"></ul>
+            <div data-zone="formulaire-rapide" class="mt-8"></div>
+          </div>
+
+          <div class="revele revele--droite">
+            <form data-formulaire="contact" novalidate data-message-succes="Merci ! Votre message a bien été transmis au secrétariat fédéral."
+              class="rounded-3xl border border-sable-200 bg-white p-6 shadow-doux sm:p-8">
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="contact-nom" class="block text-sm font-semibold text-vert-950">Nom et prénom <span class="text-soleil-600" aria-hidden="true">*</span></label>
+                  <input id="contact-nom" name="nom" type="text" required autocomplete="name"
+                    class="mt-2 w-full rounded-xl border border-sable-200 bg-white px-4 py-3 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none">
+                  <p data-erreur="nom" hidden class="mt-1.5 text-xs text-red-600"></p>
+                </div>
+                <div>
+                  <label for="contact-email" class="block text-sm font-semibold text-vert-950">Adresse e-mail <span class="text-soleil-600" aria-hidden="true">*</span></label>
+                  <input id="contact-email" name="email" type="email" required autocomplete="email" placeholder="vous@exemple.tg"
+                    class="mt-2 w-full rounded-xl border border-sable-200 bg-white px-4 py-3 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none">
+                  <p data-erreur="email" hidden class="mt-1.5 text-xs text-red-600"></p>
+                </div>
+                <div>
+                  <label for="contact-telephone" class="block text-sm font-semibold text-vert-950">Téléphone</label>
+                  <input id="contact-telephone" name="telephone" type="tel" autocomplete="tel" placeholder="+228 …"
+                    class="mt-2 w-full rounded-xl border border-sable-200 bg-white px-4 py-3 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none">
+                  <p data-erreur="telephone" hidden class="mt-1.5 text-xs text-red-600"></p>
+                </div>
+                <div>
+                  <label for="contact-organisation" class="block text-sm font-semibold text-vert-950">Club ou structure</label>
+                  <input id="contact-organisation" name="organisation" type="text"
+                    class="mt-2 w-full rounded-xl border border-sable-200 bg-white px-4 py-3 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none">
+                  <p data-erreur="organisation" hidden class="mt-1.5 text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <label for="contact-sujet" class="block text-sm font-semibold text-vert-950">Objet de la demande <span class="text-soleil-600" aria-hidden="true">*</span></label>
+                <select id="contact-sujet" name="sujet" required
+                  class="mt-2 w-full rounded-xl border border-sable-200 bg-white px-4 py-3 text-sm text-vert-950 focus:border-vert-400 focus:outline-none">
+                  <option value="" selected disabled>Sélectionnez un objet…</option>
+                  <option value="adhesion">Adhésion ou affiliation d'un club</option>
+                  <option value="licences">Demande de licence</option>
+                  <option value="partenariat">Partenariat ou mécénat</option>
+                  <option value="presse">Presse et médias</option>
+                  <option value="formation">Formation et encadrement</option>
+                  <option value="autre">Autre demande</option>
+                </select>
+                <p data-erreur="sujet" hidden class="mt-1.5 text-xs text-red-600"></p>
+              </div>
+
+              <div class="mt-5">
+                <label for="contact-message" class="block text-sm font-semibold text-vert-950">Votre message <span class="text-soleil-600" aria-hidden="true">*</span></label>
+                <textarea id="contact-message" name="message" rows="6" required
+                  class="mt-2 w-full rounded-xl border border-sable-200 bg-white px-4 py-3 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none"></textarea>
+                <p data-erreur="message" hidden class="mt-1.5 text-xs text-red-600"></p>
+              </div>
+
+              <label class="mt-6 flex items-start gap-3 text-sm leading-relaxed text-encre-doux">
+                <input id="contact-consentement" name="consentement" type="checkbox" required
+                  class="mt-1 h-4 w-4 flex-none rounded border-sable-300 text-vert-700 focus:ring-vert-400">
+                <span>J'accepte que les informations transmises soient utilisées pour traiter ma demande, conformément à la
+                  <a href="confidentialite.html" class="font-medium text-vert-700 underline">politique de confidentialité</a>.</span>
+              </label>
+              <p data-erreur="consentement" hidden class="mt-1.5 text-xs text-red-600"></p>
+
+              <div class="mt-7 flex flex-wrap items-center gap-4">
+                <button type="submit" class="btn btn--vert">Envoyer le message</button>
+                <p class="text-xs text-encre-clair">Les champs marqués d'un astérisque sont obligatoires.</p>
+              </div>
+
+              <p data-confirmation hidden class="mt-6 rounded-2xl border border-vert-200 bg-vert-50 px-5 py-4 text-sm leading-relaxed text-vert-800">
+                Merci, votre message a bien été enregistré. Le secrétariat fédéral vous répondra dans les meilleurs délais.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Adhésion -->
+    <section id="adhesion" class="scroll-mt-32 bg-white py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Adhésion</p>
+          <h2 class="mt-5 titre-section text-vert-950">Devenir club affilié</h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">
+            L'affiliation s'adresse aux clubs, associations sportives et structures qui souhaitent pratiquer et
+            encadrer le canoë-kayak au Togo, dans le respect des statuts et du règlement fédéral.
+          </p>
+        </header>
+
+        <div class="mt-10 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+          <ol data-zone="adhesion-etapes" class="revele space-y-6"></ol>
+          <div class="revele revele--droite space-y-6">
+            <div class="rounded-2xl border border-sable-200 bg-sable-50 p-6">
+              <p class="font-display text-sm font-bold text-vert-900">Pièces à fournir</p>
+              <ul data-zone="adhesion-pieces" class="mt-4 space-y-3 text-sm leading-relaxed text-encre-doux"></ul>
+            </div>
+            <div class="rounded-2xl border border-soleil-300 bg-soleil-50 p-6">
+              <p class="font-display text-sm font-bold text-vert-900">Prêt à vous lancer ?</p>
+              <p class="mt-2 text-sm leading-relaxed text-encre-doux">
+                Écrivez au secrétariat en précisant votre ville et votre site de pratique : la fédération vous
+                accompagne dans la constitution du dossier.
+              </p>
+              <a href="#formulaire" data-sujet="adhesion" class="btn btn--vert btn--sm mt-5">Demander une adhésion</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Licences -->
+    <section id="licences" class="scroll-mt-32 bg-sable-50 py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Licences</p>
+          <h2 class="mt-5 titre-section text-vert-950">Pratiquer avec une licence fédérale</h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">
+            La licence atteste de votre adhésion à un club affilié et vous ouvre l'accès aux entraînements encadrés,
+            aux compétitions officielles et aux dispositifs de la fédération.
+          </p>
+        </header>
+        <div data-zone="licences-cartes" class="mt-10 grid gap-6 md:grid-cols-3"></div>
+        <div class="revele mt-10 flex flex-wrap items-center gap-4">
+          <a href="#formulaire" data-sujet="licences" class="btn btn--vert">Demander une licence</a>
+          <a href="clubs.html" class="btn btn--contour">Trouver un club près de chez moi</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partenariat -->
+    <section id="partenariat" class="scroll-mt-32 bg-white py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Partenariat</p>
+          <h2 data-zone="partenariat-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <p data-zone="partenariat-texte" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </header>
+
+        <div class="mt-10 grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
+          <div class="revele">
+            <p class="font-display text-sm font-bold uppercase tracking-[0.12em] text-vert-900">Ce que la fédération propose</p>
+            <ul data-zone="partenariat-contreparties" class="mt-5 space-y-3"></ul>
+            <div data-zone="partenariat-contact" class="mt-8"></div>
+          </div>
+          <div class="revele revele--droite">
+            <p class="font-display text-sm font-bold uppercase tracking-[0.12em] text-vert-900">Ils accompagnent déjà la pagaie togolaise</p>
+            <div data-zone="partenariat-logos" class="mt-5 grid gap-4 sm:grid-cols-2"></div>
+            <p class="mt-5 text-xs leading-relaxed text-encre-clair">
+              Les partenaires qui accompagnent la fédération et ses actions au quotidien.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-sable-50 py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Questions fréquentes</p>
+          <h2 class="mt-5 titre-section text-vert-950">Avant de nous écrire</h2>
+        </header>
+
+        <div class="mx-auto mt-10 max-w-3xl space-y-4">
+          <details class="accordeon revele rounded-2xl border border-sable-200 bg-white p-5 sm:p-6">
+            <summary class="font-display text-base font-bold text-vert-950">
+              Comment devenir club affilié à la fédération ?
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="chevron h-5 w-5 text-vert-600" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordeon__contenu mt-4 text-sm leading-relaxed text-encre-doux">
+              <p>Prenez contact avec le secrétariat, puis transmettez les statuts de votre association, la liste des
+              dirigeants, le nombre de pratiquants et le site de pratique envisagé. Une visite technique du plan d'eau
+              est organisée avant la décision d'affiliation du comité exécutif.</p>
+            </div>
+          </details>
+
+          <details class="accordeon revele rounded-2xl border border-sable-200 bg-white p-5 sm:p-6">
+            <summary class="font-display text-base font-bold text-vert-950">
+              Faut-il savoir nager pour débuter ?
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="chevron h-5 w-5 text-vert-600" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordeon__contenu mt-4 text-sm leading-relaxed text-encre-doux">
+              <p>Les premières séances se déroulent en eau calme et sécurisée, avec gilet de flottaison et encadrement
+              diplômé. L'aisance aquatique fait partie des compétences travaillées dès l'initiation, quelle que soit
+              la discipline pratiquée.</p>
+            </div>
+          </details>
+
+          <details class="accordeon revele rounded-2xl border border-sable-200 bg-white p-5 sm:p-6">
+            <summary class="font-display text-base font-bold text-vert-950">
+              Où et quand peut-on pratiquer au Togo ?
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="chevron h-5 w-5 text-vert-600" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordeon__contenu mt-4 text-sm leading-relaxed text-encre-doux">
+              <p>Les clubs affiliés proposent des créneaux réguliers sur la lagune de Lomé, le Lac Togo à Togoville,
+              le fleuve Mono et les plans d'eau de l'intérieur du pays. Consultez l'annuaire pour trouver le club et
+              le site les plus proches de chez vous.</p>
+            </div>
+          </details>
+
+          <details class="accordeon revele rounded-2xl border border-sable-200 bg-white p-5 sm:p-6">
+            <summary class="font-display text-base font-bold text-vert-950">
+              Proposez-vous des activités pour les établissements scolaires ?
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="chevron h-5 w-5 text-vert-600" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordeon__contenu mt-4 text-sm leading-relaxed text-encre-doux">
+              <p>Oui. Le programme « Pagaie à l'école » permet aux classes de découvrir le canoë-kayak sur des plans
+              d'eau sécurisés, encadrées par des éducateurs fédéraux et des enseignants d'EPS. Écrivez-nous en
+              précisant l'établissement et le niveau des élèves.</p>
+            </div>
+          </details>
+
+          <details class="accordeon revele rounded-2xl border border-sable-200 bg-white p-5 sm:p-6">
+            <summary class="font-display text-base font-bold text-vert-950">
+              Comment soutenir la fédération ?
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="chevron h-5 w-5 text-vert-600" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordeon__contenu mt-4 text-sm leading-relaxed text-encre-doux">
+              <p>Entreprises, institutions et particuliers peuvent soutenir la fédération par un partenariat de titre,
+              un appui matériel ou technique, le parrainage d'une épreuve ou d'un programme jeunesse. Les modalités
+              sont présentées dans la rubrique partenariat ci-dessus.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script type="module" src="js/pages/contact.js"></script>
+</body>
+</html>

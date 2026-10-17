@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fédération Togolaise de Canoë - Canoë-kayak et sports de pagaie au Togo</title>
+  <meta name="description" content="Site de la Fédération Togolaise de Canoë (FETOC) : disciplines et activités, clubs affiliés, compétitions et calendrier, actualités et adhésion.">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js?v=20261017g"></script>
+  <link rel="stylesheet" href="css/styles.css?v=20261017g">
+  <meta name="theme-color" content="#0E7048">
+  <link rel="canonical" href="http://localhost:8125/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fédération Togolaise de Canoë">
+  <meta property="og:title" content="Accueil - Fédération Togolaise de Canoë">
+  <meta property="og:description" content="La FETOC fait vivre le canoë-kayak et les sports de pagaie au Togo : compétitions, initiation, formation et transmission.">
+  <meta property="og:url" content="http://localhost:8125/index.html">
+  <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <meta property="og:locale" content="fr_TG">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Accueil - Fédération Togolaise de Canoë">
+  <meta name="twitter:description" content="La FETOC fait vivre le canoë-kayak et les sports de pagaie au Togo : compétitions, initiation, formation et transmission.">
+  <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
+  <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body data-page="accueil" data-entete="transparent" class="bg-white font-sans text-encre antialiased">
+  <a class="lien-evitement" href="#main">Aller au contenu principal</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <!-- ============================================================ 1. Bannière principale -->
+    <section class="heros isolate flex min-h-[86vh] flex-col lg:min-h-[94vh]">
+      <video id="heros-video" class="heros-media" autoplay muted loop playsinline preload="metadata"
+             poster="assets/img/hero.svg" aria-hidden="true" tabindex="-1"></video>
+      <div class="heros__voile" aria-hidden="true"></div>
+      <div class="pointille absolute inset-0 z-[1] opacity-15" aria-hidden="true"></div>
+      <svg class="absolute -right-28 -top-28 z-[1] h-[30rem] w-[30rem] text-soleil-400/10" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="8"/>
+        <circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" stroke-width="5"/>
+      </svg>
+
+      <div class="heros__contenu mx-auto flex w-full max-w-ecran flex-1 flex-col justify-end px-4 pb-12 pt-40 sm:px-6 lg:pb-16 lg:pt-48">
+        <div class="max-w-3xl">
+          <div class="apparition flex flex-wrap items-center gap-x-4 gap-y-3">
+            <p class="etiquette text-soleil-300">Fédération Togolaise de Canoë - Togo</p>
+            <span class="heros__badge" data-zone="heros-badge"></span>
+          </div>
+          <h1 class="apparition titre-fluide mt-6 text-white" style="animation-delay:.08s">
+            L'eau nous rassemble,<br>
+            la <span class="mark">pagaie</span> nous unit.
+          </h1>
+          <p data-zone="heros-accroche" class="apparition mt-6 max-w-2xl text-base leading-relaxed text-vert-50/90 sm:text-lg" style="animation-delay:.16s"></p>
+          <div class="apparition mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style="animation-delay:.24s">
+            <a href="federation.html" class="btn btn--soleil">
+              Découvrir la fédération
+              <span aria-hidden="true">→</span>
+            </a>
+            <a href="contact.html#adhesion" class="btn btn--fantome">Nous rejoindre</a>
+          </div>
+        </div>
+
+        <div data-zone="heros-infos" class="heros__meta apparition mt-14 grid gap-6 sm:grid-cols-3" style="animation-delay:.32s"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 2. La fédération en bref -->
+    <section class="relative overflow-hidden bg-white py-14 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <div class="revele overflow-hidden rounded-3xl border border-sable-200 bg-sable-50">
+          <div class="grid lg:grid-cols-[1.3fr_1fr]">
+            <div class="p-6 sm:p-8 lg:p-9">
+              <p class="etiquette text-vert-600">La fédération en bref</p>
+              <h2 class="titre-section mt-3 text-vert-950" data-zone="bref-titre"></h2>
+              <div data-zone="bref-texte" class="prose-fetoc prose-fetoc--compact mt-4 lg:columns-2 lg:gap-8"></div>
+              <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <a href="federation.html" class="btn btn--vert btn--sm">
+                  Lire la présentation officielle
+                  <span aria-hidden="true">→</span>
+                </a>
+                <a href="federation.html#documents" class="lien-fleche text-sm text-vert-700">
+                  Statuts et règlements
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <figure class="relative min-h-[13rem] lg:min-h-0">
+              <img src="https://images.pexels.com/photos/34429317/pexels-photo-34429317.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;h=1200&amp;fit=crop" width="1600" height="1200" alt="Vue aérienne de canoës alignés le long d'une rive parsemée de nénuphars" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover">
+              <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-vert-950/85 to-transparent p-5 text-xs text-vert-50/90">
+                Une flottille alignée, prête à prendre l'eau : ouvrir l'accès à la pagaie au plus grand nombre.
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Chiffres clés de la fédération (fusionnés dans l'encadré) -->
+          <div data-zone="chiffres-cles" class="hidden border-t border-sable-200"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 3. Disciplines & activités -->
+    <section class="bg-sable-50 py-20 lg:py-28">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <p class="etiquette text-vert-600">Disciplines &amp; activités</p>
+            <h2 class="titre-fluide mt-5 text-vert-950">Ce que l'on pratique sur l'<span class="mark">eau togolaise</span></h2>
+            <p data-zone="disciplines-chapeau" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+          </div>
+          <a href="disciplines.html" class="btn btn--contour flex-none">Toutes les disciplines <span aria-hidden="true">→</span></a>
+        </header>
+        <div data-zone="disciplines-grille" class="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 4. Actualités -->
+    <section class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <p class="etiquette text-vert-600">Actualités</p>
+            <h2 class="titre-fluide mt-5 text-vert-950">La vie de la <span class="mark">pagaie togolaise</span></h2>
+            <p class="mt-5 text-base leading-relaxed text-encre-doux">Communiqués, résultats, formations et reportages publiés par la fédération et ses clubs.</p>
+          </div>
+          <a href="actualites.html" class="btn btn--contour flex-none">Toutes les actualités <span aria-hidden="true">→</span></a>
+        </header>
+        <div data-zone="actualites-grille" class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 5. Prochains événements -->
+    <section class="relative overflow-hidden bg-vert-950 py-20 text-white lg:py-28">
+      <div class="pointille absolute inset-0 opacity-20" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <p class="etiquette text-soleil-300">Prochains événements</p>
+            <h2 class="titre-fluide mt-5 text-white">Les rendez-vous <span class="mark">à venir</span></h2>
+            <p class="mt-5 text-base leading-relaxed text-vert-50/80">Compétitions, stages et formations officiels au programme de la saison.</p>
+          </div>
+          <a href="competitions.html" class="btn btn--soleil flex-none">Voir le calendrier complet</a>
+        </header>
+        <div data-zone="evenements-liste" class="revele mt-12"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 6. Clubs affiliés -->
+    <section class="bg-sable-50 py-20 lg:py-28">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <p class="etiquette text-vert-600">Clubs affiliés</p>
+            <h2 class="titre-fluide mt-5 text-vert-950">Près de l'eau, <span class="mark">partout au Togo</span></h2>
+            <p class="mt-5 text-base leading-relaxed text-encre-doux">Du littoral au nord du pays, les clubs affiliés accueillent les pratiquants et forment les jeunes générations de pagayeurs.</p>
+          </div>
+          <a href="clubs.html" class="btn btn--contour flex-none">Voir tous les clubs <span aria-hidden="true">→</span></a>
+        </header>
+        <div data-zone="clubs-grille" class="mt-12 grid gap-8 md:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 7. La fédération en images -->
+    <section class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">La fédération en images</p>
+          <h2 class="titre-fluide mt-5 text-vert-950">Activités, formations, <span class="mark">compétitions</span></h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">Quelques images de la vie fédérale. Cliquez sur une photographie pour l'agrandir.</p>
+        </header>
+        <div data-zone="galerie-grille" class="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4"></div>
+        <div class="revele mt-10">
+          <a href="actualites.html#galerie" class="lien-fleche text-vert-700">Explorer toute la galerie <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 8. Partenaires -->
+    <section class="border-y border-sable-200 bg-sable-50 py-16 lg:py-20">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele mx-auto max-w-2xl text-center">
+          <p class="etiquette etiquette--centre text-vert-600">Partenaires</p>
+          <h2 class="mt-5 titre-section text-vert-950">Ils accompagnent la <span class="mark">pagaie togolaise</span></h2>
+          <p class="mt-4 text-sm leading-relaxed text-encre-doux">Les partenaires qui accompagnent la fédération et ses actions au quotidien.</p>
+        </header>
+        <div data-zone="partenaires-grille" class="revele mt-10"></div>
+        <p class="revele mt-8 text-center text-sm text-encre-doux">
+          <a href="contact.html#partenariat" class="lien-fleche font-semibold text-vert-700">Devenir partenaire de la fédération <span aria-hidden="true">→</span></a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================ 9. Appel final -->
+    <section class="relative overflow-hidden bg-white">
+      <div class="mx-auto max-w-ecran px-4 py-20 sm:px-6 lg:py-24">
+        <div class="revele relative overflow-hidden rounded-3xl bg-vert-900 px-6 py-14 text-white sm:px-12 lg:px-16">
+          <div class="pointille absolute inset-0 opacity-25" aria-hidden="true"></div>
+          <svg class="absolute -right-10 -top-10 h-64 w-64 text-soleil-400/20" viewBox="0 0 200 200" aria-hidden="true">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="10"/>
+            <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="6"/>
+          </svg>
+          <div class="relative max-w-3xl">
+            <p class="etiquette text-soleil-300">Appel final</p>
+            <h2 class="titre-fluide mt-5 text-white">Rejoignez la <span class="mark">pagaie togolaise</span></h2>
+            <p class="mt-5 text-base leading-relaxed text-vert-50/90">
+              Vous souhaitez pratiquer, encadrer, organiser une épreuve, affilier votre structure ou soutenir la fédération ?
+              Le secrétariat fédéral vous oriente vers le club, la formation et le dispositif adaptés à votre projet.
+            </p>
+            <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a href="contact.html#adhesion" class="btn btn--soleil">Demander une adhésion</a>
+              <a href="contact.html#partenariat" class="btn btn--fantome">Devenir partenaire</a>
+              <a href="clubs.html" class="btn btn--fantome">Trouver un club</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script type="module" src="js/pages/accueil.js"></script>
+</body>
+</html>

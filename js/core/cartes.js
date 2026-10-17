@@ -1,0 +1,366 @@
+/* ==========================================================================
+   FETOC - Composants de présentation réutilisables
+   Chaque fonction renvoie une chaîne HTML correspondant à un « bloc » du site.
+   ========================================================================== */
+
+import {
+  esc,
+  dateCourte,
+  dateLongue,
+  jourMois,
+  periode,
+  tronquer,
+  joursRestants
+} from './utils.js';
+import { icone } from './icons.js';
+import {
+  libelleCategorie,
+  familles,
+  nomRegion,
+  libelleDiscipline,
+  libelleStatut,
+  libelleCategoriePartenaire,
+  videoHeroPage
+} from './data.js';
+
+const img = (src, alt, classes, attributs = 'loading="lazy" decoding="async"', largeur = 1200, hauteur = 800) =>
+  `<img src="${esc(src)}" alt="${esc(alt)}" width="${largeur}" height="${hauteur}" ${attributs} class="${classes}">`;
+
+const badge = (texte, variante = 'vert', nomIcone = null) =>
+  `<span class="pastille pastille--${variante}">${nomIcone ? icone(nomIcone, 'h-3.5 w-3.5') : ''}${esc(texte)}</span>`;
+
+/* ---------------------------------------------------------------- disciplines */
+export function carteDiscipline(discipline) {
+  const famille = familles().find((f) => f.id === discipline.famille)?.libelle ?? 'Discipline';
+  return `
+  <article class="revele carte group flex flex-col">
+    <a href="disciplines.html#${esc(discipline.id)}" class="carte__media relative block aspect-[4/3] overflow-hidden bg-vert-900">
+      ${img(discipline.image, discipline.nom, 'h-full w-full object-cover')}
+      <span class="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-xl bg-white/95 text-vert-700 shadow-doux">
+        ${icone(discipline.icone, 'h-5 w-5')}
+      </span>
+      ${discipline.olympique ? `<span class="absolute right-4 top-4">${badge('Discipline olympique', 'soleil', 'etoile')}</span>` : ''}
+    </a>
+    <div class="flex flex-1 flex-col p-6">
+      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(famille)}</p>
+      <h3 class="mt-2 font-display text-lg font-bold leading-snug text-vert-950">
+        <a href="disciplines.html#${esc(discipline.id)}" class="transition hover:text-vert-700">${esc(discipline.nom)}</a>
+      </h3>
+      <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(discipline.accroche)}</p>
+      <div class="mt-4 flex flex-wrap gap-1.5">
+        ${(discipline.embarcations || []).slice(0, 3).map((e) => badge(e, 'gris')).join('')}
+      </div>
+      <a href="disciplines.html#${esc(discipline.id)}" class="lien-fleche mt-auto pt-5 text-sm font-semibold text-vert-700">
+        En savoir plus ${icone('fleche-droite', 'h-4 w-4')}
+      </a>
+    </div>
+  </article>`;
+}
+
+/* ---------------------------------------------------------------- actualités */
+export function carteArticle(article, { variante = 'grille' } = {}) {
+  const lien = `article.html?slug=${encodeURIComponent(article.slug)}`;
+  const compact = variante === 'compact';
+
+  return `
+  <article class="revele carte group flex flex-col">
+    <a href="${lien}" class="carte__media relative block ${compact ? 'aspect-[16/9]' : 'aspect-[16/10]'} overflow-hidden bg-vert-900">
+      ${img(article.image, article.titre, 'h-full w-full object-cover')}
+      <span class="absolute left-4 top-4">${badge(libelleCategorie(article.categorie), 'soleil')}</span>
+    </a>
+    <div class="flex flex-1 flex-col p-6">
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-encre-clair">
+        <span class="inline-flex items-center gap-1.5">${icone('calendrier', 'h-3.5 w-3.5')}${esc(dateLongue(article.date))}</span>
+        ${article.lieu ? `<span class="inline-flex items-center gap-1.5">${icone('lieu', 'h-3.5 w-3.5')}${esc(article.lieu)}</span>` : ''}
+      </p>
+      <h3 class="mt-3 font-display text-[1.08rem] font-bold leading-snug text-vert-950">
+        <a href="${lien}" class="transition hover:text-vert-700">${esc(article.titre)}</a>
+      </h3>
+      <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(tronquer(article.chapeau, 150))}</p>
+      <div class="mt-auto flex items-center justify-between gap-3 pt-5">
+        <a href="${lien}" class="lien-fleche text-sm font-semibold text-vert-700">
+          Lire l'article ${icone('fleche-droite', 'h-4 w-4')}
+        </a>
+        <span class="text-xs text-encre-clair">${esc(String(article.temps_lecture || 3))} min</span>
+      </div>
+    </div>
+  </article>`;
+}
+
+/* ---------------------------------------------------------------- clubs */
+export function carteClub(club, { variante = 'carte' } = {}) {
+  const disciplinesBadges = (club.disciplines || [])
+    .slice(0, 3)
+    .map((id) => badge(libelleDiscipline(id), 'vert'))
+    .join('');
+  const reste = (club.disciplines || []).length - 3;
+
+  if (variante === 'liste') {
+    return `
+    <article class="revele carte group flex flex-col overflow-hidden sm:flex-row">
+      <a href="club.html?id=${encodeURIComponent(club.id)}" class="carte__media relative block aspect-[16/10] w-full shrink-0 overflow-hidden bg-vert-900 sm:aspect-auto sm:w-64">
+        ${img(club.image, club.nom, 'h-full w-full object-cover')}
+      </a>
+      <div class="flex flex-1 flex-col p-6">
+        <div class="flex flex-wrap items-center gap-2">
+          ${badge(nomRegion(club.region), 'sombre', 'lieu')}
+          ${badge(club.sigle, 'gris')}
+          ${(club.labels || []).slice(0, 1).map((l) => badge(l, 'soleil')).join('')}
+        </div>
+        <h3 class="mt-3 font-display text-lg font-bold text-vert-950">
+          <a href="club.html?id=${encodeURIComponent(club.id)}" class="transition hover:text-vert-700">${esc(club.nom)}</a>
+        </h3>
+        <p class="mt-1 text-sm text-encre-clair">${esc(club.ville)} - ${esc(club.site_pratique)}</p>
+        <p class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(tronquer(club.presentation, 170))}</p>
+        <div class="mt-4 flex flex-wrap gap-1.5">${disciplinesBadges}${reste > 0 ? badge(`+${reste}`, 'gris') : ''}</div>
+      </div>
+    </article>`;
+  }
+
+  return `
+  <article class="revele carte group flex flex-col">
+    <a href="club.html?id=${encodeURIComponent(club.id)}" class="carte__media relative block aspect-[16/10] overflow-hidden bg-vert-900">
+      ${img(club.image, club.nom, 'h-full w-full object-cover')}
+      <span class="absolute left-4 top-4">${badge(nomRegion(club.region), 'sombre', 'lieu')}</span>
+      <span class="absolute bottom-4 right-4 rounded-full bg-white/95 px-3 py-1 font-display text-xs font-bold uppercase tracking-wider text-vert-800">
+        Depuis ${esc(String(club.annee_creation))}
+      </span>
+    </a>
+    <div class="flex flex-1 flex-col p-6">
+      <h3 class="font-display text-lg font-bold leading-snug text-vert-950">
+        <a href="club.html?id=${encodeURIComponent(club.id)}" class="transition hover:text-vert-700">${esc(club.nom)}</a>
+      </h3>
+      <p class="mt-1.5 flex items-center gap-1.5 text-sm text-encre-clair">
+        ${icone('lieu', 'h-4 w-4 text-vert-600')}${esc(club.ville)} - ${esc(club.site_pratique)}
+      </p>
+      <p class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(tronquer(club.presentation, 145))}</p>
+      <div class="mt-4 flex flex-wrap gap-1.5">${disciplinesBadges}${reste > 0 ? badge(`+${reste}`, 'gris') : ''}</div>
+      <div class="mt-auto flex items-center justify-between gap-3 border-t border-sable-200 pt-5">
+        <span class="text-xs text-encre-clair">${esc(club.effectif || '')}</span>
+        <a href="club.html?id=${encodeURIComponent(club.id)}" class="lien-fleche text-sm font-semibold text-vert-700">
+          Voir le club ${icone('fleche-droite', 'h-4 w-4')}
+        </a>
+      </div>
+    </div>
+  </article>`;
+}
+
+/* ---------------------------------------------------------------- événements */
+export function carteEvenement(evenement, { variante = 'clair' } = {}) {
+  const sombre = variante === 'sombre';
+  const { jour, mois } = jourMois(evenement.date_debut);
+  const discipline = evenement.discipline_id ? libelleDiscipline(evenement.discipline_id) : 'Rendez-vous fédéral';
+  const restant = joursRestants(evenement.date_debut);
+
+  const socle = sombre
+    ? 'border-white/12 bg-white/[0.06] hover:border-soleil-400/60'
+    : 'border-sable-200 bg-white hover:border-vert-200';
+  const titre = sombre ? 'text-white' : 'text-vert-950';
+  const texte = sombre ? 'text-vert-50/75' : 'text-encre-doux';
+
+  const statut =
+    evenement.statut === 'a_venir'
+      ? badge(restant > 0 && restant <= 30 ? `Dans ${restant} j` : 'À venir', sombre ? 'soleil' : 'vert', 'horloge')
+      : badge(libelleStatut(evenement.statut), evenement.statut === 'termine' ? 'gris' : 'soleil');
+
+  const action = evenement.statut === 'termine' && evenement.resultats?.publies
+    ? `<a href="competitions.html#resultats" class="lien-fleche text-sm font-semibold ${sombre ? 'text-soleil-300' : 'text-vert-700'}">Voir les résultats ${icone('fleche-droite', 'h-4 w-4')}</a>`
+    : evenement.inscription?.ouverte
+      ? `<span class="pastille pastille--${sombre ? 'sombre' : 'vert'}">${icone('check', 'h-3.5 w-3.5')}Inscriptions ouvertes</span>`
+      : `<span class="pastille pastille--${sombre ? 'sombre' : 'gris'}">Bientôt</span>`;
+
+  return `
+  <article class="revele flex flex-col gap-5 rounded-2xl border p-6 transition ${socle} sm:flex-row sm:items-start">
+    <div class="flex flex-none items-center gap-4 sm:flex-col sm:gap-0">
+      <span class="grid h-16 w-16 place-items-center rounded-2xl ${sombre ? 'bg-soleil-400 text-vert-950' : 'bg-vert-700 text-white'}">
+        <span class="text-center leading-none">
+          <span class="block font-display text-xl font-extrabold">${esc(jour)}</span>
+          <span class="block text-[0.62rem] font-bold uppercase tracking-wider">${esc(mois)}</span>
+        </span>
+      </span>
+      <span class="sm:hidden">${statut}</span>
+    </div>
+
+    <div class="flex-1">
+      <div class="hidden sm:block">${statut}</div>
+      <p class="mt-0 text-[0.68rem] font-semibold uppercase tracking-[0.14em] ${sombre ? 'text-soleil-300' : 'text-vert-600'} sm:mt-2">
+        ${esc(discipline)} · ${esc(evenement.type)}
+      </p>
+      <h3 class="mt-1.5 font-display text-[1.05rem] font-bold leading-snug ${titre}">${esc(evenement.titre)}</h3>
+      <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-sm ${texte}">
+        <li class="inline-flex items-center gap-1.5">${icone('calendrier', 'h-4 w-4')}${esc(periode(evenement.date_debut, evenement.date_fin))}</li>
+        <li class="inline-flex items-center gap-1.5">${icone('lieu', 'h-4 w-4')}${esc(evenement.lieu)}</li>
+        ${evenement.heure ? `<li class="inline-flex items-center gap-1.5">${icone('horloge', 'h-4 w-4')}${esc(evenement.heure)}</li>` : ''}
+      </ul>
+      <p class="mt-3 text-sm leading-relaxed ${texte}">${esc(tronquer(evenement.description, 165))}</p>
+      <div class="mt-4 flex flex-wrap items-center gap-4">${action}</div>
+    </div>
+  </article>`;
+}
+
+export function ligneEvenement(evenement) {
+  const { jour, mois } = jourMois(evenement.date_debut);
+  return `
+  <a href="competitions.html#${esc(evenement.id)}" class="revele group flex items-center gap-5 border-b border-sable-200 py-5 transition hover:bg-sable-50">
+    <span class="grid h-14 w-14 flex-none place-items-center rounded-xl bg-vert-50 text-vert-800">
+      <span class="text-center leading-none">
+        <span class="block font-display text-base font-extrabold">${esc(jour)}</span>
+        <span class="block text-[0.6rem] font-bold uppercase">${esc(mois)}</span>
+      </span>
+    </span>
+    <span class="min-w-0 flex-1">
+      <span class="block truncate font-display text-[1rem] font-semibold text-vert-950 group-hover:text-vert-700">${esc(evenement.titre)}</span>
+      <span class="mt-0.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-encre-clair">
+        <span class="inline-flex items-center gap-1.5">${icone('lieu', 'h-3.5 w-3.5')}${esc(evenement.ville)}</span>
+        <span class="inline-flex items-center gap-1.5">${icone('onde', 'h-3.5 w-3.5')}${esc(
+          evenement.discipline_id ? libelleDiscipline(evenement.discipline_id) : evenement.type
+        )}</span>
+      </span>
+    </span>
+    <span class="hidden flex-none text-sm text-encre-clair sm:block">${esc(periode(evenement.date_debut, evenement.date_fin))}</span>
+    <span class="flex-none text-vert-600 transition group-hover:translate-x-1">${icone('chevron-droite', 'h-5 w-5')}</span>
+  </a>`;
+}
+
+/* ---------------------------------------------------------------- galerie */
+export function vignetteGalerie(image, { delai = 0, grande = false } = {}) {
+  return `
+  <figure class="revele galerie-item ${grande ? 'col-span-2 row-span-2 aspect-square' : 'aspect-[4/3]'}" data-delai="${delai}"
+          data-legende="${esc(image.titre)} - ${esc(image.lieu)}">
+    ${img(image.src, image.titre, 'h-full w-full object-cover')}
+    <figcaption class="galerie-item__voile">
+      <span class="block">
+        <span class="block text-sm font-semibold">${esc(image.titre)}</span>
+        <span class="mt-0.5 block text-xs text-white/75">${esc(image.lieu)} · ${esc(dateCourte(image.date))}</span>
+      </span>
+    </figcaption>
+  </figure>`;
+}
+
+/* ---------------------------------------------------------------- documents */
+export const documentIndisponible = () =>
+  `<span class="pastille pastille--gris flex-none">${icone('horloge', 'h-3.5 w-3.5')}Bientôt disponible</span>`;
+
+export function ligneDocument(document) {
+  const telechargeable = Boolean(document.fichier) && document.disponible !== false;
+  return `
+  <li class="revele flex flex-col gap-5 rounded-2xl border border-sable-200 bg-white p-6 transition hover:border-vert-200 sm:flex-row sm:items-center">
+    <span class="grid h-12 w-12 flex-none place-items-center rounded-xl bg-vert-50 text-vert-700">${icone('fichier', 'h-5 w-5')}</span>
+    <div class="flex-1">
+      <div class="flex flex-wrap items-center gap-2">
+        ${badge(document.categorie, 'vert')}
+        ${document.statut ? badge(document.statut, 'gris') : ''}
+      </div>
+      <p class="mt-2 font-display text-base font-bold text-vert-950">${esc(document.titre)}</p>
+      <p class="mt-1.5 text-sm leading-relaxed text-encre-doux">${esc(document.description)}</p>
+      <p class="mt-2 text-xs text-encre-clair">${esc(document.format || 'PDF')} · mise à jour le ${esc(dateLongue(document.date_maj))}</p>
+    </div>
+    ${
+      telechargeable
+        ? `<a href="${esc(document.fichier)}" download data-document class="btn btn--contour btn--sm flex-none">
+             ${icone('telechargement', 'h-4 w-4')}Télécharger</a>`
+        : documentIndisponible()
+    }
+  </li>`;
+}
+
+/* ---------------------------------------------------------------- bureau exécutif */
+export function carteMembre(membre, { delai = 0 } = {}) {
+  return `
+  <article class="revele group rounded-2xl border border-sable-200 bg-white p-6 text-center transition hover:border-vert-200 hover:shadow-carte" data-delai="${delai}">
+    <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-vert-600 to-vert-900 font-display text-lg font-extrabold text-white shadow-doux">
+      ${esc(membre.initiale || '')}
+    </span>
+    <p class="mt-4 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(membre.poste)}</p>
+    <p class="mt-1 font-display text-base font-bold text-vert-950">${esc(membre.nom)}</p>
+    <p class="mt-2 text-sm leading-relaxed text-encre-doux">${esc(membre.attribution)}</p>
+  </article>`;
+}
+
+/* ---------------------------------------------------------------- partenaires */
+export function cartePartenaire(partenaire) {
+  return `
+  <a href="${esc(partenaire.url || '#')}" ${partenaire.url ? 'target="_blank" rel="noopener noreferrer"' : 'aria-disabled="true"'}
+     class="revele group flex items-center gap-4 rounded-2xl border border-sable-200 bg-white px-5 py-4 transition hover:border-vert-200 hover:shadow-doux"
+     title="${esc(partenaire.nom)}">
+    <span class="grid h-14 w-20 flex-none place-items-center overflow-hidden rounded-xl bg-sable-50">
+      ${img(partenaire.logo, `Logo ${partenaire.nom}`, 'h-9 w-auto object-contain', 'loading="lazy"', 320, 150)}
+    </span>
+    <span class="min-w-0">
+      <span class="block truncate font-display text-sm font-bold text-vert-950">${esc(partenaire.nom)}</span>
+      <span class="mt-0.5 block text-xs text-encre-clair">${esc(
+        libelleCategoriePartenaire(partenaire.categorie)
+      )}${partenaire.depuis ? ` · depuis ${esc(partenaire.depuis)}` : ''}</span>
+      <span class="mt-1 block text-[0.72rem] leading-snug text-encre-doux">${esc(tronquer(partenaire.apport, 78))}</span>
+    </span>
+  </a>`;
+}
+
+/* ---------------------------------------------------------------- blocs d'en-tête de page */
+export function bandeauPage({ titre, chapeau, image, fil, section, video }) {
+  const miettes = [
+    { libelle: 'Accueil', url: 'index.html' },
+    ...(section ? [{ libelle: section, url: null }] : [])
+  ];
+
+  const page = typeof document !== 'undefined' ? document.body?.dataset?.page ?? '' : '';
+  const lienVideo = video ?? videoHeroPage(page);
+
+  const media = lienVideo
+    ? `<video class="heros-media" autoplay muted loop playsinline preload="metadata"
+         poster="${esc(image)}" aria-hidden="true" tabindex="-1">
+         <source src="${esc(lienVideo)}" type="video/mp4">
+       </video>`
+    : img(image, titre, 'heros-media', 'fetchpriority="high" decoding="async"', 1920, 700);
+
+  return `
+  <section class="relative isolate flex min-h-[58vh] items-end overflow-hidden bg-vert-950 text-white lg:min-h-[62vh]">
+    ${media}
+    <div class="heros-voile absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto w-full max-w-ecran px-4 pb-12 pt-40 sm:px-6 lg:pb-16">
+      <nav aria-label="Fil d'Ariane" class="apparition">
+        <ol class="flex flex-wrap items-center gap-2 text-xs text-vert-100/80">
+          ${miettes
+            .map(
+              (m, index) =>
+                `<li class="flex items-center gap-2">${
+                  m.url ? `<a href="${esc(m.url)}" class="transition hover:text-white">${esc(m.libelle)}</a>` : `<span class="text-soleil-300">${esc(m.libelle)}</span>`
+                }${index < miettes.length - 1 ? icone('chevron-droite', 'h-3.5 w-3.5 opacity-60') : ''}</li>`
+            )
+            .join('')}
+        </ol>
+      </nav>
+      <p class="apparition etiquette mt-6 text-soleil-300" style="animation-delay:.06s">${esc(fil || 'Fédération Togolaise de Canoë')}</p>
+      <h1 class="apparition titre-fluide mt-4 max-w-3xl text-white" style="animation-delay:.12s">${esc(titre)}</h1>
+      ${chapeau ? `<p class="apparition mt-5 max-w-2xl text-base leading-relaxed text-vert-50/90 sm:text-lg" style="animation-delay:.18s">${esc(chapeau)}</p>` : ''}
+    </div>
+    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-vert-950 to-transparent" aria-hidden="true"></div>
+  </section>`;
+}
+
+/* ---------------------------------------------------------------- l'essentiel */
+export function blocEssentiel({ titre = "L'essentiel", points = [] } = {}) {
+  if (!points.length) return '';
+  return `
+  <section class="border-b border-sable-200 bg-sable-50" aria-label="${esc(titre)}">
+    <div class="mx-auto max-w-ecran px-4 py-10 sm:px-6 lg:py-12">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-12">
+        <p class="flex-none font-display text-sm font-bold uppercase tracking-[0.12em] text-vert-700">${esc(titre)}</p>
+        <ul class="grid flex-1 gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+          ${points
+            .map(
+              (point) => `
+          <li class="revele flex items-start gap-3">
+            <span class="mt-0.5 flex-none text-vert-600">${icone(point.icone || 'check-cercle', 'h-5 w-5')}</span>
+            <span>
+              <span class="block font-display text-sm font-bold text-vert-950">${esc(point.titre)}</span>
+              <span class="mt-1 block text-sm leading-relaxed text-encre-doux">${esc(point.texte)}</span>
+            </span>
+          </li>`
+            )
+            .join('')}
+        </ul>
+      </div>
+    </div>
+  </section>`;
+}
