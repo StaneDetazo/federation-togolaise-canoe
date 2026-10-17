@@ -215,52 +215,36 @@
     <section class="relative isolate overflow-hidden bg-vert-950">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Paddler_at_Sunset_%286615740479%29.jpg/1280px-Paddler_at_Sunset_%286615740479%29.jpg"
            alt="Pagaie en silhouette sur l'eau au coucher du soleil" width="1280" height="853"
-           loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover object-[center_38%]">
-      <div class="absolute inset-0 bg-gradient-to-b from-vert-950/92 via-vert-950/82 to-vert-950" aria-hidden="true"></div>
-      <div class="pointille absolute inset-0 opacity-20" aria-hidden="true"></div>
+           loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover object-[center_45%] opacity-50">
+      <div class="absolute inset-0 bg-vert-950/70" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-vert-950 via-vert-950/35 to-vert-950" aria-hidden="true"></div>
+      <div class="pointille absolute inset-0 opacity-15" aria-hidden="true"></div>
 
-      <div class="relative mx-auto max-w-ecran px-4 py-20 sm:px-6 lg:py-28">
-        <div class="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
+      <div class="relative mx-auto flex w-full max-w-3xl flex-col items-center px-4 py-20 text-center sm:px-6 lg:py-28">
+        <div class="flex w-full flex-col items-center">
           <header class="revele">
             <p class="etiquette text-soleil-300">Appel final</p>
             <h2 class="titre-fluide mt-5 text-white">Rejoignez la <span class="mark">pagaie togolaise</span></h2>
-            <p class="mt-5 max-w-xl text-base leading-relaxed text-vert-50/85">
-              Vous souhaitez pratiquer, encadrer, organiser une épreuve, affilier votre structure ou soutenir la fédération ?
-              Le secrétariat fédéral vous oriente vers le club, la formation et le dispositif adaptés à votre projet.
+            <p class="mt-6 max-w-2xl text-base leading-relaxed text-white sm:text-lg">
+              Pratiquer, encadrer, organiser une épreuve, affilier votre structure ou soutenir la fédération : le
+              secrétariat fédéral vous oriente vers le club, la formation et le dispositif adaptés à votre projet.
             </p>
           </header>
 
-          <ul class="flex flex-col gap-3">
-            <li class="revele">
-              <a href="contact.html#adhesion" class="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition hover:border-soleil-400/70 hover:bg-white/[0.16] sm:gap-5 sm:p-5">
-                <span class="grid h-12 w-12 flex-none place-items-center rounded-xl border border-soleil-300/40 bg-soleil-400/15 font-display text-sm font-bold text-soleil-300">01</span>
-                <span class="min-w-0 flex-1">
-                  <span class="block font-display text-base font-bold text-white">Demander une adhésion</span>
-                  <span class="mt-0.5 block text-sm text-vert-50/70">Prendre une licence et pratiquer au sein d'un club</span>
-                </span>
-                <span aria-hidden="true" class="flex-none text-soleil-300 transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </a>
-            </li>
-            <li class="revele">
-              <a href="contact.html#partenariat" class="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition hover:border-soleil-400/70 hover:bg-white/[0.16] sm:gap-5 sm:p-5">
-                <span class="grid h-12 w-12 flex-none place-items-center rounded-xl border border-soleil-300/40 bg-soleil-400/15 font-display text-sm font-bold text-soleil-300">02</span>
-                <span class="min-w-0 flex-1">
-                  <span class="block font-display text-base font-bold text-white">Devenir partenaire</span>
-                  <span class="mt-0.5 block text-sm text-vert-50/70">Soutenir les actions et le développement de la fédération</span>
-                </span>
-                <span aria-hidden="true" class="flex-none text-soleil-300 transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </a>
-            </li>
-            <li class="revele">
-              <a href="clubs.html" class="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition hover:border-soleil-400/70 hover:bg-white/[0.16] sm:gap-5 sm:p-5">
-                <span class="grid h-12 w-12 flex-none place-items-center rounded-xl border border-soleil-300/40 bg-soleil-400/15 font-display text-sm font-bold text-soleil-300">03</span>
-                <span class="min-w-0 flex-1">
-                  <span class="block font-display text-base font-bold text-white">Trouver un club</span>
-                  <span class="mt-0.5 block text-sm text-vert-50/70">Identifier le club et la base nautique les plus proches</span>
-                </span>
-                <span aria-hidden="true" class="flex-none text-soleil-300 transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </a>
-            </li>
+          <div class="revele mt-9 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:justify-center sm:gap-4">
+            <a href="contact.html#adhesion" class="btn btn--soleil w-full justify-center sm:w-auto">Devenir membre de la FETOC</a>
+            <a href="contact.html"
+               class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:border-white hover:bg-white/20 sm:w-auto">
+              Nous contacter
+            </a>
+          </div>
+
+          <ul class="revele mt-10 flex flex-col items-center gap-y-3 text-sm text-white/85 sm:flex-row sm:gap-x-4">
+            <li><a href="contact.html#adhesion" class="font-semibold text-white underline decoration-soleil-400 decoration-2 underline-offset-4 transition hover:decoration-soleil-300">Adhérer à la FETOC</a></li>
+            <li class="hidden h-1 w-1 rounded-full bg-soleil-400/70 sm:block" aria-hidden="true"></li>
+            <li><a href="contact.html#partenariat" class="font-semibold text-white underline decoration-soleil-400 decoration-2 underline-offset-4 transition hover:decoration-soleil-300">Devenir partenaire</a></li>
+            <li class="hidden h-1 w-1 rounded-full bg-soleil-400/70 sm:block" aria-hidden="true"></li>
+            <li><a href="clubs.html" class="font-semibold text-white underline decoration-soleil-400 decoration-2 underline-offset-4 transition hover:decoration-soleil-300">Trouver un club près de chez vous</a></li>
           </ul>
         </div>
       </div>

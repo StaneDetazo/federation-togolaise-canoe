@@ -6,7 +6,7 @@
 
 import { demarrer, ui } from '../core/app.js';
 import { data, disciplines, familles } from '../core/data.js';
-import { bandeauPage, carteDiscipline, blocEssentiel } from '../core/cartes.js';
+import { bandeauPage, carteDiscipline } from '../core/cartes.js';
 import { qs, qsa, esc, correspond } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
@@ -47,36 +47,6 @@ function rendre() {
     })
   );
 
-  /* ------------------------------------------------ l'essentiel */
-  remplir(
-    'essentiel',
-    blocEssentiel({
-      points: [
-        {
-          icone: 'pagaie',
-          titre: "De l'initiation au haut niveau",
-          texte: 'Des séances découverte aux compétitions, chaque discipline a son parcours.'
-        },
-        {
-          icone: 'utilisateurs',
-          titre: 'Pour tous les âges',
-          texte: 'Des catégories jeunes et adultes, encadrées par des éducateurs fédéraux.'
-        },
-        {
-          icone: 'globe',
-          titre: 'Partout au Togo',
-          texte: 'Lacs, lagunes et rivières accueillent la pagaie dans les cinq régions.'
-        },
-        {
-          icone: 'diplome',
-          titre: 'Des formations reconnues',
-          texte: 'Encadrants et officiels techniques formés tout au long de la saison.'
-        }
-      ]
-    })
-  );
-
-  texte('entete-chapeau', entete.chapeau);
   texte('entete-texte', entete.texte);
 
   const iconeRecherche = qs('[data-icone-recherche]');
@@ -247,62 +217,59 @@ function afficherFiches() {
           ['Saison', discipline.saison]
         ];
         return `
-        <article id="${esc(discipline.id)}" class="revele scroll-mt-32 overflow-hidden rounded-3xl border border-sable-200 bg-white lg:grid lg:grid-cols-[0.85fr_1.15fr]">
-          <div class="relative aspect-[16/10] overflow-hidden bg-vert-900 lg:aspect-auto lg:h-full">
-            <img src="${esc(discipline.image)}" alt="${esc(discipline.nom)}" width="1200" height="800" loading="lazy" decoding="async" class="h-full w-full object-cover">
+        <article id="${esc(discipline.id)}" class="revele group scroll-mt-32 overflow-hidden rounded-2xl border border-sable-200 bg-white transition hover:shadow-carte sm:flex">
+          <div class="relative aspect-[16/9] overflow-hidden bg-vert-900 sm:aspect-auto sm:w-56 sm:flex-none">
+            <img src="${esc(discipline.image)}" alt="${esc(discipline.nom)}" width="1200" height="800" loading="lazy" decoding="async"
+                 class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105">
             ${
               discipline.olympique
-                ? `<span class="absolute left-4 top-4">${pastille('Discipline olympique', 'soleil')}</span>`
+                ? `<span class="absolute left-3 top-3">${pastille('Olympique', 'soleil')}</span>`
                 : ''
             }
           </div>
-          <div class="p-7 sm:p-10">
+          <div class="flex flex-1 flex-col gap-3 p-5 sm:p-6">
             <div class="flex items-center gap-3">
-              <span class="grid h-11 w-11 place-items-center rounded-xl bg-vert-50 text-vert-700">${icone(
+              <span class="grid h-9 w-9 flex-none place-items-center rounded-lg bg-vert-50 text-vert-700">${icone(
                 discipline.icone,
-                'h-5 w-5'
+                'h-4 w-4'
               )}</span>
-              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(
-                libelleFamille(discipline.famille)
-              )}</p>
+              <div class="min-w-0">
+                <p class="text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(
+                  libelleFamille(discipline.famille)
+                )}</p>
+                <h3 class="font-display text-lg font-bold leading-tight text-vert-950">${esc(discipline.nom)}</h3>
+              </div>
             </div>
-            <h3 class="mt-4 font-display text-2xl font-bold text-vert-950">${esc(discipline.nom)}</h3>
-            <p class="mt-3 text-base leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
+            <p class="text-sm leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
 
-            <dl class="mt-6 grid gap-4 sm:grid-cols-3">
+            <dl class="flex flex-wrap items-baseline gap-x-5 gap-y-1">
               ${faits
                 .map(
                   ([libelle, valeur]) => `
-                <div class="rounded-xl border border-sable-200 bg-sable-50 p-3">
-                  <dt class="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-encre-clair">${esc(
-                    libelle
-                  )}</dt>
-                  <dd class="mt-1 text-sm font-medium text-vert-950">${esc(valeur)}</dd>
-                </div>`
+              <div class="flex items-baseline gap-1.5">
+                <dt class="text-[0.64rem] font-semibold uppercase tracking-[0.1em] text-encre-clair">${esc(
+                  libelle
+                )}</dt>
+                <dd class="text-sm font-medium text-vert-950">${esc(valeur)}</dd>
+              </div>`
                 )
                 .join('')}
             </dl>
 
-            <div class="mt-6 space-y-4 border-t border-sable-200 pt-6">
-              <div>
-                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-encre-clair">Embarcations</p>
-                <div class="mt-2 flex flex-wrap gap-1.5">${(discipline.embarcations || [])
-                  .map((e) => pastille(e, 'gris'))
-                  .join('')}</div>
-              </div>
-              <div>
-                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-encre-clair">Catégories</p>
-                <div class="mt-2 flex flex-wrap gap-1.5">${(discipline.categories || [])
-                  .map((c) => pastille(c, 'vert'))
-                  .join('')}</div>
-              </div>
-              <p class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-encre-doux">
-                <span class="inline-flex items-center gap-1.5">${icone(
-                  'lieu',
-                  'h-4 w-4 text-vert-600'
-                )}${esc((discipline.sites || []).join(' · '))}</span>
-              </p>
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+              <span class="flex flex-wrap items-center gap-1.5"><b class="font-semibold uppercase tracking-[0.1em] text-encre-clair">Embarcations</b>${(discipline.embarcations || [])
+                .map((e) => pastille(e, 'gris'))
+                .join('')}</span>
+              <span class="flex flex-wrap items-center gap-1.5"><b class="font-semibold uppercase tracking-[0.1em] text-encre-clair">Catégories</b>${(discipline.categories || [])
+                .map((c) => pastille(c, 'vert'))
+                .join('')}</span>
             </div>
+
+            <p class="flex flex-wrap items-center gap-1.5 text-xs text-encre-doux">
+              ${icone('lieu', 'h-3.5 w-3.5 flex-none text-vert-600')}<span>${esc(
+                (discipline.sites || []).join(' · ')
+              )}</span>
+            </p>
           </div>
         </article>`;
       })
