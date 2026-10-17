@@ -153,7 +153,6 @@ function gabaritPied() {
   const identite = site();
   const coord = contact();
   const pied = data.site?.pied ?? {};
-  const lettre = data.site?.newsletter ?? {};
   const lien = (l) => `<li><a href="${esc(l.url)}" class="group flex items-center gap-2 text-sm text-vert-100/85 transition hover:text-white">
         <span class="h-px w-3 bg-soleil-400/70 transition-all group-hover:w-5"></span>${esc(l.libelle)}</a></li>`;
 
@@ -207,21 +206,6 @@ function gabaritPied() {
               'h-4 w-4 flex-none text-soleil-400'
             )}<a href="mailto:${esc(coord.email)}" class="transition hover:text-white">${esc(coord.email)}</a></li>
           </ul>
-
-          <form class="mt-6" data-formulaire="newsletter" novalidate>
-            <label for="pied-newsletter" class="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-soleil-300">${esc(
-              lettre.titre || "Lettre d'information"
-            )}</label>
-            <div class="mt-2 flex gap-2">
-              <input id="pied-newsletter" name="email" type="email" required placeholder="Votre adresse e-mail"
-                class="min-w-0 flex-1 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm text-white placeholder:text-vert-100/50 focus:border-soleil-400 focus:outline-none">
-              <button type="submit" class="btn btn--soleil btn--sm" aria-label="S'inscrire">${icone(
-                'fleche-droite',
-                'h-4 w-4'
-              )}</button>
-            </div>
-            <p class="mt-2 text-[0.7rem] leading-relaxed text-vert-100/60">${esc(lettre.texte || '')}</p>
-          </form>
         </div>
       </div>
 

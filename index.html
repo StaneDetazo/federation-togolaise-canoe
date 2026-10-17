@@ -110,32 +110,39 @@
     </section>
 
     <!-- ============================================================ 3. Disciplines & activités -->
-    <section class="bg-sable-50 py-20 lg:py-28">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div class="max-w-2xl">
-            <p class="etiquette text-vert-600">Disciplines &amp; activités</p>
-            <h2 class="titre-fluide mt-5 text-vert-950">Ce que l'on pratique sur l'<span class="mark">eau togolaise</span></h2>
-            <p data-zone="disciplines-chapeau" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
-          </div>
-          <a href="disciplines.html" class="btn btn--contour flex-none">Toutes les disciplines <span aria-hidden="true">→</span></a>
+    <section class="relative overflow-hidden bg-vert-950 py-20 text-white lg:py-28">
+      <div class="pointille absolute inset-0 opacity-[0.12]" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele mx-auto max-w-3xl text-center">
+          <p class="etiquette etiquette--centre text-soleil-300">Disciplines &amp; activités</p>
+          <h2 class="titre-fluide mt-5 text-white">Ce que l'on pratique sur l'<span class="mark">eau togolaise</span></h2>
+          <p data-zone="disciplines-chapeau" class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-vert-50/80"></p>
+          <a href="disciplines.html" class="btn btn--soleil mt-8">Toutes les disciplines <span aria-hidden="true">→</span></a>
         </header>
-        <div data-zone="disciplines-grille" class="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3"></div>
+        <div data-zone="disciplines-grille" class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
       </div>
     </section>
 
     <!-- ============================================================ 4. Actualités -->
     <section class="bg-white py-20 lg:py-28">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div class="max-w-2xl">
-            <p class="etiquette text-vert-600">Actualités</p>
-            <h2 class="titre-fluide mt-5 text-vert-950">La vie de la <span class="mark">pagaie togolaise</span></h2>
-            <p class="mt-5 text-base leading-relaxed text-encre-doux">Communiqués, résultats, formations et reportages publiés par la fédération et ses clubs.</p>
+        <header class="revele border-b border-sable-200 pb-7">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-2xl">
+              <p class="etiquette text-vert-600">Actualités</p>
+              <h2 class="titre-fluide mt-5 text-vert-950">La vie de la <span class="mark">pagaie togolaise</span></h2>
+            </div>
+            <p class="max-w-sm text-base leading-relaxed text-encre-doux">
+              Communiqués, résultats, formations et reportages publiés par la fédération et ses clubs.
+            </p>
           </div>
-          <a href="actualites.html" class="btn btn--contour flex-none">Toutes les actualités <span aria-hidden="true">→</span></a>
+          <div class="mt-7 flex justify-end">
+            <a href="actualites.html" class="lien-fleche text-sm font-semibold text-vert-700">
+              Toutes les actualités <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </header>
-        <div data-zone="actualites-grille" class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
+        <div data-zone="actualites-grille" class="mt-10"></div>
       </div>
     </section>
 
@@ -143,45 +150,49 @@
     <section class="relative overflow-hidden bg-vert-950 py-20 text-white lg:py-28">
       <div class="pointille absolute inset-0 opacity-20" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div class="max-w-2xl">
+        <div class="grid gap-12 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-16">
+          <header class="revele">
             <p class="etiquette text-soleil-300">Prochains événements</p>
             <h2 class="titre-fluide mt-5 text-white">Les rendez-vous <span class="mark">à venir</span></h2>
             <p class="mt-5 text-base leading-relaxed text-vert-50/80">Compétitions, stages et formations officiels au programme de la saison.</p>
-          </div>
-          <a href="competitions.html" class="btn btn--soleil flex-none">Voir le calendrier complet</a>
-        </header>
-        <div data-zone="evenements-liste" class="revele mt-12"></div>
+            <a href="competitions.html" class="btn btn--soleil mt-8">Voir le calendrier complet</a>
+          </header>
+          <div data-zone="evenements-liste" class="revele"></div>
+        </div>
       </div>
     </section>
 
     <!-- ============================================================ 6. Clubs affiliés -->
-    <section class="bg-sable-50 py-20 lg:py-28">
+    <section class="relative overflow-hidden bg-sable-100 py-20 lg:py-28">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div class="max-w-2xl">
-            <p class="etiquette text-vert-600">Clubs affiliés</p>
-            <h2 class="titre-fluide mt-5 text-vert-950">Près de l'eau, <span class="mark">partout au Togo</span></h2>
-            <p class="mt-5 text-base leading-relaxed text-encre-doux">Du littoral au nord du pays, les clubs affiliés accueillent les pratiquants et forment les jeunes générations de pagayeurs.</p>
+        <header class="revele">
+          <p class="etiquette text-vert-600">Clubs affiliés</p>
+          <div class="mt-5 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <h2 class="titre-fluide max-w-2xl text-vert-950">Près de l'eau, <span class="mark">partout au Togo</span></h2>
+            <p class="max-w-md text-base leading-relaxed text-encre-doux lg:text-right">Du littoral au nord du pays, les clubs affiliés accueillent les pratiquants et forment les jeunes générations de pagayeurs.</p>
           </div>
-          <a href="clubs.html" class="btn btn--contour flex-none">Voir tous les clubs <span aria-hidden="true">→</span></a>
         </header>
-        <div data-zone="clubs-grille" class="mt-12 grid gap-8 md:grid-cols-3"></div>
+        <div data-zone="clubs-grille" class="revele mt-14"></div>
       </div>
     </section>
 
     <!-- ============================================================ 7. La fédération en images -->
-    <section class="bg-white py-20 lg:py-28">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele max-w-2xl">
-          <p class="etiquette text-vert-600">La fédération en images</p>
-          <h2 class="titre-fluide mt-5 text-vert-950">Activités, formations, <span class="mark">compétitions</span></h2>
-          <p class="mt-5 text-base leading-relaxed text-encre-doux">Quelques images de la vie fédérale. Cliquez sur une photographie pour l'agrandir.</p>
+    <section class="relative overflow-hidden bg-white py-20 lg:py-28">
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-sable-100 to-transparent" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl">
+            <p class="etiquette text-vert-600">La fédération en images</p>
+            <h2 class="titre-fluide mt-5 text-vert-950">Activités, formations, <span class="mark">compétitions</span></h2>
+          </div>
+          <div class="max-w-sm lg:text-right">
+            <p class="text-base leading-relaxed text-encre-doux">Quelques images de la vie fédérale. Cliquez sur une photographie pour l'agrandir.</p>
+            <a href="actualites.html#galerie" class="lien-fleche mt-4 inline-flex font-semibold text-vert-700">
+              Explorer toute la galerie <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </header>
-        <div data-zone="galerie-grille" class="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4"></div>
-        <div class="revele mt-10">
-          <a href="actualites.html#galerie" class="lien-fleche text-vert-700">Explorer toute la galerie <span aria-hidden="true">→</span></a>
-        </div>
+        <div data-zone="galerie-grille" class="revele mt-14"></div>
       </div>
     </section>
 
@@ -201,27 +212,56 @@
     </section>
 
     <!-- ============================================================ 9. Appel final -->
-    <section class="relative overflow-hidden bg-white">
-      <div class="mx-auto max-w-ecran px-4 py-20 sm:px-6 lg:py-24">
-        <div class="revele relative overflow-hidden rounded-3xl bg-vert-900 px-6 py-14 text-white sm:px-12 lg:px-16">
-          <div class="pointille absolute inset-0 opacity-25" aria-hidden="true"></div>
-          <svg class="absolute -right-10 -top-10 h-64 w-64 text-soleil-400/20" viewBox="0 0 200 200" aria-hidden="true">
-            <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="10"/>
-            <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="6"/>
-          </svg>
-          <div class="relative max-w-3xl">
+    <section class="relative isolate overflow-hidden bg-vert-950">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Paddler_at_Sunset_%286615740479%29.jpg/1280px-Paddler_at_Sunset_%286615740479%29.jpg"
+           alt="Pagaie en silhouette sur l'eau au coucher du soleil" width="1280" height="853"
+           loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover object-[center_38%]">
+      <div class="absolute inset-0 bg-gradient-to-b from-vert-950/92 via-vert-950/82 to-vert-950" aria-hidden="true"></div>
+      <div class="pointille absolute inset-0 opacity-20" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-ecran px-4 py-20 sm:px-6 lg:py-28">
+        <div class="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
+          <header class="revele">
             <p class="etiquette text-soleil-300">Appel final</p>
             <h2 class="titre-fluide mt-5 text-white">Rejoignez la <span class="mark">pagaie togolaise</span></h2>
-            <p class="mt-5 text-base leading-relaxed text-vert-50/90">
+            <p class="mt-5 max-w-xl text-base leading-relaxed text-vert-50/85">
               Vous souhaitez pratiquer, encadrer, organiser une épreuve, affilier votre structure ou soutenir la fédération ?
               Le secrétariat fédéral vous oriente vers le club, la formation et le dispositif adaptés à votre projet.
             </p>
-            <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href="contact.html#adhesion" class="btn btn--soleil">Demander une adhésion</a>
-              <a href="contact.html#partenariat" class="btn btn--fantome">Devenir partenaire</a>
-              <a href="clubs.html" class="btn btn--fantome">Trouver un club</a>
-            </div>
-          </div>
+          </header>
+
+          <ul class="flex flex-col gap-3">
+            <li class="revele">
+              <a href="contact.html#adhesion" class="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition hover:border-soleil-400/70 hover:bg-white/[0.16] sm:gap-5 sm:p-5">
+                <span class="grid h-12 w-12 flex-none place-items-center rounded-xl border border-soleil-300/40 bg-soleil-400/15 font-display text-sm font-bold text-soleil-300">01</span>
+                <span class="min-w-0 flex-1">
+                  <span class="block font-display text-base font-bold text-white">Demander une adhésion</span>
+                  <span class="mt-0.5 block text-sm text-vert-50/70">Prendre une licence et pratiquer au sein d'un club</span>
+                </span>
+                <span aria-hidden="true" class="flex-none text-soleil-300 transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+            <li class="revele">
+              <a href="contact.html#partenariat" class="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition hover:border-soleil-400/70 hover:bg-white/[0.16] sm:gap-5 sm:p-5">
+                <span class="grid h-12 w-12 flex-none place-items-center rounded-xl border border-soleil-300/40 bg-soleil-400/15 font-display text-sm font-bold text-soleil-300">02</span>
+                <span class="min-w-0 flex-1">
+                  <span class="block font-display text-base font-bold text-white">Devenir partenaire</span>
+                  <span class="mt-0.5 block text-sm text-vert-50/70">Soutenir les actions et le développement de la fédération</span>
+                </span>
+                <span aria-hidden="true" class="flex-none text-soleil-300 transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+            <li class="revele">
+              <a href="clubs.html" class="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.08] p-4 backdrop-blur-sm transition hover:border-soleil-400/70 hover:bg-white/[0.16] sm:gap-5 sm:p-5">
+                <span class="grid h-12 w-12 flex-none place-items-center rounded-xl border border-soleil-300/40 bg-soleil-400/15 font-display text-sm font-bold text-soleil-300">03</span>
+                <span class="min-w-0 flex-1">
+                  <span class="block font-display text-base font-bold text-white">Trouver un club</span>
+                  <span class="mt-0.5 block text-sm text-vert-50/70">Identifier le club et la base nautique les plus proches</span>
+                </span>
+                <span aria-hidden="true" class="flex-none text-soleil-300 transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

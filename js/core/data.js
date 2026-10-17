@@ -213,6 +213,10 @@ export function libelleCategoriePartenaire(id) {
 /* ---------------------------------------------------------------- galerie */
 export const galerie = () => data.galerie?.liste ?? [];
 
+export function libelleCategorieGalerie(id) {
+  return data.galerie?.categories?.find((c) => c.id === id)?.libelle ?? 'Galerie';
+}
+
 export function imagesGalerie({ categorie = 'toutes', limite = null } = {}) {
   let liste = galerie();
   if (categorie !== 'toutes') liste = liste.filter((i) => i.categorie === categorie);

@@ -14,14 +14,16 @@ import {
   imagesGalerie,
   partenairesAffiches,
   clubs,
+  regions,
+  nomRegion,
   videoHeroPage
 } from '../core/data.js';
 import {
-  carteDiscipline,
-  carteArticle,
-  carteClub,
-  carteEvenement,
-  vignetteGalerie,
+  carteDisciplineAccueil,
+  carteArticleAccueil,
+  carteClubAccueil,
+  ligneEvenementAccueil,
+  vignetteGalerieAccueil,
   cartePartenaire
 } from '../core/cartes.js';
 import { qs, esc, dateCourte } from '../core/utils.js';
@@ -110,18 +112,32 @@ function rendre() {
     ? disciplines().filter((d) => d.a_la_une)
     : disciplines()
   ).slice(0, 6);
-  qs('[data-zone="disciplines-grille"]').innerHTML = listeDisciplines.map(carteDiscipline).join('');
+  qs('[data-zone="disciplines-grille"]').innerHTML = listeDisciplines
+    .map((d, index) => carteDisciplineAccueil(d, index))
+    .join('');
 
   /* ------------------------------------------------ actualités */
-  qs('[data-zone="actualites-grille"]').innerHTML = articlesRecents(3).map((a) => carteArticle(a)).join('');
+  const articles = articlesRecents(3);
+  const [une, ...breves] = articles;
+  const zoneActualites = qs('[data-zone="actualites-grille"]');
+  if (une) {
+    zoneActualites.innerHTML = `
+      <div class="grid gap-10 lg:grid-cols-[1.45fr_1fr] lg:gap-14">
+        ${carteArticleAccueil(une, { vedette: true })}
+        <div class="flex flex-col gap-6 sm:gap-8">${breves
+          .map((article) => carteArticleAccueil(article))
+          .join('')}</div>
+      </div>`;
+  }
 
   /* ------------------------------------------------ prochains événements */
   const evenements = prochainsEvenements(4);
   const zoneEvenements = qs('[data-zone="evenements-liste"]');
   if (evenements.length) {
-    zoneEvenements.innerHTML = `<div class="grid gap-6 lg:grid-cols-2">${evenements
-      .map((e) => carteEvenement(e, { variante: 'sombre' }))
-      .join('')}</div>`;
+    zoneEvenements.innerHTML = `
+      <div class="flex flex-col gap-5 border-l border-white/15 pl-6 sm:pl-8">
+        ${evenements.map((e) => ligneEvenementAccueil(e)).join('')}
+      </div>`;
   } else {
     zoneEvenements.innerHTML = `
       <div class="rounded-2xl border border-dashed border-white/25 bg-white/[0.04] px-8 py-12 text-center">
@@ -135,12 +151,91 @@ function rendre() {
   }
 
   /* ------------------------------------------------ clubs affiliés */
-  qs('[data-zone="clubs-grille"]').innerHTML = clubsMisEnAvant(3).map((c) => carteClub(c)).join('');
+  const totalClubs = clubs().length;
+  const maximumRegion = Math.max(
+    1,
+    ...regions().map((region) => clubs().filter((c) => c.region === region.id).length)
+  );
+  const indexRegions = `
+    <aside class="lg:sticky lg:top-24 lg:self-start">
+      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Répartition régionale</p>
+      <ul class="mt-6 space-y-4">
+        ${regions()
+          .map((region) => {
+            const nombre = clubs().filter((c) => c.region === region.id).length;
+            return `
+          <li>
+            <span class="flex items-baseline justify-between gap-3">
+              <span class="font-display text-sm font-semibold text-vert-950">${esc(nomRegion(region.id))}</span>
+              <span class="text-xs tabular-nums text-encre-clair">${nombre} club${nombre > 1 ? 's' : ''}</span>
+            </span>
+            <span class="mt-2 block h-1.5 w-full overflow-hidden rounded-full bg-sable-200">
+              <span class="block h-full rounded-full bg-vert-600" style="width:${Math.round((nombre / maximumRegion) * 100)}%"></span>
+            </span>
+          </li>`;
+          })
+          .join('')}
+      </ul>
+      <a href="clubs.html" class="btn btn--contour mt-8 flex w-full justify-center">
+        Parcourir les ${totalClubs} clubs <span aria-hidden="true">→</span>
+      </a>
+    </aside>`;
+
+  const cartesClubs = clubsMisEnAvant(3)
+    .map((club, index) => carteClubAccueil(club, { decalage: index === 1 ? 'md:mt-12' : '' }))
+    .join('');
+
+  qs('[data-zone="clubs-grille"]').innerHTML = `
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,15rem)_1fr] lg:gap-16">
+      ${indexRegions}
+      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 md:items-start">${cartesClubs}</div>
+    </div>`;
 
   /* ------------------------------------------------ galerie */
-  qs('[data-zone="galerie-grille"]').innerHTML = imagesGalerie({ limite: 8 })
-    .map((image, index) => vignetteGalerie(image, { delai: (index % 4) * 80 }))
-    .join('');
+  const photosGalerie = imagesGalerie({ limite: 8 });
+  const RATIOS = [
+    'aspect-[4/5]',
+    'aspect-[4/3]',
+    'aspect-square',
+    'aspect-[5/6]',
+    'aspect-square',
+    'aspect-[5/6]',
+    'aspect-[4/5]',
+    'aspect-[4/3]'
+  ];
+  const ROTATIONS = [
+    '-rotate-2',
+    'rotate-1',
+    '-rotate-[1.5deg]',
+    'rotate-2',
+    'rotate-1',
+    '-rotate-2',
+    'rotate-2',
+    '-rotate-[1.5deg]'
+  ];
+  const DEPARTS = ['', 'lg:mt-16', 'lg:mt-6', 'lg:mt-24'];
+  const colonnes = [[], [], [], []];
+  photosGalerie.forEach((photo, index) => colonnes[index % 4].push({ photo, index }));
+
+  qs('[data-zone="galerie-grille"]').innerHTML = `
+    <div class="grid grid-cols-2 items-start gap-5 sm:gap-7 lg:grid-cols-4 lg:gap-8">
+      ${colonnes
+        .map(
+          (colonne, c) => `
+        <div class="flex flex-col gap-5 sm:gap-7 lg:gap-8 ${DEPARTS[c] || ''}">
+          ${colonne
+            .map(({ photo, index }) =>
+              vignetteGalerieAccueil(photo, {
+                ratio: RATIOS[index % RATIOS.length],
+                rotation: ROTATIONS[index % ROTATIONS.length],
+                delai: (index % 4) * 90
+              })
+            )
+            .join('')}
+        </div>`
+        )
+        .join('')}
+    </div>`;
 
   /* ------------------------------------------------ partenaires */
   const partenaires = partenairesAffiches();
