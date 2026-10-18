@@ -91,6 +91,16 @@ function rendre() {
     .map((p) => `<p>${esc(p)}</p>`)
     .join('');
 
+  /* photo de l'encadré : facultative, la mise en page s'adapte si absente */
+  const zoneBrefImage = qs('[data-zone="bref-image"]');
+  const imageBref = federation.presentation?.image;
+  if (zoneBrefImage && imageBref) {
+    zoneBrefImage.innerHTML = `<img src="${esc(imageBref)}" alt="" width="1200" height="1200" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover">`;
+  } else if (zoneBrefImage) {
+    zoneBrefImage.remove();
+    qs('[data-zone="bref-grille"]')?.classList.remove('lg:grid-cols-[1.15fr_1fr]');
+  }
+
   /* ------------------------------------------------ chiffres clés (optionnels) */
   const zoneChiffres = qs('[data-zone="chiffres-cles"]');
   if (cles.length && zoneChiffres) {

@@ -78,20 +78,24 @@
     <section class="relative overflow-hidden bg-white py-14 lg:py-20">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <div class="revele overflow-hidden rounded-3xl border border-sable-200 bg-sable-50">
-          <div class="p-6 sm:p-8 lg:p-9">
-            <p class="etiquette text-vert-600">La fédération en bref</p>
-            <h2 class="titre-section mt-3 text-vert-950" data-zone="bref-titre"></h2>
-            <div data-zone="bref-texte" class="prose-fetoc prose-fetoc--compact mt-4 lg:columns-2 lg:gap-8"></div>
-            <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <a href="federation.html" class="btn btn--vert btn--sm">
-                Lire la présentation officielle
-                <span aria-hidden="true">→</span>
-              </a>
-              <a href="federation.html#identite" class="lien-fleche text-sm text-vert-700">
-                Identité et comité exécutif
-                <span aria-hidden="true">↗</span>
-              </a>
+          <div data-zone="bref-grille" class="grid lg:grid-cols-[1.15fr_1fr]">
+            <div class="p-6 sm:p-8 lg:p-9">
+              <p class="etiquette text-vert-600">La fédération en bref</p>
+              <h2 class="titre-section mt-3 text-vert-950" data-zone="bref-titre"></h2>
+              <div data-zone="bref-texte" class="prose-fetoc prose-fetoc--compact mt-4"></div>
+              <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <a href="federation.html" class="btn btn--vert btn--sm">
+                  Lire la présentation officielle
+                  <span aria-hidden="true">→</span>
+                </a>
+                <a href="federation.html#identite" class="lien-fleche text-sm text-vert-700">
+                  Identité et comité exécutif
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </div>
+
+            <div data-zone="bref-image" class="relative min-h-[15rem] lg:min-h-full"></div>
           </div>
 
           <!-- Chiffres clés de la fédération (fusionnés dans l'encadré) -->
