@@ -221,9 +221,9 @@ affiche en plus l'offre `devenir_partenaire`.
 
 ### 3.7 Blocs récapitulatifs « L'essentiel »
 
-Chaque page intérieure ouvre sur un bandeau récapitulatif rendu par
-`blocEssentiel({ points })` (`js/core/cartes.js`) dans la zone
-`data-zone="essentiel"`. Les points sont définis dans le module de la page et
+Chaque page intérieure (sauf « La Fédération ») ouvre sur un bandeau
+récapitulatif rendu par `blocEssentiel({ points })` (`js/core/cartes.js`) dans la
+zone `data-zone="essentiel"`. Les points sont définis dans le module de la page et
 résument la rubrique pour une lecture rapide, sans remplacer le contenu détaillé.
 
 ---
@@ -233,7 +233,7 @@ résument la rubrique pour une lecture rapide, sans remplacer le contenu détail
 | Page | Fichier(s) de données | Zones principales |
 | --- | --- | --- |
 | Accueil | `site`, `federation.chiffres_cles`, `disciplines`, `actualites`, `competitions`, `clubs`, `galerie`, `partenaires` | 9 blocs : bannière, fédération en bref, disciplines, actualités (3), prochains événements, clubs, images, partenaires, appel final |
-| La Fédération | `federation` | `presentation`, `histoire`, `missions`, `vision`, `organisation`, `bureau_executif`, `affiliations`, `documents` |
+| La Fédération | `federation` | `presentation`, `illustration`, `histoire`, `missions` |
 | Disciplines | `disciplines` | `entete`, `familles`, `liste`, `parcours`, `formations`, `sites_de_pratique` |
 | Clubs | `clubs` | `entete`, `regions`, `liste`, `devenir_club` |
 | Fiche club | `clubs` | lecture de `?id=<club.id>` |
@@ -262,7 +262,6 @@ résument la rubrique pour une lecture rapide, sans remplacer le contenu détail
 
 Les liens internes vers des ancres attendues par les autres pages :
 
-- `federation.html#documents`
 - `competitions.html#resultats`, `competitions.html#<evenement.id>`
 - `disciplines.html#<discipline.id>`
 - `club.html?id=<club.id>`

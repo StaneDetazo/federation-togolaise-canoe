@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>La Fédération - histoire, missions et organisation</title>
-  <meta name="description" content="Histoire, missions, comité exécutif et affiliations de la Fédération Togolaise de Canoë (FETOC).">
+  <title>La Fédération - histoire et missions</title>
+  <meta name="description" content="Histoire, missions et présentation de la Fédération Togolaise de Canoë (FETOC).">
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fédération Togolaise de Canoë">
   <meta property="og:title" content="La Fédération - FETOC">
-  <meta property="og:description" content="Histoire, missions, comité exécutif et affiliations de la Fédération Togolaise de Canoë.">
+  <meta property="og:description" content="Histoire, missions et présentation de la Fédération Togolaise de Canoë.">
   <meta property="og:url" content="http://localhost:8125/federation.html">
   <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
   <meta property="og:locale" content="fr_TG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="La Fédération - FETOC">
-  <meta name="twitter:description" content="Histoire, missions, comité exécutif et affiliations de la Fédération Togolaise de Canoë.">
+  <meta name="twitter:description" content="Histoire, missions et présentation de la Fédération Togolaise de Canoë.">
   <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
 </head>
@@ -38,7 +38,6 @@
 
   <main id="main">
     <div data-zone="bandeau"></div>
-    <div data-zone="essentiel"></div>
 
     <!-- Présentation -->
     <section id="identite" class="scroll-mt-32 bg-white py-16 lg:py-24">
@@ -50,10 +49,11 @@
           <div data-zone="presentation-texte" class="prose-fetoc mt-6"></div>
         </div>
         <aside class="revele revele--droite">
-          <div class="rounded-2xl border border-sable-200 bg-sable-50 p-6 sm:p-8">
-            <p class="font-display text-sm font-bold uppercase tracking-[0.12em] text-vert-800">Identité officielle</p>
-            <dl data-zone="identite-officielle" class="mt-5 divide-y divide-sable-200 text-sm"></dl>
-          </div>
+          <figure class="aspect-[4/5] overflow-hidden rounded-3xl border border-sable-200 shadow-doux lg:aspect-auto lg:h-full">
+            <img data-zone="identite-image" src="assets/img/gallery/galerie-02.jpeg"
+                 alt="La Fédération Togolaise de Canoë en images" width="1200" height="1500"
+                 loading="lazy" decoding="async" class="h-full w-full object-cover">
+          </figure>
         </aside>
       </div>
     </section>
@@ -78,50 +78,12 @@
           <h2 data-zone="missions-titre" class="mt-5 titre-section text-vert-950"></h2>
           <p data-zone="missions-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
         </header>
-        <div data-zone="missions-grille" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
-      </div>
-    </section>
-
-    <!-- Bureau exécutif -->
-    <section class="bg-sable-50 py-16 lg:py-24">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-          <div class="max-w-2xl">
-            <p class="etiquette text-vert-600">Gouvernance</p>
-            <h2 data-zone="bureau-titre" class="mt-5 titre-section text-vert-950"></h2>
-            <p data-zone="bureau-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
-          </div>
-        </header>
-        <div data-zone="bureau-grille" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
-        <p data-zone="bureau-note" class="revele mt-8 max-w-3xl rounded-2xl border border-sable-200 bg-white px-5 py-4 text-sm leading-relaxed text-encre-doux"></p>
-      </div>
-    </section>
-
-    <!-- Affiliations -->
-    <section class="bg-white py-16 lg:py-20">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele max-w-2xl">
-          <p class="etiquette text-vert-600">Affiliations</p>
-          <h2 data-zone="affiliations-titre" class="mt-5 titre-section text-vert-950"></h2>
-        </header>
-        <div data-zone="affiliations-grille" class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
-      </div>
-    </section>
-
-    <!-- Documents officiels -->
-    <section id="documents" class="scroll-mt-32 bg-sable-50 py-16 lg:py-24">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele max-w-3xl">
-          <p class="etiquette text-vert-600">Ressources</p>
-          <h2 data-zone="documents-titre" class="mt-5 titre-section text-vert-950"></h2>
-          <p data-zone="documents-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
-        </header>
-        <div data-zone="documents-liste" class="mt-10"></div>
+        <div data-zone="missions-grille" class="mt-10 grid gap-x-10 sm:grid-cols-2"></div>
       </div>
     </section>
 
     <!-- Appel -->
-    <section class="bg-white py-16 lg:py-20">
+    <section class="bg-sable-50 py-16 lg:py-20">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <div class="revele flex flex-col items-start gap-6 rounded-3xl bg-vert-900 px-8 py-10 text-white sm:flex-row sm:items-center sm:justify-between">
           <div>

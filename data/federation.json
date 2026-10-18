@@ -9,6 +9,11 @@
     "image": "assets/img/gallery/galerie-01.jpeg"
   },
 
+  "illustration": {
+    "image": "assets/img/gallery/galerie-02.jpeg",
+    "legende": "La Fédération Togolaise de Canoë en images"
+  },
+
   "identite_officielle": [
     { "libelle": "Dénomination", "valeur": "Fédération Togolaise de Canoë" },
     { "libelle": "Sigle", "valeur": "FETOC" },
