@@ -50,7 +50,6 @@ export function carteDiscipline(discipline) {
       <a href="disciplines.html#${esc(discipline.id)}" class="transition hover:text-vert-700">${esc(discipline.nom)}</a>
     </h3>
     <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
-    ${discipline.source ? `<p class="mt-4 text-xs text-encre-clair">Source : ${esc(discipline.source)}</p>` : ''}
     <a href="disciplines.html#${esc(discipline.id)}" class="lien-fleche mt-auto pt-5 text-sm font-semibold text-vert-700">
       En savoir plus ${icone('fleche-droite', 'h-4 w-4')}
     </a>
@@ -111,7 +110,6 @@ export function carteArticle(article, { variante = 'grille' } = {}) {
       <a href="${lien}" class="transition hover:text-vert-700">${esc(article.titre)}</a>
     </h3>
     <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(tronquer(article.chapeau, 150))}</p>
-    ${article.source ? `<p class="mt-4 text-xs text-encre-clair">Source : ${esc(article.source)}</p>` : ''}
     <div class="mt-auto flex items-center justify-between gap-3 pt-5">
       <a href="${lien}" class="lien-fleche text-sm font-semibold text-vert-700">
         Lire l'article ${icone('fleche-droite', 'h-4 w-4')}
@@ -185,7 +183,7 @@ export function carteClub(club, { variante = 'carte' } = {}) {
       </h3>
       ${lieu ? `<p class="mt-1 text-sm text-encre-clair">${esc(lieu)}</p>` : ''}
       <p class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(tronquer(club.presentation, 170))}</p>
-      ${club.source ? `<p class="mt-3 text-xs text-encre-clair">Source : ${esc(club.source)}</p>` : ''}
+  
     </article>`;
   }
 
@@ -199,7 +197,7 @@ export function carteClub(club, { variante = 'carte' } = {}) {
       <a href="${lien}" class="transition hover:text-vert-700">${esc(club.nom)}</a>
     </h3>
     <p class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(tronquer(club.presentation, 145))}</p>
-    ${club.source ? `<p class="mt-3 text-xs text-encre-clair">Source : ${esc(club.source)}</p>` : ''}
+
     <div class="mt-auto flex items-center justify-between gap-3 border-t border-sable-200 pt-5">
       <span class="text-xs text-encre-clair">Club affilié</span>
       <a href="${lien}" class="lien-fleche text-sm font-semibold text-vert-700">
@@ -267,15 +265,10 @@ export function carteEvenement(evenement, { variante = 'clair' } = {}) {
     )
     .join('');
 
-  const action =
-    evenement.statut === 'termine'
-      ? evenement.source
-        ? `<span class="text-xs ${texte}">Source : ${esc(evenement.source)}</span>`
-        : ''
-      : `<span class="pastille pastille--${sombre ? 'sombre' : 'vert'}">${icone(
-          'horloge',
-          'h-3.5 w-3.5'
-        )}${esc(libelleStatut(evenement.statut))}</span>`;
+  const action = `<span class="pastille pastille--${sombre ? 'sombre' : 'vert'}">${icone(
+    'horloge',
+    'h-3.5 w-3.5'
+  )}${esc(libelleStatut(evenement.statut))}</span>`;
 
   return `
   <article class="revele flex flex-col gap-5 rounded-2xl border p-6 transition ${socle} sm:flex-row sm:items-start">
@@ -585,7 +578,7 @@ export function blocEssentiel({ titre = "L'essentiel", points = [] } = {}) {
 }
 
 /* ---------------------------------------------------------------- squelettes */
-/** Bloc de chargement affiché lorsqu'une rubrique n'est pas encore publiée. */
+/** Bloc de chargement affiché lorsqu'une rubrique n'a pas encore de contenu. */
 export function blocSquelette({
   titre = '',
   texte = '',
@@ -611,7 +604,7 @@ export function blocSquelette({
   </div>`;
 }
 
-/** Message neutre pour une rubrique non encore documentée. */
+/** Message neutre pour une rubrique sans contenu. */
 export const blocAConfirmer = (texte, { iconeNom = 'info' } = {}) =>
   `<p class="revele flex items-start gap-2.5 rounded-2xl border border-sable-200 bg-sable-50 px-5 py-4 text-sm leading-relaxed text-encre-doux">
      <span class="mt-0.5 flex-none text-vert-600">${icone(iconeNom, 'h-5 w-5')}</span>

@@ -1,12 +1,12 @@
 {
   "entete": {
     "titre": "Partenaires",
-    "chapeau": "Plusieurs acteurs sont publiquement cités dans les activités de la fédération : institutions sportives, coopération et partenaires d'événements.",
-    "texte": "Être cité comme partenaire d'un événement ne signifie pas nécessairement être un partenaire institutionnel permanent de la fédération. Aucun logo n'est publié, faute d'autorisation confirmée.",
+    "chapeau": "Institutions et organisations qui accompagnent les activités de la fédération : institutions sportives, coopération et partenaires d'événements.",
+    "texte": "La fédération travaille avec des institutions sportives nationales et internationales, ainsi qu'avec des partenaires de coopération et d'événements.",
     "categories": [
       { "id": "institutionnel-sportif", "libelle": "Institutions sportives" },
       { "id": "cooperation", "libelle": "Coopération et appuis" },
-      { "id": "evenement", "libelle": "Cités lors d'événements" }
+      { "id": "evenement", "libelle": "Partenaires d'événements" }
     ]
   },
 
@@ -52,7 +52,7 @@
       "nom": "SNPT",
       "sigle": null,
       "categorie": "evenement",
-      "role": "Cité parmi les partenaires présents à la clôture du championnat national 2025.",
+      "role": "Partenaire présent à la clôture du championnat national 2025.",
       "logo": null,
       "url": null,
       "participation_confirmee": true,
@@ -64,7 +64,7 @@
       "nom": "APRODAT",
       "sigle": null,
       "categorie": "evenement",
-      "role": "Cité parmi les partenaires présents à la clôture du championnat national 2025.",
+      "role": "Partenaire présent à la clôture du championnat national 2025.",
       "logo": null,
       "url": null,
       "participation_confirmee": true,
@@ -76,7 +76,7 @@
       "nom": "ONG PADIE",
       "sigle": null,
       "categorie": "evenement",
-      "role": "Citée parmi les partenaires présents à la clôture du championnat national 2025.",
+      "role": "Partenaire présente à la clôture du championnat national 2025.",
       "logo": null,
       "url": null,
       "participation_confirmee": true,
@@ -88,7 +88,7 @@
   "devenir_partenaire": {
     "titre": "Devenir partenaire",
     "texte": "La fédération peut être soutenue par des partenaires institutionnels, techniques ou événementiels.",
-    "a_confirmer": "Les formes de partenariat et leurs contreparties ne sont pas encore publiées par la fédération. Pour en parler, écrivez à fetoc228@gmail.com ou utilisez le compte Instagram officiel de la FETOC.",
+    "a_confirmer": "Pour soutenir la fédération, écrivez à fetoc228@gmail.com.",
     "contreparties": []
   }
 }

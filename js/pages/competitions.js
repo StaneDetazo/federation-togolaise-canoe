@@ -1,6 +1,6 @@
 /* ==========================================================================
    FETOC - Page « Compétitions & résultats »
-   Rendez-vous documentés, filtres par saison et type, informations pratiques.
+   Rendez-vous, filtres par saison et type, informations pratiques.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
@@ -34,7 +34,7 @@ function rendre() {
     'bandeau',
     bandeauPage({
       titre: entete.titre || 'Compétitions & résultats',
-      chapeau: entete.chapeau || 'Les rendez-vous documentés de la fédération.',
+      chapeau: entete.chapeau || 'Les rendez-vous de la fédération.',
       image: 'assets/img/banner-competitions.svg',
       fil: 'Vie sportive',
       section: 'Compétitions & résultats'
@@ -64,7 +64,7 @@ function rendre() {
         {
           icone: 'calendrier',
           titre: 'Calendrier à venir',
-          texte: 'Le calendrier officiel de la saison en cours n’est pas encore publié.'
+          texte: 'Le calendrier de la saison en cours sera publié prochainement.'
         }
       ]
     })
@@ -155,7 +155,7 @@ function afficherAgenda() {
         'h-6 w-6'
       )}</span>
       <p class="mt-4 font-display text-lg font-bold text-vert-900">Aucun rendez-vous pour cette sélection</p>
-      <p class="mx-auto mt-2 max-w-md text-sm text-encre-doux">Modifiez la saison ou le type de rendez-vous, ou consultez l'ensemble des rendez-vous documentés.</p>
+      <p class="mx-auto mt-2 max-w-md text-sm text-encre-doux">Modifiez la saison ou le type de rendez-vous, ou consultez l'ensemble des rendez-vous.</p>
     </div>`;
   } else {
     zone.innerHTML = liste
@@ -169,7 +169,7 @@ function afficherAgenda() {
 
   const compteur = qs('[data-zone="compteur-evenements"]');
   if (compteur) {
-    compteur.textContent = `${liste.length} rendez-vous documenté${liste.length > 1 ? 's' : ''}.`;
+    compteur.textContent = `${liste.length} rendez-vous.`;
   }
 }
 

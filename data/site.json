@@ -26,7 +26,7 @@
     "telephones": [
       { "libelle": "(+228) 73 26 90 56", "url": "tel:+22873269056" },
       { "libelle": "(+228) 90 77 67 29", "url": "tel:+22890776729" },
-      { "libelle": "+33 7 58 65 77 81", "url": "tel:+33758657781", "whatsapp": true }
+      { "libelle": "+33 7 58 65 77 81", "url": "https://wa.me/33758657781", "whatsapp": true }
     ],
     "instagram": {
       "nom": "Instagram",

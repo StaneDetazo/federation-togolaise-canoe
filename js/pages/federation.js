@@ -187,7 +187,7 @@ function rendre() {
   remplir(
     'documents-liste',
     blocSquelette({
-      texte: documents.a_confirmer || 'Aucun document officiel n’est publié à ce jour.',
+      texte: documents.a_confirmer || 'Les documents officiels de la fédération seront publiés prochainement.',
       nombre: 3
     })
   );

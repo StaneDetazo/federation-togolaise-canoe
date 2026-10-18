@@ -1,8 +1,8 @@
 {
   "entete": {
     "titre": "Disciplines & activités",
-    "chapeau": "Les sources publiques permettent d'identifier trois activités associées à la FETOC : le canoë-kayak de vitesse, la pirogue traditionnelle et le para-canoë.",
-    "texte": "Cette liste correspond aux activités documentées à ce jour, et pas nécessairement à l'ensemble des disciplines proposées actuellement par la fédération et ses clubs."
+    "chapeau": "La FETOC encadre trois activités principales : le canoë-kayak de vitesse, la pirogue traditionnelle et le para-canoë.",
+    "texte": "Ces activités sont encadrées par la fédération et pratiquées dans ses clubs affiliés."
   },
 
   "familles": [
@@ -31,7 +31,7 @@
       "famille": "tradition",
       "icone": "pirogue",
       "a_la_une": true,
-      "description": "La promotion de la pirogue traditionnelle figure parmi les activités publiques de la FETOC, notamment lors du Relai Autour du Monde 2024 au Togo.",
+      "description": "La promotion de la pirogue traditionnelle figure parmi les activités de la FETOC, notamment lors du Relai Autour du Monde 2024 au Togo.",
       "source": "France Volontaires",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lac_Togo_Vogan.jpg/1280px-Lac_Togo_Vogan.jpg"
     },
@@ -50,13 +50,13 @@
 
   "parcours": {
     "titre": "Parcours du pratiquant",
-    "a_confirmer": "Le parcours de progression du pratiquant n'est pas encore documenté publiquement. Cette rubrique sera complétée par la fédération.",
+    "a_confirmer": "Cette rubrique sera complétée prochainement.",
     "etapes": []
   },
 
   "formations": {
     "titre": "Formations fédérales",
-    "introduction": "Formations publiquement documentées organisées par la fédération.",
+    "introduction": "Les formations organisées par la fédération.",
     "liste": [
       {
         "nom": "Formation d'entraîneurs de niveau 1",
@@ -66,12 +66,12 @@
         "source": "ICF"
       }
     ],
-    "a_confirmer": "Le calendrier des formations n'est pas encore publié par la fédération."
+    "a_confirmer": "Le calendrier des formations sera publié prochainement."
   },
 
   "sites_de_pratique": {
     "titre": "Lieux associés",
-    "introduction": "Les lieux publiquement associés aux activités de la fédération.",
+    "introduction": "Les lieux associés aux activités de la fédération.",
     "liste": [
       { "nom": "Agbodrafo", "region": "Préfecture des Lacs", "usage": "Siège de la fédération et assemblée générale constitutive du 13 février 2024", "image": null },
       { "nom": "Kpémé", "region": "Préfecture des Lacs", "usage": "Clôture du championnat national 2025", "image": null },

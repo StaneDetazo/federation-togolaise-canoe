@@ -1,8 +1,8 @@
 {
   "entete": {
     "titre": "Actualités",
-    "chapeau": "Trois publications publiques documentent l'activité récente de la fédération : le Relai Autour du Monde 2024, la formation d'entraîneurs de 2025 et le championnat national 2025.",
-    "texte": "D'autres publications seront ajoutées au fur et à mesure de l'activité de la fédération."
+    "chapeau": "La vie de la fédération à travers ses derniers rendez-vous : le Relai Autour du Monde 2024, la formation d'entraîneurs de 2025 et le championnat national 2025.",
+    "texte": "D'autres actualités seront ajoutées au fil de l'activité de la fédération."
   },
 
   "categories": [
@@ -24,7 +24,7 @@
       "lieu": "Kpémé",
       "temps_lecture": 1,
       "a_la_une": true,
-      "chapeau": "La dernière journée du championnat national s'est tenue à Kpémé le 6 septembre 2025. Le compte rendu sportif fait état de 13 clubs et de 193 athlètes engagés.",
+      "chapeau": "La dernière journée du championnat national s'est tenue à Kpémé le 6 septembre 2025. Le championnat a réuni 13 clubs et 193 athlètes.",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2014_ICF_Canoe_Sprint_World_Championships_-_Race_178_-_C4_M_1000_-_VC.jpg/1280px-2014_ICF_Canoe_Sprint_World_Championships_-_Race_178_-_C4_M_1000_-_VC.jpg",
       "tags": ["Championnat national", "Kpémé", "Résultats"],
       "source": "Ahouévi Info",
@@ -33,9 +33,8 @@
         { "type": "ul", "items": [
           "13 clubs engagés, contre six auparavant",
           "193 athlètes",
-          "Clubs publiquement cités : AS Donsa (Kpémé), Anguilles d'Aného, AS Barracuda"
-        ] },
-        { "type": "p", "texte": "Source : compte rendu sportif publié par Ahouévi Info." }
+          "Clubs engagés : AS Donsa (Kpémé), Anguilles d'Aného, AS Barracuda"
+        ] }
       ],
       "galerie": [],
       "articles_lies": ["formation-entraineurs-niveau-1-2025", "relai-autour-du-monde-2024"]
@@ -57,8 +56,7 @@
       "source": "Fédération internationale de canoë-kayak (ICF)",
       "contenu": [
         { "type": "p", "texte": "En avril 2025, la fédération a organisé à Aného une formation d'entraîneurs de niveau 1." },
-        { "type": "p", "texte": "La session s'inscrit dans le cadre de la Fédération internationale de canoë-kayak (ICF), qui accompagne la formation et le développement du canoë au Togo." },
-        { "type": "p", "texte": "Source : Fédération internationale de canoë-kayak (ICF)." }
+        { "type": "p", "texte": "La session s'inscrit dans le cadre de la Fédération internationale de canoë-kayak (ICF), qui accompagne la formation et le développement du canoë au Togo." }
       ],
       "galerie": [],
       "articles_lies": ["championnat-national-2025-kpeme", "relai-autour-du-monde-2024"]
@@ -80,8 +78,7 @@
       "source": "France Volontaires",
       "contenu": [
         { "type": "p", "texte": "En 2024, la FETOC a pris part à l'organisation du Relai Autour du Monde au Togo." },
-        { "type": "p", "texte": "L'événement a mobilisé des athlètes et mis en avant le kayak ainsi que la pirogue traditionnelle." },
-        { "type": "p", "texte": "Source : France Volontaires." }
+        { "type": "p", "texte": "L'événement a mobilisé des athlètes et mis en avant le kayak ainsi que la pirogue traditionnelle." }
       ],
       "galerie": [],
       "articles_lies": ["championnat-national-2025-kpeme", "formation-entraineurs-niveau-1-2025"]

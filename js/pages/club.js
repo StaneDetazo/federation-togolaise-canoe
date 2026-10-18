@@ -1,6 +1,6 @@
 /* ==========================================================================
    FETOC - Fiche d'un club affilié (page dynamique)
-   Lit l'identifiant « ?id=… » et affiche les informations documentées.
+   Lit l'identifiant « ?id=… » et affiche les informations du club.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
@@ -79,18 +79,12 @@ function rendre() {
                 ? `<p class="mt-4 text-sm leading-relaxed text-encre-clair">${esc(club.note)}</p>`
                 : ''
             }
-            ${
-              club.source
-                ? `<p class="mt-4 text-xs text-encre-clair">Source : ${esc(club.source)}</p>`
-                : ''
-            }
 
             <div class="mt-12">
               <h3 class="font-display text-lg font-bold text-vert-950">Informations complémentaires</h3>
               <div class="mt-5">
                 ${blocSquelette({
-                  texte:
-                    'Les informations détaillées sur ce club (effectifs, encadrement, site de pratique et coordonnées) ne sont pas encore publiées par la fédération.',
+                  texte: 'Les informations détaillées sur ce club seront ajoutées prochainement.',
                   nombre: 3,
                   colonnes: 'sm:grid-cols-3'
                 })}
@@ -118,15 +112,6 @@ function rendre() {
                            <span class="mt-0.5 flex-none text-vert-600">${icone('reseau', 'h-4 w-4')}</span>
                            <div><dt class="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-encre-clair">Région</dt>
                            <dd class="text-vert-950">${esc(region)}</dd></div>
-                         </div>`
-                      : ''
-                  }
-                  ${
-                    club.source
-                      ? `<div class="flex items-start gap-3">
-                           <span class="mt-0.5 flex-none text-vert-600">${icone('info', 'h-4 w-4')}</span>
-                           <div><dt class="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-encre-clair">Source</dt>
-                           <dd class="text-vert-950">${esc(club.source)}</dd></div>
                          </div>`
                       : ''
                   }
@@ -159,7 +144,7 @@ function blocAutresClubs(club) {
         <header class="revele flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="etiquette text-vert-600">Annuaire</p>
-            <h2 class="mt-4 font-display text-2xl font-bold text-vert-950">Autres clubs publiquement cités</h2>
+            <h2 class="mt-4 font-display text-2xl font-bold text-vert-950">Autres clubs affiliés</h2>
           </div>
           <a href="clubs.html" class="btn btn--contour flex-none">Voir tous les clubs</a>
         </header>

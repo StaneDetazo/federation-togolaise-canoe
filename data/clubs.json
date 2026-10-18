@@ -1,8 +1,8 @@
 {
   "entete": {
     "titre": "Clubs affiliés",
-    "chapeau": "Le championnat national 2025 a réuni 13 clubs affiliés à la FETOC. Trois d'entre eux sont publiquement cités dans les comptes rendus de cette compétition.",
-    "texte": "La liste complète et actualisée des clubs affiliés, leurs responsables et leurs coordonnées ne sont pas encore publiés par la fédération."
+    "chapeau": "Le championnat national 2025 a réuni 13 clubs affiliés à la FETOC, dont AS Donsa, les Anguilles d'Aného et AS Barracuda.",
+    "texte": "La FETOC rassemble les clubs et associations qui pratiquent le canoë-kayak et les disciplines associées au Togo."
   },
 
   "regions": [{ "id": "maritime", "libelle": "Maritime" }],
@@ -16,8 +16,8 @@
       "ville": "Kpémé",
       "a_la_une": true,
       "site_pratique": "Kpémé",
-      "presentation": "Club cité dans le compte rendu du championnat national 2025, où il s'est distingué par son nombre de médailles.",
-      "note": "Effectifs, encadrement et coordonnées non publiés.",
+      "presentation": "Club affilié à la FETOC, engagé au championnat national 2025, où il s'est distingué par son nombre de médailles.",
+      "note": null,
       "source": "Championnat national 2025 - ahouevinfo.tg",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Lome_Beach_Togo_2.jpg/1280px-Lome_Beach_Togo_2.jpg",
       "labels": []
@@ -30,8 +30,8 @@
       "ville": "Aného",
       "a_la_une": true,
       "site_pratique": "Aného",
-      "presentation": "Club cité dans les résultats du championnat national 2025.",
-      "note": "Effectifs, encadrement et coordonnées non publiés.",
+      "presentation": "Club affilié à la FETOC, engagé au championnat national 2025.",
+      "note": null,
       "source": "Championnat national 2025 - ahouevinfo.tg",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Baguida_-_Togo.jpg/1280px-Baguida_-_Togo.jpg",
       "labels": []
@@ -44,8 +44,8 @@
       "ville": null,
       "a_la_une": true,
       "site_pratique": null,
-      "presentation": "Club cité dans le classement de la catégorie senior masculine en 2025.",
-      "note": "Ville, effectifs et coordonnées non publiés.",
+      "presentation": "Club affilié à la FETOC, engagé au championnat national 2025 dans la catégorie senior masculine.",
+      "note": null,
       "source": "Championnat national 2025 - ahouevinfo.tg",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Canoe_Training_at_HM_%2827579943322%29.jpg/1280px-Canoe_Training_at_HM_%2827579943322%29.jpg",
       "labels": []
@@ -55,7 +55,7 @@
   "devenir_club": {
     "titre": "Créer ou affilier un club",
     "texte": "Toute association souhaitant organiser la pratique du canoë-kayak au Togo peut solliciter son affiliation auprès de la fédération.",
-    "a_confirmer": "Les conditions d'affiliation (pièces à fournir, frais, délais de traitement) ne sont pas encore publiées par la fédération. Pour engager une démarche, écrivez à fetoc228@gmail.com ou utilisez le compte Instagram officiel de la FETOC.",
+    "a_confirmer": "Pour créer ou affilier un club, écrivez à la fédération à fetoc228@gmail.com.",
     "conditions": [],
     "etapes": []
   }

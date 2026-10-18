@@ -144,7 +144,7 @@ function gabaritMenuMobile(pageActive) {
             (tel) => `<p class="flex items-center gap-2.5">${icone(
               tel.whatsapp ? 'whatsapp' : 'telephone',
               'h-4 w-4 flex-none text-vert-600'
-            )}<a class="hover:text-vert-700" href="${esc(tel.url)}">${esc(tel.libelle)}</a></p>`
+            )}<a class="hover:text-vert-700" href="${esc(tel.url)}"${tel.whatsapp ? ' target="_blank" rel="noopener noreferrer"' : ''}>${esc(tel.libelle)}</a></p>`
           )
           .join('')}
         <p class="flex items-center gap-2.5">${icone(
@@ -219,7 +219,7 @@ function gabaritPied() {
                 (tel) => `<li class="flex items-center gap-2.5">${icone(
                   tel.whatsapp ? 'whatsapp' : 'telephone',
                   'h-4 w-4 flex-none text-soleil-400'
-                )}<a href="${esc(tel.url)}" class="transition hover:text-white">${esc(tel.libelle)}</a></li>`
+                )}<a href="${esc(tel.url)}"${tel.whatsapp ? ' target="_blank" rel="noopener noreferrer"' : ''} class="transition hover:text-white">${esc(tel.libelle)}</a></li>`
               )
               .join('')}
             <li class="flex items-center gap-2.5">${icone(

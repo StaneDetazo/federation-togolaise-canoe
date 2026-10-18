@@ -22,7 +22,7 @@
 
   "histoire": {
     "titre": "Historique",
-    "introduction": "Les étapes publiquement documentées de la vie de la fédération, établies à partir de sources publiées.",
+    "introduction": "Les grandes étapes de la fédération.",
     "etapes": [
       {
         "annee": "13 février 2024",
@@ -42,14 +42,14 @@
       {
         "annee": "Septembre 2025",
         "titre": "Championnat national",
-        "texte": "Le championnat national se clôture à Kpémé. Le compte rendu sportif fait état de 13 clubs et de 193 athlètes engagés."
+        "texte": "Le championnat national se clôture à Kpémé, avec 13 clubs et 193 athlètes engagés."
       }
     ]
   },
 
   "missions": {
     "titre": "Nos missions",
-    "introduction": "Les missions publiquement documentées de la fédération.",
+    "introduction": "Les missions de la fédération.",
     "liste": [
       {
         "titre": "Promouvoir la pratique",
@@ -88,7 +88,7 @@
     "titre": "Comité exécutif",
     "introduction": "Le comité exécutif issu de l'assemblée générale constitutive du 13 février 2024 compte sept membres, pour un mandat de quatre ans renouvelable une fois.",
     "composition": "7 membres",
-    "a_confirmer": "La présidence est la seule fonction publiquement documentée à ce jour. Les noms et attributions des six autres membres, ainsi que leurs coordonnées professionnelles, n'ont pas encore été publiés par la fédération.",
+    "a_confirmer": "La composition complète du comité exécutif sera communiquée prochainement.",
     "membres": [
       {
         "poste": "Président",
@@ -121,7 +121,7 @@
   "documents": {
     "titre": "Documents officiels",
     "introduction": "Statuts, règlement intérieur et rapports de la fédération.",
-    "a_confirmer": "Aucun document officiel n'est publié à ce jour. Cette rubrique sera complétée dès leur mise à disposition par la fédération.",
+    "a_confirmer": "Les documents officiels de la fédération seront publiés prochainement.",
     "liste": []
   },
 
@@ -131,7 +131,7 @@
       { "id": "clubs", "libelle": "Clubs affiliés", "source": "fixe", "valeur": "13", "suffixe": "", "note": "championnat national 2025" },
       { "id": "athetes", "libelle": "Athlètes engagés", "source": "fixe", "valeur": "193", "suffixe": "", "note": "championnat national 2025" },
       { "id": "creation", "libelle": "Année de création", "source": "fixe", "valeur": "2024", "suffixe": "" },
-      { "id": "disciplines", "libelle": "Disciplines documentées", "source": "calcule", "cle": "disciplines", "suffixe": "" }
+      { "id": "disciplines", "libelle": "Disciplines", "source": "calcule", "cle": "disciplines", "suffixe": "" }
     ]
   }
 }

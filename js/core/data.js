@@ -195,7 +195,7 @@ export function filtrerActualites({ categorie = 'toutes', requete = '' } = {}) {
 /* ---------------------------------------------------------------- partenaires */
 export const partenaires = () => data.partenaires?.liste ?? [];
 
-/** Partenaires publiquement cités dans les activités de la fédération. */
+/** Partenaires de la fédération. */
 export function partenairesAffiches() {
   return partenaires().filter((p) => p.participation_confirmee === true);
 }

@@ -1,6 +1,6 @@
 /* ==========================================================================
    FETOC - Page « Clubs affiliés »
-   Annuaire filtrable (région, recherche) + repères documentés.
+   Annuaire filtrable (région, recherche) + repères.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
@@ -53,18 +53,18 @@ function rendre() {
         },
         {
           icone: 'kayak',
-          titre: 'Trois clubs cités',
+          titre: 'Clubs engagés',
           texte: 'AS Donsa (Kpémé), Anguilles d’Aného et AS Barracuda.'
         },
         {
           icone: 'lieu',
-          titre: 'Lieux documentés',
+          titre: 'Lieux de pratique',
           texte: 'Agbodrafo, Kpémé et Aného, dans la préfecture des Lacs.'
         },
         {
           icone: 'main',
           titre: 'Devenir club affilié',
-          texte: 'Les conditions d’affiliation ne sont pas encore publiées.'
+          texte: 'Écrivez à la fédération pour affilier un club.'
         }
       ]
     })
@@ -168,7 +168,7 @@ function afficherGrille() {
         'h-6 w-6'
       )}</span>
       <p class="mt-4 font-display text-lg font-bold text-vert-900">Aucun club ne correspond à ces critères</p>
-      <p class="mx-auto mt-2 max-w-md text-sm text-encre-doux">Seuls les clubs publiquement cités sont listés. Élargissez la recherche ou réinitialisez les filtres.</p>
+      <p class="mx-auto mt-2 max-w-md text-sm text-encre-doux">Élargissez la recherche ou réinitialisez les filtres.</p>
     </div>`;
   } else {
     grille.innerHTML = liste.map((club) => carteClub(club, { variante: 'liste' })).join('');
@@ -179,7 +179,7 @@ function afficherGrille() {
   if (compteur) {
     compteur.textContent = `${liste.length} club${liste.length > 1 ? 's' : ''} affiché${
       liste.length > 1 ? 's' : ''
-    } sur ${clubs().length} publiquement cité${clubs().length > 1 ? 's' : ''}.`;
+    } sur ${clubs().length} club${clubs().length > 1 ? 's' : ''}.`;
   }
 }
 

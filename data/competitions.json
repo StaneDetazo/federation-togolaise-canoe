@@ -1,15 +1,15 @@
 {
   "entete": {
     "titre": "Compétitions & résultats",
-    "chapeau": "Les rendez-vous publiquement documentés de la fédération : le championnat national 2025, la formation d'entraîneurs de niveau 1 et la participation au Relai Autour du Monde en 2024.",
-    "texte": "Le calendrier officiel de la saison en cours n'est pas encore publié par la fédération, et les résultats détaillés par catégorie ne sont pas disponibles."
+    "chapeau": "Les rendez-vous de la fédération : le championnat national 2025, la formation d'entraîneurs de niveau 1 et la participation au Relai Autour du Monde en 2024.",
+    "texte": "Le calendrier de la saison en cours et les résultats détaillés par catégorie seront publiés prochainement."
   },
 
   "saison_courante": null,
 
   "saisons": [
-    { "id": "2025", "libelle": "2025", "statut": "documentée" },
-    { "id": "2024", "libelle": "2024", "statut": "documentée" }
+    { "id": "2025", "libelle": "2025", "statut": "publiee" },
+    { "id": "2024", "libelle": "2024", "statut": "publiee" }
   ],
 
   "types": [
@@ -39,7 +39,7 @@
       "ville": "Kpémé",
       "organisateur": "Fédération Togolaise de Canoë",
       "statut": "termine",
-      "description": "Clôture du championnat national à Kpémé. Le compte rendu sportif fait état de 13 clubs et de 193 athlètes engagés.",
+      "description": "Clôture du championnat national à Kpémé, qui a réuni 13 clubs et 193 athlètes.",
       "chiffres": [
         { "libelle": "Clubs engagés", "valeur": "13" },
         { "libelle": "Athlètes", "valeur": "193" }
@@ -92,7 +92,7 @@
 
   "informations_pratiques": {
     "titre": "Informations pratiques",
-    "a_confirmer": "Les conditions de participation, les licences, les frais d'engagement et le règlement sportif ne sont pas encore publiés par la fédération.",
+    "a_confirmer": "Pour connaître les conditions de participation, les licences et les frais d'engagement, écrivez à la fédération à fetoc228@gmail.com.",
     "licences": []
   }
 }

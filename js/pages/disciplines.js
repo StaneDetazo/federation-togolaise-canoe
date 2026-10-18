@@ -38,7 +38,7 @@ function rendre() {
     'bandeau',
     bandeauPage({
       titre: entete.titre || 'Disciplines & activités',
-      chapeau: entete.chapeau || 'Les activités documentées de la fédération.',
+      chapeau: entete.chapeau || 'Les activités de la fédération.',
       image: 'assets/img/banner-disciplines.svg',
       fil: 'Pratique',
       section: 'Disciplines & activités'
@@ -197,11 +197,6 @@ function afficherFiches() {
             </div>
           </div>
           <p class="text-sm leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
-          ${
-            discipline.source
-              ? `<p class="text-xs text-encre-clair">Source : ${esc(discipline.source)}</p>`
-              : ''
-          }
         </article>`
       )
       .join('')

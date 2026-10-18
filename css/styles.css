@@ -910,7 +910,7 @@ p {
   background-size: 22px 22px;
 }
 
-/* Squelettes de chargement : rubriques dont le contenu n'est pas encore publié. */
+/* Squelettes de chargement : rubriques dont le contenu n'a pas encore été ajouté. */
 .squelette {
   position: relative;
   overflow: hidden;

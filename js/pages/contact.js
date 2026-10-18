@@ -1,7 +1,8 @@
 /* ==========================================================================
    FETOC - Page « Contact »
-   Seules les coordonnées publiquement documentées : compte Instagram
-   officiel et fiche auprès de la Fédération internationale de canoë-kayak.
+   Coordonnées officielles : e-mail, téléphone (dont WhatsApp),
+   compte Instagram et fiche auprès de la Fédération internationale
+   de canoë-kayak.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
@@ -97,7 +98,7 @@ function rendre() {
           ${coord.telephones
             .map(
               (tel) => `<li class="flex flex-wrap items-center gap-2">
-            <a href="${esc(tel.url)}" class="inline-flex items-center gap-2 text-sm font-semibold text-vert-700 transition hover:text-vert-900">
+            <a href="${esc(tel.url)}"${tel.whatsapp ? ' target="_blank" rel="noopener noreferrer"' : ''} class="inline-flex items-center gap-2 text-sm font-semibold text-vert-700 transition hover:text-vert-900">
               ${icone(tel.whatsapp ? 'whatsapp' : 'telephone', 'h-4 w-4 flex-none')}${esc(tel.libelle)}
             </a>
             ${tel.whatsapp ? '<span class="pastille pastille--vert">WhatsApp</span>' : ''}
@@ -165,14 +166,14 @@ function rendre() {
     {
       icone: 'reseau',
       titre: 'Rejoindre un club',
-      texte: 'Consulter les clubs affiliés publiquement cités.',
+      texte: 'Consulter les clubs affiliés.',
       libelle: 'Clubs affiliés',
       url: 'clubs.html'
     },
     {
       icone: 'trophee',
       titre: 'Suivre la compétition',
-      texte: 'Les rendez-vous et résultats documentés de la fédération.',
+      texte: 'Les rendez-vous et les résultats de la fédération.',
       libelle: 'Compétitions & résultats',
       url: 'competitions.html'
     }
@@ -198,7 +199,7 @@ function rendre() {
       .join('')
   );
 
-  /* ------------------------------------------------ partenaires cités */
+  /* ------------------------------------------------ partenaires */
   const partenaires = partenairesAffiches();
   remplir(
     'contact-note',
@@ -206,9 +207,9 @@ function rendre() {
     <div class="rounded-3xl border border-sable-200 bg-sable-50 p-8 sm:p-10">
       <div class="max-w-2xl">
         <p class="etiquette text-vert-600">Partenaires</p>
-        <h2 class="mt-4 font-display text-2xl font-bold text-vert-950">Acteurs publiquement cités</h2>
+        <h2 class="mt-4 font-display text-2xl font-bold text-vert-950">Institutions &amp; partenaires</h2>
         <p class="mt-3 text-sm leading-relaxed text-encre-doux">
-          Ces acteurs apparaissent dans les activités documentées de la fédération. Être cité lors d’un événement ne signifie pas nécessairement un partenariat institutionnel permanent.
+          Institutions et organisations qui accompagnent les activités de la fédération.
         </p>
       </div>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -169,7 +169,6 @@ function rendre() {
       <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Clubs affiliés</p>
       <p class="mt-4 font-display text-4xl font-extrabold text-vert-950">${esc(String(totalClubs))}</p>
       <p class="mt-1 text-sm leading-relaxed text-encre-doux">clubs engagés au championnat national 2025.</p>
-      <p class="mt-4 text-sm leading-relaxed text-encre-doux">La liste complète et les coordonnées des clubs ne sont pas encore publiées par la fédération. Trois clubs sont publiquement cités à ce jour.</p>
       <a href="clubs.html" class="btn btn--contour mt-8 flex w-full justify-center">
         Voir les clubs <span aria-hidden="true">→</span>
       </a>
