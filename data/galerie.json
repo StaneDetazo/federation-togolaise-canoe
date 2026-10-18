@@ -1,31 +1,11 @@
 {
   "entete": {
     "titre": "La fédération en images",
-    "chapeau": "Entraînements sur le lac, descentes de rivière, régates et sessions de formation : la pagaie togolaise en quelques images.",
-    "texte": "Les photographies publiées le sont avec l'accord de la fédération et des personnes représentées."
+    "chapeau": "Compétitions, entraînements et formation : la vie de la fédération en photographies.",
+    "a_confirmer": "Aucune photographie officielle n'est encore disponible. Cette galerie sera alimentée par les images de la fédération dès leur mise à disposition."
   },
 
-  "categories": [
-    { "id": "toutes", "libelle": "Toutes" },
-    { "id": "competitions", "libelle": "Compétitions" },
-    { "id": "entrainements", "libelle": "Entraînements" },
-    { "id": "formation", "libelle": "Formation" },
-    { "id": "initiation", "libelle": "Initiation" },
-    { "id": "vie-federale", "libelle": "Vie fédérale" }
-  ],
+  "categories": [],
 
-  "liste": [
-    { "id": "g1", "src": "assets/img/galerie-1.svg", "titre": "Départ de la finale seniors", "categorie": "competitions", "date": "2026-05-23", "lieu": "Lac Togo - Togoville" },
-    { "id": "g2", "src": "assets/img/galerie-2.svg", "titre": "Atelier technique sur l'eau", "categorie": "formation", "date": "2026-08-18", "lieu": "Base nautique de Togoville" },
-    { "id": "g3", "src": "assets/img/galerie-3.svg", "titre": "Séance de vitesse U16", "categorie": "entrainements", "date": "2026-11-04", "lieu": "Lagune de Lomé" },
-    { "id": "g4", "src": "assets/img/galerie-4.svg", "titre": "Initiation scolaire", "categorie": "initiation", "date": "2026-09-24", "lieu": "Lagune de Bè" },
-    { "id": "g5", "src": "assets/img/galerie-5.svg", "titre": "Remise des diplômes d'éducateurs", "categorie": "formation", "date": "2026-08-18", "lieu": "Togoville" },
-    { "id": "g6", "src": "assets/img/galerie-6.svg", "titre": "Descente du Mono", "categorie": "competitions", "date": "2026-01-17", "lieu": "Fleuve Mono - Aného" },
-    { "id": "g7", "src": "assets/img/galerie-7.svg", "titre": "Séance de paracanoë", "categorie": "initiation", "date": "2026-09-15", "lieu": "Lagune de Lomé" },
-    { "id": "g8", "src": "assets/img/galerie-8.svg", "titre": "Régate de dragon boat", "categorie": "competitions", "date": "2026-03-07", "lieu": "Lac Togo" },
-    { "id": "g9", "src": "assets/img/galerie-9.svg", "titre": "Opération lagune propre", "categorie": "vie-federale", "date": "2026-07-10", "lieu": "Berges de la lagune de Lomé" },
-    { "id": "g10", "src": "assets/img/galerie-10.svg", "titre": "Relais par clubs", "categorie": "competitions", "date": "2026-05-24", "lieu": "Lac Togo" },
-    { "id": "g11", "src": "assets/img/galerie-11.svg", "titre": "Stage national de rentrée", "categorie": "entrainements", "date": "2026-08-30", "lieu": "Togoville" },
-    { "id": "g12", "src": "assets/img/galerie-12.svg", "titre": "Randonnée nautique sur le lac", "categorie": "entrainements", "date": "2026-10-11", "lieu": "Lac Togo" }
-  ]
+  "liste": []
 }

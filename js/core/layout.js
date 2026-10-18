@@ -34,8 +34,6 @@ function lienNav(item, pageActive) {
 /* ---------------------------------------------------------------- en-tête */
 function gabaritEntete(pageActive) {
   const identite = site();
-  const coord = contact();
-  const tel = (coord.telephone || '').replace(/\s/g, '');
 
   return `
   <div class="barre-progression" id="barre-progression" aria-hidden="true"></div>
@@ -44,14 +42,13 @@ function gabaritEntete(pageActive) {
       <div class="mx-auto flex max-w-ecran flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-1.5 sm:px-6">
         <p class="flex items-center gap-2 text-[0.72rem] font-medium tracking-wide text-vert-100">
           ${icone('ancre', 'h-3.5 w-3.5 text-soleil-400')}
-          <span class="hidden sm:inline">Fédération reconnue par le Ministère des Sports et des Loisirs</span>
+          <span class="hidden sm:inline">${esc(identite.baseline)}</span>
           <span class="sm:hidden">${esc(identite.sigle)} - ${esc(identite.pays)}</span>
         </p>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5">
-          <a href="tel:${esc(tel)}" class="hidden items-center gap-1.5 text-[0.72rem] font-medium text-vert-100 transition hover:text-white md:flex">
-            ${icone('telephone', 'h-3.5 w-3.5')}${esc(coord.telephone)}</a>
-          <a href="mailto:${esc(coord.email)}" class="hidden items-center gap-1.5 text-[0.72rem] font-medium text-vert-100 transition hover:text-white lg:flex">
-            ${icone('mail', 'h-3.5 w-3.5')}${esc(coord.email)}</a>
+          <a href="https://www.canoeicf.com/" target="_blank" rel="noopener noreferrer"
+             class="hidden items-center gap-1.5 text-[0.72rem] font-medium text-vert-100 transition hover:text-white lg:flex">
+            ${icone('globe', 'h-3.5 w-3.5')}Fédération internationale (ICF)</a>
           <div class="flex items-center gap-1.5">${pastillesSociales('', 'clair')}</div>
         </div>
       </div>
@@ -131,17 +128,17 @@ function gabaritMenuMobile(pageActive) {
         <p class="flex items-start gap-2.5">${icone(
           'lieu',
           'mt-0.5 h-4 w-4 flex-none text-vert-600'
-        )}<span>${esc(coord.adresse)}<br>${esc(coord.ville)}, ${esc(coord.pays)}</span></p>
+        )}<span>Siège : ${esc(coord.siege)}<br>${esc(coord.pays)}</span></p>
         <p class="flex items-center gap-2.5">${icone(
-          'telephone',
+          'instagram',
           'h-4 w-4 flex-none text-vert-600'
-        )}<a class="hover:text-vert-700" href="tel:${esc((coord.telephone || '').replace(/\s/g, ''))}">${esc(
-          coord.telephone
+        )}<a class="hover:text-vert-700" href="${esc(coord.instagram?.url)}" target="_blank" rel="noopener noreferrer">${esc(
+          coord.instagram?.pseudo
         )}</a></p>
-        <p class="flex items-center gap-2.5">${icone(
-          'mail',
-          'h-4 w-4 flex-none text-vert-600'
-        )}<a class="hover:text-vert-700" href="mailto:${esc(coord.email)}">${esc(coord.email)}</a></p>
+        <p class="flex items-start gap-2.5">${icone(
+          'info',
+          'mt-0.5 h-4 w-4 flex-none text-vert-600'
+        )}<span>${esc(coord.note)}</span></p>
       </div>
       <div class="flex items-center gap-2">${pastillesSociales('', 'sombre')}</div>
     </div>
@@ -173,9 +170,7 @@ function gabaritPied() {
             </div>
           </div>
           <p class="mt-4 max-w-sm text-sm leading-relaxed text-vert-100/80">${esc(pied.description || '')}</p>
-          <p class="mt-4 flex items-center gap-2 text-sm font-medium text-soleil-300">${icone('onde', 'h-4 w-4')}${esc(
-    identite.devise
-  )}</p>
+          <p class="mt-4 flex items-center gap-2 text-sm font-medium text-soleil-300">${icone('ancre', 'h-4 w-4')}Fondée le 13 février 2024 à Agbodrafo</p>
           <div class="mt-5 flex items-center gap-2">${pastillesSociales('', 'clair')}</div>
         </div>
 
@@ -190,22 +185,25 @@ function gabaritPied() {
         </nav>
 
         <div>
-          <p class="font-display text-sm font-bold uppercase tracking-[0.12em]">Nous contacter</p>
+          <p class="font-display text-sm font-bold uppercase tracking-[0.12em]">Nous joindre</p>
           <ul class="mt-4 space-y-3 text-sm text-vert-100/85">
-            <li class="flex items-start gap-2.5">${icone('lieu', 'mt-0.5 h-4 w-4 flex-none text-soleil-400')}<span>${esc(
-    coord.adresse
-  )}<br>${esc(coord.ville)}, ${esc(coord.pays)}</span></li>
+            <li class="flex items-start gap-2.5">${icone('lieu', 'mt-0.5 h-4 w-4 flex-none text-soleil-400')}<span>Siège : ${esc(
+    coord.siege
+  )}<br>${esc(coord.pays)}</span></li>
             <li class="flex items-center gap-2.5">${icone(
-              'telephone',
+              'instagram',
               'h-4 w-4 flex-none text-soleil-400'
-            )}<a href="tel:${esc((coord.telephone || '').replace(/\s/g, ''))}" class="transition hover:text-white">${esc(
-    coord.telephone
+            )}<a href="${esc(coord.instagram?.url)}" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">${esc(
+    coord.instagram?.pseudo
   )}</a></li>
             <li class="flex items-center gap-2.5">${icone(
-              'mail',
+              'globe',
               'h-4 w-4 flex-none text-soleil-400'
-            )}<a href="mailto:${esc(coord.email)}" class="transition hover:text-white">${esc(coord.email)}</a></li>
+            )}<a href="${esc(coord.federation_internationale?.url)}" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">${esc(
+    coord.federation_internationale?.nom
+  )}</a></li>
           </ul>
+          <p class="mt-4 text-xs leading-relaxed text-vert-100/60">${esc(coord.note)}</p>
         </div>
       </div>
 

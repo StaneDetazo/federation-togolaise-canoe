@@ -1,257 +1,90 @@
 {
   "entete": {
     "titre": "Actualités",
-    "chapeau": "Communiqués, résultats, reportages et annonces : suivez la vie de la pagaie togolaise, des bassins d'entraînement aux podiums.",
-    "texte": "Les publications sont classées par rubrique. Les communiqués officiels sont signés par le secrétariat ou la direction technique nationale."
+    "chapeau": "Trois publications publiques documentent l'activité récente de la fédération : le Relai Autour du Monde 2024, la formation d'entraîneurs de 2025 et le championnat national 2025.",
+    "texte": "D'autres publications seront ajoutées au fur et à mesure de l'activité de la fédération."
   },
 
   "categories": [
     { "id": "toutes", "libelle": "Toutes les actualités" },
-    { "id": "vie-federale", "libelle": "Vie fédérale" },
-    { "id": "competitions", "libelle": "Compétitions & résultats" },
+    { "id": "competitions", "libelle": "Compétitions" },
     { "id": "formation", "libelle": "Formation" },
-    { "id": "developpement", "libelle": "Développement" },
-    { "id": "environnement", "libelle": "Environnement" },
-    { "id": "portraits", "libelle": "Portraits" }
+    { "id": "cooperation", "libelle": "Coopération" }
   ],
 
   "liste": [
     {
-      "id": "act-2026-10-12-calendrier",
-      "slug": "calendrier-saison-2026-2027-publie",
-      "titre": "Le calendrier de la saison 2026-2027 est publié",
-      "categorie": "vie-federale",
-      "date": "2026-10-12",
-      "auteur": "Secrétariat fédéral",
-      "lieu": "Lomé",
-      "temps_lecture": 3,
-      "a_la_une": true,
-      "chapeau": "Dix rendez-vous officiels, du trophée d'ouverture sur la lagune de Lomé au championnat national de Togoville : la commission sportive a arrêté le calendrier de la saison.",
-      "image": "assets/img/news-1.svg",
-      "tags": ["Calendrier", "Saison 2026-2027", "Commission sportive"],
-      "contenu": [
-        { "type": "p", "texte": "La commission sportive et technique, réunie au siège fédéral, a arrêté le calendrier officiel de la saison 2026-2027. Le document fixe les dates des championnats, coupes, régates et stages de préparation ouverts aux clubs affiliés." },
-        { "type": "p", "texte": "La saison s'ouvre le 21 novembre par la première manche du Trophée des Lagunes, organisée par le Club Nautique de Lomé, et se clôturera en juillet par le Trophée SUP de Baguida." },
-        { "type": "h2", "texte": "Les temps forts de la saison" },
-        { "type": "ul", "items": [
-          "Novembre 2026 - Trophée des Lagunes, manche 1, lagune de Lomé",
-          "Janvier 2027 - Coupe du Togo de descente, fleuve Mono",
-          "Mars 2027 - Régate de dragon boat du Lac Togo, Togoville",
-          "Mai 2027 - Championnat national de course en ligne, Togoville",
-          "Juin 2027 - Tournoi national de kayak-polo, Lomé"
-        ] },
-        { "type": "p", "texte": "Le calendrier prévoit également deux stages fédéraux de regroupement du collectif national, ainsi qu'un cycle de formation d'éducateurs sportifs de premier degré au mois de février." },
-        { "type": "quote", "texte": "Nous avons cherché un équilibre entre la densité du programme et la capacité réelle des clubs à se déplacer avec leurs athlètes. Chaque rendez-vous a été calé avec l'organisateur.", "auteur": "Direction technique nationale" },
-        { "type": "p", "texte": "Les clubs disposent désormais de l'ensemble des dates pour construire leur préparation. Les fiches d'engagement seront diffusées au moins six semaines avant chaque épreuve." }
-      ],
-      "galerie": ["assets/img/galerie-1.svg", "assets/img/galerie-2.svg"],
-      "articles_lies": ["trophee-des-lagunes-inscriptions-ouvertes", "championnat-national-2026-togoville"]
-    },
-    {
-      "id": "act-2026-10-02-trophee-lagunes",
-      "slug": "trophee-des-lagunes-inscriptions-ouvertes",
-      "titre": "Trophée des Lagunes : les inscriptions sont ouvertes",
+      "id": "act-2025-championnat-national",
+      "slug": "championnat-national-2025-kpeme",
+      "titre": "Championnat national 2025 : dernière journée à Kpémé",
       "categorie": "competitions",
-      "date": "2026-10-02",
-      "auteur": "Commission sportive",
-      "lieu": "Lomé",
-      "temps_lecture": 2,
+      "date": "2025-09-06",
+      "periode": "6 septembre 2025",
+      "auteur": "FETOC",
+      "lieu": "Kpémé",
+      "temps_lecture": 1,
       "a_la_une": true,
-      "chapeau": "Première manche du circuit national de course en ligne les 21 et 22 novembre : les clubs peuvent engager leurs embarcations jusqu'au 10 novembre.",
-      "image": "assets/img/news-2.svg",
-      "tags": ["Course en ligne", "Engagements", "Lagune de Lomé"],
+      "chapeau": "La dernière journée du championnat national s'est tenue à Kpémé le 6 septembre 2025. Le compte rendu sportif fait état de 13 clubs et de 193 athlètes engagés.",
+      "image": null,
+      "tags": ["Championnat national", "Kpémé", "Résultats"],
+      "source": "Ahouévi Info",
       "contenu": [
-        { "type": "p", "texte": "Le Club Nautique de Lomé accueillera sur la lagune de Bè la première manche du Trophée des Lagunes, épreuve d'ouverture du circuit national de course en ligne." },
-        { "type": "h2", "texte": "Programme des courses" },
+        { "type": "p", "texte": "La dernière journée du championnat national s'est déroulée à Kpémé, dans la préfecture des Lacs, le 6 septembre 2025." },
         { "type": "ul", "items": [
-          "Samedi matin : séries et épreuves U12 et U14 sur 200 m et 500 m",
-          "Samedi après-midi : demi-finales U16 et U18",
-          "Dimanche matin : finales seniors et masters sur 500 m et 2 000 m",
-          "Dimanche après-midi : relais par clubs et remise des prix"
+          "13 clubs engagés, contre six auparavant",
+          "193 athlètes",
+          "Clubs publiquement cités : AS Donsa (Kpémé), Anguilles d'Aného, AS Barracuda"
         ] },
-        { "type": "p", "texte": "Les embarcations admises sont le K1, le K2, le K4 et le C1. Les clubs doivent transmettre leur fiche d'engagement au secrétariat avant le 10 novembre à 17 heures, accompagnée du règlement des frais d'engagement." },
-        { "type": "p", "texte": "Un contrôle technique du matériel et des équipements de sécurité sera effectué le samedi à partir de 7 heures. Les athlètes devront présenter leur licence en cours de validité." }
+        { "type": "p", "texte": "Source : compte rendu sportif publié par Ahouévi Info." }
       ],
-      "galerie": ["assets/img/galerie-3.svg"],
-      "articles_lies": ["calendrier-saison-2026-2027-publie", "championnat-national-2026-togoville"]
+      "galerie": [],
+      "articles_lies": ["formation-entraineurs-niveau-1-2025", "relai-autour-du-monde-2024"]
     },
     {
-      "id": "act-2026-09-24-pagaie-ecole",
-      "slug": "pagaie-a-lecole-objectifs-saison",
-      "titre": "Pagaie à l'école : l'objectif double pour la nouvelle saison",
-      "categorie": "developpement",
-      "date": "2026-09-24",
-      "auteur": "Commission développement",
-      "lieu": "Lomé",
-      "temps_lecture": 4,
-      "a_la_une": true,
-      "chapeau": "Le programme d'initiation scolaire reconduit dans les zones littorales et lacustres, avec de nouveaux établissements à Aného, Togoville et Atakpamé.",
-      "image": "assets/img/news-3.svg",
-      "tags": ["Pagaie à l'école", "Jeunesse", "Initiation"],
-      "contenu": [
-        { "type": "p", "texte": "Le dispositif « Pagaie à l'école » reprend pour une nouvelle saison. Porté par la commission développement et mis en œuvre par les clubs, il permet à des classes entières de découvrir le canoë-kayak sur des plans d'eau sécurisés." },
-        { "type": "p", "texte": "L'an passé, le programme a permis à près de quatre cents élèves de monter pour la première fois dans une embarcation, encadrés par des éducateurs fédéraux et des enseignants d'éducation physique et sportive." },
-        { "type": "h2", "texte": "Trois nouveautés cette saison" },
-        { "type": "ul", "items": [
-          "Ouverture d'antennes scolaires à Aného, Togoville et Atakpamé",
-          "Cycle de huit séances par classe, au lieu de quatre",
-          "Création d'un passeport de compétences remis à chaque élève en fin de cycle"
-        ] },
-        { "type": "quote", "texte": "Pour beaucoup d'enfants des villages du lac, l'eau est un lieu de travail. Notre rôle est d'en faire aussi un espace de jeu, de sport et de confiance en soi.", "auteur": "Responsable du développement" },
-        { "type": "p", "texte": "Le festival national « Pagaie à l'école » du 10 avril 2027 réunira l'ensemble des classes engagées autour de parcours d'habileté et de relais de stand-up paddle." }
-      ],
-      "galerie": ["assets/img/galerie-4.svg", "assets/img/galerie-5.svg", "assets/img/galerie-6.svg"],
-      "articles_lies": ["paracanoe-deuxieme-phase", "formation-onze-educateurs-diplomes"]
-    },
-    {
-      "id": "act-2026-09-15-paracanoe",
-      "slug": "paracanoe-deuxieme-phase",
-      "titre": "Le paracanoë entre dans sa deuxième phase à la lagune de Lomé",
-      "categorie": "developpement",
-      "date": "2026-09-15",
-      "auteur": "Secrétariat fédéral",
-      "lieu": "Lomé",
-      "temps_lecture": 3,
-      "a_la_une": false,
-      "chapeau": "Deux embarcations stabilisées supplémentaires, des sièges adaptés et un encadrement formé : la section paracanoë monte en puissance.",
-      "image": "assets/img/news-4.svg",
-      "tags": ["Paracanoë", "Inclusion", "Pagaie pour tous"],
-      "contenu": [
-        { "type": "p", "texte": "Lancée l'an dernier à titre expérimental, la section paracanoë de la fédération franchit une nouvelle étape avec l'acquisition de deux embarcations stabilisées et de sièges adaptés." },
-        { "type": "p", "texte": "Les séances se déroulent sur la lagune de Lomé, en partenariat avec des associations locales de personnes en situation de handicap et des structures de rééducation fonctionnelle." },
-        { "type": "h2", "texte": "Un encadrement qui se forme" },
-        { "type": "p", "texte": "Quatre encadrants de clubs ont suivi une formation spécifique à l'accueil des pratiquants en situation de handicap, portant sur la sécurité, le transfert en bateau et l'adaptation pédagogique." },
-        { "type": "p", "texte": "L'objectif affiché par la fédération est d'aligner une première équipe togolaise de paracanoë lors d'une compétition régionale au cours de la saison." }
-      ],
-      "galerie": ["assets/img/galerie-7.svg"],
-      "articles_lies": ["pagaie-a-lecole-objectifs-saison", "portrait-sena-dogbe"]
-    },
-    {
-      "id": "act-2026-09-08-championnat-national",
-      "slug": "championnat-national-2026-togoville",
-      "titre": "Retour sur le championnat national : Togoville au sommet",
-      "categorie": "competitions",
-      "date": "2026-09-08",
-      "auteur": "Commission sportive",
-      "lieu": "Togoville",
-      "temps_lecture": 4,
-      "a_la_une": false,
-      "chapeau": "Sept clubs, près de cent vingt embarcations et deux journées de courses sur le Lac Togo : le championnat national 2026 a tenu ses promesses.",
-      "image": "assets/img/news-5.svg",
-      "tags": ["Championnat national", "Résultats", "Lac Togo"],
-      "contenu": [
-        { "type": "p", "texte": "Organisé sur la base nautique de Togoville, le championnat national de course en ligne a réuni les sept clubs les plus structurés du pays, de U12 à Master." },
-        { "type": "h2", "texte": "Classement général par clubs" },
-        { "type": "ul", "items": [
-          "1er - Club des Pagaies du Lac Togo (Togoville)",
-          "2e - Club Nautique de Lomé",
-          "3e - Club Dzogbényui Sport Nautique (Baguida)",
-          "4e - Canoë Club d'Atakpamé"
-        ] },
-        { "type": "p", "texte": "Chez les jeunes, les clubs de Sokodé et d'Atakpamé ont confirmé leurs progrès, avec plusieurs podiums en U14 et U16. Le relais par clubs a été remporté par l'équipe de Togoville devant une nombreuse assistance venue des villages riverains." },
-        { "type": "quote", "texte": "Voir les tribunes du lac pleines et des familles entières soutenir les pagayeurs, c'est exactement ce que nous voulons que devienne ce championnat.", "auteur": "Président de la FETOC" },
-        { "type": "p", "texte": "Les résultats complets et le classement de la saison sont disponibles dans la rubrique Compétitions & calendrier." }
-      ],
-      "galerie": ["assets/img/galerie-8.svg", "assets/img/galerie-9.svg", "assets/img/galerie-10.svg"],
-      "articles_lies": ["calendrier-saison-2026-2027-publie", "stage-rentree-collectif-national"]
-    },
-    {
-      "id": "act-2026-08-30-stage-rentree",
-      "slug": "stage-rentree-collectif-national",
-      "titre": "Stage de rentrée : le collectif national en regroupement à Togoville",
-      "categorie": "vie-federale",
-      "date": "2026-08-30",
-      "auteur": "Direction technique nationale",
-      "lieu": "Togoville",
-      "temps_lecture": 3,
-      "a_la_une": false,
-      "chapeau": "Une semaine de travail en volume, de préparation physique et d'ateliers techniques pour lancer la préparation de la saison.",
-      "image": "assets/img/news-6.svg",
-      "tags": ["Collectif national", "Stage", "Préparation"],
-      "contenu": [
-        { "type": "p", "texte": "Le collectif national et les meilleurs espoirs des clubs se sont retrouvés pendant une semaine sur la base fédérale de Togoville pour un stage de rentrée." },
-        { "type": "p", "texte": "Au programme : deux séances quotidiennes sur l'eau, préparation physique générale, travail postural, séances vidéo et ateliers de récupération." },
-        { "type": "h2", "texte": "Les axes de travail de la saison" },
-        { "type": "ul", "items": [
-          "Départ et première accélération sur les distances courtes",
-          "Gestion de l'allure sur 2 000 m et 5 000 m",
-          "Coordination des équipages en K2 et K4",
-          "Prévention des blessures de l'épaule et du dos"
-        ] },
-        { "type": "p", "texte": "Le staff technique a retenu vingt-quatre athlètes pour ce premier regroupement. Deux autres stages sont programmés au cours de la saison, dont un stage hivernal de huit jours en décembre." }
-      ],
-      "galerie": ["assets/img/galerie-11.svg", "assets/img/galerie-12.svg"],
-      "articles_lies": ["championnat-national-2026-togoville", "calendrier-saison-2026-2027-publie"]
-    },
-    {
-      "id": "act-2026-08-18-formation",
-      "slug": "formation-onze-educateurs-diplomes",
-      "titre": "Formation : onze nouveaux éducateurs fédéraux diplômés",
+      "id": "act-2025-formation-entraineurs",
+      "slug": "formation-entraineurs-niveau-1-2025",
+      "titre": "Formation d'entraîneurs de niveau 1 à Aného",
       "categorie": "formation",
-      "date": "2026-08-18",
-      "auteur": "Commission formation et arbitrage",
-      "lieu": "Togoville",
-      "temps_lecture": 2,
-      "a_la_une": false,
-      "chapeau": "Après deux semaines de stage et une évaluation en situation, onze encadrants rejoignent les clubs avec une qualification fédérale de premier degré.",
-      "image": "assets/img/news-7.svg",
-      "tags": ["Formation", "Encadrement", "Qualification"],
+      "date": "2025-04-01",
+      "periode": "Avril 2025",
+      "auteur": "FETOC",
+      "lieu": "Aného",
+      "temps_lecture": 1,
+      "a_la_une": true,
+      "chapeau": "Une formation d'entraîneurs de niveau 1 a été organisée à Aného, selon le cadre de la Fédération internationale de canoë-kayak (ICF).",
+      "image": null,
+      "tags": ["Formation", "Entraîneurs", "Aného"],
+      "source": "Fédération internationale de canoë-kayak (ICF)",
       "contenu": [
-        { "type": "p", "texte": "Onze candidats issus de six clubs affiliés ont validé la formation d'éducateur sportif de premier degré, organisée sur la base nautique de Togoville." },
-        { "type": "p", "texte": "Le cycle de soixante heures a associé théorie et pratique : techniques des disciplines, pédagogie de l'initiation, planification des séances, sécurité nautique et connaissance de l'environnement aquatique." },
-        { "type": "h2", "texte": "Une évaluation en situation réelle" },
-        { "type": "p", "texte": "L'évaluation finale s'est déroulée devant des groupes d'élèves du programme « Pagaie à l'école » : chaque candidat a animé une séance complète, observée et notée par le jury fédéral." },
-        { "type": "p", "texte": "La prochaine session est programmée du 8 au 13 février 2027. Les clubs qui ne disposent pas encore d'encadrant diplômé sont prioritaires." }
+        { "type": "p", "texte": "En avril 2025, la fédération a organisé à Aného une formation d'entraîneurs de niveau 1." },
+        { "type": "p", "texte": "La session s'inscrit dans le cadre de la Fédération internationale de canoë-kayak (ICF), qui accompagne la formation et le développement du canoë au Togo." },
+        { "type": "p", "texte": "Source : Fédération internationale de canoë-kayak (ICF)." }
       ],
-      "galerie": ["assets/img/galerie-2.svg", "assets/img/galerie-5.svg"],
-      "articles_lies": ["pagaie-a-lecole-objectifs-saison", "stage-rentree-collectif-national"]
+      "galerie": [],
+      "articles_lies": ["championnat-national-2025-kpeme", "relai-autour-du-monde-2024"]
     },
     {
-      "id": "act-2026-07-26-portrait",
-      "slug": "portrait-sena-dogbe",
-      "titre": "Portrait : Sena Dogbé, de la pagaie de loisir au podium continental",
-      "categorie": "portraits",
-      "date": "2026-07-26",
-      "auteur": "Nadège Akakpo",
-      "lieu": "Kpalimé",
-      "temps_lecture": 5,
-      "a_la_une": false,
-      "chapeau": "D'abord initiée sur la lagune, la pagayeuse du Kpalimé Kayak Club est devenue l'une des meilleures descendeuses du pays - et forme aujourd'hui les plus jeunes.",
-      "image": "assets/img/news-8.svg",
-      "tags": ["Portrait", "Eau vive", "Sport féminin"],
+      "id": "act-2024-relai-autour-du-monde",
+      "slug": "relai-autour-du-monde-2024",
+      "titre": "Relai Autour du Monde 2024 : le Togo sur l'eau",
+      "categorie": "cooperation",
+      "date": "2024-01-01",
+      "periode": "2024",
+      "auteur": "FETOC",
+      "lieu": "Togo",
+      "temps_lecture": 1,
+      "a_la_une": true,
+      "chapeau": "La fédération a participé à l'organisation du Relai Autour du Monde au Togo, avec la mobilisation d'athlètes et la promotion du kayak et de la pirogue traditionnelle.",
+      "image": null,
+      "tags": ["Relai Autour du Monde", "Pirogue traditionnelle", "Coopération"],
+      "source": "France Volontaires",
       "contenu": [
-        { "type": "p", "texte": "Elle a découvert la pagaie par hasard, lors d'une sortie découverte organisée pour les jeunes de son quartier. Dix ans plus tard, Sena Dogbé est l'une des figures de la descente togolaise." },
-        { "type": "p", "texte": "Installée à Kpalimé, elle s'entraîne sur les rapides de Kpimé et parcourt chaque semaine le fleuve Mono en reconnaissance, avec la lecture du courant comme obsession." },
-        { "type": "quote", "texte": "La rivière ne se bat pas. Elle propose un chemin, et il faut le voir avant qu'il ne disparaisse. C'est ce que j'essaie d'apprendre aux jeunes.", "auteur": "Sena Dogbé, Kpalimé Kayak Club" },
-        { "type": "h2", "texte": "Transmettre à son tour" },
-        { "type": "p", "texte": "Licenciée au Kpalimé Kayak Club, elle a validé l'an dernier sa qualification d'instructrice fédérale et encadre aujourd'hui les groupes de débutants de son club." },
-        { "type": "p", "texte": "Son objectif affiché pour la saison : défendre son titre sur la Coupe du Togo de descente et accompagner trois jeunes de son club vers leur première compétition nationale." }
+        { "type": "p", "texte": "En 2024, la FETOC a pris part à l'organisation du Relai Autour du Monde au Togo." },
+        { "type": "p", "texte": "L'événement a mobilisé des athlètes et mis en avant le kayak ainsi que la pirogue traditionnelle." },
+        { "type": "p", "texte": "Source : France Volontaires." }
       ],
-      "galerie": ["assets/img/galerie-6.svg"],
-      "articles_lies": ["championnat-national-2026-togoville", "pagaie-a-lecole-objectifs-saison"]
-    },
-    {
-      "id": "act-2026-07-10-lagune-propre",
-      "slug": "operation-lagune-propre",
-      "titre": "Opération lagune propre : une tonne de déchets collectée",
-      "categorie": "environnement",
-      "date": "2026-07-10",
-      "auteur": "Commission communication",
-      "lieu": "Lomé",
-      "temps_lecture": 2,
-      "a_la_une": false,
-      "chapeau": "Pagayeurs et habitants du quartier ont nettoyé les berges de la lagune de Bè depuis leurs embarcations, à l'occasion du Trophée SUP de Baguida.",
-      "image": "assets/img/news-4.svg",
-      "tags": ["Environnement", "Lagune", "Citoyenneté"],
-      "contenu": [
-        { "type": "p", "texte": "À l'issue des épreuves du Trophée SUP de Baguida, une centaine de bénévoles - licenciés, familles et habitants des quartiers riverains - ont participé à une opération de nettoyage des berges de la lagune." },
-        { "type": "p", "texte": "Équipés de gants et de sacs, répartis à pied et sur des embarcations, les volontaires ont collecté principalement des bouteilles plastiques, des sachets et des filets de pêche abandonnés." },
-        { "type": "h2", "texte": "Une pratique qui respecte son milieu" },
-        { "type": "p", "texte": "La fédération souhaite inscrire ces opérations dans le règlement des compétitions : chaque organisateur d'épreuve devra désormais prévoir un volet de sensibilisation environnementale." },
-        { "type": "p", "texte": "Les déchets collectés ont été remis aux services de la commune, en présence des partenaires de l'opération." }
-      ],
-      "galerie": ["assets/img/galerie-9.svg", "assets/img/galerie-12.svg"],
-      "articles_lies": ["pagaie-a-lecole-objectifs-saison", "calendrier-saison-2026-2027-publie"]
+      "galerie": [],
+      "articles_lies": ["championnat-national-2025-kpeme", "formation-entraineurs-niveau-1-2025"]
     }
   ]
 }

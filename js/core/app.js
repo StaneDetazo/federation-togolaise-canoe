@@ -69,18 +69,16 @@ function appliquerSeo() {
     name: identite.nom,
     alternateName: identite.sigle,
     sport: 'Canoë-kayak',
-    slogan: identite.devise,
+    foundingDate: identite.creation,
     url: base + '/',
     logo: new URL('assets/img/logo.png', base + '/').href,
-    email: coord.email,
-    telephone: coord.telephone,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: coord.adresse,
-      addressLocality: coord.ville,
+      addressLocality: 'Agbodrafo',
+      addressRegion: 'Préfecture des Lacs',
       addressCountry: 'TG'
     },
-    sameAs: reseaux().map((r) => r.url)
+    sameAs: [...reseaux().map((r) => r.url), coord.federation_internationale?.url].filter(Boolean)
   };
   const jsonLdSite = {
     '@context': 'https://schema.org',
@@ -136,12 +134,6 @@ export async function demarrer() {
   ui.initAccordeons();
   ui.initCopieLiens();
   ui.initCompteurs();
-
-  document.querySelectorAll('[data-formulaire="newsletter"]').forEach((formulaire) => {
-    ui.initFormulaire(formulaire, {
-      surEnvoi: () => new Promise((resoudre) => setTimeout(resoudre, 600))
-    });
-  });
 
   document.dispatchEvent(new CustomEvent('fetoc:pret', { detail: data }));
   return data;

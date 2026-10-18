@@ -352,7 +352,7 @@ export function initFormulaire(formulaire, { surEnvoi } = {}) {
       );
       qs('[data-confirmation]', formulaire)?.removeAttribute('hidden');
     } catch (erreur) {
-      notifier("L'envoi a échoué. Merci de réessayer ou d'écrire à contact@fetoc.tg.", 'alerte');
+      notifier("L'envoi a échoué. Merci de réessayer ou de contacter la fédération via son compte Instagram.", 'alerte');
     } finally {
       if (bouton) {
         bouton.disabled = false;

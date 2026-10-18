@@ -910,6 +910,31 @@ p {
   background-size: 22px 22px;
 }
 
+/* Squelettes de chargement : rubriques dont le contenu n'est pas encore publié. */
+.squelette {
+  position: relative;
+  overflow: hidden;
+  background-color: #f3efe7;
+}
+.squelette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  animation: scintillement 1.6s ease-in-out infinite;
+}
+@keyframes scintillement {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .squelette::after {
+    animation: none;
+  }
+}
+
 .barre-progression {
   position: fixed;
   top: 0;

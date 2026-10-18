@@ -224,19 +224,22 @@ try {
   };
   await chargerDonnees();
 
+  const premier = (liste) => (Array.isArray(liste) && liste.length ? liste[0] : undefined);
   const controles = [
-    ['carteDiscipline', cartes.carteDiscipline, donnees.disciplines.liste[0]],
-    ['carteArticle', cartes.carteArticle, donnees.actualites.liste[0]],
-    ['carteClub', cartes.carteClub, donnees.clubs.liste[0]],
-    ['carteClub (liste)', (c) => cartes.carteClub(c, { variante: 'liste' }), donnees.clubs.liste[1]],
-    ['carteEvenement', cartes.carteEvenement, donnees.competitions.evenements[1]],
-    ['carteEvenement (sombre)', (e) => cartes.carteEvenement(e, { variante: 'sombre' }), donnees.competitions.evenements[1]],
-    ['ligneEvenement', cartes.ligneEvenement, donnees.competitions.evenements[2]],
-    ['vignetteGalerie', cartes.vignetteGalerie, donnees.galerie.liste[0]],
-    ['carteMembre', cartes.carteMembre, donnees.federation.bureau_executif.membres[0]],
-    ['cartePartenaire', cartes.cartePartenaire, donnees.partenaires.liste[0]],
+    ['carteDiscipline', cartes.carteDiscipline, premier(donnees.disciplines.liste)],
+    ['carteArticle', cartes.carteArticle, premier(donnees.actualites.liste)],
+    ['carteClub', cartes.carteClub, premier(donnees.clubs.liste)],
+    ['carteClub (liste)', (c) => cartes.carteClub(c, { variante: 'liste' }), donnees.clubs.liste?.[1]],
+    ['carteEvenement', cartes.carteEvenement, donnees.competitions.evenements?.[1]],
+    ['carteEvenement (sombre)', (e) => cartes.carteEvenement(e, { variante: 'sombre' }), donnees.competitions.evenements?.[1]],
+    ['ligneEvenement', cartes.ligneEvenement, donnees.competitions.evenements?.[2]],
+    ['vignetteGalerie', cartes.vignetteGalerie, premier(donnees.galerie.liste)],
+    ['ligneDocument', cartes.ligneDocument, premier(donnees.federation.documents?.liste)],
+    ['carteMembre', cartes.carteMembre, premier(donnees.federation.bureau_executif?.membres)],
+    ['cartePartenaire', cartes.cartePartenaire, premier(donnees.partenaires.liste)],
+    ['blocSquelette', cartes.blocSquelette, { titre: 'Test', texte: 'Texte', nombre: 2 }],
     ['bandeauPage', cartes.bandeauPage, { titre: 'Test', chapeau: 'Chapô', image: 'assets/img/hero.svg', fil: 'Test' }]
-  ];
+  ].filter(([, , entree]) => entree !== undefined);
 
   for (const [nom, fonction, entree] of controles) {
     const sortie = fonction(entree);
@@ -249,13 +252,14 @@ try {
 
   // rendu de toutes les entités : détecte les données incomplètes
   let total = 0;
-  for (const d of donnees.disciplines.liste) { cartes.carteDiscipline(d); total += 1; }
-  for (const a of donnees.actualites.liste) { cartes.carteArticle(a); total += 1; }
-  for (const c of donnees.clubs.liste) { cartes.carteClub(c); total += 1; }
-  for (const e of donnees.competitions.evenements) { cartes.carteEvenement(e); total += 1; }
-  for (const m of donnees.federation.bureau_executif.membres) { cartes.carteMembre(m); total += 1; }
-  for (const g of donnees.galerie.liste) { cartes.vignetteGalerie(g); total += 1; }
-  ok(`${total} rendus complets sans erreur (disciplines, articles, clubs, événements, bureau, galerie)`);
+  for (const d of donnees.disciplines.liste || []) { cartes.carteDiscipline(d); total += 1; }
+  for (const a of donnees.actualites.liste || []) { cartes.carteArticle(a); total += 1; }
+  for (const c of donnees.clubs.liste || []) { cartes.carteClub(c); total += 1; }
+  for (const e of donnees.competitions.evenements || []) { cartes.carteEvenement(e); total += 1; }
+  for (const m of donnees.federation.bureau_executif?.membres || []) { cartes.carteMembre(m); total += 1; }
+  for (const p of donnees.partenaires.liste || []) { cartes.cartePartenaire(p); total += 1; }
+  for (const g of donnees.galerie.liste || []) { cartes.vignetteGalerie(g); total += 1; }
+  ok(`${total} rendus complets sans erreur (disciplines, articles, clubs, événements, bureau, partenaires, galerie)`);
 } catch (e) {
   erreur(`Rendu impossible - ${e.message}`);
 }

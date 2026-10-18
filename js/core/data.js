@@ -195,11 +195,9 @@ export function filtrerActualites({ categorie = 'toutes', requete = '' } = {}) {
 /* ---------------------------------------------------------------- partenaires */
 export const partenaires = () => data.partenaires?.liste ?? [];
 
-/** Uniquement les partenaires confirmés avec logo autorisé. */
+/** Partenaires publiquement cités dans les activités de la fédération. */
 export function partenairesAffiches() {
-  return partenaires().filter(
-    (p) => p.participation_confirmee === true && p.utilisation_logo_autorisee === true && p.logo
-  );
+  return partenaires().filter((p) => p.participation_confirmee === true);
 }
 
 export function partenairesEnNegociation() {

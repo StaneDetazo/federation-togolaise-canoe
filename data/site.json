@@ -2,12 +2,12 @@
   "identite": {
     "nom": "Fédération Togolaise de Canoë",
     "sigle": "FETOC",
-    "baseline": "Association nationale de canoë-kayak et de sports de pagaie du Togo",
-    "slogan": "L'eau nous rassemble, la pagaie nous unit",
-    "accroche": "Du Lac Togo au fleuve Mono, nous faisons vivre la pagaie togolaise : compétition, initiation, formation et transmission.",
-    "devise": "Unis par l'eau, forts par le sport",
+    "baseline": "Fédération sportive togolaise de canoë-kayak et des disciplines associées",
+    "accroche": "Créée le 13 février 2024 à Agbodrafo, dans la préfecture des Lacs, la FETOC rassemble les clubs et associations qui pratiquent le canoë-kayak et les disciplines associées au Togo.",
     "pays": "Togo",
     "langue": "fr",
+    "creation": "2024-02-13",
+    "siege": "Agbodrafo, préfecture des Lacs",
     "couleurs": {
       "principale": "#0E7048",
       "accent": "#FFC72C",
@@ -16,36 +16,27 @@
   },
 
   "contact": {
-    "adresse": "Maison des Fédérations Sportives, Boulevard du 30 Août",
-    "quartier": "Tokoin",
-    "ville": "Lomé",
-    "region": "Région Maritime",
     "pays": "Togo",
-    "boite_postale": "BP 0000 Lomé",
-    "telephone": "+228 90 00 00 00",
-    "telephone_2": "+228 22 00 00 00",
-    "whatsapp": "+228 90 00 00 00",
-    "email": "contact@fetoc.tg",
-    "email_presse": "presse@fetoc.tg",
-    "email_licences": "licences@fetoc.tg",
-    "horaires": [
-      { "jours": "Lundi – Vendredi", "heures": "08h00 – 17h00" },
-      { "jours": "Samedi", "heures": "09h00 – 13h00 (accueil base nautique)" },
-      { "jours": "Dimanche", "heures": "Fermé" }
-    ],
-    "base_nautique": {
-      "nom": "Base nautique fédérale de Togoville",
-      "adresse": "Rive sud du Lac Togo, Togoville",
-      "indicatif": "Accès sur autorisation de la FETOC"
-    }
+    "siege": "Agbodrafo, préfecture des Lacs",
+    "instagram": {
+      "nom": "Instagram",
+      "pseudo": "@fetoc_togo",
+      "url": "https://www.instagram.com/fetoc_togo/"
+    },
+    "federation_internationale": {
+      "nom": "Fédération internationale de canoë-kayak (ICF)",
+      "url": "https://www.canoeicf.com/"
+    },
+    "note": "La FETOC ne dispose pas encore de coordonnées publiques confirmées (adresse postale, téléphone, e-mail). Toute demande passe par le compte Instagram officiel."
   },
 
   "reseaux": [
-    { "id": "facebook", "nom": "Facebook", "url": "https://www.facebook.com/", "pseudo": "@FETOC" },
-    { "id": "instagram", "nom": "Instagram", "url": "https://www.instagram.com/", "pseudo": "@fetoc.tg" },
-    { "id": "youtube", "nom": "YouTube", "url": "https://www.youtube.com/", "pseudo": "FETOC Togo" },
-    { "id": "tiktok", "nom": "TikTok", "url": "https://www.tiktok.com/", "pseudo": "@fetoc" },
-    { "id": "whatsapp", "nom": "WhatsApp", "url": "https://wa.me/22890000000", "pseudo": "Accueil FETOC" }
+    {
+      "id": "instagram",
+      "nom": "Instagram",
+      "url": "https://www.instagram.com/fetoc_togo/",
+      "pseudo": "@fetoc_togo"
+    }
   ],
 
   "navigation": [
@@ -53,23 +44,23 @@
     { "id": "federation", "libelle": "La Fédération", "url": "federation.html" },
     { "id": "disciplines", "libelle": "Disciplines & activités", "url": "disciplines.html" },
     { "id": "clubs", "libelle": "Clubs affiliés", "url": "clubs.html" },
-    { "id": "competitions", "libelle": "Compétitions & calendrier", "url": "competitions.html" },
+    { "id": "competitions", "libelle": "Compétitions & résultats", "url": "competitions.html" },
     { "id": "actualites", "libelle": "Actualités", "url": "actualites.html" },
-    { "id": "contact", "libelle": "Contact & adhésion", "url": "contact.html" }
+    { "id": "contact", "libelle": "Contact", "url": "contact.html" }
   ],
 
   "appel_action": {
-    "libelle": "Nous rejoindre",
-    "url": "contact.html#adhesion"
+    "libelle": "Nous contacter",
+    "url": "contact.html"
   },
 
   "pied": {
-    "description": "La FETOC organise, développe et promeut la pratique du canoë-kayak et des sports de pagaie sur l'ensemble du territoire togolais.",
+    "description": "Créée en février 2024, la FETOC regroupe les clubs et associations de canoë-kayak et des disciplines associées, et organise les compétitions nationales au Togo.",
     "liens_utiles": [
       { "libelle": "La Fédération", "url": "federation.html" },
-      { "libelle": "Calendrier sportif", "url": "competitions.html" },
-      { "libelle": "Devenir club affilié", "url": "contact.html#adhesion" },
-      { "libelle": "Demander une licence", "url": "contact.html#licences" }
+      { "libelle": "Clubs affiliés", "url": "clubs.html" },
+      { "libelle": "Compétitions & résultats", "url": "competitions.html" },
+      { "libelle": "Fédération internationale (ICF)", "url": "https://www.canoeicf.com/" }
     ],
     "mentions": [
       { "libelle": "Mentions légales", "url": "mentions-legales.html" },
@@ -77,12 +68,6 @@
       { "libelle": "Accessibilité", "url": "accessibilite.html" }
     ],
     "credit": "Site conçu pour la Fédération Togolaise de Canoë"
-  },
-
-  "newsletter": {
-    "titre": "Lettre d'information de la FETOC",
-    "texte": "Calendrier, résultats et actualités de la pagaie togolaise, une fois par mois.",
-    "bouton": "S'inscrire"
   },
 
   "videos_heros": {
@@ -98,8 +83,8 @@
   "seo": {
     "url_site": "http://localhost:8125",
     "titre_suffixe": "FETOC - Fédération Togolaise de Canoë",
-    "description": "Site officiel de la Fédération Togolaise de Canoë (FETOC) : disciplines, clubs affiliés, compétitions, actualités et adhésion.",
-    "mots_cles": "canoë Togo, kayak Togo, FETOC, fédération togolaise de canoë, pagaie, dragon boat, Lac Togo, sport nautique Lomé",
+    "description": "Fédération Togolaise de Canoë (FETOC) : fédération sportive créée en février 2024, clubs affiliés, compétitions nationales et activités de canoë-kayak au Togo.",
+    "mots_cles": "canoë Togo, kayak Togo, FETOC, fédération togolaise de canoë, pagaie, pirogue traditionnelle, para-canoë, Lac Togo, sport nautique Togo",
     "image_partage": "assets/img/og-image.png"
   }
 }
