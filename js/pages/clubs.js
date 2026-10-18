@@ -1,17 +1,17 @@
 /* ==========================================================================
    FETOC - Page « Clubs affiliés »
-   Annuaire filtrable (région, discipline, recherche) + couverture régionale.
+   Annuaire filtrable (région, recherche) + repères documentés.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
-import { data, clubs, regions, filtrerClubs, libelleDiscipline } from '../core/data.js';
+import { data, clubs, regions, filtrerClubs } from '../core/data.js';
 import { bandeauPage, carteClub, blocEssentiel } from '../core/cartes.js';
-import { qs, qsa, esc, unique } from '../core/utils.js';
+import { qs, qsa, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
 demarrer().then(rendre);
 
-const etat = { region: 'toutes', discipline: 'toutes', requete: '' };
+const etat = { region: 'toutes', requete: '' };
 
 function remplir(zone, html) {
   const element = qs(`[data-zone="${zone}"]`);
@@ -34,7 +34,7 @@ function rendre() {
     'bandeau',
     bandeauPage({
       titre: entete.titre || 'Clubs affiliés',
-      chapeau: entete.chapeau || "L'annuaire des clubs de la fédération.",
+      chapeau: entete.chapeau || 'Les clubs affiliés à la fédération.',
       image: 'assets/img/banner-clubs.svg',
       fil: 'Réseau fédéral',
       section: 'Clubs affiliés'
@@ -48,23 +48,23 @@ function rendre() {
       points: [
         {
           icone: 'reseau',
-          titre: 'Un réseau national',
-          texte: 'Des clubs affiliés du littoral au nord du pays.'
+          titre: '13 clubs affiliés',
+          texte: 'engagés au championnat national 2025.'
         },
         {
           icone: 'kayak',
-          titre: 'Toutes les disciplines',
-          texte: "Course en ligne, slalom, pirogue, SUP, kayak-polo et bien d'autres."
+          titre: 'Trois clubs cités',
+          texte: 'AS Donsa (Kpémé), Anguilles d’Aného et AS Barracuda.'
         },
         {
           icone: 'lieu',
-          titre: 'Près de chez vous',
-          texte: 'Trouvez le club et le site de pratique les plus proches.'
+          titre: 'Lieux documentés',
+          texte: 'Agbodrafo, Kpémé et Aného, dans la préfecture des Lacs.'
         },
         {
           icone: 'main',
           titre: 'Devenir club affilié',
-          texte: 'Rejoignez la fédération et bénéficiez de son accompagnement.'
+          texte: 'Les conditions d’affiliation ne sont pas encore publiées.'
         }
       ]
     })
@@ -76,7 +76,7 @@ function rendre() {
   const iconeRecherche = qs('[data-icone-recherche]');
   if (iconeRecherche) iconeRecherche.innerHTML = icone('recherche', 'h-5 w-5');
 
-  /* ------------------------------------------------ filtres */
+  /* ------------------------------------------------ filtres par région */
   const optionsRegions = [{ id: 'toutes', libelle: 'Toutes' }, ...regions()];
   const zoneRegions = remplir(
     'filtres-regions',
@@ -96,30 +96,6 @@ function rendre() {
     afficherGrille();
   });
 
-  const disciplinesUtilisees = unique(clubs().flatMap((club) => club.disciplines || []));
-  const optionsDisciplines = [{ id: 'toutes', libelle: 'Toutes' }, ...disciplinesUtilisees.map((id) => ({ id, libelle: libelleDiscipline(id) }))];
-  const zoneDisciplines = remplir(
-    'filtres-disciplines',
-    optionsDisciplines
-      .map(
-        (discipline) => `
-      <button type="button" class="pastille-filtre text-xs${discipline.id === etat.discipline ? ' est-actif' : ''}"
-        data-discipline="${esc(discipline.id)}" aria-pressed="${discipline.id === etat.discipline}">${esc(
-          discipline.libelle
-        )}</button>`
-      )
-      .join('')
-  );
-  zoneDisciplines?.addEventListener('click', (evenement) => {
-    const bouton = evenement.target.closest('[data-discipline]');
-    if (!bouton) return;
-    etat.discipline = bouton.dataset.discipline;
-    qsa('[data-discipline]', zoneDisciplines).forEach((b) =>
-      b.classList.toggle('est-actif', b === bouton)
-    );
-    afficherGrille();
-  });
-
   const champ = qs('#recherche-clubs');
   if (champ) {
     champ.addEventListener('input', () => {
@@ -130,20 +106,16 @@ function rendre() {
 
   qs('[data-zone="reinitialiser"]')?.addEventListener('click', () => {
     etat.region = 'toutes';
-    etat.discipline = 'toutes';
     etat.requete = '';
     if (champ) champ.value = '';
     qsa('[data-region]', zoneRegions).forEach((b, index) =>
-      b.classList.toggle('est-actif', index === 0)
-    );
-    qsa('[data-discipline]', zoneDisciplines).forEach((b, index) =>
       b.classList.toggle('est-actif', index === 0)
     );
     afficherGrille();
   });
 
   afficherGrille();
-  afficherRegions();
+  afficherReperes();
 
   /* ------------------------------------------------ devenir club */
   texte('devenir-titre', devenir.titre);
@@ -160,6 +132,8 @@ function rendre() {
       )
       .join('')
   );
+  texte('devenir-note', devenir.a_confirmer);
+  if (!devenir.a_confirmer) qs('[data-zone="devenir-note"]')?.classList.add('hidden');
   remplir(
     'devenir-etapes',
     (devenir.etapes || [])
@@ -194,7 +168,7 @@ function afficherGrille() {
         'h-6 w-6'
       )}</span>
       <p class="mt-4 font-display text-lg font-bold text-vert-900">Aucun club ne correspond à ces critères</p>
-      <p class="mx-auto mt-2 max-w-md text-sm text-encre-doux">Élargissez la zone géographique ou réinitialisez les filtres pour afficher l'ensemble des clubs affiliés.</p>
+      <p class="mx-auto mt-2 max-w-md text-sm text-encre-doux">Seuls les clubs publiquement cités sont listés. Élargissez la recherche ou réinitialisez les filtres.</p>
     </div>`;
   } else {
     grille.innerHTML = liste.map((club) => carteClub(club, { variante: 'liste' })).join('');
@@ -205,34 +179,37 @@ function afficherGrille() {
   if (compteur) {
     compteur.textContent = `${liste.length} club${liste.length > 1 ? 's' : ''} affiché${
       liste.length > 1 ? 's' : ''
-    } sur ${clubs().length} affilié${clubs().length > 1 ? 's' : ''}.`;
+    } sur ${clubs().length} publiquement cité${clubs().length > 1 ? 's' : ''}.`;
   }
 }
 
-/* ------------------------------------------------------------------ régions */
-function afficherRegions() {
-  const texte2 = qs('[data-zone="regions-titre"]');
-  if (texte2) texte2.textContent = 'Cinq régions, un seul réseau';
-
-  const total = clubs().length || 1;
-  const maximum = Math.max(1, ...regions().map((region) => clubs().filter((c) => c.region === region.id).length));
+/* ------------------------------------------------------------------ repères */
+function afficherReperes() {
+  const reperes = [
+    { valeur: '13', libelle: 'Clubs affiliés', texte: 'engagés au championnat national 2025.' },
+    {
+      valeur: '193',
+      libelle: 'Athlètes',
+      texte: 'ayant participé au championnat national 2025.'
+    },
+    {
+      valeur: '2025',
+      libelle: 'Championnat national',
+      texte: 'clôturé le 6 septembre 2025 à Kpémé.'
+    }
+  ];
 
   remplir(
-    'regions-liste',
-    regions()
-      .map((region, index) => {
-        const nombre = clubs().filter((club) => club.region === region.id).length;
-        const pourcentage = Math.round((nombre / maximum) * 100);
-        return `
-        <article class="revele rounded-2xl border border-sable-200 bg-sable-50 p-5" data-delai="${index * 60}">
-          <p class="font-display text-3xl font-extrabold text-vert-950">${nombre}</p>
-          <p class="mt-1 font-display text-sm font-bold text-vert-800">${esc(region.libelle)}</p>
-          <p class="mt-0.5 text-xs text-encre-clair">${Math.round((nombre / total) * 100)} % du réseau</p>
-          <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-sable-200">
-            <span class="block h-full rounded-full bg-vert-600" style="width:${pourcentage}%"></span>
-          </div>
-        </article>`;
-      })
+    'reperes-liste',
+    reperes
+      .map(
+        (repere, index) => `
+      <article class="revele rounded-2xl border border-sable-200 bg-sable-50 p-6" data-delai="${index * 70}">
+        <p class="font-display text-3xl font-extrabold text-vert-950">${esc(repere.valeur)}</p>
+        <p class="mt-1 font-display text-sm font-bold text-vert-800">${esc(repere.libelle)}</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-encre-doux">${esc(repere.texte)}</p>
+      </article>`
+      )
       .join('')
   );
 }

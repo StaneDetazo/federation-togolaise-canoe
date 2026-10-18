@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clubs affiliés - la pagaie près de l'eau, partout au Togo</title>
-  <meta name="description" content="Annuaire des clubs affiliés à la FETOC : Lomé, Baguida, Aného, Togoville, Atakpamé, Kpalimé, Sokodé, Kara et Dapaong. Disciplines, sites de pratique et contacts.">
+  <title>Clubs affiliés - la FETOC et ses clubs</title>
+  <meta name="description" content="Le championnat national 2025 de la FETOC a réuni 13 clubs affiliés. Trois clubs sont publiquement cités : AS Donsa, Anguilles d'Aného et AS Barracuda.">
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fédération Togolaise de Canoë">
   <meta property="og:title" content="Clubs affiliés - FETOC">
-  <meta property="og:description" content="Annuaire des clubs affiliés à la Fédération Togolaise de Canoë, par région.">
+  <meta property="og:description" content="Le championnat national 2025 a réuni 13 clubs affiliés à la FETOC. Trois clubs sont publiquement cités.">
   <meta property="og:url" content="http://localhost:8125/clubs.html">
   <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -29,7 +29,7 @@
   <meta property="og:locale" content="fr_TG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Clubs affiliés - FETOC">
-  <meta name="twitter:description" content="Annuaire des clubs affiliés à la Fédération Togolaise de Canoë, par région.">
+  <meta name="twitter:description" content="Le championnat national 2025 a réuni 13 clubs affiliés à la FETOC. Trois clubs sont publiquement cités.">
   <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
   <script>document.documentElement.classList.add('js')</script>
@@ -56,19 +56,15 @@
     <section class="bg-sable-50 py-16 lg:py-20">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <div class="revele rounded-2xl border border-sable-200 bg-white p-6 sm:p-8">
-          <div class="grid gap-6 lg:grid-cols-[1fr_1fr_1.2fr]">
+          <div class="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
             <div>
               <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Région</p>
               <div data-zone="filtres-regions" class="mt-3 flex flex-wrap gap-2"></div>
             </div>
             <div>
-              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Discipline</p>
-              <div data-zone="filtres-disciplines" class="mt-3 flex flex-wrap gap-2"></div>
-            </div>
-            <div>
               <label for="recherche-clubs" class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Recherche</label>
               <div class="relative mt-3 flex items-center">
-                <input id="recherche-clubs" type="search" placeholder="Nom, ville, quartier…"
+                <input id="recherche-clubs" type="search" placeholder="Nom du club, ville…"
                   class="w-full rounded-full border border-sable-200 bg-white px-5 py-3 text-sm text-vert-950 placeholder:text-encre-clair focus:border-vert-400 focus:outline-none">
                 <span data-icone-recherche class="pointer-events-none absolute right-4 text-encre-clair"></span>
               </div>
@@ -84,15 +80,15 @@
       </div>
     </section>
 
-    <!-- Répartition régionale -->
+    <!-- Repères -->
     <section class="bg-white py-16 lg:py-20">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <header class="revele max-w-2xl">
-          <p class="etiquette text-vert-600">Couverture nationale</p>
-          <h2 data-zone="regions-titre" class="mt-5 titre-section text-vert-950"></h2>
-          <p class="mt-5 text-base leading-relaxed text-encre-doux">La fédération accompagne le développement de la pagaie dans les cinq régions du Togo. La répartition ci-dessous reflète les clubs affiliés enregistrés.</p>
+          <p class="etiquette text-vert-600">Repères</p>
+          <h2 class="mt-5 titre-section text-vert-950">Le réseau en chiffres</h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux">Quelques données publiquement documentées sur les clubs et le championnat national.</p>
         </header>
-        <div data-zone="regions-liste" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"></div>
+        <div data-zone="reperes-liste" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
       </div>
     </section>
 
@@ -105,7 +101,8 @@
             <h2 data-zone="devenir-titre" class="mt-5 titre-section text-vert-950"></h2>
             <p data-zone="devenir-texte" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
             <ul data-zone="devenir-conditions" class="mt-8 space-y-3 text-sm text-encre-doux"></ul>
-            <a href="contact.html#adhesion" class="btn btn--vert mt-8">Lancer une demande d'affiliation</a>
+            <p data-zone="devenir-note" class="mt-6 rounded-xl border border-soleil-300 bg-soleil-50 px-4 py-3 text-sm leading-relaxed text-encre-doux"></p>
+            <a href="contact.html" class="btn btn--vert mt-8">Contacter la fédération</a>
           </div>
           <div class="revele revele--droite">
             <ol data-zone="devenir-etapes" class="space-y-6"></ol>

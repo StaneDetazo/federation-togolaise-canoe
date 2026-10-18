@@ -1,7 +1,6 @@
 /* ==========================================================================
    FETOC - Page « Disciplines & activités »
-   Grille filtrable, fiches détaillées, parcours de progression,
-   formations et sites de pratique.
+   Grille filtrable, fiches détaillées, formations et lieux associés.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
@@ -31,7 +30,6 @@ function texte(zone, valeur) {
 
 function rendre() {
   const entete = data.disciplines?.entete ?? {};
-  const parcours = data.disciplines?.parcours ?? {};
   const formations = data.disciplines?.formations ?? {};
   const sites = data.disciplines?.sites_de_pratique ?? {};
 
@@ -40,7 +38,7 @@ function rendre() {
     'bandeau',
     bandeauPage({
       titre: entete.titre || 'Disciplines & activités',
-      chapeau: entete.chapeau || 'Les sports de pagaie encadrés par la fédération.',
+      chapeau: entete.chapeau || 'Les activités documentées de la fédération.',
       image: 'assets/img/banner-disciplines.svg',
       fil: 'Pratique',
       section: 'Disciplines & activités'
@@ -85,35 +83,6 @@ function rendre() {
   afficherGrille();
   afficherFiches();
 
-  /* ------------------------------------------------ parcours */
-  texte('parcours-titre', parcours.titre);
-  texte('parcours-intro', parcours.introduction);
-  remplir(
-    'parcours-etapes',
-    (parcours.etapes || [])
-      .map(
-        (etape, index) => `
-      <article class="revele flex flex-col rounded-2xl border border-white/12 bg-white/[0.06] p-6" data-delai="${
-        index * 80
-      }">
-        <div class="flex items-center justify-between">
-          <span class="font-display text-3xl font-extrabold text-white/15">${esc(etape.numero)}</span>
-          <span class="grid h-11 w-11 place-items-center rounded-xl bg-soleil-400 text-vert-950">${icone(
-            etape.icone,
-            'h-5 w-5'
-          )}</span>
-        </div>
-        <h3 class="mt-4 font-display text-base font-bold text-white">${esc(etape.titre)}</h3>
-        <p class="mt-2 flex-1 text-sm leading-relaxed text-vert-50/80">${esc(etape.texte)}</p>
-        <dl class="mt-4 space-y-1 border-t border-white/10 pt-4 text-xs text-vert-50/70">
-          <div class="flex justify-between gap-3"><dt class="text-soleil-300">Public</dt><dd>${esc(etape.public)}</dd></div>
-          <div class="flex justify-between gap-3"><dt class="text-soleil-300">Durée</dt><dd class="text-right">${esc(etape.duree)}</dd></div>
-        </dl>
-      </article>`
-      )
-      .join('')
-  );
-
   /* ------------------------------------------------ formations */
   texte('formations-titre', formations.titre);
   texte('formations-intro', formations.introduction);
@@ -121,7 +90,7 @@ function rendre() {
     'formations-liste',
     `<table class="tableau-fetoc">
       <thead>
-        <tr><th scope="col">Formation</th><th scope="col">Durée</th><th scope="col">Public</th><th scope="col">Contenu</th></tr>
+        <tr><th scope="col">Formation</th><th scope="col">Date</th><th scope="col">Lieu</th><th scope="col">Cadre</th></tr>
       </thead>
       <tbody>
         ${(formations.liste || [])
@@ -129,9 +98,9 @@ function rendre() {
             (formation) => `
           <tr>
             <td class="font-medium text-vert-950">${esc(formation.nom)}</td>
-            <td class="whitespace-nowrap">${esc(formation.duree)}</td>
-            <td class="text-encre-doux">${esc(formation.public)}</td>
-            <td class="text-encre-doux">${esc(formation.contenu)}</td>
+            <td class="whitespace-nowrap">${esc(formation.date)}</td>
+            <td class="text-encre-doux">${esc(formation.lieu)}</td>
+            <td class="text-encre-doux">${esc(formation.cadre)}</td>
           </tr>`
           )
           .join('')}
@@ -139,13 +108,16 @@ function rendre() {
     </table>`
   );
   const zoneNote = qs('[data-zone="formations-note"]');
-  if (zoneNote && formations.calendrier_note) {
-    zoneNote.innerHTML = `${icone('info', 'h-4 w-4 flex-none text-soleil-600')}<span>${esc(formations.calendrier_note)}</span>`;
+  if (zoneNote && formations.a_confirmer) {
+    zoneNote.innerHTML = `${icone('info', 'h-4 w-4 flex-none text-soleil-600')}<span>${esc(
+      formations.a_confirmer
+    )}</span>`;
+    zoneNote.classList.remove('hidden');
   } else if (zoneNote) {
     zoneNote.classList.add('hidden');
   }
 
-  /* ------------------------------------------------ sites de pratique */
+  /* ------------------------------------------------ lieux associés */
   texte('sites-titre', sites.titre);
   texte('sites-intro', sites.introduction);
   remplir(
@@ -153,18 +125,15 @@ function rendre() {
     (sites.liste || [])
       .map(
         (site, index) => `
-      <article class="revele carte group flex flex-col" data-delai="${(index % 3) * 80}">
-        <div class="carte__media relative aspect-[16/10] overflow-hidden bg-vert-900">
-          <img src="${esc(site.image)}" alt="${esc(site.nom)}" width="1200" height="800" loading="lazy" decoding="async" class="h-full w-full object-cover">
-          <span class="absolute left-4 top-4">${pastille(site.region, 'sombre')}</span>
+      <article class="revele carte flex flex-col p-6" data-delai="${(index % 3) * 80}">
+        <div class="flex items-center justify-between gap-3">
+          <span class="grid h-12 w-12 flex-none place-items-center rounded-xl bg-vert-50 text-vert-700">
+            ${icone('lieu', 'h-6 w-6')}
+          </span>
+          ${pastille(site.region, 'sombre')}
         </div>
-        <div class="flex flex-1 flex-col p-6">
-          <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(site.type)}</p>
-          <h3 class="mt-2 font-display text-lg font-bold text-vert-950">${esc(site.nom)}</h3>
-          <div class="mt-4 flex flex-wrap gap-1.5">${(site.usage || [])
-            .map((u) => pastille(u, 'vert'))
-            .join('')}</div>
-        </div>
+        <h3 class="mt-5 font-display text-lg font-bold text-vert-950">${esc(site.nom)}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-encre-doux">${esc(site.usage)}</p>
       </article>`
       )
       .join('')
@@ -178,7 +147,7 @@ function afficherGrille() {
   const liste = disciplines().filter((discipline) => {
     if (etat.famille !== 'toutes' && discipline.famille !== etat.famille) return false;
     if (etat.requete) {
-      const champs = [discipline.nom, discipline.nom_court, discipline.accroche, discipline.description];
+      const champs = [discipline.nom, discipline.nom_court, discipline.description];
       if (!champs.some((champ) => correspond(champ, etat.requete))) return false;
     }
     return true;
@@ -189,7 +158,7 @@ function afficherGrille() {
 
   if (!liste.length) {
     grille.innerHTML = `<p class="col-span-full rounded-2xl border border-dashed border-sable-300 bg-white px-6 py-14 text-center text-sm text-encre-doux">
-      Aucune discipline ne correspond à cette recherche.</p>`;
+      Aucune activité ne correspond à cette recherche.</p>`;
   } else {
     grille.innerHTML = liste.map(carteDiscipline).join('');
     ui.initRevelation(grille);
@@ -197,7 +166,7 @@ function afficherGrille() {
 
   const compteur = qs('[data-zone="compteur-disciplines"]');
   if (compteur) {
-    compteur.textContent = `${liste.length} discipline${liste.length > 1 ? 's' : ''} affichée${
+    compteur.textContent = `${liste.length} activité${liste.length > 1 ? 's' : ''} affichée${
       liste.length > 1 ? 's' : ''
     } sur ${disciplines().length}.`;
   }
@@ -210,69 +179,31 @@ function afficherFiches() {
   remplir(
     'disciplines-fiches',
     disciplines()
-      .map((discipline) => {
-        const faits = [
-          ['Public', discipline.public],
-          ['Niveau', discipline.niveau],
-          ['Saison', discipline.saison]
-        ];
-        return `
-        <article id="${esc(discipline.id)}" class="revele group scroll-mt-32 overflow-hidden rounded-2xl border border-sable-200 bg-white transition hover:shadow-carte sm:flex">
-          <div class="relative aspect-[16/9] overflow-hidden bg-vert-900 sm:aspect-auto sm:w-56 sm:flex-none">
-            <img src="${esc(discipline.image)}" alt="${esc(discipline.nom)}" width="1200" height="800" loading="lazy" decoding="async"
-                 class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105">
-            ${
-              discipline.olympique
-                ? `<span class="absolute left-3 top-3">${pastille('Olympique', 'soleil')}</span>`
-                : ''
-            }
-          </div>
-          <div class="flex flex-1 flex-col gap-3 p-5 sm:p-6">
-            <div class="flex items-center gap-3">
-              <span class="grid h-9 w-9 flex-none place-items-center rounded-lg bg-vert-50 text-vert-700">${icone(
-                discipline.icone,
-                'h-4 w-4'
-              )}</span>
-              <div class="min-w-0">
-                <p class="text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(
-                  libelleFamille(discipline.famille)
-                )}</p>
-                <h3 class="font-display text-lg font-bold leading-tight text-vert-950">${esc(discipline.nom)}</h3>
-              </div>
+      .map(
+        (discipline) => `
+        <article id="${esc(discipline.id)}" class="revele carte group flex flex-col gap-3 scroll-mt-32 p-6 sm:p-7">
+          <div class="flex items-center gap-3">
+            <span class="grid h-11 w-11 flex-none place-items-center rounded-xl bg-vert-50 text-vert-700">${icone(
+              discipline.icone,
+              'h-5 w-5'
+            )}</span>
+            <div class="min-w-0">
+              <p class="text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(
+                libelleFamille(discipline.famille)
+              )}</p>
+              <h3 class="font-display text-lg font-bold leading-tight text-vert-950">${esc(
+                discipline.nom
+              )}</h3>
             </div>
-            <p class="text-sm leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
-
-            <dl class="flex flex-wrap items-baseline gap-x-5 gap-y-1">
-              ${faits
-                .map(
-                  ([libelle, valeur]) => `
-              <div class="flex items-baseline gap-1.5">
-                <dt class="text-[0.64rem] font-semibold uppercase tracking-[0.1em] text-encre-clair">${esc(
-                  libelle
-                )}</dt>
-                <dd class="text-sm font-medium text-vert-950">${esc(valeur)}</dd>
-              </div>`
-                )
-                .join('')}
-            </dl>
-
-            <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
-              <span class="flex flex-wrap items-center gap-1.5"><b class="font-semibold uppercase tracking-[0.1em] text-encre-clair">Embarcations</b>${(discipline.embarcations || [])
-                .map((e) => pastille(e, 'gris'))
-                .join('')}</span>
-              <span class="flex flex-wrap items-center gap-1.5"><b class="font-semibold uppercase tracking-[0.1em] text-encre-clair">Catégories</b>${(discipline.categories || [])
-                .map((c) => pastille(c, 'vert'))
-                .join('')}</span>
-            </div>
-
-            <p class="flex flex-wrap items-center gap-1.5 text-xs text-encre-doux">
-              ${icone('lieu', 'h-3.5 w-3.5 flex-none text-vert-600')}<span>${esc(
-                (discipline.sites || []).join(' · ')
-              )}</span>
-            </p>
           </div>
-        </article>`;
-      })
+          <p class="text-sm leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
+          ${
+            discipline.source
+              ? `<p class="text-xs text-encre-clair">Source : ${esc(discipline.source)}</p>`
+              : ''
+          }
+        </article>`
+      )
       .join('')
   );
 }
