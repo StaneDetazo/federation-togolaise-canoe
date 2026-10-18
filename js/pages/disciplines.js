@@ -45,8 +45,6 @@ function rendre() {
     })
   );
 
-  texte('entete-texte', entete.texte);
-
   const iconeRecherche = qs('[data-icone-recherche]');
   if (iconeRecherche) iconeRecherche.innerHTML = icone('recherche', 'h-5 w-5');
 
@@ -179,26 +177,52 @@ function afficherFiches() {
   remplir(
     'disciplines-fiches',
     disciplines()
-      .map(
-        (discipline) => `
-        <article id="${esc(discipline.id)}" class="revele carte group flex flex-col gap-3 scroll-mt-32 p-6 sm:p-7">
-          <div class="flex items-center gap-3">
-            <span class="grid h-11 w-11 flex-none place-items-center rounded-xl bg-vert-50 text-vert-700">${icone(
-              discipline.icone,
-              'h-5 w-5'
-            )}</span>
-            <div class="min-w-0">
-              <p class="text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(
-                libelleFamille(discipline.famille)
-              )}</p>
-              <h3 class="font-display text-lg font-bold leading-tight text-vert-950">${esc(
-                discipline.nom
-              )}</h3>
+      .map((discipline) => {
+        const visuels =
+          discipline.images && discipline.images.length
+            ? discipline.images
+            : [discipline.image || 'assets/img/banner-disciplines.svg'];
+
+        const medias = visuels
+          .map(
+            (source) => `
+          <div class="relative h-40 sm:h-52 ${
+            visuels.length > 1 ? 'lg:h-full' : 'col-span-2 sm:col-span-1 lg:col-span-1 lg:h-full'
+          }">
+            <img src="${esc(source)}" alt="${esc(discipline.nom)}" width="1280" height="800"
+              loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover">
+          </div>`
+          )
+          .join('');
+
+        return `
+        <article id="${esc(discipline.id)}" class="revele carte overflow-hidden scroll-mt-32">
+          <div class="grid lg:grid-cols-[1fr_1.05fr]">
+            <div class="grid grid-cols-2 gap-px bg-sable-200 ${
+              visuels.length > 1 ? 'lg:grid-cols-1 lg:grid-rows-2' : 'lg:grid-cols-1'
+            }">
+              ${medias}
+            </div>
+            <div class="p-6 sm:p-8">
+              <div class="flex items-center gap-3">
+                <span class="grid h-11 w-11 flex-none place-items-center rounded-xl bg-vert-50 text-vert-700">${icone(
+                  discipline.icone,
+                  'h-5 w-5'
+                )}</span>
+                <div class="min-w-0">
+                  <p class="text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(
+                    libelleFamille(discipline.famille)
+                  )}</p>
+                  <h3 class="font-display text-lg font-bold leading-tight text-vert-950">${esc(
+                    discipline.nom
+                  )}</h3>
+                </div>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
             </div>
           </div>
-          <p class="text-sm leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
-        </article>`
-      )
+        </article>`;
+      })
       .join('')
   );
 }

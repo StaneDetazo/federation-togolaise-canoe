@@ -1,8 +1,7 @@
 {
   "entete": {
     "titre": "Disciplines & activités",
-    "chapeau": "La FETOC encadre trois activités principales : le canoë-kayak de vitesse, la pirogue traditionnelle et le para-canoë.",
-    "texte": "Ces activités sont encadrées par la fédération et pratiquées dans ses clubs affiliés."
+    "chapeau": "La FETOC encadre trois activités principales : le canoë-kayak de vitesse, la pirogue traditionnelle et le para-canoë."
   },
 
   "familles": [
@@ -22,7 +21,11 @@
       "a_la_une": true,
       "description": "Entraînement, formation d'entraîneurs et compétitions nationales. Une formation d'entraîneurs de niveau 1 a été organisée selon le cadre de la Fédération internationale de canoë-kayak (ICF).",
       "source": "Fédération internationale de canoë-kayak (ICF)",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/5000m_K1_Final_Kanu-WM_Duisburg_2013.JPG/1280px-5000m_K1_Final_Kanu-WM_Duisburg_2013.JPG"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/5000m_K1_Final_Kanu-WM_Duisburg_2013.JPG/1280px-5000m_K1_Final_Kanu-WM_Duisburg_2013.JPG",
+      "images": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/5000m_K1_Final_Kanu-WM_Duisburg_2013.JPG/1280px-5000m_K1_Final_Kanu-WM_Duisburg_2013.JPG",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2014_ICF_Canoe_Sprint_World_Championships_-_Race_178_-_C4_M_1000_-_VC.jpg/1280px-2014_ICF_Canoe_Sprint_World_Championships_-_Race_178_-_C4_M_1000_-_VC.jpg"
+      ]
     },
     {
       "id": "pirogue-traditionnelle",
@@ -33,7 +36,11 @@
       "a_la_une": true,
       "description": "La promotion de la pirogue traditionnelle figure parmi les activités de la FETOC, notamment lors du Relai Autour du Monde 2024 au Togo.",
       "source": "France Volontaires",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lac_Togo_Vogan.jpg/1280px-Lac_Togo_Vogan.jpg"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lac_Togo_Vogan.jpg/1280px-Lac_Togo_Vogan.jpg",
+      "images": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lac_Togo_Vogan.jpg/1280px-Lac_Togo_Vogan.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Va%27a_outrigger_canoeing_crews_for_the_men%27s_V6_event_at_the_2011_Pacific_Games.jpg/1280px-Va%27a_outrigger_canoeing_crews_for_the_men%27s_V6_event_at_the_2011_Pacific_Games.jpg"
+      ]
     },
     {
       "id": "para-canoe",
@@ -44,7 +51,11 @@
       "a_la_une": true,
       "description": "Des formations consacrées à l'encadrement des sportifs en situation de handicap ont été organisées à Aného.",
       "source": "Ahouévi Info",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Paracanoe_at_the_2024_Summer_Paralympics_-_September_6_62.jpg/1280px-Paracanoe_at_the_2024_Summer_Paralympics_-_September_6_62.jpg"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Paracanoe_at_the_2024_Summer_Paralympics_-_September_6_62.jpg/1280px-Paracanoe_at_the_2024_Summer_Paralympics_-_September_6_62.jpg",
+      "images": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Paracanoe_at_the_2024_Summer_Paralympics_-_September_6_62.jpg/1280px-Paracanoe_at_the_2024_Summer_Paralympics_-_September_6_62.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Children_and_instructors_canoeing_on_the_Staffs_%5E_Worcs_-_geograph.org.uk_-_7398836.jpg/1280px-Children_and_instructors_canoeing_on_the_Staffs_%5E_Worcs_-_geograph.org.uk_-_7398836.jpg"
+      ]
     }
   ],
 

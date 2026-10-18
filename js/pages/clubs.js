@@ -47,11 +47,6 @@ function rendre() {
     blocEssentiel({
       points: [
         {
-          icone: 'reseau',
-          titre: '13 clubs affiliés',
-          texte: 'engagés au championnat national 2025.'
-        },
-        {
           icone: 'kayak',
           titre: 'Clubs engagés',
           texte: 'AS Donsa (Kpémé), Anguilles d’Aného et AS Barracuda.'
@@ -186,7 +181,6 @@ function afficherGrille() {
 /* ------------------------------------------------------------------ repères */
 function afficherReperes() {
   const reperes = [
-    { valeur: '13', libelle: 'Clubs affiliés', texte: 'engagés au championnat national 2025.' },
     {
       valeur: '193',
       libelle: 'Athlètes',

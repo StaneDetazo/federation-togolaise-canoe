@@ -38,21 +38,27 @@ const imageOuDefaut = (source) => source || IMAGE_DEFAUT;
 /* ---------------------------------------------------------------- disciplines */
 export function carteDiscipline(discipline) {
   const famille = familles().find((f) => f.id === discipline.famille)?.libelle ?? 'Discipline';
+  const photo = imageOuDefaut(discipline.image);
+  const lien = `disciplines.html#${esc(discipline.id)}`;
+
   return `
-  <article class="revele carte group flex flex-col p-6">
-    <div class="flex items-center gap-3">
-      <span class="grid h-12 w-12 flex-none place-items-center rounded-xl bg-vert-50 text-vert-700">
-        ${icone(discipline.icone, 'h-6 w-6')}
-      </span>
-      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(famille)}</p>
-    </div>
-    <h3 class="mt-5 font-display text-lg font-bold leading-snug text-vert-950">
-      <a href="disciplines.html#${esc(discipline.id)}" class="transition hover:text-vert-700">${esc(discipline.nom)}</a>
-    </h3>
-    <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(discipline.description)}</p>
-    <a href="disciplines.html#${esc(discipline.id)}" class="lien-fleche mt-auto pt-5 text-sm font-semibold text-vert-700">
-      En savoir plus ${icone('fleche-droite', 'h-4 w-4')}
+  <article class="revele carte group flex flex-col">
+    <a href="${lien}" class="carte__media relative block aspect-[16/10] overflow-hidden bg-sable-100" aria-label="${esc(
+      discipline.nom
+    )}">
+      <img src="${esc(photo)}" alt="${esc(discipline.nom)}" width="1280" height="800" loading="lazy" decoding="async"
+        class="absolute inset-0 h-full w-full object-cover">
+      <span class="absolute left-4 top-4">${badge(famille, 'sombre')}</span>
     </a>
+    <div class="flex flex-1 flex-col p-6">
+      <h3 class="font-display text-lg font-bold leading-snug text-vert-950">
+        <a href="${lien}" class="transition hover:text-vert-700">${esc(discipline.nom)}</a>
+      </h3>
+      <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(tronquer(discipline.description, 150))}</p>
+      <a href="${lien}" class="lien-fleche mt-auto pt-5 text-sm font-semibold text-vert-700">
+        En savoir plus ${icone('fleche-droite', 'h-4 w-4')}
+      </a>
+    </div>
   </article>`;
 }
 
