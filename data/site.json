@@ -18,6 +18,16 @@
   "contact": {
     "pays": "Togo",
     "siege": "Agbodrafo, préfecture des Lacs",
+    "email": {
+      "nom": "Adresse e-mail",
+      "libelle": "fetoc228@gmail.com",
+      "url": "mailto:fetoc228@gmail.com"
+    },
+    "telephones": [
+      { "libelle": "(+228) 73 26 90 56", "url": "tel:+22873269056" },
+      { "libelle": "(+228) 90 77 67 29", "url": "tel:+22890776729" },
+      { "libelle": "+33 7 58 65 77 81", "url": "tel:+33758657781", "whatsapp": true }
+    ],
     "instagram": {
       "nom": "Instagram",
       "pseudo": "@fetoc_togo",
@@ -27,7 +37,7 @@
       "nom": "Fédération internationale de canoë-kayak (ICF)",
       "url": "https://www.canoeicf.com/"
     },
-    "note": "La FETOC ne dispose pas encore de coordonnées publiques confirmées (adresse postale, téléphone, e-mail). Toute demande passe par le compte Instagram officiel."
+    "note": "Retrouvez ci-dessous les coordonnées officielles de la fédération : e-mail, téléphone (dont WhatsApp) et compte Instagram."
   },
 
   "reseaux": [

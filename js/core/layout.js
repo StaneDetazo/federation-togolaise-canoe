@@ -129,16 +129,30 @@ function gabaritMenuMobile(pageActive) {
           'lieu',
           'mt-0.5 h-4 w-4 flex-none text-vert-600'
         )}<span>Siège : ${esc(coord.siege)}<br>${esc(coord.pays)}</span></p>
+        ${
+          coord.email
+            ? `<p class="flex items-center gap-2.5">${icone(
+                'mail',
+                'h-4 w-4 flex-none text-vert-600'
+              )}<a class="break-all hover:text-vert-700" href="${esc(coord.email.url)}">${esc(
+                coord.email.libelle
+              )}</a></p>`
+            : ''
+        }
+        ${(coord.telephones || [])
+          .map(
+            (tel) => `<p class="flex items-center gap-2.5">${icone(
+              tel.whatsapp ? 'whatsapp' : 'telephone',
+              'h-4 w-4 flex-none text-vert-600'
+            )}<a class="hover:text-vert-700" href="${esc(tel.url)}">${esc(tel.libelle)}</a></p>`
+          )
+          .join('')}
         <p class="flex items-center gap-2.5">${icone(
           'instagram',
           'h-4 w-4 flex-none text-vert-600'
         )}<a class="hover:text-vert-700" href="${esc(coord.instagram?.url)}" target="_blank" rel="noopener noreferrer">${esc(
           coord.instagram?.pseudo
         )}</a></p>
-        <p class="flex items-start gap-2.5">${icone(
-          'info',
-          'mt-0.5 h-4 w-4 flex-none text-vert-600'
-        )}<span>${esc(coord.note)}</span></p>
       </div>
       <div class="flex items-center gap-2">${pastillesSociales('', 'sombre')}</div>
     </div>
@@ -190,6 +204,24 @@ function gabaritPied() {
             <li class="flex items-start gap-2.5">${icone('lieu', 'mt-0.5 h-4 w-4 flex-none text-soleil-400')}<span>Siège : ${esc(
     coord.siege
   )}<br>${esc(coord.pays)}</span></li>
+            ${
+              coord.email
+                ? `<li class="flex items-center gap-2.5">${icone(
+                    'mail',
+                    'h-4 w-4 flex-none text-soleil-400'
+                  )}<a href="${esc(coord.email.url)}" class="break-all transition hover:text-white">${esc(
+                    coord.email.libelle
+                  )}</a></li>`
+                : ''
+            }
+            ${(coord.telephones || [])
+              .map(
+                (tel) => `<li class="flex items-center gap-2.5">${icone(
+                  tel.whatsapp ? 'whatsapp' : 'telephone',
+                  'h-4 w-4 flex-none text-soleil-400'
+                )}<a href="${esc(tel.url)}" class="transition hover:text-white">${esc(tel.libelle)}</a></li>`
+              )
+              .join('')}
             <li class="flex items-center gap-2.5">${icone(
               'instagram',
               'h-4 w-4 flex-none text-soleil-400'
@@ -203,7 +235,6 @@ function gabaritPied() {
     coord.federation_internationale?.nom
   )}</a></li>
           </ul>
-          <p class="mt-4 text-xs leading-relaxed text-vert-100/60">${esc(coord.note)}</p>
         </div>
       </div>
 

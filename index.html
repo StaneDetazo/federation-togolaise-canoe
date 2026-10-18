@@ -78,7 +78,7 @@
     <section class="relative overflow-hidden bg-white py-14 lg:py-20">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <div class="revele overflow-hidden rounded-3xl border border-sable-200 bg-sable-50">
-          <div data-zone="bref-grille" class="grid lg:grid-cols-[1.15fr_1fr]">
+          <div data-zone="bref-grille" class="grid lg:grid-cols-2">
             <div class="p-6 sm:p-8 lg:p-9">
               <p class="etiquette text-vert-600">La fédération en bref</p>
               <h2 class="titre-section mt-3 text-vert-950" data-zone="bref-titre"></h2>
@@ -95,7 +95,10 @@
               </div>
             </div>
 
-            <div data-zone="bref-image" class="relative min-h-[15rem] lg:min-h-full"></div>
+            <div class="relative h-60 sm:h-80 lg:h-auto">
+              <img data-zone="bref-image" src="assets/img/gallery/galerie-01.jpeg" alt="" width="1600" height="900"
+                   loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover">
+            </div>
           </div>
 
           <!-- Chiffres clés de la fédération (fusionnés dans l'encadré) -->

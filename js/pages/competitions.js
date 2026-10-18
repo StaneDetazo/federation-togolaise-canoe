@@ -133,7 +133,7 @@ function rendre() {
   );
   texte(
     'infos-contact',
-    'Pour toute question sur les engagements, les licences ou le règlement, contactez la fédération via son compte Instagram officiel (@fetoc_togo).'
+    'Pour toute question sur les engagements, les licences ou le règlement, écrivez à fetoc228@gmail.com ou contactez la fédération via son compte Instagram officiel (@fetoc_togo).'
   );
   const iconeReglement = qs('[data-icone-reglement]');
   if (iconeReglement) iconeReglement.innerHTML = icone('documents', 'h-4 w-4 text-vert-600');
