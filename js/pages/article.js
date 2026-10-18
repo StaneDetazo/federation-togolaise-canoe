@@ -65,13 +65,14 @@ function gabaritHeros(article, categorie) {
   ].filter(Boolean);
 
   const page = typeof document !== 'undefined' ? document.body?.dataset?.page ?? '' : '';
-  const lienVideo = videoHeroPage(page || 'actualites');
+  const lienVideo = videoHeroPage(page) || videoHeroPage('actualites');
+  const sourceImage = article.image || 'assets/img/banner-actualites.svg';
   const media = lienVideo
     ? `<video class="heros-media" autoplay muted loop playsinline preload="metadata"
-             poster="${esc(article.image)}" aria-hidden="true" tabindex="-1">
+             poster="${esc(sourceImage)}" aria-hidden="true" tabindex="-1">
          <source src="${esc(lienVideo)}" type="video/mp4">
        </video>`
-    : `<img class="heros-media" src="${esc(article.image)}" width="1920" height="900"
+    : `<img class="heros-media" src="${esc(sourceImage)}" width="1920" height="900"
             alt="${esc(article.titre)}" fetchpriority="high" decoding="async">`;
 
   return `
@@ -167,9 +168,9 @@ function gabaritContenu(article, categorie) {
           }
 
           <div class="mt-10 flex flex-col gap-4 rounded-2xl border border-sable-200 bg-sable-50 p-6 sm:flex-row sm:items-center sm:justify-between">
-            <p class="text-sm text-encre-doux">Cet article vous a intéressé ? Participez à la vie de la pagaie togolaise.</p>
+            <p class="text-sm text-encre-doux">Une question sur cette actualité ? Contactez la fédération.</p>
             <div class="flex flex-none flex-wrap gap-3">
-              <a href="contact.html#adhesion" class="btn btn--vert btn--sm">Nous rejoindre</a>
+              <a href="contact.html" class="btn btn--vert btn--sm">Nous contacter</a>
               <a href="actualites.html" class="btn btn--contour btn--sm">Plus d'actualités</a>
             </div>
           </div>
@@ -312,14 +313,14 @@ function carteLettre() {
   <div class="rounded-2xl border border-soleil-300 bg-soleil-50 p-6">
     <p class="font-display text-sm font-bold text-vert-900">Une question sur cet article ?</p>
     <p class="mt-2 text-sm leading-relaxed text-encre-doux">
-      Le secrétariat fédéral et le service de presse répondent aux clubs, aux médias et aux partenaires.
+      ${esc(coord.note || '')}
     </p>
     <div class="mt-5 space-y-2.5 text-sm">
-      <a href="mailto:${esc(coord.email_presse)}" class="flex items-center gap-2.5 text-encre-doux transition hover:text-vert-700">
-        ${icone('mail', 'h-4 w-4 text-vert-600')}${esc(coord.email_presse)}
+      <a href="${esc(coord.instagram?.url)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-encre-doux transition hover:text-vert-700">
+        ${icone('instagram', 'h-4 w-4 text-vert-600')}${esc(coord.instagram?.pseudo)}
       </a>
       <a href="contact.html" class="flex items-center gap-2.5 font-semibold text-vert-700 transition hover:text-vert-800">
-        ${icone('fleche-droite', 'h-4 w-4')}Contacter la fédération
+        ${icone('fleche-droite', 'h-4 w-4')}Page contact
       </a>
     </div>
   </div>`;
@@ -356,7 +357,7 @@ function insererDonneesStructurees(article) {
     headline: article.titre,
     description: article.chapeau,
     datePublished: article.date,
-    image: new URL(article.image, document.baseURI).href,
+    image: article.image ? new URL(article.image, document.baseURI).href : undefined,
     author: { '@type': 'Organization', name: article.auteur },
     publisher: { '@type': 'Organization', name: 'Fédération Togolaise de Canoë' },
     articleSection: libelleCategorie(article.categorie),

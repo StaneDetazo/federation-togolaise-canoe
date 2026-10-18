@@ -5,7 +5,7 @@
 
 import { demarrer, ui } from '../core/app.js';
 import { data, filtrerActualites, categoriesActualites, imagesGalerie } from '../core/data.js';
-import { bandeauPage, carteArticle, vignetteGalerie, blocEssentiel } from '../core/cartes.js';
+import { bandeauPage, carteArticle, vignetteGalerie, blocEssentiel, blocSquelette } from '../core/cartes.js';
 import { qs, qsa, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
@@ -47,24 +47,24 @@ function rendre() {
     blocEssentiel({
       points: [
         {
-          icone: 'mail',
-          titre: 'Communiqués',
-          texte: 'Les décisions et annonces officielles de la fédération.'
-        },
-        {
-          icone: 'etoile',
-          titre: 'Résultats',
-          texte: 'Les comptes rendus des compétitions et des rendez-vous de la saison.'
+          icone: 'pirogue',
+          titre: 'Relai Autour du Monde 2024',
+          texte: 'Participation de la fédération à l’organisation au Togo.'
         },
         {
           icone: 'diplome',
-          titre: 'Formations et stages',
-          texte: "Les sessions d'encadrement et de perfectionnement."
+          titre: 'Formation d’entraîneurs',
+          texte: 'Niveau 1, organisée à Aného en avril 2025.'
         },
         {
-          icone: 'camera',
-          titre: 'Reportages et galeries',
-          texte: 'Des images de la vie fédérale, sur l’eau et sur les rives.'
+          icone: 'trophee',
+          titre: 'Championnat national 2025',
+          texte: 'Dernière journée à Kpémé le 6 septembre 2025.'
+        },
+        {
+          icone: 'instagram',
+          titre: 'Publications officielles',
+          texte: 'Les annonces de la fédération sont relayées sur Instagram.'
         }
       ]
     })
@@ -111,7 +111,8 @@ function rendre() {
 
   /* ------------------------------------------------ galerie */
   texte('galerie-titre', galerie.entete?.titre);
-  texte('galerie-intro', galerie.entete?.texte);
+  texte('galerie-intro', galerie.entete?.chapeau);
+  texte('galerie-note', galerie.entete?.a_confirmer);
 
   const zoneGalerie = remplir(
     'filtres-galerie',
@@ -172,6 +173,14 @@ function afficherGalerie() {
   const images = imagesGalerie({ categorie: etat.galerie });
   const zone = qs('[data-zone="galerie-grille"]');
   if (!zone) return;
+
+  if (!images.length) {
+    zone.innerHTML = blocSquelette({
+      nombre: 4,
+      colonnes: 'grid-cols-2 lg:grid-cols-4'
+    });
+    return;
+  }
 
   zone.innerHTML = images
     .map((image, index) => vignetteGalerie(image, { delai: (index % 4) * 70 }))
