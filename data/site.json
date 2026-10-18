@@ -67,7 +67,6 @@
     "description": "La FETOC organise, développe et promeut la pratique du canoë-kayak et des sports de pagaie sur l'ensemble du territoire togolais.",
     "liens_utiles": [
       { "libelle": "La Fédération", "url": "federation.html" },
-      { "libelle": "Documents officiels", "url": "federation.html#documents" },
       { "libelle": "Calendrier sportif", "url": "competitions.html" },
       { "libelle": "Devenir club affilié", "url": "contact.html#adhesion" },
       { "libelle": "Demander une licence", "url": "contact.html#licences" }

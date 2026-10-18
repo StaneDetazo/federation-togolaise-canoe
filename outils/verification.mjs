@@ -233,7 +233,6 @@ try {
     ['carteEvenement (sombre)', (e) => cartes.carteEvenement(e, { variante: 'sombre' }), donnees.competitions.evenements[1]],
     ['ligneEvenement', cartes.ligneEvenement, donnees.competitions.evenements[2]],
     ['vignetteGalerie', cartes.vignetteGalerie, donnees.galerie.liste[0]],
-    ['ligneDocument', cartes.ligneDocument, donnees.federation.documents.liste[0]],
     ['carteMembre', cartes.carteMembre, donnees.federation.bureau_executif.membres[0]],
     ['cartePartenaire', cartes.cartePartenaire, donnees.partenaires.liste[0]],
     ['bandeauPage', cartes.bandeauPage, { titre: 'Test', chapeau: 'Chapô', image: 'assets/img/hero.svg', fil: 'Test' }]

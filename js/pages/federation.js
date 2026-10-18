@@ -1,18 +1,12 @@
 /* ==========================================================================
    FETOC - Page « La Fédération »
-   Histoire, missions, vision, organisation, bureau exécutif et documents.
+   Présentation, missions, vision, organisation et gouvernance.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
 import { data } from '../core/data.js';
-import {
-  bandeauPage,
-  carteMembre,
-  ligneDocument,
-  documentIndisponible,
-  blocEssentiel
-} from '../core/cartes.js';
-import { qs, qsa, esc } from '../core/utils.js';
+import { bandeauPage, carteMembre, blocEssentiel } from '../core/cartes.js';
+import { qs, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
 demarrer().then(rendre);
@@ -30,40 +24,21 @@ function texte(zone, valeur) {
   return element;
 }
 
-/* Contrôle à l'affichage : si le fichier annoncé est introuvable, la carte
-   bascule sur « Bientôt disponible » plutôt que d'exposer un lien cassé. */
-async function verifierDocuments() {
-  const zone = qs('[data-zone="documents-liste"]');
-  if (!zone) return;
-  await Promise.all(
-    qsa('[data-document]', zone).map(async (lien) => {
-      try {
-        const reponse = await fetch(lien.href, { method: 'HEAD' });
-        if (!reponse.ok) lien.outerHTML = documentIndisponible();
-      } catch {
-        /* Vérification impossible (hors ligne, file://) : on conserve le lien. */
-      }
-    })
-  );
-}
-
 function rendre() {
   const federation = data.federation ?? {};
   const presentation = federation.presentation ?? {};
-  const histoire = federation.histoire ?? {};
   const missions = federation.missions ?? {};
   const vision = federation.vision ?? {};
   const organisation = federation.organisation ?? {};
   const bureau = federation.bureau_executif ?? {};
   const affiliations = federation.affiliations ?? {};
-  const documents = federation.documents ?? {};
 
   /* ------------------------------------------------ bandeau de page */
   remplir(
     'bandeau',
     bandeauPage({
       titre: 'La Fédération Togolaise de Canoë',
-      chapeau: presentation.chapeau || "Histoire, missions, organisation et documents officiels de la FETOC.",
+      chapeau: presentation.chapeau || 'Missions, vision, organisation et gouvernance de la FETOC.',
       image: 'assets/img/banner-federation.svg',
       fil: 'Institution',
       section: 'La Fédération'
@@ -124,32 +99,6 @@ function rendre() {
       </div>`
       )
       .join('')
-  );
-
-  /* ------------------------------------------------ histoire */
-  texte('histoire-titre', histoire.titre);
-  texte('histoire-intro', histoire.introduction);
-
-  const etapes = histoire.etapes || [];
-  const milieu = Math.ceil(etapes.length / 2);
-  const colonneFrise = (liste) => `
-    <div class="frise pb-2">
-      ${liste
-        .map(
-          (etape) => `
-        <div class="frise__item">
-          <span class="inline-flex items-center rounded-full bg-vert-700 px-3 py-1 font-display text-xs font-bold tracking-wide text-white">${esc(
-            etape.annee
-          )}</span>
-          <h3 class="mt-3 font-display text-base font-bold text-vert-950">${esc(etape.titre)}</h3>
-          <p class="mt-1.5 text-sm leading-relaxed text-encre-doux">${esc(etape.texte)}</p>
-        </div>`
-        )
-        .join('')}
-    </div>`;
-  remplir(
-    'histoire-frise',
-    colonneFrise(etapes.slice(0, milieu)) + colonneFrise(etapes.slice(milieu))
   );
 
   /* ------------------------------------------------ missions */
@@ -273,18 +222,6 @@ function rendre() {
       )
       .join('')
   );
-
-  /* ------------------------------------------------ documents */
-  texte('documents-titre', documents.titre);
-  texte('documents-intro', documents.introduction);
-  const zoneNote = qs('[data-zone="documents-note"]');
-  if (zoneNote && documents.note) {
-    zoneNote.innerHTML = `${icone('info', 'h-4 w-4 flex-none text-soleil-600')}<span>${esc(documents.note)}</span>`;
-  } else if (zoneNote) {
-    zoneNote.classList.add('hidden');
-  }
-  remplir('documents-liste', (documents.liste || []).map(ligneDocument).join(''));
-  verifierDocuments();
 
   /* ------------------------------------------------ animations */
   ui.initRevelation();

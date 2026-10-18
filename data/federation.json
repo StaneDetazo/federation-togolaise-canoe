@@ -25,63 +25,6 @@
     { "libelle": "Aire de compétence", "valeur": "Territoire national - 5 régions couvertes" }
   ],
 
-  "histoire": {
-    "titre": "Histoire de la fédération",
-    "introduction": "Née de l'engagement de quelques pagayeurs et de leurs clubs, la FETOC s'est construite par étapes, au rythme des rivières et des hommes qui les pratiquent.",
-    "etapes": [
-      {
-        "annee": "1996",
-        "titre": "Les premières pagaies",
-        "texte": "Des clubs de l'ouest du pays et de la lagune de Lomé organisent les premières descentes du fleuve Mono et les premières sorties encadrées sur le Lac Togo."
-      },
-      {
-        "annee": "2003",
-        "titre": "Naissance de la FETOC",
-        "texte": "Réunis en assemblée générale constitutive à Lomé, les clubs fondateurs adoptent les statuts de la Fédération Togolaise de Canoë et désignent le premier bureau exécutif."
-      },
-      {
-        "annee": "2006",
-        "titre": "Reconnaissance olympique",
-        "texte": "La fédération est admise comme membre affilié du Comité National Olympique du Togo, ouvrant la voie à la représentation du canoë togolais dans le mouvement olympique national."
-      },
-      {
-        "annee": "2009",
-        "titre": "Première sortie continentale",
-        "texte": "Une délégation togolaise participe pour la première fois à des championnats d'Afrique de canoë-kayak, avec des représentants en course en ligne et en kayak de mer."
-      },
-      {
-        "annee": "2013",
-        "titre": "Arrêté de reconnaissance",
-        "texte": "La fédération obtient la reconnaissance officielle du Ministère des Sports et des Loisirs comme seul organe dirigeant du canoë-kayak au Togo."
-      },
-      {
-        "annee": "2016",
-        "titre": "Affiliation à l'ICF",
-        "texte": "La FETOC rejoint la Fédération Internationale de Canoë, condition indispensable pour l'inscription des athlètes aux compétitions internationales."
-      },
-      {
-        "annee": "2019",
-        "titre": "Programme « Pagaie à l'école »",
-        "texte": "Lancement d'un dispositif d'initiation destiné aux établissements scolaires des zones littorales et lacustres, en partenariat avec les clubs locaux."
-      },
-      {
-        "annee": "2021",
-        "titre": "Base nautique de Togoville",
-        "texte": "Ouverture de la base nautique fédérale sur la rive sud du Lac Togo : stockage du matériel, stages fédéraux et régates y trouvent leur port d'attache."
-      },
-      {
-        "annee": "2023",
-        "titre": "Vingt ans, un championnat national",
-        "texte": "Pour ses vingt ans, la fédération organise la première édition du Championnat national de course en ligne réunissant les clubs de toutes les régions."
-      },
-      {
-        "annee": "2025",
-        "titre": "Ouvrir la pagaie à tous",
-        "texte": "Structuration d'une section paracanoë, création d'une équipe nationale de dragon boat et généralisation du stand-up paddle dans les clubs affiliés."
-      }
-    ]
-  },
-
   "missions": {
     "titre": "Nos missions",
     "introduction": "Les missions de la FETOC sont fixées par ses statuts et par la réglementation sportive nationale.",
@@ -203,19 +146,6 @@
       { "organisation": "Comité National Olympique du Togo", "sigle": "CNOT", "depuis": "2006", "statut": "Fédération membre", "logo": "assets/img/partenaire-cnot.svg" },
       { "organisation": "Ministère des Sports et des Loisirs", "sigle": "MSL", "depuis": "2013", "statut": "Fédération reconnue", "logo": "assets/img/partenaire-ministere.svg" },
       { "organisation": "Association Africaine de Canoë", "sigle": "ACA", "depuis": "2017", "statut": "Fédération membre", "logo": null }
-    ]
-  },
-
-  "documents": {
-    "titre": "Documents officiels",
-    "introduction": "Statuts, règlements et rapports de la fédération, publiés après adoption par les instances compétentes.",
-    "liste": [
-      { "id": "statuts", "titre": "Statuts de la FETOC", "categorie": "Statuts", "description": "Statuts en vigueur adoptés par l'assemblée générale constitutive, incluant les modifications successives.", "disponible": false, "fichier": "documents/statuts-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2023-06-18", "statut": "en vigueur" },
-      { "id": "reglement-interieur", "titre": "Règlement intérieur", "categorie": "Règlement", "description": "Fonctionnement des instances, des commissions, des obligations des clubs affiliés et des licenciés.", "disponible": false, "fichier": "documents/reglement-interieur-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2024-01-20", "statut": "en vigueur" },
-      { "id": "reglement-sportif", "titre": "Règlement sportif et technique", "categorie": "Règlement", "description": "Catégories d'âge, formats de course, classements, qualifications et engagement des équipes.", "disponible": false, "fichier": "documents/reglement-sportif-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2025-02-08", "statut": "en vigueur" },
-      { "id": "rapport-moral", "titre": "Rapport moral et d'activité", "categorie": "Rapport", "description": "Bilan annuel des activités sportives, de la formation et du développement présenté à l'assemblée générale.", "disponible": false, "fichier": "documents/rapport-activite-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2025-12-14", "statut": "validé en AG" },
-      { "id": "rapport-financier", "titre": "Rapport financier annuel", "categorie": "Rapport", "description": "Comptes annuels, subventions perçues et affectation des ressources de la fédération.", "disponible": false, "fichier": "documents/rapport-financier-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2025-12-14", "statut": "validé en AG" },
-      { "id": "charte-ethique", "titre": "Charte éthique et prévention", "categorie": "Cadre déontologique", "description": "Engagements de la fédération en matière d'intégrité, de protection des pratiquants et de lutte contre les violences.", "disponible": false, "fichier": "documents/charte-ethique-fetoc.pdf", "format": "PDF", "taille": "-", "date_maj": "2024-09-02", "statut": "en vigueur" }
     ]
   },
 
