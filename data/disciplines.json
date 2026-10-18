@@ -22,7 +22,7 @@
       "a_la_une": true,
       "description": "Entraînement, formation d'entraîneurs et compétitions nationales. Une formation d'entraîneurs de niveau 1 a été organisée selon le cadre de la Fédération internationale de canoë-kayak (ICF).",
       "source": "Fédération internationale de canoë-kayak (ICF)",
-      "image": null
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/5000m_K1_Final_Kanu-WM_Duisburg_2013.JPG/1280px-5000m_K1_Final_Kanu-WM_Duisburg_2013.JPG"
     },
     {
       "id": "pirogue-traditionnelle",
@@ -33,7 +33,7 @@
       "a_la_une": true,
       "description": "La promotion de la pirogue traditionnelle figure parmi les activités publiques de la FETOC, notamment lors du Relai Autour du Monde 2024 au Togo.",
       "source": "France Volontaires",
-      "image": null
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lac_Togo_Vogan.jpg/1280px-Lac_Togo_Vogan.jpg"
     },
     {
       "id": "para-canoe",
@@ -44,7 +44,7 @@
       "a_la_une": true,
       "description": "Des formations consacrées à l'encadrement des sportifs en situation de handicap ont été organisées à Aného.",
       "source": "Ahouévi Info",
-      "image": null
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Paracanoe_at_the_2024_Summer_Paralympics_-_September_6_62.jpg/1280px-Paracanoe_at_the_2024_Summer_Paralympics_-_September_6_62.jpg"
     }
   ],
 

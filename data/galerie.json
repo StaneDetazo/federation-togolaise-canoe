@@ -1,11 +1,32 @@
 {
   "entete": {
     "titre": "La fédération en images",
-    "chapeau": "Compétitions, entraînements et formation : la vie de la fédération en photographies.",
-    "a_confirmer": "Aucune photographie officielle n'est encore disponible. Cette galerie sera alimentée par les images de la fédération dès leur mise à disposition."
+    "chapeau": "Un aperçu en images des activités de la fédération togolaise de canoë.",
+    "note": "Photographies issues des activités de la fédération."
   },
 
-  "categories": [],
+  "categories": [{ "id": "toutes", "libelle": "Toutes" }],
 
-  "liste": []
+  "liste": [
+    { "id": "g1", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-01.jpeg", "source": "FETOC" },
+    { "id": "g2", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-02.jpeg", "source": "FETOC" },
+    { "id": "g3", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-03.jpeg", "source": "FETOC" },
+    { "id": "g4", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-04.jpeg", "source": "FETOC" },
+    { "id": "g5", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-05.jpeg", "source": "FETOC" },
+    { "id": "g6", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-06.jpeg", "source": "FETOC" },
+    { "id": "g7", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-07.jpeg", "source": "FETOC" },
+    { "id": "g8", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-08.jpeg", "source": "FETOC" },
+    { "id": "g9", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-09.jpeg", "source": "FETOC" },
+    { "id": "g10", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-10.jpeg", "source": "FETOC" },
+    { "id": "g11", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-11.jpeg", "source": "FETOC" },
+    { "id": "g12", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-12.jpeg", "source": "FETOC" },
+    { "id": "g13", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-13.jpeg", "source": "FETOC" },
+    { "id": "g14", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-14.jpeg", "source": "FETOC" },
+    { "id": "g15", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-15.jpeg", "source": "FETOC" },
+    { "id": "g16", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-16.jpeg", "source": "FETOC" },
+    { "id": "g17", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-17.jpeg", "source": "FETOC" },
+    { "id": "g18", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-18.jpeg", "source": "FETOC" },
+    { "id": "g19", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-19.jpeg", "source": "FETOC" },
+    { "id": "g20", "titre": "", "categorie": "toutes", "lieu": null, "date": null, "src": "assets/img/gallery/galerie-20.jpeg", "source": "FETOC" }
+  ]
 }

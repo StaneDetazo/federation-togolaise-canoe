@@ -112,19 +112,22 @@ function rendre() {
   /* ------------------------------------------------ galerie */
   texte('galerie-titre', galerie.entete?.titre);
   texte('galerie-intro', galerie.entete?.chapeau);
-  texte('galerie-note', galerie.entete?.a_confirmer);
+  texte('galerie-note', galerie.entete?.note);
 
+  const categoriesGalerie = galerie.categories || [];
   const zoneGalerie = remplir(
     'filtres-galerie',
-    (galerie.categories || [])
-      .map(
-        (categorie) => `
+    categoriesGalerie.length > 1
+      ? categoriesGalerie
+          .map(
+            (categorie) => `
       <button type="button" class="pastille-filtre${categorie.id === etat.galerie ? ' est-actif' : ''}"
         data-galerie-categorie="${esc(categorie.id)}" aria-pressed="${categorie.id === etat.galerie}">
         ${esc(categorie.libelle)}
       </button>`
-      )
-      .join('')
+          )
+          .join('')
+      : ''
   );
   zoneGalerie?.addEventListener('click', (evenement) => {
     const bouton = evenement.target.closest('[data-galerie-categorie]');

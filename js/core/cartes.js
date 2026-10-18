@@ -30,6 +30,11 @@ const img = (src, alt, classes, attributs = 'loading="lazy" decoding="async"', l
 const badge = (texte, variante = 'vert', nomIcone = null) =>
   `<span class="pastille pastille--${variante}">${nomIcone ? icone(nomIcone, 'h-3.5 w-3.5') : ''}${esc(texte)}</span>`;
 
+/* Visuel utilisé lorsqu'une fiche n'a pas encore de photographie.
+   Les images provisoires sont définies dans data/*.json (champ « image »). */
+const IMAGE_DEFAUT = 'assets/img/banner-actualites.svg';
+const imageOuDefaut = (source) => source || IMAGE_DEFAUT;
+
 /* ---------------------------------------------------------------- disciplines */
 export function carteDiscipline(discipline) {
   const famille = familles().find((f) => f.id === discipline.famille)?.libelle ?? 'Discipline';
@@ -53,29 +58,41 @@ export function carteDiscipline(discipline) {
 }
 
 /* ------------------------------------------- disciplines (tuiles d'accueil) */
-/* Tuile d'accueil : bloc sombre sans photographie (images à venir). */
+/* Tuile photographique d'accueil : la première activité est mise en avant
+   (2 colonnes × 2 lignes) sur les grands écrans. */
 export function carteDisciplineAccueil(discipline, index = 0) {
   const famille = familles().find((f) => f.id === discipline.famille)?.libelle ?? 'Discipline';
+  const photo = imageOuDefaut(discipline.image);
+  const grand = index === 0;
   const lien = `disciplines.html#${esc(discipline.id)}`;
 
   return `
-  <article class="revele" data-delai="${(index % 3) * 80}">
-    <a href="${lien}" class="group flex h-full flex-col rounded-3xl border border-white/12 bg-white/[0.05] p-6 transition hover:border-soleil-400/60 hover:bg-white/[0.08] sm:p-8">
-      <span class="grid h-12 w-12 place-items-center rounded-2xl bg-soleil-400 text-vert-950">
-        ${icone(discipline.icone, 'h-6 w-6')}
-      </span>
-      <span class="mt-5 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-soleil-300">${esc(
-        famille
-      )}</span>
-      <h3 class="mt-2 font-display text-xl font-bold leading-snug text-white">${esc(discipline.nom)}</h3>
-      <p class="mt-3 text-sm leading-relaxed text-vert-50/80">${esc(discipline.description)}</p>
-      <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
-        Découvrir
-        <span class="grid h-7 w-7 place-items-center rounded-full bg-white/15 transition-transform duration-300 group-hover:translate-x-1">
-          ${icone('fleche-droite', 'h-3.5 w-3.5')}
+  <article class="revele group relative isolate aspect-[4/3] overflow-hidden rounded-3xl bg-vert-900 ${
+    grand ? 'lg:col-span-2 lg:row-span-2 lg:aspect-auto' : ''
+  }">
+    <a href="${lien}" class="absolute inset-0 block" aria-label="${esc(discipline.nom)}">
+      <img src="${esc(photo)}" alt="${esc(discipline.nom)}" width="1280" height="853" loading="lazy" decoding="async"
+        class="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105">
+      <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-vert-950 via-vert-950/45 to-vert-950/5" aria-hidden="true"></span>
+      <div class="absolute inset-x-0 bottom-0 ${grand ? 'p-6 sm:p-8 lg:p-9' : 'p-5 sm:p-6'}">
+        <p class="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-soleil-300">${esc(famille)}</p>
+        <h3 class="mt-2 font-display font-bold leading-snug text-white ${grand ? 'text-2xl sm:text-3xl' : 'text-lg'}">
+          ${esc(discipline.nom)}
+        </h3>
+        ${grand ? `<p class="mt-3 max-w-md text-sm leading-relaxed text-vert-50/85">${esc(tronquer(discipline.description, 160))}</p>` : ''}
+        <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white">
+          Découvrir
+          <span class="grid h-7 w-7 place-items-center rounded-full bg-white/15 transition-transform duration-300 group-hover:translate-x-1">
+            ${icone('fleche-droite', 'h-3.5 w-3.5')}
+          </span>
         </span>
-      </span>
+      </div>
     </a>
+    <span class="pointer-events-none absolute left-5 top-5 grid h-11 w-11 place-items-center rounded-2xl bg-white/90 text-vert-700 shadow-doux ${
+      grand ? 'sm:h-12 sm:w-12' : ''
+    }">
+      ${icone(discipline.icone, 'h-5 w-5')}
+    </span>
   </article>`;
 }
 
@@ -105,10 +122,11 @@ export function carteArticle(article, { variante = 'grille' } = {}) {
 }
 
 /* ------------------------------------------- actualités (bloc d'accueil) */
-/* Bloc d'accueil : une « une » éditoriale, puis des brèves. Sans photographie
-   (les images de la fédération seront ajoutées ultérieurement). */
+/* Bloc d'accueil : une « une » éditoriale photographique, puis des brèves
+   illustrées. La page Actualités conserve, elle, la carte standard. */
 export function carteArticleAccueil(article, { vedette = false } = {}) {
   const lien = `article.html?slug=${encodeURIComponent(article.slug)}`;
+  const photo = imageOuDefaut(article.image);
   const categorie = libelleCategorie(article.categorie);
   const meta = [dateLongue(article.date), article.lieu]
     .filter(Boolean)
@@ -117,16 +135,17 @@ export function carteArticleAccueil(article, { vedette = false } = {}) {
 
   if (vedette) {
     return `
-    <article class="revele group flex flex-col rounded-3xl border border-sable-200 bg-sable-50 p-7 sm:p-9">
-      <div class="flex flex-wrap items-center gap-2">
-        ${badge(categorie, 'soleil')}
-        <span class="text-xs text-encre-clair">${meta}</span>
-      </div>
-      <h3 class="mt-5 font-display text-2xl font-bold leading-snug text-vert-950 sm:text-[1.75rem]">
+    <article class="revele group flex flex-col">
+      <a href="${lien}" class="relative block overflow-hidden rounded-3xl bg-vert-900">
+        ${img(photo, article.titre, 'aspect-[16/10] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]', 'loading="lazy" decoding="async"', 1280, 800)}
+        <span class="absolute left-5 top-5">${badge(categorie, 'soleil')}</span>
+      </a>
+      <p class="mt-6 text-xs uppercase tracking-[0.12em] text-encre-clair">${meta}</p>
+      <h3 class="mt-3 font-display text-2xl font-bold leading-snug text-vert-950 sm:text-[1.75rem]">
         <a href="${lien}" class="transition hover:text-vert-700">${esc(article.titre)}</a>
       </h3>
       <p class="mt-3 text-sm leading-relaxed text-encre-doux sm:text-base">${esc(article.chapeau)}</p>
-      <a href="${lien}" class="lien-fleche mt-6 self-start text-sm font-semibold text-vert-700">
+      <a href="${lien}" class="lien-fleche mt-5 self-start text-sm font-semibold text-vert-700">
         Lire l'article ${icone('fleche-droite', 'h-4 w-4')}
       </a>
     </article>`;
@@ -135,6 +154,9 @@ export function carteArticleAccueil(article, { vedette = false } = {}) {
   return `
   <article class="revele group border-t border-sable-200 pt-6 first:border-t-0 first:pt-0">
     <a href="${lien}" class="flex items-start gap-5">
+      <span class="relative block h-24 w-28 shrink-0 overflow-hidden rounded-2xl bg-vert-900 sm:h-28 sm:w-36">
+        ${img(photo, article.titre, 'h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105', 'loading="lazy" decoding="async"', 600, 400)}
+      </span>
       <span class="min-w-0">
         <span class="block text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-vert-600">${esc(categorie)}</span>
         <span class="mt-2 block font-display text-base font-bold leading-snug text-vert-950 transition group-hover:text-vert-700 sm:text-lg">${esc(article.titre)}</span>
@@ -149,7 +171,7 @@ export function carteArticleAccueil(article, { vedette = false } = {}) {
 export function carteClub(club, { variante = 'carte' } = {}) {
   const lien = `club.html?id=${encodeURIComponent(club.id)}`;
   const region = club.region ? nomRegion(club.region) : null;
-  const lieu = [club.ville, club.site_pratique].filter(Boolean).join(' · ');
+  const lieu = [...new Set([club.ville, club.site_pratique].filter(Boolean))].join(' · ');
 
   if (variante === 'liste') {
     return `
@@ -188,21 +210,31 @@ export function carteClub(club, { variante = 'carte' } = {}) {
 }
 
 /* ------------------------------------------------ clubs (cartes d'accueil) */
-/* Carte d'accueil : bloc texte, sans photographie (images à venir). */
+/* « Carte postale » d'accueil : cadre blanc, photo encadrée, cachet du sigle.
+   Le décalage vertical (colonne du milieu) est passé par la page. */
 export function carteClubAccueil(club, { decalage = '' } = {}) {
   const lien = `club.html?id=${encodeURIComponent(club.id)}`;
-  const lieu = [club.ville, club.site_pratique].filter(Boolean).join(' · ');
+  const photo = imageOuDefaut(club.image);
+  const region = club.region ? nomRegion(club.region) : null;
+  const lieu = [...new Set([club.ville, club.site_pratique].filter(Boolean))].join(' · ');
 
   return `
-  <article class="revele group flex h-full flex-col rounded-[1.75rem] border border-sable-200 bg-white p-7 shadow-doux transition duration-500 hover:-translate-y-1.5 hover:border-vert-200 hover:shadow-carte ${decalage}">
+  <article class="revele group flex h-full flex-col rounded-[1.75rem] border border-sable-200 bg-white p-3 shadow-doux transition duration-500 hover:-translate-y-1.5 hover:border-vert-200 hover:shadow-carte ${decalage}">
     <a href="${lien}" class="flex h-full flex-col">
-      <span class="grid h-12 w-12 place-items-center rounded-2xl bg-vert-50 text-vert-700">${icone('pagaie', 'h-6 w-6')}</span>
-      <span class="mt-5 block font-display text-lg font-bold leading-snug text-vert-950 transition group-hover:text-vert-700">${esc(club.nom)}</span>
-      ${lieu ? `<span class="mt-1.5 flex items-center gap-1.5 text-sm text-encre-clair">${icone('lieu', 'h-4 w-4 shrink-0 text-vert-600')}${esc(lieu)}</span>` : ''}
-      <span class="mt-3.5 block text-sm leading-relaxed text-encre-doux">${esc(tronquer(club.presentation, 130))}</span>
-      <span class="mt-auto flex items-center justify-between gap-3 border-t border-sable-200 pt-5">
-        <span class="text-xs text-encre-clair">Club affilié</span>
-        <span class="lien-fleche text-sm font-semibold text-vert-700">Voir la fiche ${icone('fleche-droite', 'h-4 w-4')}</span>
+      <span class="relative block aspect-[4/3] overflow-hidden rounded-[1.3rem] bg-vert-900">
+        ${img(photo, `${club.nom}${lieu ? ` - ${lieu}` : ''}`, 'h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105', 'loading="lazy" decoding="async"', 1280, 960)}
+        <span class="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-vert-950/75 to-transparent"></span>
+        ${region ? `<span class="absolute left-3 top-3">${badge(region, 'sombre', 'lieu')}</span>` : ''}
+      </span>
+
+      <span class="flex flex-1 flex-col px-2 pb-1 pt-5">
+        <span class="block font-display text-lg font-bold leading-snug text-vert-950 transition group-hover:text-vert-700">${esc(club.nom)}</span>
+        ${lieu ? `<span class="mt-1.5 flex items-center gap-1.5 text-sm text-encre-clair">${icone('lieu', 'h-4 w-4 shrink-0 text-vert-600')}${esc(lieu)}</span>` : ''}
+        <span class="mt-3.5 block text-sm leading-relaxed text-encre-doux">${esc(tronquer(club.presentation, 130))}</span>
+        <span class="mt-auto flex items-center justify-between gap-3 border-t border-sable-200 pt-4">
+          <span class="text-xs text-encre-clair">Club affilié</span>
+          <span class="lien-fleche text-sm font-semibold text-vert-700">Voir la fiche ${icone('fleche-droite', 'h-4 w-4')}</span>
+        </span>
       </span>
     </a>
   </article>`;
@@ -308,10 +340,11 @@ export function ligneEvenement(evenement) {
 }
 
 /* ------------------------------------------- événements (frise d'accueil) */
-/* Frise d'accueil : chaque rendez-vous est une ligne posée sur un rail
-   vertical, sans photographie (images à venir). */
+/* Frise d'accueil : chaque rendez-vous est une ligne photographique posée sur
+   un rail vertical (le rail est dessiné par le conteneur de la zone). */
 export function ligneEvenementAccueil(evenement) {
   const { jour, mois } = jourMois(evenement.date_debut);
+  const photo = imageOuDefaut(evenement.image);
   const discipline = evenement.discipline_id
     ? libelleDiscipline(evenement.discipline_id)
     : 'Rendez-vous fédéral';
@@ -324,11 +357,14 @@ export function ligneEvenementAccueil(evenement) {
   return `
   <article class="revele group relative">
     <span class="absolute -left-[31px] top-8 h-3.5 w-3.5 rounded-full border-2 border-soleil-400 bg-vert-950 sm:-left-[39px]" aria-hidden="true"></span>
-    <a href="competitions.html#${esc(evenement.id)}" class="flex gap-4 rounded-2xl border border-white/12 bg-white/[0.05] p-5 transition hover:border-soleil-400/60 hover:bg-white/[0.08] sm:gap-6 sm:p-6">
-      <span class="grid h-16 w-16 flex-none place-items-center rounded-xl bg-soleil-400 text-vert-950">
-        <span class="text-center leading-none">
-          <span class="block font-display text-xl font-extrabold">${esc(jour)}</span>
-          <span class="block text-[0.6rem] font-bold uppercase tracking-wider">${esc(mois)}</span>
+    <a href="competitions.html#${esc(evenement.id)}" class="flex gap-4 rounded-2xl border border-white/12 bg-white/[0.05] p-4 transition hover:border-soleil-400/60 hover:bg-white/[0.08] sm:gap-6 sm:p-5">
+      <span class="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-vert-900 sm:h-32 sm:w-44">
+        ${img(photo, evenement.titre, 'h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105', 'loading="lazy" decoding="async"', 1280, 900)}
+        <span class="absolute left-2 top-2 grid h-12 w-12 place-items-center rounded-lg bg-soleil-400 text-vert-950">
+          <span class="text-center leading-none">
+            <span class="block font-display text-base font-extrabold">${esc(jour)}</span>
+            <span class="block text-[0.58rem] font-bold uppercase tracking-wider">${esc(mois)}</span>
+          </span>
         </span>
       </span>
       <span class="min-w-0 flex-1">
@@ -351,17 +387,41 @@ export function ligneEvenementAccueil(evenement) {
 }
 
 /* ---------------------------------------------------------------- galerie */
+/* Légende d'une photographie. Le titre et les précisions sont facultatifs :
+   certaines photos n'ont pas encore de légende publiée. */
+const LEGENDE_GALERIE_DEFAUT = 'Photographie de la fédération';
+
+function legendeGalerie(image) {
+  const details = [image.lieu, image.date ? dateCourte(image.date) : null].filter(Boolean).join(' · ');
+  const titre = image.titre || '';
+  const texte = [titre, details].filter(Boolean).join(' - ');
+  return { titre, details, texte, alt: texte || LEGENDE_GALERIE_DEFAUT };
+}
+
+const etiquetteCategorieGalerie = (categorie) =>
+  categorie && categorie !== 'toutes'
+    ? `<span class="absolute left-2 top-2 rounded-full bg-white/95 px-2.5 py-1 font-display text-[0.6rem] font-bold uppercase tracking-wider text-vert-800">
+          ${esc(libelleCategorieGalerie(categorie))}
+        </span>`
+    : '';
+
 export function vignetteGalerie(image, { delai = 0, grande = false } = {}) {
+  const photo = imageOuDefaut(image.src);
+  const { titre, details, texte, alt } = legendeGalerie(image);
+  const voile =
+    titre || details
+      ? `<figcaption class="galerie-item__voile">
+      <span class="block">
+        ${titre ? `<span class="block text-sm font-semibold">${esc(titre)}</span>` : ''}
+        ${details ? `<span class="mt-0.5 block text-xs text-white/75">${esc(details)}</span>` : ''}
+      </span>
+    </figcaption>`
+      : '';
   return `
   <figure class="revele galerie-item ${grande ? 'col-span-2 row-span-2 aspect-square' : 'aspect-[4/3]'}" data-delai="${delai}"
-          data-legende="${esc(image.titre)} - ${esc(image.lieu)}">
-    ${img(image.src, image.titre, 'h-full w-full object-cover')}
-    <figcaption class="galerie-item__voile">
-      <span class="block">
-        <span class="block text-sm font-semibold">${esc(image.titre)}</span>
-        <span class="mt-0.5 block text-xs text-white/75">${esc(image.lieu)} · ${esc(dateCourte(image.date))}</span>
-      </span>
-    </figcaption>
+          data-legende="${esc(texte || alt)}">
+    ${img(photo, alt, 'h-full w-full object-cover')}
+    ${voile}
   </figure>`;
 }
 
@@ -369,22 +429,25 @@ export function vignetteGalerie(image, { delai = 0, grande = false } = {}) {
 /* « Mur de photos » d'accueil : cadre blanc, légende sous l'image et léger
    devers (rotation passée par la page). Le clic ouvre la visionneuse. */
 export function vignetteGalerieAccueil(image, { ratio = 'aspect-[4/3]', rotation = '', delai = 0 } = {}) {
-  const legende = `${image.titre} - ${image.lieu}`;
+  const photo = imageOuDefaut(image.src);
+  const { titre, details, texte, alt } = legendeGalerie(image);
+  const legendeVisible =
+    titre || details
+      ? `<figcaption class="px-1 pt-3">
+        ${titre ? `<span class="block text-sm font-semibold leading-snug text-vert-950">${esc(titre)}</span>` : ''}
+        ${details ? `<span class="mt-0.5 block text-xs text-encre-clair">${esc(details)}</span>` : ''}
+      </figcaption>`
+      : '';
 
   return `
   <div class="revele" data-delai="${delai}">
-    <figure class="galerie-item group rounded-2xl border border-sable-200 bg-white p-2.5 pb-3 shadow-doux transition duration-500 hover:-translate-y-1.5 hover:rotate-0 hover:border-vert-200 hover:shadow-carte ${rotation}"
-            data-legende="${esc(legende)}">
+    <figure class="galerie-item group rounded-2xl border border-sable-200 bg-white p-2.5 ${titre || details ? 'pb-3' : ''} shadow-doux transition duration-500 hover:-translate-y-1.5 hover:rotate-0 hover:border-vert-200 hover:shadow-carte ${rotation}"
+            data-legende="${esc(texte || alt)}">
       <span class="relative block ${ratio} overflow-hidden rounded-[0.75rem] bg-vert-900">
-        ${img(image.src, legende, 'h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105', 'loading="lazy" decoding="async"', 900, 900)}
-        <span class="absolute left-2 top-2 rounded-full bg-white/95 px-2.5 py-1 font-display text-[0.6rem] font-bold uppercase tracking-wider text-vert-800">
-          ${esc(libelleCategorieGalerie(image.categorie))}
-        </span>
+        ${img(photo, alt, 'h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105', 'loading="lazy" decoding="async"', 900, 900)}
+        ${etiquetteCategorieGalerie(image.categorie)}
       </span>
-      <figcaption class="px-1 pt-3">
-        <span class="block text-sm font-semibold leading-snug text-vert-950">${esc(image.titre)}</span>
-        <span class="mt-0.5 block text-xs text-encre-clair">${esc(image.lieu)} · ${esc(dateCourte(image.date))}</span>
-      </figcaption>
+      ${legendeVisible}
     </figure>
   </div>`;
 }

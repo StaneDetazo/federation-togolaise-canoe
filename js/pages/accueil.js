@@ -228,7 +228,9 @@ function rendre() {
         .join('')}
     </div>`
     : blocSquelette({
-        texte: 'Les photographies officielles de la fédération seront publiées dans cette galerie dès leur mise à disposition.',
+        texte:
+          data.galerie?.entete?.note ||
+          'Les photographies officielles de la fédération seront publiées dans cette galerie.',
         nombre: 4,
         colonnes: 'grid-cols-2 lg:grid-cols-4'
       });

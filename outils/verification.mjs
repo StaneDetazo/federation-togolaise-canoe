@@ -238,7 +238,13 @@ try {
     ['carteMembre', cartes.carteMembre, premier(donnees.federation.bureau_executif?.membres)],
     ['cartePartenaire', cartes.cartePartenaire, premier(donnees.partenaires.liste)],
     ['blocSquelette', cartes.blocSquelette, { titre: 'Test', texte: 'Texte', nombre: 2 }],
-    ['bandeauPage', cartes.bandeauPage, { titre: 'Test', chapeau: 'Chapô', image: 'assets/img/hero.svg', fil: 'Test' }]
+    ['bandeauPage', cartes.bandeauPage, { titre: 'Test', chapeau: 'Chapô', image: 'assets/img/hero.svg', fil: 'Test' }],
+    ['carteDisciplineAccueil', (d) => cartes.carteDisciplineAccueil(d, 0), premier(donnees.disciplines.liste)],
+    ['carteArticleAccueil (vedette)', (a) => cartes.carteArticleAccueil(a, { vedette: true }), premier(donnees.actualites.liste)],
+    ['carteArticleAccueil', cartes.carteArticleAccueil, donnees.actualites.liste?.[1]],
+    ['carteClubAccueil', cartes.carteClubAccueil, premier(donnees.clubs.liste)],
+    ['ligneEvenementAccueil', cartes.ligneEvenementAccueil, premier(donnees.competitions.evenements)],
+    ['vignetteGalerieAccueil', cartes.vignetteGalerieAccueil, premier(donnees.galerie.liste)]
   ].filter(([, , entree]) => entree !== undefined);
 
   for (const [nom, fonction, entree] of controles) {
@@ -260,6 +266,18 @@ try {
   for (const p of donnees.partenaires.liste || []) { cartes.cartePartenaire(p); total += 1; }
   for (const g of donnees.galerie.liste || []) { cartes.vignetteGalerie(g); total += 1; }
   ok(`${total} rendus complets sans erreur (disciplines, articles, clubs, événements, bureau, partenaires, galerie)`);
+
+  // rendu des variantes d'accueil (pages d'accueil)
+  let totalAccueil = 0;
+  (donnees.disciplines.liste || []).forEach((d, i) => { cartes.carteDisciplineAccueil(d, i); totalAccueil += 1; });
+  (donnees.actualites.liste || []).forEach((a, i) => {
+    cartes.carteArticleAccueil(a, { vedette: i === 0 });
+    totalAccueil += 1;
+  });
+  (donnees.clubs.liste || []).forEach((c) => { cartes.carteClubAccueil(c); totalAccueil += 1; });
+  (donnees.competitions.evenements || []).forEach((e) => { cartes.ligneEvenementAccueil(e); totalAccueil += 1; });
+  (donnees.galerie.liste || []).forEach((g) => { cartes.vignetteGalerieAccueil(g); totalAccueil += 1; });
+  ok(`${totalAccueil} rendus d'accueil sans erreur (disciplines, actualités, clubs, rendez-vous, galerie)`);
 } catch (e) {
   erreur(`Rendu impossible - ${e.message}`);
 }
