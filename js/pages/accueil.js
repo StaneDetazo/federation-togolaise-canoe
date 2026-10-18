@@ -8,14 +8,12 @@ import {
   site,
   disciplines,
   chiffresCles,
-  prochainsEvenements,
+  agenda,
   articlesRecents,
   clubsMisEnAvant,
   imagesGalerie,
   partenairesAffiches,
   clubs,
-  regions,
-  nomRegion,
   videoHeroPage
 } from '../core/data.js';
 import {
@@ -24,9 +22,10 @@ import {
   carteClubAccueil,
   ligneEvenementAccueil,
   vignetteGalerieAccueil,
-  cartePartenaire
+  cartePartenaire,
+  blocSquelette
 } from '../core/cartes.js';
-import { qs, esc, dateCourte } from '../core/utils.js';
+import { qs, esc } from '../core/utils.js';
 import { icone as svg } from '../core/icons.js';
 
 demarrer().then(() => rendre());
@@ -34,6 +33,8 @@ demarrer().then(() => rendre());
 function rendre() {
   const identite = site();
   const federation = data.federation ?? {};
+  const cles = chiffresCles();
+  const cle = (id) => cles.find((c) => c.id === id)?.valeur ?? '';
 
   /* ------------------------------------------------ vidéo de fond du héros */
   const videoHero = qs('#heros-video');
@@ -50,15 +51,22 @@ function rendre() {
   /* ------------------------------------------------ bannière principale */
   qs('[data-zone="heros-accroche"]').textContent = identite.accroche || '';
 
-  const prochain = prochainsEvenements(1)[0];
   const reperes = [
     {
-      libelle: 'Prochain rendez-vous',
-      valeur: prochain ? dateCourte(prochain.date_debut) : 'Calendrier en préparation',
-      detail: prochain ? prochain.titre : 'Consulter le calendrier sportif'
+      libelle: 'Clubs affiliés',
+      valeur: cle('clubs') || String(clubs().length),
+      detail: 'engagés au championnat national 2025'
     },
-    { libelle: 'Disciplines encadrées', valeur: String(disciplines().length), detail: 'De la course en ligne à la pirogue' },
-    { libelle: 'Base nautique fédérale', valeur: 'Togoville', detail: 'Rive sud du Lac Togo' }
+    {
+      libelle: 'Athlètes engagés',
+      valeur: cle('athetes'),
+      detail: 'championnat national 2025'
+    },
+    {
+      libelle: 'Création de la fédération',
+      valeur: cle('creation'),
+      detail: 'Agbodrafo, préfecture des Lacs'
+    }
   ];
   qs('[data-zone="heros-infos"]').innerHTML = reperes
     .map(
@@ -73,7 +81,7 @@ function rendre() {
 
   const badge = qs('[data-zone="heros-badge"]');
   if (badge) {
-    badge.innerHTML = `<b>${clubs().length}</b> <span>clubs affiliés au Togo</span>`;
+    badge.innerHTML = `<b>${cle('clubs') || clubs().length}</b> <span>clubs affiliés au Togo</span>`;
   }
 
   /* ------------------------------------------------ la fédération en bref */
@@ -84,7 +92,6 @@ function rendre() {
     .join('');
 
   /* ------------------------------------------------ chiffres clés (optionnels) */
-  const cles = chiffresCles();
   const zoneChiffres = qs('[data-zone="chiffres-cles"]');
   if (cles.length && zoneChiffres) {
     // Bandeau de chiffres fusionné dans l'encadré « La fédération en bref » :
@@ -130,8 +137,8 @@ function rendre() {
       </div>`;
   }
 
-  /* ------------------------------------------------ prochains événements */
-  const evenements = prochainsEvenements(4);
+  /* ------------------------------------------------ rendez-vous publiés */
+  const evenements = agenda({ limite: 4 }).reverse();
   const zoneEvenements = qs('[data-zone="evenements-liste"]');
   if (evenements.length) {
     zoneEvenements.innerHTML = `
@@ -142,42 +149,24 @@ function rendre() {
     zoneEvenements.innerHTML = `
       <div class="rounded-2xl border border-dashed border-white/25 bg-white/[0.04] px-8 py-12 text-center">
         <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-white/10 text-soleil-300">${svg('calendrier', 'h-6 w-6')}</span>
-        <p class="mt-4 font-display text-lg font-bold text-white">Aucun rendez-vous prévu</p>
+        <p class="mt-4 font-display text-lg font-bold text-white">Aucun rendez-vous publié</p>
         <p class="mx-auto mt-2 max-w-md text-sm text-vert-50/75">
-          Consultez la page du calendrier pour connaître les prochaines dates dès leur publication.
+          Les prochaines dates seront publiées dès leur communication par la fédération.
         </p>
-        <a href="competitions.html" class="btn btn--soleil mt-6">Consulter le calendrier</a>
+        <a href="competitions.html" class="btn btn--soleil mt-6">Voir les compétitions &amp; résultats</a>
       </div>`;
   }
 
   /* ------------------------------------------------ clubs affiliés */
-  const totalClubs = clubs().length;
-  const maximumRegion = Math.max(
-    1,
-    ...regions().map((region) => clubs().filter((c) => c.region === region.id).length)
-  );
-  const indexRegions = `
+  const totalClubs = cle('clubs') || String(clubs().length);
+  const indexInfo = `
     <aside class="lg:sticky lg:top-24 lg:self-start">
-      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Répartition régionale</p>
-      <ul class="mt-6 space-y-4">
-        ${regions()
-          .map((region) => {
-            const nombre = clubs().filter((c) => c.region === region.id).length;
-            return `
-          <li>
-            <span class="flex items-baseline justify-between gap-3">
-              <span class="font-display text-sm font-semibold text-vert-950">${esc(nomRegion(region.id))}</span>
-              <span class="text-xs tabular-nums text-encre-clair">${nombre} club${nombre > 1 ? 's' : ''}</span>
-            </span>
-            <span class="mt-2 block h-1.5 w-full overflow-hidden rounded-full bg-sable-200">
-              <span class="block h-full rounded-full bg-vert-600" style="width:${Math.round((nombre / maximumRegion) * 100)}%"></span>
-            </span>
-          </li>`;
-          })
-          .join('')}
-      </ul>
+      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Clubs affiliés</p>
+      <p class="mt-4 font-display text-4xl font-extrabold text-vert-950">${esc(String(totalClubs))}</p>
+      <p class="mt-1 text-sm leading-relaxed text-encre-doux">clubs engagés au championnat national 2025.</p>
+      <p class="mt-4 text-sm leading-relaxed text-encre-doux">La liste complète et les coordonnées des clubs ne sont pas encore publiées par la fédération. Trois clubs sont publiquement cités à ce jour.</p>
       <a href="clubs.html" class="btn btn--contour mt-8 flex w-full justify-center">
-        Parcourir les ${totalClubs} clubs <span aria-hidden="true">→</span>
+        Voir les clubs <span aria-hidden="true">→</span>
       </a>
     </aside>`;
 
@@ -187,7 +176,7 @@ function rendre() {
 
   qs('[data-zone="clubs-grille"]').innerHTML = `
     <div class="grid gap-12 lg:grid-cols-[minmax(0,15rem)_1fr] lg:gap-16">
-      ${indexRegions}
+      ${indexInfo}
       <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 md:items-start">${cartesClubs}</div>
     </div>`;
 
@@ -217,7 +206,9 @@ function rendre() {
   const colonnes = [[], [], [], []];
   photosGalerie.forEach((photo, index) => colonnes[index % 4].push({ photo, index }));
 
-  qs('[data-zone="galerie-grille"]').innerHTML = `
+  const zoneGalerie = qs('[data-zone="galerie-grille"]');
+  zoneGalerie.innerHTML = photosGalerie.length
+    ? `
     <div class="grid grid-cols-2 items-start gap-5 sm:gap-7 lg:grid-cols-4 lg:gap-8">
       ${colonnes
         .map(
@@ -235,7 +226,12 @@ function rendre() {
         </div>`
         )
         .join('')}
-    </div>`;
+    </div>`
+    : blocSquelette({
+        texte: 'Les photographies officielles de la fédération seront publiées dans cette galerie dès leur mise à disposition.',
+        nombre: 4,
+        colonnes: 'grid-cols-2 lg:grid-cols-4'
+      });
 
   /* ------------------------------------------------ partenaires */
   const partenaires = partenairesAffiches();

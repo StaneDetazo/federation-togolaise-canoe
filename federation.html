@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>La Fédération - missions, organisation et gouvernance</title>
-  <meta name="description" content="Missions, vision, organisation et gouvernance de la Fédération Togolaise de Canoë (FETOC).">
+  <title>La Fédération - histoire, missions et organisation</title>
+  <meta name="description" content="Histoire, missions, comité exécutif et affiliations de la Fédération Togolaise de Canoë (FETOC).">
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fédération Togolaise de Canoë">
   <meta property="og:title" content="La Fédération - FETOC">
-  <meta property="og:description" content="Missions, vision, organisation et gouvernance de la Fédération Togolaise de Canoë.">
+  <meta property="og:description" content="Histoire, missions, comité exécutif et affiliations de la Fédération Togolaise de Canoë.">
   <meta property="og:url" content="http://localhost:8125/federation.html">
   <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
   <meta property="og:locale" content="fr_TG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="La Fédération - FETOC">
-  <meta name="twitter:description" content="Missions, vision, organisation et gouvernance de la Fédération Togolaise de Canoë.">
+  <meta name="twitter:description" content="Histoire, missions, comité exécutif et affiliations de la Fédération Togolaise de Canoë.">
   <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
 </head>
@@ -41,7 +41,7 @@
     <div data-zone="essentiel"></div>
 
     <!-- Présentation -->
-    <section class="bg-white py-16 lg:py-24">
+    <section id="identite" class="scroll-mt-32 bg-white py-16 lg:py-24">
       <div class="mx-auto grid max-w-ecran gap-14 px-4 sm:px-6 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
         <div class="revele">
           <p class="etiquette text-vert-600">Qui sommes-nous</p>
@@ -58,6 +58,18 @@
       </div>
     </section>
 
+    <!-- Histoire -->
+    <section class="bg-sable-50 py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-2xl">
+          <p class="etiquette text-vert-600">Histoire</p>
+          <h2 data-zone="histoire-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <p data-zone="histoire-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </header>
+        <div data-zone="histoire-frise" class="revele mt-12 grid gap-x-16 gap-y-0 lg:grid-cols-2"></div>
+      </div>
+    </section>
+
     <!-- Missions -->
     <section class="bg-white py-16 lg:py-24">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
@@ -70,49 +82,6 @@
       </div>
     </section>
 
-    <!-- Vision et valeurs -->
-    <section class="relative overflow-hidden bg-vert-950 py-16 text-white lg:py-24">
-      <div class="pointille absolute inset-0 opacity-20" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-ecran px-4 sm:px-6">
-        <div class="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
-          <div class="revele">
-            <p class="etiquette text-soleil-300">Vision</p>
-            <h2 data-zone="vision-titre" class="mt-5 titre-section text-white"></h2>
-            <p data-zone="vision-texte" class="mt-5 text-base leading-relaxed text-vert-50/85"></p>
-            <ul data-zone="vision-objectifs" class="mt-8 space-y-3 text-sm text-vert-50/85"></ul>
-          </div>
-          <div class="revele revele--droite">
-            <p class="etiquette text-soleil-300">Valeurs</p>
-            <div data-zone="valeurs-grille" class="mt-6 grid gap-4 sm:grid-cols-2"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Organisation -->
-    <section class="bg-white py-16 lg:py-24">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele max-w-2xl">
-          <p class="etiquette text-vert-600">Organisation</p>
-          <h2 data-zone="organisation-titre" class="mt-5 titre-section text-vert-950"></h2>
-          <p data-zone="organisation-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
-        </header>
-        <div data-zone="instances-grille" class="mt-12 grid gap-6 sm:grid-cols-2"></div>
-
-        <div class="revele mt-14">
-          <h3 class="font-display text-lg font-bold text-vert-950">Commissions techniques</h3>
-          <div class="mt-5 overflow-hidden rounded-2xl border border-sable-200">
-            <table class="tableau-fetoc">
-              <thead>
-                <tr><th scope="col">Commission</th><th scope="col">Rapporteur</th><th scope="col">Attributions</th></tr>
-              </thead>
-              <tbody data-zone="commissions-lignes"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Bureau exécutif -->
     <section class="bg-sable-50 py-16 lg:py-24">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
@@ -122,9 +91,9 @@
             <h2 data-zone="bureau-titre" class="mt-5 titre-section text-vert-950"></h2>
             <p data-zone="bureau-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
           </div>
-          <p data-zone="bureau-note" class="pastille pastille--soleil flex-none hidden"></p>
         </header>
         <div data-zone="bureau-grille" class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+        <p data-zone="bureau-note" class="revele mt-8 max-w-3xl rounded-2xl border border-sable-200 bg-white px-5 py-4 text-sm leading-relaxed text-encre-doux"></p>
       </div>
     </section>
 
@@ -139,17 +108,29 @@
       </div>
     </section>
 
+    <!-- Documents officiels -->
+    <section id="documents" class="scroll-mt-32 bg-sable-50 py-16 lg:py-24">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-3xl">
+          <p class="etiquette text-vert-600">Ressources</p>
+          <h2 data-zone="documents-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <p data-zone="documents-intro" class="mt-5 text-base leading-relaxed text-encre-doux"></p>
+        </header>
+        <div data-zone="documents-liste" class="mt-10"></div>
+      </div>
+    </section>
+
     <!-- Appel -->
     <section class="bg-white py-16 lg:py-20">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <div class="revele flex flex-col items-start gap-6 rounded-3xl bg-vert-900 px-8 py-10 text-white sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 class="font-display text-xl font-bold sm:text-2xl">Une question sur le fonctionnement de la fédération ?</h2>
-            <p class="mt-2 max-w-xl text-sm text-vert-50/85">Le secrétariat fédéral répond aux clubs, aux pratiquants et aux institutions sur les statuts, les affiliations et les licences.</p>
+            <h2 class="font-display text-xl font-bold sm:text-2xl">Une question sur la fédération ?</h2>
+            <p class="mt-2 max-w-xl text-sm text-vert-50/85">Toute demande passe par le compte Instagram officiel de la FETOC, qui ne dispose pas encore de coordonnées publiques confirmées.</p>
           </div>
           <div class="flex flex-none flex-wrap gap-3">
-            <a href="contact.html" class="btn btn--soleil">Contacter la fédération</a>
-            <a href="contact.html#adhesion" class="btn btn--fantome">Adhérer</a>
+            <a href="https://www.instagram.com/fetoc_togo/" target="_blank" rel="noopener noreferrer" class="btn btn--soleil">Instagram @fetoc_togo</a>
+            <a href="contact.html" class="btn btn--fantome">Page contact</a>
           </div>
         </div>
       </div>
