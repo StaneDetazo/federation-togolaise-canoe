@@ -123,13 +123,6 @@
     ]
   },
 
-  "documents": {
-    "titre": "Documents officiels",
-    "introduction": "Statuts, règlement intérieur et rapports de la fédération.",
-    "a_confirmer": "Les documents officiels de la fédération seront publiés prochainement.",
-    "liste": []
-  },
-
   "chiffres_cles": {
     "titre": "La fédération en bref",
     "indicatifs": [

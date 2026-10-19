@@ -4,7 +4,7 @@
      1. la validité des fichiers JSON de /data ;
      2. l'absence de lien interne cassé dans les pages HTML ;
      3. la cohérence des identifiants référencés entre fichiers ;
-     4. la présence des fichiers référencés (visuels, documents, styles, scripts) ;
+     4. la présence des fichiers référencés (visuels, styles, scripts) ;
      5. le rendu des composants (cartes) à partir des données réelles ;
      6. la structure du projet.
    Usage : npm run verifier   (le serveur local n'est pas nécessaire)
@@ -146,10 +146,9 @@ for (const g of donnees.galerie?.liste ?? [])
 console.log('\n\u001b[1m4. Fichiers référencés (données et scripts)\u001b[0m');
 
 // Tout chemin local de la forme « dossier/fichier » est contrôlé : visuels
-// (assets/…), documents (documents/…), styles (css/…) et scripts (js/…).
-const motifChemin = /(?:assets|documents|css|js)\/[A-Za-z0-9._@%+-]+(?:\/[A-Za-z0-9._@%+-]+)*/g;
+// (assets/…), styles (css/…) et scripts (js/…).
+const motifChemin = /(?:assets|css|js)\/[A-Za-z0-9._@%+-]+(?:\/[A-Za-z0-9._@%+-]+)*/g;
 const fichiersAttendus = new Set();
-let documentsEnAttente = 0;
 
 const collecterChemin = (valeur) => {
   if (typeof valeur === 'string') {
@@ -157,12 +156,6 @@ const collecterChemin = (valeur) => {
   } else if (Array.isArray(valeur)) {
     valeur.forEach(collecterChemin);
   } else if (valeur && typeof valeur === 'object') {
-    // Un document marqué « disponible: false » est annoncé mais pas encore
-    // publié : la carte affiche « Bientôt disponible » et aucun fichier n'est requis.
-    if (valeur.disponible === false) {
-      documentsEnAttente += 1;
-      return;
-    }
     Object.values(valeur).forEach(collecterChemin);
   }
 };
@@ -185,25 +178,11 @@ for (const script of scripts) {
 
 const fichiersAbsents = [...fichiersAttendus].filter((f) => !existsSync(chemin(f)));
 const visuels = [...fichiersAttendus].filter((f) => f.startsWith('assets/'));
-const documents = [...fichiersAttendus].filter((f) => f.startsWith('documents/'));
 
 // Un visuel, un style ou un script manquant casse le rendu (erreur).
-// Un document manquant est signalé sans bloquer : la carte affiche alors
-// « Bientôt disponible » au lieu d'un lien de téléchargement (avertissement).
-const liensCasses = fichiersAbsents.filter((f) => !f.startsWith('documents/'));
-const documentsAbsents = fichiersAbsents.filter((f) => f.startsWith('documents/'));
-
-ok(
-  `${fichiersAttendus.size} fichier(s) référencé(s) (${visuels.length} visuel(s), ${documents.length} document(s) publié(s))` +
-    (documentsEnAttente ? ` · ${documentsEnAttente} document(s) en attente (« Bientôt disponible »)` : '')
-);
-if (liensCasses.length) {
-  erreur(`${liensCasses.length} fichier(s) introuvable(s) : ${liensCasses.join(', ')}`);
-}
-if (documentsAbsents.length) {
-  avertir(
-    `${documentsAbsents.length} document(s) introuvable(s) : ${documentsAbsents.join(', ')}`
-  );
+ok(`${fichiersAttendus.size} fichier(s) référencé(s) (${visuels.length} visuel(s))`);
+if (fichiersAbsents.length) {
+  erreur(`${fichiersAbsents.length} fichier(s) introuvable(s) : ${fichiersAbsents.join(', ')}`);
 }
 
 /* ---------------------------------------------------------------- 5. rendu des composants */
@@ -234,7 +213,6 @@ try {
     ['carteEvenement (sombre)', (e) => cartes.carteEvenement(e, { variante: 'sombre' }), donnees.competitions.evenements?.[1]],
     ['ligneEvenement', cartes.ligneEvenement, donnees.competitions.evenements?.[2]],
     ['vignetteGalerie', cartes.vignetteGalerie, premier(donnees.galerie.liste)],
-    ['ligneDocument', cartes.ligneDocument, premier(donnees.federation.documents?.liste)],
     ['carteMembre', cartes.carteMembre, premier(donnees.federation.bureau_executif?.membres)],
     ['cartePartenaire', cartes.cartePartenaire, premier(donnees.partenaires.liste)],
     ['blocSquelette', cartes.blocSquelette, { titre: 'Test', texte: 'Texte', nombre: 2 }],
@@ -284,7 +262,7 @@ try {
 
 /* ---------------------------------------------------------------- 6. structure */
 console.log('\n\u001b[1m6. Structure du projet\u001b[0m');
-for (const dossier of ['css', 'js/core', 'js/pages', 'data', 'assets/img', 'documents']) {
+for (const dossier of ['css', 'js/core', 'js/pages', 'data', 'assets/img']) {
   if (!existsSync(chemin(dossier))) avertir(`dossier manquant : ${dossier}/`);
 }
 const nbImages = existsSync(chemin('assets/img'))

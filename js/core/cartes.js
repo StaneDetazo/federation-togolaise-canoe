@@ -468,33 +468,6 @@ export function vignetteGalerieAccueil(image, { ratio = 'aspect-[4/3]', rotation
   </div>`;
 }
 
-/* ---------------------------------------------------------------- documents */
-export const documentIndisponible = () =>
-  `<span class="pastille pastille--gris flex-none">${icone('horloge', 'h-3.5 w-3.5')}Bientôt disponible</span>`;
-
-export function ligneDocument(document) {
-  const telechargeable = Boolean(document.fichier) && document.disponible !== false;
-  return `
-  <li class="revele flex flex-col gap-5 rounded-2xl border border-sable-200 bg-white p-6 transition hover:border-vert-200 sm:flex-row sm:items-center">
-    <span class="grid h-12 w-12 flex-none place-items-center rounded-xl bg-vert-50 text-vert-700">${icone('fichier', 'h-5 w-5')}</span>
-    <div class="flex-1">
-      <div class="flex flex-wrap items-center gap-2">
-        ${badge(document.categorie, 'vert')}
-        ${document.statut ? badge(document.statut, 'gris') : ''}
-      </div>
-      <p class="mt-2 font-display text-base font-bold text-vert-950">${esc(document.titre)}</p>
-      <p class="mt-1.5 text-sm leading-relaxed text-encre-doux">${esc(document.description)}</p>
-      <p class="mt-2 text-xs text-encre-clair">${esc(document.format || 'PDF')} · mise à jour le ${esc(dateLongue(document.date_maj))}</p>
-    </div>
-    ${
-      telechargeable
-        ? `<a href="${esc(document.fichier)}" download data-document class="btn btn--contour btn--sm flex-none">
-             ${icone('telechargement', 'h-4 w-4')}Télécharger</a>`
-        : documentIndisponible()
-    }
-  </li>`;
-}
-
 /* ---------------------------------------------------------------- bureau exécutif */
 export function carteMembre(membre, { delai = 0 } = {}) {
   return `

@@ -40,7 +40,7 @@ Le script `outils/verification.mjs` contrôle :
    cohérence de l'URL publique (`seo.url_site`) dans les pages et le sitemap ;
 3. la cohérence des identifiants (événements, clubs, classements, articles) ;
 4. la présence des fichiers référencés dans les données et les scripts
-   (visuels `assets/`, documents `documents/`, styles, scripts) ;
+   (visuels `assets/`, styles, scripts) ;
 5. le rendu des composants à partir des données réelles ;
 6. la structure globale du projet.
 
@@ -48,14 +48,6 @@ La sortie attendue se termine par **`0 erreur(s), 0 avertissement(s)`**.
 
 Un fichier référencé absent est signalé par le contrôle : les visuels, styles
 et scripts manquants sont des **erreurs** (le rendu casse).
-
-Pour les documents, la disponibilité est déclarée dans les données : une fiche
-marquée `"disponible": false` (voir `federation.json`) est **annoncée mais pas
-encore publiée** - elle n'est pas contrôlée et s'affiche avec la pastille
-« Bientôt disponible » au lieu d'un lien de téléchargement. Un document marqué
-disponible (par défaut) mais dont le fichier est absent de `documents/` reste
-signalé par un simple **avertissement**, et la carte bascule elle aussi sur
-« Bientôt disponible » (vérification à l'affichage).
 
 ---
 
@@ -94,15 +86,14 @@ federation-canoe/
 │       └── legal.js           (partagé par les 3 pages légales)
 ├── data/                      ★ Contenus (futur back-office)
 │   ├── site.json              Identité, navigation, contacts, réseaux
-│   ├── federation.json        Histoire, missions, vision, bureau, documents
+│   ├── federation.json        Histoire, missions, vision, bureau
 │   ├── disciplines.json       Disciplines, familles, parcours, formations
 │   ├── clubs.json             Clubs affiliés
 │   ├── competitions.json      Calendrier, résultats, classements
 │   ├── actualites.json        Articles et communiqués
 │   ├── partenaires.json       Partenaires et offre de partenariat
 │   └── galerie.json           Galerie photographique
-├── assets/img/                Visuels (SVG : bannières, illustrations ; PNG : logo.png, og-image.png)
-├── documents/                 PDF téléchargeables (statuts, règlements…)
+├── assets/img/                Visuels locaux (logo.png, og-image.png, galerie/)
 ├── outils/verification.mjs    Contrôle qualité
 ├── package.json
 └── README.md
@@ -163,10 +154,9 @@ galerie, prose `.prose-fetoc`, héros, etc.) sont définis dans `css/styles.css`
 
 ### 3.4 Vidéos de fond des héros
 
-Chaque héros (bannière d'accueil et bandeaux des pages intérieures) peut
-afficher une **vidéo de fond** en plus de son image. Les liens sont centralisés
-dans `data/site.json` → `videos_heros`, une entrée par identifiant de page
-(`data-page` du `<body>`) :
+Chaque héros (bannière d'accueil et bandeaux des pages intérieures) affiche une
+**vidéo de fond**. Les liens sont centralisés dans `data/site.json` →
+`videos_heros`, une entrée par identifiant de page (`data-page` du `<body>`) :
 
 ```json
 "videos_heros": {
@@ -178,8 +168,9 @@ dans `data/site.json` → `videos_heros`, une entrée par identifiant de page
 - La clé correspond à `data-page` (`accueil`, `federation`, `disciplines`,
   `clubs`, `competitions`, `actualites`, `contact`).
 - La vidéo est lue en boucle, en sourdine, sans contrôles (`muted`, `loop`,
-  `playsinline`) ; l'image de la bannière sert de `poster` de secours.
-- Sans lien (ou si la page n'a pas d'entrée), la bannière retombe sur son image.
+  `playsinline`).
+- Sans lien (ou si la page n'a pas d'entrée), le héros s'affiche sur le fond
+  vert foncé, sans média.
 - Les préférences système `prefers-reduced-motion: reduce` désactivent la vidéo.
 
 Les vidéos par défaut sont des séquences d'illustration libres (Pexels), que la
@@ -306,8 +297,8 @@ Un indicateur `"source": "fixe"` affiche la `valeur` écrite ; `"source":
 "calcule"` compte automatiquement la collection nommée par `cle` (`clubs`,
 `athetes`, `disciplines`).
 
-> Les blocs `identite_officielle`, `bureau_executif`, `affiliations` et
-> `documents` existent encore mais ne sont plus affichés : conservés en réserve.
+> Les blocs `identite_officielle`, `bureau_executif` et `affiliations` existent
+> encore mais ne sont plus affichés : conservés en réserve.
 
 ### 5.4 `disciplines.json` - page « Disciplines & activités »
 
