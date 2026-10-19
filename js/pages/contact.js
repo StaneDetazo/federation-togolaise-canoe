@@ -173,8 +173,8 @@ function rendre() {
     {
       icone: 'trophee',
       titre: 'Suivre la compétition',
-      texte: 'Les rendez-vous et les résultats de la fédération.',
-      libelle: 'Compétitions & résultats',
+      texte: 'Les rendez-vous et le calendrier de la fédération.',
+      libelle: 'Compétitions & calendrier',
       url: 'competitions.html'
     }
   ];

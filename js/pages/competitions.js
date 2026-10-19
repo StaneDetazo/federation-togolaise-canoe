@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FETOC - Page « Compétitions & résultats »
+   FETOC - Page « Compétitions & calendrier »
    Rendez-vous, filtres par saison et type, informations pratiques.
    ========================================================================== */
 
@@ -33,11 +33,11 @@ function rendre() {
   remplir(
     'bandeau',
     bandeauPage({
-      titre: entete.titre || 'Compétitions & résultats',
+      titre: entete.titre || 'Compétitions & calendrier',
       chapeau: entete.chapeau || 'Les rendez-vous de la fédération.',
       image: 'assets/img/banner-competitions.svg',
       fil: 'Vie sportive',
-      section: 'Compétitions & résultats'
+      section: 'Compétitions & calendrier'
     })
   );
 

@@ -54,7 +54,7 @@
     { "id": "federation", "libelle": "La Fédération", "url": "federation.html" },
     { "id": "disciplines", "libelle": "Disciplines & activités", "url": "disciplines.html" },
     { "id": "clubs", "libelle": "Clubs affiliés", "url": "clubs.html" },
-    { "id": "competitions", "libelle": "Compétitions & résultats", "url": "competitions.html" },
+    { "id": "competitions", "libelle": "Compétitions & calendrier", "url": "competitions.html" },
     { "id": "actualites", "libelle": "Actualités", "url": "actualites.html" },
     { "id": "contact", "libelle": "Contact", "url": "contact.html" }
   ],
@@ -69,7 +69,7 @@
     "liens_utiles": [
       { "libelle": "La Fédération", "url": "federation.html" },
       { "libelle": "Clubs affiliés", "url": "clubs.html" },
-      { "libelle": "Compétitions & résultats", "url": "competitions.html" },
+      { "libelle": "Compétitions & calendrier", "url": "competitions.html" },
       { "libelle": "Fédération internationale (ICF)", "url": "https://www.canoeicf.com/" }
     ],
     "mentions": [

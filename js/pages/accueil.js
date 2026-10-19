@@ -158,7 +158,7 @@ function rendre() {
         <p class="mx-auto mt-2 max-w-md text-sm text-vert-50/75">
           Les prochaines dates seront publiées dès leur communication par la fédération.
         </p>
-        <a href="competitions.html" class="btn btn--soleil mt-6">Voir les compétitions &amp; résultats</a>
+        <a href="competitions.html" class="btn btn--soleil mt-6">Voir les compétitions &amp; calendrier</a>
       </div>`;
   }
 
