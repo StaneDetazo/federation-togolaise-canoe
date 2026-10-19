@@ -210,21 +210,12 @@ les vidéos, la fédération peut la remplacer par une de ses propres photograph
 
 ### 3.6 Règle d'affichage des partenaires
 
-Un partenaire n'est affiché que si **les deux** conditions sont vraies :
-
-```js
-participation_confirmee === true && utilisation_logo_autorisee === true && p.logo
-```
-
-Voir `partenairesAffiches()` dans `js/core/data.js`. La page `contact.html`
-affiche en plus l'offre `devenir_partenaire`.
-
-### 3.7 Blocs récapitulatifs « L'essentiel »
-
-Chaque page intérieure (sauf « La Fédération ») ouvre sur un bandeau
-récapitulatif rendu par `blocEssentiel({ points })` (`js/core/cartes.js`) dans la
-zone `data-zone="essentiel"`. Les points sont définis dans le module de la page et
-résument la rubrique pour une lecture rapide, sans remplacer le contenu détaillé.
+Un partenaire apparaît sur le site si `participation_confirmee === true`
+(voir `partenairesAffiches()` dans `js/core/data.js`). Sa carte affiche le
+`sigle` (ou les trois premières lettres du `nom`), la catégorie et le `role` ;
+si `url` est renseignée, la carte devient cliquable. Le champ `logo` n'est pas
+utilisé à ce jour. La page `contact.html` affiche en plus l'offre
+`devenir_partenaire`.
 
 ---
 
@@ -240,7 +231,7 @@ résument la rubrique pour une lecture rapide, sans remplacer le contenu détail
 | Compétitions | `competitions` | `entete`, `saison_courante`, `saisons`, `types`, `statuts`, `evenements`, `classements`, `informations_pratiques` |
 | Actualités | `actualites`, `galerie` | `entete`, `categories`, `liste` |
 | Article | `actualites`, `galerie` | lecture de `?slug=<article.slug>` |
-| Contact | `site.contact`, `partenaires` | `#formulaire`, `#adhesion`, `#licences`, `#partenariat` |
+| Contact | `site.contact`, `partenaires` | coordonnées, orientation, partenaires |
 | Pages légales | `site` | date de mise à jour |
 
 ### Chiffres clés (Accueil / Fédération)
@@ -258,7 +249,139 @@ résument la rubrique pour une lecture rapide, sans remplacer le contenu détail
 
 ---
 
-## 5. Pages, ancres et liens
+## 5. Guide : mettre à jour les contenus (`data/*.json`)
+
+Tous les contenus affichés proviennent de `data/` : un fichier par rubrique. On
+modifie le JSON et la page se met à jour, sans toucher au code.
+
+### 5.1 Écrire un JSON valide
+
+- guillemets **doubles**, une virgule **entre** les éléments et **jamais après
+  le dernier** ;
+- accents acceptés (fichiers en UTF-8) ;
+- champ vide : `null`, `""` ou `[]` — jamais de texte « à confirmer » visible ;
+- **ne pas modifier un `"id"` ni un `"slug"`** : ils servent aux liens internes
+  (`club.html?id=…`, `article.html?slug=…`) ;
+- le champ `"source"` est une métadonnée interne, jamais affichée ;
+- `"a_la_une": true` met l'élément en avant sur la page d'accueil ;
+- images : URL `https://…` **ou** fichier local (`assets/img/…`) ;
+- après toute modification : `npm run verifier`, puis **Ctrl+Maj+R** au
+  navigateur.
+
+### 5.2 `site.json` - identité, contacts, menu, pied de page
+
+| Bloc | Rôle | Champs |
+| --- | --- | --- |
+| `identite` | Nom, sigle, accroche, siège | `nom`, `sigle`, `baseline`, `accroche`, `siege`, `creation` |
+| `contact` | Coordonnées (page Contact, pied de page, menu mobile) | `siege`, `email`, `telephones[]`, `instagram`, `federation_internationale`, `note` |
+| `reseaux` | Réseaux du pied de page | `id`, `nom`, `url`, `pseudo` |
+| `navigation` | Menu principal (ordre affiché) | `id`, `libelle`, `url` |
+| `appel_action` | Bouton d'en-tête | `libelle`, `url` |
+| `pied` | Pied de page | `description`, `liens_utiles[]`, `mentions[]` |
+| `videos_heros` | Vidéo de fond, une entrée par page | clé = `data-page` de la `<body>` |
+| `seo` | URL publique et description par défaut | `url_site`, `title_suffixe`, `description`, `mots_cles` |
+
+Coordonnées : un numéro normal utilise `url` en `tel:` ; un numéro WhatsApp
+utilise `url` en `https://wa.me/…` **et** `"whatsapp": true`.
+
+```json
+"email":      { "libelle": "fetoc228@gmail.com", "url": "mailto:fetoc228@gmail.com" },
+"telephones": [
+  { "libelle": "(+228) 73 26 90 56", "url": "tel:+22873269056" },
+  { "libelle": "+33 7 58 65 77 81", "url": "https://wa.me/33758657781", "whatsapp": true }
+]
+```
+
+### 5.3 `federation.json` - page « La Fédération »
+
+| Bloc | Affiche | Champs |
+| --- | --- | --- |
+| `presentation` | Intro + image | `titre`, `chapeau`, `paragraphes[]`, `image` |
+| `illustration` | Grande image | `image`, `legende` |
+| `histoire` | Frise historique | `titre`, `introduction`, `etapes[]` (`annee`, `titre`, `texte`) |
+| `missions` | Missions | `titre`, `introduction`, `liste[]` (`titre`, `texte`, `icone`) |
+| `chiffres_cles` | « La fédération en bref » | `titre`, `indicatifs[]` (`id`, `libelle`, `source`, `valeur` **ou** `cle`, `suffixe`, `note`) |
+
+Un indicateur `"source": "fixe"` affiche la `valeur` écrite ; `"source":
+"calcule"` compte automatiquement la collection nommée par `cle` (`clubs`,
+`athetes`, `disciplines`).
+
+> Les blocs `identite_officielle`, `bureau_executif`, `affiliations` et
+> `documents` existent encore mais ne sont plus affichés : conservés en réserve.
+
+### 5.4 `disciplines.json` - page « Disciplines & activités »
+
+- `entete` : `titre`, `chapeau` ;
+- `familles[]` : `id`, `libelle` (filtres) ;
+- `liste[]` (une activité) : `id`, `nom`, `nom_court`, `famille` (id d'une
+  famille), `icone`, `a_la_une`, `description`, `image` (visuel de la carte),
+  `images: []` (visuels de la fiche), `source` ;
+- `formations.liste[]` : `nom`, `date`, `lieu`, `cadre` ;
+- `sites_de_pratique.liste[]` : `nom`, `region`, `usage`.
+
+### 5.5 `clubs.json` - page « Clubs affiliés »
+
+- `entete` : `titre`, `chapeau` ;
+- `annuaire` et `reperes` : titres et textes de section ; `reperes.liste[]` =
+  `valeur`, `libelle`, `texte`, `icone` ;
+- `regions[]` : `id`, `libelle` (filtres) ;
+- `liste[]` (un club) : `id`, `nom`, `region` (id), `ville`, `site_pratique`,
+  `presentation`, `image`, `a_la_une`, `labels[]` ;
+- `devenir_club` : `titre`, `texte`, `a_confirmer`.
+
+Pour **ajouter un club**, copier un bloc de `liste` et changer au minimum
+`id`, `nom`, `presentation` et `image`.
+
+### 5.6 `competitions.json` - page « Compétitions & calendrier »
+
+- `entete` : `titre`, `chapeau` ;
+- `saisons[]` (`id`, `libelle`), `types[]` (`id`, `libelle`), `statuts{}` ;
+- `evenements[]` (un rendez-vous) : `id`, `titre`, `type` (id d'un `types`),
+  `discipline_id` (id d'une discipline), `saison` (id d'une `saisons`),
+  `periode`, `date_debut` (`AAAA-MM-JJ`), `lieu`, `ville`, `organisateur`,
+  `statut`, `description`, `chiffres[]` (`libelle`, `valeur`), `a_la_une`,
+  `image` ;
+- `informations_pratiques` : `titre`, `a_confirmer`.
+
+> Les sections **Résultats** et **Classements** sont désactivées (commentées
+> dans `competitions.html` et `js/pages/competitions.js`) ; `classements` peut
+> rester vide.
+
+### 5.7 `actualites.json` - page « Actualités » et articles
+
+- `entete` : `titre`, `chapeau` ; `categories[]` : `id`, `libelle` ;
+- `liste[]` (un article) : `id`, `slug`, `titre`, `categorie`, `date`, `periode`,
+  `auteur`, `lieu`, `temps_lecture`, `a_la_une`, `chapeau`, `image`, `tags[]`,
+  `articles_lies[]` (slugs), `galerie[]` ;
+- `contenu[]` : le corps de l'article, une entrée par bloc :
+
+| `type` | Champs |
+| --- | --- |
+| `p` (défaut) | `texte` |
+| `h2`, `h3` | `texte` |
+| `ul` | `items[]` |
+| `quote` | `texte`, `auteur` (facultatif) |
+
+### 5.8 `galerie.json` - galerie photos
+
+- `entete` : `titre`, `chapeau`, `note` ;
+- `categories[]` : `id`, `libelle` ;
+- `liste[]` : `id`, `titre`, `categorie`, `lieu`, `date`, `src`, `source`.
+
+Pour **ajouter une photo** : déposer le fichier dans `assets/img/gallery/`, puis
+ajouter une ligne avec un `id` unique.
+
+### 5.9 `partenaires.json` - partenaires
+
+- `entete`, `devenir_partenaire` ;
+- `liste[]` : `id`, `nom`, `sigle`, `categorie`, `role`, `logo`, `url`,
+  `participation_confirmee`, `utilisation_logo_autorisee`, `niveau` ;
+- un partenaire s'affiche si `participation_confirmee === true` (le `logo`
+  n'est pas utilisé à ce jour).
+
+---
+
+## 6. Pages, ancres et liens
 
 Les liens internes vers des ancres attendues par les autres pages :
 
@@ -266,7 +389,6 @@ Les liens internes vers des ancres attendues par les autres pages :
 - `disciplines.html#<discipline.id>`
 - `club.html?id=<club.id>`
 - `article.html?slug=<article.slug>`
-- `contact.html#adhesion`, `contact.html#licences`, `contact.html#partenariat`
 - `actualites.html#galerie`
 
 Les fiches dynamiques (`club.html`, `article.html`) gèrent un état « non
@@ -274,7 +396,7 @@ trouvé » lorsque l'identifiant est absent ou inconnu.
 
 ---
 
-## 6. Accessibilité et bonnes pratiques
+## 7. Accessibilité et bonnes pratiques
 
 - Navigation au clavier, lien d'évitement, focus visibles.
 - Contrastes adaptés (héros sombres, texte blanc).
@@ -284,7 +406,7 @@ trouvé » lorsque l'identifiant est absent ou inconnu.
 
 ---
 
-## 7. Déploiement
+## 8. Déploiement
 
 Le site est purement statique : il peut être servi par n'importe quel
 hébergeur de fichiers (Netlify, GitHub Pages, Vercel, un simple Nginx…).
