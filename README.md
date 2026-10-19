@@ -262,7 +262,7 @@ résument la rubrique pour une lecture rapide, sans remplacer le contenu détail
 
 Les liens internes vers des ancres attendues par les autres pages :
 
-- `competitions.html#resultats`, `competitions.html#<evenement.id>`
+- `competitions.html#<evenement.id>`
 - `disciplines.html#<discipline.id>`
 - `club.html?id=<club.id>`
 - `article.html?slug=<article.slug>`

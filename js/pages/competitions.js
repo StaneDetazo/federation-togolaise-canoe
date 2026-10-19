@@ -115,8 +115,8 @@ function rendre() {
   });
 
   afficherAgenda();
-  afficherResultats();
-  afficherClassements();
+  // afficherResultats();
+  // afficherClassements();
 
   /* ------------------------------------------------ informations pratiques */
   texte('infos-titre', infos.titre || 'Informations pratiques');
@@ -173,7 +173,8 @@ function afficherAgenda() {
   }
 }
 
-/* ------------------------------------------------------------------ résultats */
+/* --------------------------------- résultats & classements (désactivés) */
+/* Sections « Résultats » et « Classements » désactivées : contenu non publié.
 function afficherResultats() {
   const zoneTitre = qs('[data-zone="resultats-titre"]');
   if (zoneTitre) zoneTitre.textContent = 'Résultats des compétitions';
@@ -183,7 +184,6 @@ function afficherResultats() {
   zone.innerHTML = blocSquelette({ nombre: 2, colonnes: '' });
 }
 
-/* ------------------------------------------------------------------ classements */
 function afficherClassements() {
   const zoneTitre = qs('[data-zone="classements-titre"]');
   if (zoneTitre) zoneTitre.textContent = 'Classements de la saison';
@@ -192,3 +192,4 @@ function afficherClassements() {
   if (!zone) return;
   zone.innerHTML = blocSquelette({ nombre: 2, colonnes: '' });
 }
+*/
