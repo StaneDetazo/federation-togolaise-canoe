@@ -41,7 +41,6 @@ function rendre() {
     bandeauPage({
       titre: club.nom,
       chapeau: lieu || 'Club affilié à la FETOC',
-      image: 'assets/img/banner-clubs.svg',
       fil: region || 'Clubs affiliés',
       section: 'Clubs affiliés'
     })
@@ -161,7 +160,6 @@ function afficherIntrouvable(identifiant) {
     bandeauPage({
       titre: 'Club introuvable',
       chapeau: "La fiche demandée n'existe pas ou n'est plus disponible.",
-      image: 'assets/img/banner-clubs.svg',
       fil: 'Clubs affiliés',
       section: 'Clubs affiliés'
     })

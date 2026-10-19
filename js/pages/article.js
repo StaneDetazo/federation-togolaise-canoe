@@ -66,14 +66,16 @@ function gabaritHeros(article, categorie) {
 
   const page = typeof document !== 'undefined' ? document.body?.dataset?.page ?? '' : '';
   const lienVideo = videoHeroPage(page) || videoHeroPage('actualites');
-  const sourceImage = article.image || 'assets/img/banner-actualites.svg';
+  const sourceImage = article.image;
+  const poster = sourceImage ? ` poster="${esc(sourceImage)}"` : '';
   const media = lienVideo
-    ? `<video class="heros-media" autoplay muted loop playsinline preload="metadata"
-             poster="${esc(sourceImage)}" aria-hidden="true" tabindex="-1">
+    ? `<video class="heros-media" autoplay muted loop playsinline preload="metadata"${poster} aria-hidden="true" tabindex="-1">
          <source src="${esc(lienVideo)}" type="video/mp4">
        </video>`
-    : `<img class="heros-media" src="${esc(sourceImage)}" width="1920" height="900"
-            alt="${esc(article.titre)}" fetchpriority="high" decoding="async">`;
+    : sourceImage
+      ? `<img class="heros-media" src="${esc(sourceImage)}" width="1920" height="900"
+            alt="${esc(article.titre)}" fetchpriority="high" decoding="async">`
+      : '';
 
   return `
   <section class="relative isolate flex min-h-[62vh] items-end overflow-hidden bg-vert-950 text-white lg:min-h-[68vh]">
@@ -371,7 +373,6 @@ function afficherIntrouvable(slug) {
   remplir(
     'bandeau',
     `<section class="relative isolate flex min-h-[58vh] items-end overflow-hidden bg-vert-950 text-white lg:min-h-[62vh]">
-      <img class="heros-media" src="assets/img/banner-actualites.svg" width="1920" height="700" alt="" fetchpriority="high" decoding="async">
       <div class="heros-voile absolute inset-0" aria-hidden="true"></div>
       <div class="relative mx-auto w-full max-w-ecran px-4 pb-12 pt-40 sm:px-6 lg:pb-16">
         <p class="apparition etiquette text-soleil-300">Actualités</p>

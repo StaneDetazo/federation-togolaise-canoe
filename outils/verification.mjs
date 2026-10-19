@@ -238,7 +238,7 @@ try {
     ['carteMembre', cartes.carteMembre, premier(donnees.federation.bureau_executif?.membres)],
     ['cartePartenaire', cartes.cartePartenaire, premier(donnees.partenaires.liste)],
     ['blocSquelette', cartes.blocSquelette, { titre: 'Test', texte: 'Texte', nombre: 2 }],
-    ['bandeauPage', cartes.bandeauPage, { titre: 'Test', chapeau: 'Chapô', image: 'assets/img/hero.svg', fil: 'Test' }],
+    ['bandeauPage', cartes.bandeauPage, { titre: 'Test', chapeau: 'Chapô', fil: 'Test' }],
     ['carteDisciplineAccueil', (d) => cartes.carteDisciplineAccueil(d, 0), premier(donnees.disciplines.liste)],
     ['carteArticleAccueil (vedette)', (a) => cartes.carteArticleAccueil(a, { vedette: true }), premier(donnees.actualites.liste)],
     ['carteArticleAccueil', cartes.carteArticleAccueil, donnees.actualites.liste?.[1]],

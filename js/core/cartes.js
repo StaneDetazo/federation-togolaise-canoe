@@ -30,9 +30,9 @@ const img = (src, alt, classes, attributs = 'loading="lazy" decoding="async"', l
 const badge = (texte, variante = 'vert', nomIcone = null) =>
   `<span class="pastille pastille--${variante}">${nomIcone ? icone(nomIcone, 'h-3.5 w-3.5') : ''}${esc(texte)}</span>`;
 
-/* Visuel utilisé lorsqu'une fiche n'a pas encore de photographie.
-   Les images provisoires sont définies dans data/*.json (champ « image »). */
-const IMAGE_DEFAUT = 'assets/img/banner-actualites.svg';
+/* Visuel générique utilisé lorsqu'une fiche n'a pas de photographie.
+   Les photographies sont définies dans data/*.json (champ « image »). */
+const IMAGE_DEFAUT = 'assets/img/og-image.png';
 const imageOuDefaut = (source) => source || IMAGE_DEFAUT;
 
 /* ---------------------------------------------------------------- disciplines */
@@ -532,7 +532,7 @@ export function cartePartenaire(partenaire) {
 }
 
 /* ---------------------------------------------------------------- blocs d'en-tête de page */
-export function bandeauPage({ titre, chapeau, image, fil, section, video }) {
+export function bandeauPage({ titre, chapeau, fil, section, video }) {
   const miettes = [
     { libelle: 'Accueil', url: 'index.html' },
     ...(section ? [{ libelle: section, url: null }] : [])
@@ -542,11 +542,10 @@ export function bandeauPage({ titre, chapeau, image, fil, section, video }) {
   const lienVideo = video ?? videoHeroPage(page);
 
   const media = lienVideo
-    ? `<video class="heros-media" autoplay muted loop playsinline preload="metadata"
-         poster="${esc(image)}" aria-hidden="true" tabindex="-1">
+    ? `<video class="heros-media" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
          <source src="${esc(lienVideo)}" type="video/mp4">
        </video>`
-    : img(image, titre, 'heros-media', 'fetchpriority="high" decoding="async"', 1920, 700);
+    : '';
 
   return `
   <section class="relative isolate flex min-h-[58vh] items-end overflow-hidden bg-vert-950 text-white lg:min-h-[62vh]">

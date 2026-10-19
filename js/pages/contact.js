@@ -29,7 +29,6 @@ function rendre() {
       titre: 'Contact',
       chapeau:
         'Écrire, appeler ou passer par les canaux officiels : voici les coordonnées de la Fédération Togolaise de Canoë.',
-      image: 'assets/img/banner-contact.svg',
       fil: 'Nous joindre',
       section: 'Contact'
     })

@@ -36,7 +36,6 @@ function rendre() {
     bandeauPage({
       titre: entete.titre || 'Clubs affiliés',
       chapeau: entete.chapeau || 'Les clubs affiliés à la fédération.',
-      image: 'assets/img/banner-clubs.svg',
       fil: 'Réseau fédéral',
       section: 'Clubs affiliés'
     })

@@ -39,7 +39,6 @@ function rendre() {
     bandeauPage({
       titre: entete.titre || 'Disciplines & activités',
       chapeau: entete.chapeau || 'Les activités de la fédération.',
-      image: 'assets/img/banner-disciplines.svg',
       fil: 'Pratique',
       section: 'Disciplines & activités'
     })
@@ -181,7 +180,7 @@ function afficherFiches() {
         const visuels =
           discipline.images && discipline.images.length
             ? discipline.images
-            : [discipline.image || 'assets/img/banner-disciplines.svg'];
+            : [discipline.image].filter(Boolean);
 
         const medias = visuels
           .map(

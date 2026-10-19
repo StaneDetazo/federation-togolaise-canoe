@@ -35,7 +35,6 @@ function rendre() {
     bandeauPage({
       titre: entete.titre || 'Compétitions & calendrier',
       chapeau: entete.chapeau || 'Les rendez-vous de la fédération.',
-      image: 'assets/img/banner-competitions.svg',
       fil: 'Vie sportive',
       section: 'Compétitions & calendrier'
     })

@@ -36,7 +36,6 @@ function rendre() {
     bandeauPage({
       titre: 'La Fédération Togolaise de Canoë',
       chapeau: presentation.chapeau || '',
-      image: 'assets/img/banner-federation.svg',
       fil: 'Institution',
       section: 'La Fédération'
     })

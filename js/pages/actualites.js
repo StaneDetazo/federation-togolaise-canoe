@@ -35,7 +35,6 @@ function rendre() {
     bandeauPage({
       titre: entete.titre || 'Actualités',
       chapeau: entete.chapeau || 'La vie de la pagaie togolaise.',
-      image: 'assets/img/banner-actualites.svg',
       fil: 'Média',
       section: 'Actualités'
     })
