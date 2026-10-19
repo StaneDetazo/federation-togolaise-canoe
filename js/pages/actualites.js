@@ -5,7 +5,7 @@
 
 import { demarrer, ui } from '../core/app.js';
 import { data, filtrerActualites, categoriesActualites, imagesGalerie } from '../core/data.js';
-import { bandeauPage, carteArticle, vignetteGalerie, blocEssentiel, blocSquelette } from '../core/cartes.js';
+import { bandeauPage, carteArticle, vignetteGalerie, blocSquelette } from '../core/cartes.js';
 import { qs, qsa, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
@@ -40,38 +40,6 @@ function rendre() {
       section: 'Actualités'
     })
   );
-
-  /* ------------------------------------------------ l'essentiel */
-  remplir(
-    'essentiel',
-    blocEssentiel({
-      points: [
-        {
-          icone: 'pirogue',
-          titre: 'Relai Autour du Monde 2024',
-          texte: 'Participation de la fédération à l’organisation au Togo.'
-        },
-        {
-          icone: 'diplome',
-          titre: 'Formation d’entraîneurs',
-          texte: 'Niveau 1, organisée à Aného en avril 2025.'
-        },
-        {
-          icone: 'trophee',
-          titre: 'Championnat national 2025',
-          texte: 'Dernière journée à Kpémé le 6 septembre 2025.'
-        },
-        {
-          icone: 'instagram',
-          titre: 'Publications officielles',
-          texte: 'Les annonces de la fédération sont relayées sur Instagram.'
-        }
-      ]
-    })
-  );
-
-  texte('entete-chapeau', entete.chapeau);
-  texte('entete-texte', entete.texte);
 
   const iconeRecherche = qs('[data-icone-recherche]');
   if (iconeRecherche) iconeRecherche.innerHTML = icone('recherche', 'h-5 w-5');
