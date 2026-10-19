@@ -5,7 +5,7 @@
 
 import { demarrer, ui } from '../core/app.js';
 import { data, agenda, saisons, typesEvenement } from '../core/data.js';
-import { bandeauPage, carteEvenement, blocEssentiel, blocSquelette } from '../core/cartes.js';
+import { bandeauPage, carteEvenement, blocSquelette } from '../core/cartes.js';
 import { qs, qsa, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
@@ -40,38 +40,6 @@ function rendre() {
       section: 'Compétitions & résultats'
     })
   );
-
-  /* ------------------------------------------------ l'essentiel */
-  remplir(
-    'essentiel',
-    blocEssentiel({
-      points: [
-        {
-          icone: 'trophee',
-          titre: 'Championnat national 2025',
-          texte: '13 clubs et 193 athlètes engagés, clôturé le 6 septembre 2025 à Kpémé.'
-        },
-        {
-          icone: 'diplome',
-          titre: 'Formation d’entraîneurs',
-          texte: 'Niveau 1, organisée à Aného en avril 2025 dans le cadre de l’ICF.'
-        },
-        {
-          icone: 'pirogue',
-          titre: 'Relai Autour du Monde 2024',
-          texte: 'Participation à l’organisation au Togo, avec France Volontaires.'
-        },
-        {
-          icone: 'calendrier',
-          titre: 'Calendrier à venir',
-          texte: 'Le calendrier de la saison en cours sera publié prochainement.'
-        }
-      ]
-    })
-  );
-
-  texte('entete-chapeau', entete.chapeau);
-  texte('entete-texte', entete.texte);
 
   /* ------------------------------------------------ filtres saisons */
   const optionsSaisons = [{ id: 'toutes', libelle: 'Toutes' }, ...saisons()];
