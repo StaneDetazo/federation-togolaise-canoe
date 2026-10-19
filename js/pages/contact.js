@@ -7,7 +7,7 @@
 
 import { demarrer, ui } from '../core/app.js';
 import { contact, partenairesAffiches } from '../core/data.js';
-import { bandeauPage, cartePartenaire, blocEssentiel } from '../core/cartes.js';
+import { bandeauPage, cartePartenaire } from '../core/cartes.js';
 import { qs, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
@@ -35,39 +35,6 @@ function rendre() {
     })
   );
 
-  /* ------------------------------------------------ l'essentiel */
-  remplir(
-    'essentiel',
-    blocEssentiel({
-      points: [
-        {
-          icone: 'mail',
-          titre: 'E-mail',
-          texte: 'fetoc228@gmail.com'
-        },
-        {
-          icone: 'telephone',
-          titre: 'Téléphone & WhatsApp',
-          texte: 'Numéros au Togo, et WhatsApp depuis l’étranger.'
-        },
-        {
-          icone: 'instagram',
-          titre: 'Instagram',
-          texte: 'Le compte officiel de la fédération : @fetoc_togo.'
-        },
-        {
-          icone: 'lieu',
-          titre: 'Siège social',
-          texte: `${coord.siege || 'Agbodrafo, préfecture des Lacs'}.`
-        }
-      ]
-    })
-  );
-
-  /* ------------------------------------------------ introduction */
-  const intro = qs('[data-zone="contact-intro"]');
-  if (intro) intro.textContent = coord.note || '';
-
   /* ------------------------------------------------ coordonnées */
   const cartes = [];
 
@@ -93,7 +60,7 @@ function rendre() {
         <span class="grid h-12 w-12 place-items-center rounded-xl bg-vert-50 text-vert-700">
           ${icone('telephone', 'h-6 w-6')}
         </span>
-        <span class="mt-5 font-display text-lg font-bold text-vert-950">Téléphone</span>
+        <span class="mt-5 font-display text-lg font-bold text-vert-950">Téléphone &amp; WhatsApp</span>
         <ul class="mt-3 space-y-2.5">
           ${coord.telephones
             .map(
@@ -202,7 +169,7 @@ function rendre() {
   /* ------------------------------------------------ partenaires */
   const partenaires = partenairesAffiches();
   remplir(
-    'contact-note',
+    'partenaires',
     `
     <div class="rounded-3xl border border-sable-200 bg-sable-50 p-8 sm:p-10">
       <div class="max-w-2xl">
