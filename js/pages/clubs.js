@@ -1,11 +1,11 @@
 /* ==========================================================================
    FETOC - Page « Clubs affiliés »
-   Annuaire filtrable (région, recherche) + repères.
+   Annuaire filtrable (région, recherche), repères et affiliation.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
 import { data, clubs, regions, filtrerClubs } from '../core/data.js';
-import { bandeauPage, carteClub, blocEssentiel } from '../core/cartes.js';
+import { bandeauPage, carteClub } from '../core/cartes.js';
 import { qs, qsa, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
@@ -27,6 +27,7 @@ function texte(zone, valeur) {
 
 function rendre() {
   const entete = data.clubs?.entete ?? {};
+  const annuaire = data.clubs?.annuaire ?? {};
   const devenir = data.clubs?.devenir_club ?? {};
 
   /* ------------------------------------------------ bandeau */
@@ -41,32 +42,10 @@ function rendre() {
     })
   );
 
-  /* ------------------------------------------------ l'essentiel */
-  remplir(
-    'essentiel',
-    blocEssentiel({
-      points: [
-        {
-          icone: 'kayak',
-          titre: 'Clubs engagés',
-          texte: 'AS Donsa (Kpémé), Anguilles d’Aného et AS Barracuda.'
-        },
-        {
-          icone: 'lieu',
-          titre: 'Lieux de pratique',
-          texte: 'Agbodrafo, Kpémé et Aného, dans la préfecture des Lacs.'
-        },
-        {
-          icone: 'main',
-          titre: 'Devenir club affilié',
-          texte: 'Écrivez à la fédération pour affilier un club.'
-        }
-      ]
-    })
-  );
-
-  texte('entete-chapeau', entete.chapeau);
-  texte('entete-texte', entete.texte);
+  /* ------------------------------------------------ annuaire */
+  texte('annuaire-etiquette', annuaire.etiquette || 'Annuaire');
+  texte('annuaire-titre', annuaire.titre || 'Les clubs affiliés');
+  texte('annuaire-intro', annuaire.intro);
 
   const iconeRecherche = qs('[data-icone-recherche]');
   if (iconeRecherche) iconeRecherche.innerHTML = icone('recherche', 'h-5 w-5');
@@ -115,37 +94,7 @@ function rendre() {
   /* ------------------------------------------------ devenir club */
   texte('devenir-titre', devenir.titre);
   texte('devenir-texte', devenir.texte);
-  remplir(
-    'devenir-conditions',
-    (devenir.conditions || [])
-      .map(
-        (condition) => `
-      <li class="flex items-start gap-3">
-        <span class="mt-0.5 flex-none text-vert-600">${icone('check-cercle', 'h-5 w-5')}</span>
-        <span>${esc(condition)}</span>
-      </li>`
-      )
-      .join('')
-  );
   texte('devenir-note', devenir.a_confirmer);
-  if (!devenir.a_confirmer) qs('[data-zone="devenir-note"]')?.classList.add('hidden');
-  remplir(
-    'devenir-etapes',
-    (devenir.etapes || [])
-      .map(
-        (etape) => `
-      <li class="revele flex gap-5 rounded-2xl border border-sable-200 bg-white p-6">
-        <span class="grid h-11 w-11 flex-none place-items-center rounded-xl bg-vert-700 font-display text-base font-bold text-white">${esc(
-          etape.numero
-        )}</span>
-        <div>
-          <h3 class="font-display text-base font-bold text-vert-950">${esc(etape.titre)}</h3>
-          <p class="mt-1.5 text-sm leading-relaxed text-encre-doux">${esc(etape.texte)}</p>
-        </div>
-      </li>`
-      )
-      .join('')
-  );
 
   ui.initRevelation();
 }
@@ -157,6 +106,7 @@ function afficherGrille() {
   if (!grille) return;
 
   if (!liste.length) {
+    grille.className = 'mt-10 grid gap-6';
     grille.innerHTML = `<div class="rounded-2xl border border-dashed border-sable-300 bg-white px-6 py-16 text-center">
       <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-vert-50 text-vert-600">${icone(
         'recherche',
@@ -166,7 +116,8 @@ function afficherGrille() {
       <p class="mx-auto mt-2 max-w-md text-sm text-encre-doux">Élargissez la recherche ou réinitialisez les filtres.</p>
     </div>`;
   } else {
-    grille.innerHTML = liste.map((club) => carteClub(club, { variante: 'liste' })).join('');
+    grille.className = 'mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3';
+    grille.innerHTML = liste.map((club) => carteClub(club)).join('');
     ui.initRevelation(grille);
   }
 
@@ -180,28 +131,27 @@ function afficherGrille() {
 
 /* ------------------------------------------------------------------ repères */
 function afficherReperes() {
-  const reperes = [
-    {
-      valeur: '193',
-      libelle: 'Athlètes',
-      texte: 'ayant participé au championnat national 2025.'
-    },
-    {
-      valeur: '2025',
-      libelle: 'Championnat national',
-      texte: 'clôturé le 6 septembre 2025 à Kpémé.'
-    }
-  ];
+  const reperes = data.clubs?.reperes ?? {};
+
+  texte('reperes-etiquette', reperes.etiquette || 'Repères');
+  texte('reperes-titre', reperes.titre || 'Le réseau en chiffres');
+  texte('reperes-intro', reperes.intro);
 
   remplir(
     'reperes-liste',
-    reperes
+    (reperes.liste || [])
       .map(
         (repere, index) => `
-      <article class="revele rounded-2xl border border-sable-200 bg-sable-50 p-6" data-delai="${index * 70}">
-        <p class="font-display text-3xl font-extrabold text-vert-950">${esc(repere.valeur)}</p>
-        <p class="mt-1 font-display text-sm font-bold text-vert-800">${esc(repere.libelle)}</p>
-        <p class="mt-1.5 text-sm leading-relaxed text-encre-doux">${esc(repere.texte)}</p>
+      <article class="revele flex items-start gap-5 rounded-2xl border border-sable-200 bg-white p-6 sm:p-7" data-delai="${index * 70}">
+        <span class="grid h-12 w-12 flex-none place-items-center rounded-xl bg-vert-50 text-vert-700">${icone(
+          repere.icone || 'reseau',
+          'h-6 w-6'
+        )}</span>
+        <div>
+          <p class="font-display text-3xl font-extrabold leading-none text-vert-950">${esc(repere.valeur)}</p>
+          <p class="mt-2 font-display text-sm font-bold text-vert-800">${esc(repere.libelle)}</p>
+          <p class="mt-1.5 text-sm leading-relaxed text-encre-doux">${esc(repere.texte)}</p>
+        </div>
       </article>`
       )
       .join('')

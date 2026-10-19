@@ -1,8 +1,33 @@
 {
   "entete": {
     "titre": "Clubs affiliés",
-    "chapeau": "Le championnat national 2025 a réuni les clubs affiliés à la FETOC, dont AS Donsa, les Anguilles d'Aného et AS Barracuda.",
-    "texte": "La FETOC rassemble les clubs et associations qui pratiquent le canoë-kayak et les disciplines associées au Togo."
+    "chapeau": "Le championnat national 2025 a réuni les clubs affiliés à la FETOC, dont AS Donsa, les Anguilles d'Aného et AS Barracuda."
+  },
+
+  "annuaire": {
+    "etiquette": "Annuaire",
+    "titre": "Les clubs affiliés",
+    "intro": "Les clubs affiliés à la FETOC pratiquent le canoë-kayak et les disciplines associées à Agbodrafo, Kpémé et Aného, dans la préfecture des Lacs."
+  },
+
+  "reperes": {
+    "etiquette": "Repères",
+    "titre": "Le réseau en chiffres",
+    "intro": "Les clubs affiliés à la FETOC prennent part au championnat national.",
+    "liste": [
+      {
+        "valeur": "193",
+        "libelle": "Athlètes",
+        "texte": "ayant participé au championnat national 2025.",
+        "icone": "utilisateurs"
+      },
+      {
+        "valeur": "2025",
+        "libelle": "Championnat national",
+        "texte": "clôturé le 6 septembre 2025 à Kpémé.",
+        "icone": "trophee"
+      }
+    ]
   },
 
   "regions": [{ "id": "maritime", "libelle": "Maritime" }],

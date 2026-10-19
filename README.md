@@ -235,7 +235,7 @@ résument la rubrique pour une lecture rapide, sans remplacer le contenu détail
 | Accueil | `site`, `federation.chiffres_cles`, `disciplines`, `actualites`, `competitions`, `clubs`, `galerie`, `partenaires` | 9 blocs : bannière, fédération en bref, disciplines, actualités (3), prochains événements, clubs, images, partenaires, appel final |
 | La Fédération | `federation` | `presentation`, `illustration`, `histoire`, `missions` |
 | Disciplines | `disciplines` | `entete`, `familles`, `liste`, `parcours`, `formations`, `sites_de_pratique` |
-| Clubs | `clubs` | `entete`, `regions`, `liste`, `devenir_club` |
+| Clubs | `clubs` | `entete`, `annuaire`, `reperes`, `regions`, `liste`, `devenir_club` |
 | Fiche club | `clubs` | lecture de `?id=<club.id>` |
 | Compétitions | `competitions` | `entete`, `saison_courante`, `saisons`, `types`, `statuts`, `evenements`, `classements`, `informations_pratiques` |
 | Actualités | `actualites`, `galerie` | `entete`, `categories`, `liste` |

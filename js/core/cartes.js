@@ -193,20 +193,37 @@ export function carteClub(club, { variante = 'carte' } = {}) {
     </article>`;
   }
 
-  return `
-  <article class="revele carte group flex flex-col p-6">
-    <div class="flex items-start justify-between gap-3">
-      ${region ? badge(region, 'sombre', 'lieu') : '<span></span>'}
-      ${club.site_pratique ? `<span class="text-xs font-semibold uppercase tracking-wider text-encre-clair">${esc(club.site_pratique)}</span>` : ''}
-    </div>
-    <h3 class="mt-3 font-display text-lg font-bold leading-snug text-vert-950">
-      <a href="${lien}" class="transition hover:text-vert-700">${esc(club.nom)}</a>
-    </h3>
-    <p class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(tronquer(club.presentation, 145))}</p>
+  const photo = imageOuDefaut(club.image);
 
-    <div class="mt-auto flex items-center justify-between gap-3 border-t border-sable-200 pt-5">
-      <span class="text-xs text-encre-clair">Club affilié</span>
-      <a href="${lien}" class="lien-fleche text-sm font-semibold text-vert-700">
+  return `
+  <article class="revele carte group flex flex-col">
+    <a href="${lien}" class="carte__media relative block aspect-[16/10] overflow-hidden bg-vert-900"
+      aria-label="${esc(club.nom)}">
+      ${img(
+        photo,
+        `${club.nom}${lieu ? ` - ${lieu}` : ''}`,
+        'absolute inset-0 h-full w-full object-cover',
+        'loading="lazy" decoding="async"',
+        1280,
+        800
+      )}
+      <span class="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-vert-950/85 via-vert-950/25 to-transparent" aria-hidden="true"></span>
+      ${region ? `<span class="absolute left-4 top-4">${badge(region, 'sombre', 'lieu')}</span>` : ''}
+      ${
+        lieu
+          ? `<span class="absolute bottom-4 left-4 flex items-center gap-1.5 text-sm font-medium text-white">${icone(
+              'lieu',
+              'h-4 w-4 shrink-0 text-soleil-300'
+            )}${esc(lieu)}</span>`
+          : ''
+      }
+    </a>
+    <div class="flex flex-1 flex-col p-6">
+      <h3 class="font-display text-lg font-bold leading-snug text-vert-950">
+        <a href="${lien}" class="transition hover:text-vert-700">${esc(club.nom)}</a>
+      </h3>
+      <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(tronquer(club.presentation, 150))}</p>
+      <a href="${lien}" class="lien-fleche mt-auto pt-5 text-sm font-semibold text-vert-700">
         Voir la fiche ${icone('fleche-droite', 'h-4 w-4')}
       </a>
     </div>
