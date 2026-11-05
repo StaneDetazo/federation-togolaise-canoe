@@ -1,0 +1,73 @@
+{
+  "entete": {
+    "etiquette": "Pratique",
+    "titre": "Nos disciplines et activités",
+    "chapeau": "Découvrez les disciplines et les activités qui contribuent au développement des sports de pagaie au Togo.",
+    "fil_ariane": "Disciplines et activités"
+  },
+
+  "presentation": {
+    "etiquette": "Présentation des disciplines",
+    "titre": "Chaque discipline, une passion commune",
+    "paragraphes": [
+      "La FETOC accompagne le développement de différentes pratiques nautiques, de la compétition de haut niveau aux activités traditionnelles, en passant par les disciplines adaptées.",
+      "Découvrez les spécificités de chaque discipline, ses exigences sportives et les possibilités de pratique au sein des clubs affiliés."
+    ]
+  },
+
+  "formations": {
+    "etiquette": "Formations",
+    "titre": "Former aujourd'hui les acteurs du sport de demain",
+    "chapeau": "La formation constitue un pilier essentiel du développement des sports de pagaie.",
+    "paragraphes": [
+      "La FETOC s'engage dans le renforcement des compétences des athlètes, des entraîneurs, des officiels et des encadreurs à travers des programmes de formation et de perfectionnement.",
+      "Ces initiatives contribuent à améliorer la qualité de l'encadrement, à renforcer la sécurité des pratiquants et à favoriser la progression des disciplines."
+    ],
+    "liste": [
+      {
+        "nom": "Formation d'entraîneurs de niveau 1",
+        "date": "Avril 2025",
+        "lieu": "Aného",
+        "cadre": "Fédération internationale de canoë-kayak (ICF)",
+        "source": "ICF"
+      }
+    ],
+    "note": "Le calendrier des formations sera publié prochainement."
+  },
+
+  "sites_de_pratique": {
+    "etiquette": "Territoires",
+    "titre": "La pagaie togolaise, au cœur de nos territoires",
+    "chapeau": "Le Togo dispose d'un patrimoine nautique qui constitue un formidable potentiel pour le développement des sports de pagaie.",
+    "paragraphes": [
+      "La FETOC œuvre à la promotion de la pratique dans les territoires, en s'appuyant sur les clubs, les communautés locales et les ressources naturelles favorables aux activités nautiques."
+    ],
+    "liste": [
+      {
+        "nom": "Agbodrafo",
+        "region": "Préfecture des Lacs",
+        "usage": "Siège de la fédération et assemblée générale constitutive du 13 février 2024"
+      },
+      {
+        "nom": "Kpémé",
+        "region": "Préfecture des Lacs",
+        "usage": "Clôture du championnat national 2025"
+      },
+      {
+        "nom": "Aného",
+        "region": "Préfecture des Lacs",
+        "usage": "Formation d'entraîneurs de niveau 1 (avril 2025)"
+      }
+    ]
+  },
+
+  "appel": {
+    "etiquette": "Appel à la pratique",
+    "titre": "Envie de découvrir les sports de pagaie ?",
+    "chapeau": "Que vous soyez débutant, sportif confirmé ou simplement passionné par les activités nautiques, la Fédération Togolaise de Canoë vous accompagne dans votre démarche. Rapprochez-vous d'un club affilié ou contactez la fédération à l'adresse fetoc228@gmail.com pour obtenir des informations.",
+    "cta": [
+      { "libelle": "Trouver un club", "url": "clubs.html", "style": "principal" },
+      { "libelle": "Nous contacter", "url": "contact.html", "style": "secondaire" }
+    ]
+  }
+}

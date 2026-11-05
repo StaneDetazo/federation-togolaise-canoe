@@ -1,0 +1,58 @@
+[
+  {
+    "id": "icf",
+    "nom": "Fédération internationale de canoë-kayak",
+    "sigle": "ICF",
+    "categorie": "institutionnel-sportif",
+    "role": "Formation technique et développement du canoë au Togo.",
+    "url": "https://paddleworldwide.com/news/coaching-boost-francophone-nations-africa",
+    "niveau": "principal",
+    "favicon": "assets/img/partenaires/icf.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "cnot",
+    "nom": "Comité national olympique du Togo",
+    "sigle": "CNOT",
+    "categorie": "institutionnel-sportif",
+    "role": "Coopération pour le développement de la discipline.",
+    "niveau": "principal",
+    "favicon": "assets/img/partenaires/cnot.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "france-volontaires",
+    "nom": "France Volontaires et acteurs de l'équipe France",
+    "categorie": "cooperation",
+    "role": "Participation au Relai Autour du Monde 2024 au Togo.",
+    "niveau": "soutien",
+    "favicon": "assets/img/partenaires/france-volontaires.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "snpt",
+    "nom": "SNPT",
+    "categorie": "evenement",
+    "role": "Partenaire présent à la clôture du championnat national 2025.",
+    "niveau": "soutien",
+    "favicon": "assets/img/partenaires/snpt.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "aprodat",
+    "nom": "APRODAT",
+    "categorie": "evenement",
+    "role": "Partenaire présent à la clôture du championnat national 2025.",
+    "niveau": "soutien",
+    "favicon": "assets/img/partenaires/aprodat.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "ong-padie",
+    "nom": "ONG PADIE",
+    "categorie": "evenement",
+    "role": "Partenaire présente à la clôture du championnat national 2025.",
+    "niveau": "soutien",
+    "logo_autorise": false
+  }
+]

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact - joindre la Fédération Togolaise de Canoë</title>
-  <meta name="description" content="Contacter la Fédération Togolaise de Canoë (FETOC) : e-mail fetoc228@gmail.com, téléphone et WhatsApp, compte Instagram officiel @fetoc_togo et fiche ICF.">
+  <meta name="description" content="Contacter la Fédération Togolaise de Canoë (FETOC) : e-mail fetoc228@gmail.com, téléphone et WhatsApp, réseaux sociaux officiels (Instagram, Facebook, TikTok) et fiche ICF.">
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fédération Togolaise de Canoë">
   <meta property="og:title" content="Contact - FETOC">
-  <meta property="og:description" content="Contacter la FETOC : e-mail, téléphone et WhatsApp, compte Instagram officiel et fiche auprès de la Fédération internationale de canoë-kayak.">
+  <meta property="og:description" content="Contacter la FETOC : e-mail, téléphone et WhatsApp, réseaux sociaux officiels (Instagram, Facebook, TikTok) et fiche auprès de la Fédération internationale de canoë-kayak.">
   <meta property="og:url" content="http://localhost:8125/contact.html">
   <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -29,7 +29,7 @@
   <meta property="og:locale" content="fr_TG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact - FETOC">
-  <meta name="twitter:description" content="Contacter la FETOC : e-mail, téléphone et WhatsApp, compte Instagram officiel et fiche auprès de la Fédération internationale de canoë-kayak.">
+  <meta name="twitter:description" content="Contacter la FETOC : e-mail, téléphone et WhatsApp, réseaux sociaux officiels (Instagram, Facebook, TikTok) et fiche auprès de la Fédération internationale de canoë-kayak.">
   <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
   <script>document.documentElement.classList.add('js')</script>
@@ -45,8 +45,9 @@
     <section class="bg-white py-16 lg:py-20">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <header class="revele max-w-2xl">
-          <p class="etiquette text-vert-600">Nous joindre</p>
-          <h2 class="mt-5 titre-section text-vert-950">Contacter la fédération</h2>
+          <p class="etiquette text-vert-600" data-zone="coordonnees-etiquette"></p>
+          <h2 class="mt-5 titre-section text-vert-950" data-zone="coordonnees-titre"></h2>
+          <p class="mt-4 text-base font-medium leading-relaxed text-vert-800" data-zone="coordonnees-organisation"></p>
         </header>
         <div data-zone="coordonnees-grille" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
       </div>
@@ -56,13 +57,14 @@
     <section class="bg-sable-50 py-16 lg:py-24">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <header class="revele max-w-2xl">
-          <p class="etiquette text-vert-600">Orientation</p>
-          <h2 class="mt-5 titre-section text-vert-950">Vers qui vous adresser</h2>
-          <p class="mt-5 text-base leading-relaxed text-encre-doux">
-            Selon votre demande, vous pouvez d'abord consulter les pages dédiées du site.
+          <p class="etiquette text-vert-600" data-zone="orientation-etiquette"></p>
+          <h2 class="mt-5 titre-section text-vert-950" data-zone="orientation-titre"></h2>
+          <p class="mt-5 text-base leading-relaxed text-encre-doux" data-zone="orientation-chapeau">
           </p>
         </header>
         <div data-zone="orientation-grille" class="mt-10 grid gap-6 md:grid-cols-3"></div>
+        <p class="revele mt-8 text-center text-sm leading-relaxed text-encre-doux" data-zone="orientation-note">
+        </p>
       </div>
     </section>
 

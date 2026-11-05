@@ -1,0 +1,43 @@
+{
+  "entete": {
+    "etiquette": "Réseau fédéral",
+    "titre": "Clubs affiliés",
+    "chapeau": "Le championnat national 2025 a réuni les clubs affiliés à la FETOC, dont AS Donsa, les Anguilles d'Aného et AS Barracuda.",
+    "fil_ariane": "Clubs affiliés"
+  },
+
+  "annuaire": {
+    "etiquette": "Annuaire",
+    "titre": "Les clubs affiliés",
+    "chapeau": "Les clubs affiliés à la FETOC pratiquent le canoë-kayak et les disciplines associées à Agbodrafo, Kpémé et Aného, dans la préfecture des Lacs.",
+    "collection": "clubs"
+  },
+
+  "reperes": {
+    "etiquette": "Repères",
+    "titre": "Le réseau en chiffres",
+    "chapeau": "Les clubs affiliés à la FETOC prennent part au championnat national.",
+    "liste": [
+      {
+        "valeur": "193",
+        "libelle": "Athlètes",
+        "texte": "ayant participé au championnat national 2025.",
+        "icone": "utilisateurs"
+      },
+      {
+        "valeur": "2025",
+        "libelle": "Championnat national",
+        "texte": "clôturé le 6 septembre 2025 à Kpémé.",
+        "icone": "trophee"
+      }
+    ]
+  },
+
+  "devenir_club": {
+    "etiquette": "Affiliation",
+    "titre": "Créer ou affilier un club",
+    "chapeau": "Toute association souhaitant organiser la pratique du canoë-kayak au Togo peut solliciter son affiliation auprès de la fédération.",
+    "note": "Pour créer ou affilier un club, écrivez à la fédération à fetoc228@gmail.com.",
+    "cta": { "libelle": "Contacter la fédération", "url": "contact.html" }
+  }
+}

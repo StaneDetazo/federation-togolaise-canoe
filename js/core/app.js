@@ -7,7 +7,7 @@
 import { chargerDonnees, data, site, seo, reseaux, contact, urlSite } from './data.js';
 import { initLayout } from './layout.js';
 import * as ui from './ui.js';
-import { qs, esc } from './utils.js';
+import { qs } from './utils.js';
 
 /* ---------------------------------------------------------------- SEO */
 function baliseMeta(attribut, nom, contenu) {
@@ -100,20 +100,21 @@ function afficherErreurChargement(erreur) {
   principal.insertAdjacentHTML(
     'afterbegin',
     `<div class="mx-auto max-w-ecran px-4 py-16 sm:px-6">
-      <div class="rounded-2xl border border-soleil-300 bg-soleil-50 p-8">
-        <p class="font-display text-xl font-bold text-vert-900">Les données du site n'ont pas pu être chargées</p>
+      <div class="mx-auto max-w-xl rounded-2xl border border-sable-200 bg-white p-8 text-center shadow-doux">
+        <p class="font-display text-xl font-bold text-vert-950">Le site est momentanément indisponible</p>
         <p class="mt-3 text-sm leading-relaxed text-encre-doux">
-          Les contenus de ce site sont stockés dans des fichiers <code class="rounded bg-white px-1.5 py-0.5">.json</code>
-          (dossier <code class="rounded bg-white px-1.5 py-0.5">data/</code>) : ils doivent être servis par un serveur web.
-          Si vous avez ouvert la page par un double-clic (adresse commençant par <code>file://</code>),
-          lancez la commande suivante dans le dossier du projet, puis ouvrez
-          <a class="font-semibold text-vert-700 underline" href="http://localhost:8000">http://localhost:8000</a> :
+          Nous rencontrons un problème technique et ne pouvons pas afficher le contenu pour le moment.
+          Merci de réessayer dans quelques instants.
         </p>
-        <pre class="mt-4 overflow-x-auto rounded-xl bg-vert-950 p-4 text-xs text-soleil-100">python3 -m http.server 8000</pre>
-        <p class="mt-3 text-xs text-encre-clair">Détail technique : ${esc(erreur.message)}</p>
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <button type="button" data-action="reessayer" class="btn btn--vert">Réessayer</button>
+          <a href="index.html" class="btn btn--contour">Retour à l'accueil</a>
+        </div>
       </div>
     </div>`
   );
+
+  qs('[data-action="reessayer"]', principal)?.addEventListener('click', () => window.location.reload());
 }
 
 /* ---------------------------------------------------------------- démarrage */

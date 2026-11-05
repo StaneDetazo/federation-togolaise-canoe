@@ -1,0 +1,37 @@
+{
+  "entete": {
+    "etiquette": "Vie sportive",
+    "titre": "Compétitions et calendrier fédéral",
+    "chapeau": "Les rendez-vous sportifs de la pagaie togolaise.",
+    "fil_ariane": "Compétitions et calendrier"
+  },
+
+  "calendrier": {
+    "etiquette": "Calendrier fédéral",
+    "titre": "Le calendrier fédéral",
+    "paragraphes": [
+      "Découvrez les compétitions, les formations et les événements organisés ou accompagnés par la Fédération Togolaise de Canoë.",
+      "Le calendrier fédéral constitue un outil de référence pour les clubs, les athlètes, les entraîneurs et l'ensemble des acteurs des sports de pagaie."
+    ],
+    "collection": "evenements"
+  },
+
+  "informations_pratiques": {
+    "etiquette": "Engagements",
+    "titre": "Participer aux compétitions",
+    "paragraphes": [
+      "Retrouvez les informations relatives aux compétitions fédérales, aux modalités d'inscription et aux conditions de participation.",
+      "Les clubs et les athlètes sont invités à se rapprocher de la fédération pour toute information complémentaire concernant les engagements."
+    ],
+    "question": "Pour toute question sur les engagements, les licences ou le règlement, écrivez à fetoc228@gmail.com ou contactez la fédération via ses réseaux sociaux officiels (Instagram, Facebook, TikTok).",
+    "cta": { "libelle": "Contacter la fédération", "url": "contact.html" }
+  },
+
+  "reglement": {
+    "titre": "Le règlement sportif",
+    "paragraphes": [
+      "Le respect des règles et des principes sportifs constitue un fondement essentiel de la pratique du canoë-kayak et des sports de pagaie.",
+      "Consultez les règlements applicables aux compétitions et aux différentes disciplines fédérales."
+    ]
+  }
+}

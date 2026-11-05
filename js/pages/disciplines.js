@@ -4,7 +4,7 @@
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
-import { data, disciplines, familles } from '../core/data.js';
+import { page, disciplines, familles } from '../core/data.js';
 import { bandeauPage, carteDiscipline } from '../core/cartes.js';
 import { qs, qsa, esc, correspond } from '../core/utils.js';
 import { icone } from '../core/icons.js';
@@ -29,18 +29,20 @@ function texte(zone, valeur) {
 }
 
 function rendre() {
-  const entete = data.disciplines?.entete ?? {};
-  const formations = data.disciplines?.formations ?? {};
-  const sites = data.disciplines?.sites_de_pratique ?? {};
+  const pageDisciplines = page('disciplines');
+  const entete = pageDisciplines.entete ?? {};
+  const presentation = pageDisciplines.presentation ?? {};
+  const formations = pageDisciplines.formations ?? {};
+  const sites = pageDisciplines.sites_de_pratique ?? {};
 
   /* ------------------------------------------------ bandeau */
   remplir(
     'bandeau',
     bandeauPage({
-      titre: entete.titre || 'Disciplines & activités',
-      chapeau: entete.chapeau || 'Les activités de la fédération.',
-      fil: 'Pratique',
-      section: 'Disciplines & activités'
+      titre: entete.titre,
+      chapeau: entete.chapeau,
+      fil: entete.etiquette,
+      section: entete.fil_ariane
     })
   );
 
@@ -48,7 +50,9 @@ function rendre() {
   if (iconeRecherche) iconeRecherche.innerHTML = icone('recherche', 'h-5 w-5');
 
   /* ------------------------------------------------ filtres par famille */
-  const boutons = familles()
+  /* Le bouton « Toutes les activités » est ajouté ici : la taxonomie ne
+     contient que les familles réelles. */
+  const boutons = [{ id: 'toutes', libelle: 'Toutes les activités' }, ...familles()]
     .map(
       (famille) => `
     <button type="button" class="pastille-filtre${famille.id === etat.famille ? ' est-actif' : ''}"
@@ -80,9 +84,20 @@ function rendre() {
   afficherGrille();
   afficherFiches();
 
+  /* ------------------------------------------------ présentation des disciplines */
+  texte('presentation-titre', presentation.titre);
+  remplir(
+    'presentation-texte',
+    (presentation.paragraphes || []).map((paragraphe) => `<p>${esc(paragraphe)}</p>`).join('')
+  );
+
   /* ------------------------------------------------ formations */
   texte('formations-titre', formations.titre);
-  texte('formations-intro', formations.introduction);
+  texte('formations-intro', formations.chapeau);
+  remplir(
+    'formations-texte',
+    (formations.paragraphes || []).map((paragraphe) => `<p>${esc(paragraphe)}</p>`).join('')
+  );
   remplir(
     'formations-liste',
     `<table class="tableau-fetoc">
@@ -105,9 +120,9 @@ function rendre() {
     </table>`
   );
   const zoneNote = qs('[data-zone="formations-note"]');
-  if (zoneNote && formations.a_confirmer) {
+  if (zoneNote && formations.note) {
     zoneNote.innerHTML = `${icone('info', 'h-4 w-4 flex-none text-soleil-600')}<span>${esc(
-      formations.a_confirmer
+      formations.note
     )}</span>`;
     zoneNote.classList.remove('hidden');
   } else if (zoneNote) {
@@ -116,7 +131,11 @@ function rendre() {
 
   /* ------------------------------------------------ lieux associés */
   texte('sites-titre', sites.titre);
-  texte('sites-intro', sites.introduction);
+  texte('sites-intro', sites.chapeau);
+  remplir(
+    'sites-texte',
+    (sites.paragraphes || []).map((paragraphe) => `<p>${esc(paragraphe)}</p>`).join('')
+  );
   remplir(
     'sites-grille',
     (sites.liste || [])
@@ -178,8 +197,8 @@ function afficherFiches() {
     disciplines()
       .map((discipline) => {
         const visuels =
-          discipline.images && discipline.images.length
-            ? discipline.images
+          discipline.galerie && discipline.galerie.length
+            ? discipline.galerie
             : [discipline.image].filter(Boolean);
 
         const medias = visuels

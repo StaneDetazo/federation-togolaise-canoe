@@ -1,31 +1,57 @@
 /* ==========================================================================
    FETOC - Couche d'accès aux données
-   Toutes les données proviennent de /data/*.json (futurs contenus de back-office).
+   Les contenus sont répartis dans /data :
+     - site.json          : configuration globale du site ;
+     - taxonomies.json    : listes de référence (familles, régions, types…) ;
+     - pages/*.json       : textes propres à chaque page ;
+     - collections/*.json : objets affichés dans les listes (clubs, articles…).
    ========================================================================== */
 
 import { fetchJSON, parDateDesc, parDateAsc, correspond } from './utils.js';
 
-const FICHIERS = {
-  site: 'data/site.json',
-  federation: 'data/federation.json',
-  disciplines: 'data/disciplines.json',
-  clubs: 'data/clubs.json',
-  competitions: 'data/competitions.json',
-  actualites: 'data/actualites.json',
-  partenaires: 'data/partenaires.json',
-  galerie: 'data/galerie.json'
-};
+/* Fichiers attendus : ces deux listes servent au chargement et aux helpers.
+   Ajouter une page ou une collection se fait donc à un seul endroit. */
+const PAGES = [
+  'accueil',
+  'federation',
+  'disciplines',
+  'clubs',
+  'competitions',
+  'actualites',
+  'contact'
+];
 
-/** Données chargées, accessibles par clé : data.site, data.clubs, … */
-export const data = {};
+const COLLECTIONS = [
+  'disciplines',
+  'clubs',
+  'evenements',
+  'articles',
+  'galerie',
+  'partenaires'
+];
+
+/** Données chargées : data.site, data.taxonomies, data.pages, data.collections. */
+export const data = { pages: {}, collections: {} };
 
 /** Charge tous les fichiers de données en parallèle. */
 export async function chargerDonnees() {
-  const cles = Object.keys(FICHIERS);
-  const reponses = await Promise.all(cles.map((cle) => fetchJSON(FICHIERS[cle])));
-  cles.forEach((cle, index) => {
-    data[cle] = reponses[index];
+  const reponses = await Promise.all([
+    fetchJSON('data/site.json'),
+    fetchJSON('data/taxonomies.json'),
+    ...PAGES.map((nom) => fetchJSON(`data/pages/${nom}.json`)),
+    ...COLLECTIONS.map((nom) => fetchJSON(`data/collections/${nom}.json`))
+  ]);
+
+  data.site = reponses[0];
+  data.taxonomies = reponses[1];
+
+  PAGES.forEach((nom, index) => {
+    data.pages[nom] = reponses[index + 2];
   });
+  COLLECTIONS.forEach((nom, index) => {
+    data.collections[nom] = reponses[index + 2 + PAGES.length];
+  });
+
   return data;
 }
 
@@ -34,17 +60,24 @@ export const site = () => data.site?.identite ?? {};
 export const contact = () => data.site?.contact ?? {};
 export const reseaux = () => data.site?.reseaux ?? [];
 export const navigation = () => data.site?.navigation ?? [];
-export const appelAction = () => data.site?.appel_action ?? { libelle: 'Nous rejoindre', url: 'contact.html' };
+export const appelAction = () => data.site?.appel_action ?? { libelle: 'Nous contacter', url: 'contact.html' };
+export const pied = () => data.site?.pied ?? {};
 export const seo = () => data.site?.seo ?? {};
 /** URL publique absolue du site (variable SEO, source unique : data/site.json). */
 export const urlSite = () => data.site?.seo?.url_site ?? '';
 
-/* Vidéos de fond des héros : { page: "url", ... } */
-export const videosHeros = () => data.site?.videos_heros ?? {};
+/** Contenu éditorial d'une page : page('accueil'), page('contact')… */
+export const page = (nom) => data.pages?.[nom] ?? {};
 
-export function videoHeroPage(page) {
+/** Listes de référence partagées : taxonomies().regions, … */
+export const taxonomies = () => data.taxonomies ?? {};
+
+/* Vidéos de fond des héros : { page: "url", ... } */
+export const videosHeros = () => data.site?.videos ?? {};
+
+export function videoHeroPage(pageActive) {
   const carte = videosHeros();
-  const lien = page ? carte[page] : null;
+  const lien = pageActive ? carte[pageActive] : null;
   return typeof lien === 'string' && lien ? lien : '';
 }
 
@@ -53,11 +86,8 @@ export function reseauParId(id) {
 }
 
 /* ---------------------------------------------------------------- disciplines */
-export const disciplines = () => data.disciplines?.liste ?? [];
-export const familles = () => data.disciplines?.familles ?? [];
-export const parcours = () => data.disciplines?.parcours ?? {};
-export const formations = () => data.disciplines?.formations ?? {};
-export const sitesPratique = () => data.disciplines?.sites_de_pratique?.liste ?? [];
+export const disciplines = () => data.collections?.disciplines ?? [];
+export const familles = () => data.taxonomies?.familles_disciplines ?? [];
 
 export function disciplineParId(id) {
   return disciplines().find((d) => d.id === id) ?? null;
@@ -74,8 +104,8 @@ export function disciplinesMisesEnAvant(n = 6) {
 }
 
 /* ---------------------------------------------------------------- clubs */
-export const clubs = () => data.clubs?.liste ?? [];
-export const regions = () => data.clubs?.regions ?? [];
+export const clubs = () => data.collections?.clubs ?? [];
+export const regions = () => data.taxonomies?.regions ?? [];
 
 export function clubParId(id) {
   return clubs().find((c) => c.id === id) ?? null;
@@ -104,12 +134,10 @@ export function filtrerClubs({ region = 'toutes', discipline = 'toutes', requete
 }
 
 /* ---------------------------------------------------------------- compétitions */
-export const evenements = () => data.competitions?.evenements ?? [];
-export const classements = () => data.competitions?.classements ?? [];
-export const saisons = () => data.competitions?.saisons ?? [];
-export const typesEvenement = () => data.competitions?.types ?? [];
-export const libelleStatut = (statut) => data.competitions?.statuts?.[statut] ?? statut;
-export const saisonCourante = () => data.competitions?.saison_courante ?? '';
+export const evenements = () => data.collections?.evenements ?? [];
+export const saisons = () => data.taxonomies?.saisons ?? [];
+export const typesEvenement = () => data.taxonomies?.types_evenements ?? [];
+export const libelleStatut = (statut) => data.taxonomies?.statuts_evenements?.[statut] ?? statut;
 
 export function evenementParId(id) {
   return evenements().find((e) => e.id === id) ?? null;
@@ -135,24 +163,9 @@ export function prochainsEvenements(limite = 3) {
   ).slice(0, limite);
 }
 
-export function prochainEvenement() {
-  return prochainsEvenements(1)[0] ?? null;
-}
-
-export function derniersResultats(limite = 3) {
-  return parDateDesc(
-    evenements().filter((e) => e.resultats?.publies),
-    'date_debut'
-  ).slice(0, limite);
-}
-
-export function classementsDisponibles(saison = null) {
-  return saison ? classements().filter((c) => c.saison === saison) : classements();
-}
-
 /* ---------------------------------------------------------------- actualités */
-export const actualites = () => data.actualites?.liste ?? [];
-export const categoriesActualites = () => data.actualites?.categories ?? [];
+export const actualites = () => data.collections?.articles ?? [];
+export const categoriesActualites = () => data.taxonomies?.categories_actualites ?? [];
 
 export function libelleCategorie(id) {
   return categoriesActualites().find((c) => c.id === id)?.libelle ?? 'Actualité';
@@ -193,52 +206,27 @@ export function filtrerActualites({ categorie = 'toutes', requete = '' } = {}) {
 }
 
 /* ---------------------------------------------------------------- partenaires */
-export const partenaires = () => data.partenaires?.liste ?? [];
+export const partenaires = () => data.collections?.partenaires ?? [];
 
-/** Partenaires de la fédération. */
+/** Partenaires affichés : la collection ne contient que les partenariats confirmés. */
 export function partenairesAffiches() {
-  return partenaires().filter((p) => p.participation_confirmee === true);
-}
-
-export function partenairesEnNegociation() {
-  return partenaires().filter((p) => p.participation_confirmee !== true);
+  return partenaires().filter((p) => p.participation_confirmee !== false);
 }
 
 export function libelleCategoriePartenaire(id) {
-  return data.partenaires?.entete?.categories?.find((c) => c.id === id)?.libelle ?? 'Partenaire';
+  return data.taxonomies?.categories_partenaires?.find((c) => c.id === id)?.libelle ?? 'Partenaire';
 }
 
 /* ---------------------------------------------------------------- galerie */
-export const galerie = () => data.galerie?.liste ?? [];
+export const galerie = () => data.collections?.galerie ?? [];
 
-export function libelleCategorieGalerie(id) {
-  return data.galerie?.categories?.find((c) => c.id === id)?.libelle ?? 'Galerie';
-}
-
-export function imagesGalerie({ categorie = 'toutes', limite = null } = {}) {
-  let liste = galerie();
-  if (categorie !== 'toutes') liste = liste.filter((i) => i.categorie === categorie);
+export function imagesGalerie({ limite = null } = {}) {
+  const liste = galerie();
   return limite ? liste.slice(0, limite) : liste;
 }
 
 /* ---------------------------------------------------------------- synthèse */
-/** Chiffres clés calculés à partir des données réellement présentes. */
-export function chiffresCalcules() {
-  return {
-    clubs: clubs().length,
-    regions: new Set(clubs().map((c) => c.region)).size,
-    disciplines: disciplines().length,
-    evenements: evenements().filter((e) => e.statut === 'a_venir').length
-  };
-}
-
-/** Section chiffres clés : liste des indicateurs publiés par la fédération. */
+/** Section chiffres clés : liste des indicateurs publiés sur la page d'accueil. */
 export function chiffresCles() {
-  const bloc = data.federation?.chiffres_cles;
-  if (!bloc) return [];
-  const calcules = chiffresCalcules();
-  return (bloc.indicatifs || []).map((indicateur) => ({
-    ...indicateur,
-    valeur: indicateur.source === 'calcule' ? calcules[indicateur.cle] ?? '-' : indicateur.valeur
-  }));
+  return data.pages?.accueil?.bref?.chiffres_cles ?? [];
 }

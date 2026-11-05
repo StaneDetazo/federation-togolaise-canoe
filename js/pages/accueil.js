@@ -4,8 +4,8 @@
 
 import { demarrer, ui } from '../core/app.js';
 import {
-  data,
   site,
+  page,
   disciplines,
   chiffresCles,
   agenda,
@@ -32,7 +32,7 @@ demarrer().then(() => rendre());
 
 function rendre() {
   const identite = site();
-  const federation = data.federation ?? {};
+  const accueil = page('accueil');
   const cles = chiffresCles();
   const cle = (id) => cles.find((c) => c.id === id)?.valeur ?? '';
 
@@ -49,25 +49,9 @@ function rendre() {
   }
 
   /* ------------------------------------------------ bannière principale */
-  qs('[data-zone="heros-accroche"]').textContent = identite.accroche || '';
+  qs('[data-zone="heros-accroche"]').textContent = identite.slogan || '';
 
-  const reperes = [
-    {
-      libelle: 'Clubs affiliés',
-      valeur: cle('clubs') || String(clubs().length),
-      detail: 'engagés au championnat national 2025'
-    },
-    {
-      libelle: 'Athlètes engagés',
-      valeur: cle('athetes'),
-      detail: 'championnat national 2025'
-    },
-    {
-      libelle: 'Création de la fédération',
-      valeur: cle('creation'),
-      detail: 'Agbodrafo, préfecture des Lacs'
-    }
-  ];
+  const reperes = accueil.reperes_heros || [];
   qs('[data-zone="heros-infos"]').innerHTML = reperes
     .map(
       (r) => `
@@ -85,15 +69,16 @@ function rendre() {
   }
 
   /* ------------------------------------------------ la fédération en bref */
-  qs('[data-zone="bref-titre"]').textContent = federation.presentation?.titre || '';
-  qs('[data-zone="bref-texte"]').innerHTML = (federation.presentation?.paragraphes || [])
+  const bref = accueil.bref ?? {};
+  qs('[data-zone="bref-titre"]').textContent = bref.titre || '';
+  qs('[data-zone="bref-texte"]').innerHTML = (bref.paragraphes || [])
     .slice(0, 2)
     .map((p) => `<p>${esc(p)}</p>`)
     .join('');
 
   /* photo de l'encadré (facultative) : la source peut être modifiée via les données */
   const imgBref = qs('[data-zone="bref-image"]');
-  const imageBref = federation.presentation?.image;
+  const imageBref = bref.image;
   if (imgBref && imageBref) imgBref.src = imageBref;
 
   /* ------------------------------------------------ chiffres clés (optionnels) */
@@ -119,7 +104,8 @@ function rendre() {
   }
 
   /* ------------------------------------------------ disciplines */
-  qs('[data-zone="disciplines-chapeau"]').textContent = data.disciplines?.entete?.chapeau || '';
+  qs('[data-zone="disciplines-chapeau"]').textContent =
+    accueil.disciplines?.chapeau || '';
   const listeDisciplines = (disciplines().filter((d) => d.a_la_une).length
     ? disciplines().filter((d) => d.a_la_une)
     : disciplines()
@@ -164,13 +150,14 @@ function rendre() {
 
   /* ------------------------------------------------ clubs affiliés */
   const totalClubs = cle('clubs') || String(clubs().length);
+  const clubsPage = accueil.clubs ?? {};
   const indexInfo = `
     <aside class="lg:sticky lg:top-24 lg:self-start">
-      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Clubs affiliés</p>
+      <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">${esc(clubsPage.etiquette || '')}</p>
       <p class="mt-4 font-display text-4xl font-extrabold text-vert-950">${esc(String(totalClubs))}</p>
-      <p class="mt-1 text-sm leading-relaxed text-encre-doux">clubs engagés au championnat national 2025.</p>
+      <p class="mt-1 text-sm leading-relaxed text-encre-doux">${esc(clubsPage.resume || '')}</p>
       <a href="clubs.html" class="btn btn--contour mt-8 flex w-full justify-center">
-        Voir les clubs <span aria-hidden="true">→</span>
+        ${esc(clubsPage.cta?.libelle || '')} <span aria-hidden="true">→</span>
       </a>
     </aside>`;
 
@@ -233,7 +220,7 @@ function rendre() {
     </div>`
     : blocSquelette({
         texte:
-          data.galerie?.entete?.note ||
+          accueil.galerie?.chapeau ||
           'Les photographies officielles de la fédération seront publiées dans cette galerie.',
         nombre: 4,
         colonnes: 'grid-cols-2 lg:grid-cols-4'

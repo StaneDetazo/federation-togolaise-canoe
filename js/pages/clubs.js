@@ -4,7 +4,7 @@
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
-import { data, clubs, regions, filtrerClubs } from '../core/data.js';
+import { page, clubs, regions, filtrerClubs } from '../core/data.js';
 import { bandeauPage, carteClub } from '../core/cartes.js';
 import { qs, qsa, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
@@ -26,25 +26,26 @@ function texte(zone, valeur) {
 }
 
 function rendre() {
-  const entete = data.clubs?.entete ?? {};
-  const annuaire = data.clubs?.annuaire ?? {};
-  const devenir = data.clubs?.devenir_club ?? {};
+  const pageClubs = page('clubs');
+  const entete = pageClubs.entete ?? {};
+  const annuaire = pageClubs.annuaire ?? {};
+  const devenir = pageClubs.devenir_club ?? {};
 
   /* ------------------------------------------------ bandeau */
   remplir(
     'bandeau',
     bandeauPage({
-      titre: entete.titre || 'Clubs affiliés',
-      chapeau: entete.chapeau || 'Les clubs affiliés à la fédération.',
-      fil: 'Réseau fédéral',
-      section: 'Clubs affiliés'
+      titre: entete.titre,
+      chapeau: entete.chapeau,
+      fil: entete.etiquette,
+      section: entete.fil_ariane
     })
   );
 
   /* ------------------------------------------------ annuaire */
-  texte('annuaire-etiquette', annuaire.etiquette || 'Annuaire');
-  texte('annuaire-titre', annuaire.titre || 'Les clubs affiliés');
-  texte('annuaire-intro', annuaire.intro);
+  texte('annuaire-etiquette', annuaire.etiquette);
+  texte('annuaire-titre', annuaire.titre);
+  texte('annuaire-intro', annuaire.chapeau);
 
   const iconeRecherche = qs('[data-icone-recherche]');
   if (iconeRecherche) iconeRecherche.innerHTML = icone('recherche', 'h-5 w-5');
@@ -92,8 +93,8 @@ function rendre() {
 
   /* ------------------------------------------------ devenir club */
   texte('devenir-titre', devenir.titre);
-  texte('devenir-texte', devenir.texte);
-  texte('devenir-note', devenir.a_confirmer);
+  texte('devenir-texte', devenir.chapeau);
+  texte('devenir-note', devenir.note);
 
   ui.initRevelation();
 }
@@ -130,11 +131,11 @@ function afficherGrille() {
 
 /* ------------------------------------------------------------------ repères */
 function afficherReperes() {
-  const reperes = data.clubs?.reperes ?? {};
+  const reperes = page('clubs').reperes ?? {};
 
-  texte('reperes-etiquette', reperes.etiquette || 'Repères');
-  texte('reperes-titre', reperes.titre || 'Le réseau en chiffres');
-  texte('reperes-intro', reperes.intro);
+  texte('reperes-etiquette', reperes.etiquette);
+  texte('reperes-titre', reperes.titre);
+  texte('reperes-intro', reperes.chapeau);
 
   remplir(
     'reperes-liste',

@@ -4,7 +4,7 @@
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
-import { data } from '../core/data.js';
+import { page, reseaux } from '../core/data.js';
 import { bandeauPage } from '../core/cartes.js';
 import { qs, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
@@ -25,7 +25,8 @@ function texte(zone, valeur) {
 }
 
 function rendre() {
-  const federation = data.federation ?? {};
+  const federation = page('federation');
+  const entete = federation.entete ?? {};
   const presentation = federation.presentation ?? {};
   const histoire = federation.histoire ?? {};
   const missions = federation.missions ?? {};
@@ -34,10 +35,9 @@ function rendre() {
   remplir(
     'bandeau',
     bandeauPage({
-      titre: 'La Fédération Togolaise de Canoë',
-      chapeau: presentation.chapeau || '',
-      fil: 'Institution',
-      section: 'La Fédération'
+      titre: entete.titre,
+      fil: entete.etiquette,
+      section: entete.fil_ariane
     })
   );
 
@@ -49,17 +49,21 @@ function rendre() {
     (presentation.paragraphes || []).map((paragraphe) => `<p>${esc(paragraphe)}</p>`).join('')
   );
 
-  /* image d'illustration (source modifiable dans data/federation.json) */
+  /* image d'illustration (source modifiable dans data/pages/federation.json) */
   const imageIdentite = qs('[data-zone="identite-image"]');
-  const illustration = federation.illustration ?? {};
+  const illustration = presentation.illustration ?? {};
   if (imageIdentite && illustration.image) imageIdentite.src = illustration.image;
   if (imageIdentite && illustration.legende) imageIdentite.alt = illustration.legende;
 
   /* ------------------------------------------------ histoire */
   texte('histoire-titre', histoire.titre);
-  texte('histoire-intro', histoire.introduction);
+  texte('histoire-intro', histoire.chapeau);
+  remplir(
+    'histoire-texte',
+    (histoire.paragraphes || []).map((paragraphe) => `<p>${esc(paragraphe)}</p>`).join('')
+  );
 
-  const etapes = histoire.etapes || [];
+  const etapes = histoire.chronologie || [];
   const milieu = Math.ceil(etapes.length / 2);
   const colonneFrise = (liste) => `
     <div class="frise pb-2">
@@ -83,7 +87,7 @@ function rendre() {
 
   /* ------------------------------------------------ missions (liste compacte) */
   texte('missions-titre', missions.titre);
-  texte('missions-intro', missions.introduction);
+  texte('missions-intro', missions.chapeau);
   remplir(
     'missions-grille',
     (missions.liste || [])
@@ -101,6 +105,19 @@ function rendre() {
           <p class="mt-1 text-sm leading-relaxed text-encre-doux">${esc(mission.texte)}</p>
         </div>
       </div>`
+      )
+      .join('')
+  );
+
+  /* ------------------------------------------------ réseaux sociaux */
+  remplir(
+    'reseaux-appel',
+    reseaux()
+      .map(
+        (reseau) =>
+          `<a href="${esc(reseau.url)}" target="_blank" rel="noopener noreferrer" class="btn btn--fantome">${esc(
+            reseau.nom
+          )}${reseau.pseudo ? ` : ${esc(reseau.pseudo)}` : ''}</a>`
       )
       .join('')
   );

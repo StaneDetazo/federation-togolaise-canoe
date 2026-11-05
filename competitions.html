@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Compétitions &amp; calendrier - FETOC</title>
-  <meta name="description" content="Les rendez-vous de la FETOC, passés et à venir : championnats nationaux, formations d'entraîneurs et grands rendez-vous du canoë.">
+  <title>Compétitions et calendrier fédéral - FETOC</title>
+  <meta name="description" content="Les rendez-vous sportifs de la pagaie togolaise : compétitions, formations et calendrier fédéral de la FETOC.">
   <link rel="icon" href="assets/img/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,8 +18,8 @@
   <link rel="canonical" href="http://localhost:8125/competitions.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Fédération Togolaise de Canoë">
-  <meta property="og:title" content="Compétitions & calendrier - FETOC">
-  <meta property="og:description" content="Les compétitions, formations et événements de la FETOC.">
+  <meta property="og:title" content="Compétitions et calendrier fédéral - FETOC">
+  <meta property="og:description" content="Les rendez-vous sportifs de la pagaie togolaise : compétitions, formations et calendrier fédéral de la FETOC.">
   <meta property="og:url" content="http://localhost:8125/competitions.html">
   <meta property="og:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,8 +28,8 @@
   <meta property="og:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
   <meta property="og:locale" content="fr_TG">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Compétitions & calendrier - FETOC">
-  <meta name="twitter:description" content="Les compétitions, formations et événements de la FETOC.">
+  <meta name="twitter:title" content="Compétitions et calendrier fédéral - FETOC">
+  <meta name="twitter:description" content="Les rendez-vous sportifs de la pagaie togolaise : compétitions, formations et calendrier fédéral de la FETOC.">
   <meta name="twitter:image" content="http://localhost:8125/assets/img/og-image.png">
   <meta name="twitter:image:alt" content="Carte de partage de la FETOC - Fédération Togolaise de Canoë">
   <script>document.documentElement.classList.add('js')</script>
@@ -40,6 +40,17 @@
 
   <main id="main">
     <div data-zone="bandeau"></div>
+
+    <!-- Calendrier fédéral -->
+    <section class="bg-white py-14 lg:py-16">
+      <div class="mx-auto max-w-ecran px-4 sm:px-6">
+        <header class="revele max-w-3xl">
+          <p class="etiquette text-vert-600">Calendrier fédéral</p>
+          <h2 data-zone="calendrier-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <div data-zone="calendrier-texte" class="prose-fetoc prose-fetoc--compact mt-5"></div>
+        </header>
+      </div>
+    </section>
 
     <!-- Calendrier -->
     <section class="bg-sable-50 py-16 lg:py-20">
@@ -60,30 +71,6 @@
       </div>
     </section>
 
-    <!-- Sections « Résultats » et « Classements » désactivées (contenu non publié) :
-    <section id="resultats" class="scroll-mt-32 bg-white py-16 lg:py-24">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele max-w-2xl">
-          <p class="etiquette text-vert-600">Résultats</p>
-          <h2 data-zone="resultats-titre" class="mt-5 titre-section text-vert-950"></h2>
-          <p class="mt-5 text-base leading-relaxed text-encre-doux">Les résultats détaillés par catégorie seront publiés prochainement.</p>
-        </header>
-        <div data-zone="resultats-liste" class="mt-10 grid gap-6 lg:grid-cols-2"></div>
-      </div>
-    </section>
-
-    <section class="bg-sable-50 py-16 lg:py-24">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <header class="revele max-w-2xl">
-          <p class="etiquette text-vert-600">Classements</p>
-          <h2 data-zone="classements-titre" class="mt-5 titre-section text-vert-950"></h2>
-          <p class="mt-5 text-base leading-relaxed text-encre-doux">Les classements par discipline seront publiés prochainement.</p>
-        </header>
-        <div data-zone="classements-liste" class="mt-10 space-y-8"></div>
-      </div>
-    </section>
-    -->
-
     <!-- Informations pratiques -->
     <section class="bg-white py-16 lg:py-20">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
@@ -100,7 +87,7 @@
               <p class="flex items-center gap-2 font-display text-sm font-bold text-vert-900">
                 <span data-icone-reglement></span>Le règlement sportif
               </p>
-              <p data-zone="infos-reglement" class="mt-2 text-sm leading-relaxed text-encre-doux"></p>
+              <div data-zone="infos-reglement" class="prose-fetoc prose-fetoc--compact mt-2 text-sm text-encre-doux"></div>
             </div>
             <div class="rounded-2xl border border-soleil-300 bg-soleil-50 p-6">
               <p class="font-display text-sm font-bold text-vert-900">Une question ?</p>

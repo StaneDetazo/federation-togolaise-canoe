@@ -1,0 +1,40 @@
+{
+  "familles_disciplines": [
+    { "id": "course", "libelle": "Vitesse & compétition" },
+    { "id": "tradition", "libelle": "Pirogue traditionnelle" },
+    { "id": "inclusif", "libelle": "Pagaie inclusive" }
+  ],
+
+  "categories_actualites": [
+    { "id": "competitions", "libelle": "Compétitions" },
+    { "id": "formation", "libelle": "Formation" },
+    { "id": "cooperation", "libelle": "Coopération" }
+  ],
+
+  "regions": [
+    { "id": "maritime", "libelle": "Maritime" }
+  ],
+
+  "types_evenements": [
+    { "id": "championnat", "libelle": "Championnat" },
+    { "id": "formation", "libelle": "Formation" },
+    { "id": "evenement", "libelle": "Événement" }
+  ],
+
+  "saisons": [
+    { "id": "2025", "libelle": "2025", "publiee": true },
+    { "id": "2024", "libelle": "2024", "publiee": true }
+  ],
+
+  "statuts_evenements": {
+    "termine": "Terminé",
+    "a_venir": "À venir",
+    "a_confirmer": "À confirmer"
+  },
+
+  "categories_partenaires": [
+    { "id": "institutionnel-sportif", "libelle": "Institutions sportives" },
+    { "id": "cooperation", "libelle": "Coopération et appuis" },
+    { "id": "evenement", "libelle": "Partenaires d'événements" }
+  ]
+}

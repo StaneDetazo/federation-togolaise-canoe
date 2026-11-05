@@ -1,0 +1,53 @@
+[
+  {
+    "id": "championnat-national-2025",
+    "titre": "Championnat national 2025",
+    "type": "championnat",
+    "discipline_id": "canoe-kayak-vitesse",
+    "saison": "2025",
+    "periode": "Septembre 2025",
+    "date_debut": "2025-09-06",
+    "lieu": "Kpémé",
+    "organisateur": "Fédération Togolaise de Canoë",
+    "statut": "termine",
+    "description": "Clôture du championnat national à Kpémé, qui a réuni 13 clubs et 193 athlètes.",
+    "chiffres": [
+      { "libelle": "Clubs engagés", "valeur": "13" },
+      { "libelle": "Athlètes", "valeur": "193" }
+    ],
+    "source": "ahouevinfo.tg",
+    "a_la_une": true,
+    "image": "assets/img/gallery/galerie-12.jpeg"
+  },
+  {
+    "id": "formation-entraineurs-2025",
+    "titre": "Formation d'entraîneurs de niveau 1",
+    "type": "formation",
+    "saison": "2025",
+    "periode": "Avril 2025",
+    "date_debut": "2025-04-01",
+    "lieu": "Aného",
+    "organisateur": "FETOC avec la Fédération internationale de canoë-kayak (ICF)",
+    "statut": "termine",
+    "description": "Formation d'entraîneurs de niveau 1 organisée à Aného, selon le cadre de la Fédération internationale de canoë-kayak.",
+    "source": "Fédération internationale de canoë-kayak (ICF)",
+    "a_la_une": true,
+    "image": "assets/img/gallery/galerie-13.jpeg"
+  },
+  {
+    "id": "relai-autour-du-monde-2024",
+    "titre": "Relai Autour du Monde",
+    "type": "evenement",
+    "discipline_id": "pirogue-traditionnelle",
+    "saison": "2024",
+    "periode": "2024",
+    "date_debut": "2024-01-01",
+    "lieu": "Togo",
+    "organisateur": "FETOC avec France Volontaires et les acteurs de l'équipe France",
+    "statut": "termine",
+    "description": "Participation de la fédération à l'organisation du Relai Autour du Monde au Togo, avec mobilisation d'athlètes et promotion du kayak et de la pirogue traditionnelle.",
+    "source": "France Volontaires",
+    "a_la_une": true,
+    "image": "assets/img/gallery/galerie-14.jpeg"
+  }
+]

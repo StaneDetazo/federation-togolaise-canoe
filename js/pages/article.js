@@ -12,6 +12,7 @@ import {
   libelleCategorie,
   imagesGalerie,
   contact,
+  reseaux,
   videoHeroPage
 } from '../core/data.js';
 import { carteArticle, vignetteGalerie } from '../core/cartes.js';
@@ -216,8 +217,8 @@ function blocContenu(bloc) {
 
 function imageArticle(article, src) {
   return (
-    imagesGalerie().find((image) => image.src === src) || {
-      src,
+    imagesGalerie().find((image) => image.image === src) || {
+      image: src,
       titre: article.titre,
       lieu: article.lieu || 'Togo',
       date: article.date
@@ -318,9 +319,13 @@ function carteLettre() {
       ${esc(coord.note || '')}
     </p>
     <div class="mt-5 space-y-2.5 text-sm">
-      <a href="${esc(coord.instagram?.url)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-encre-doux transition hover:text-vert-700">
-        ${icone('instagram', 'h-4 w-4 text-vert-600')}${esc(coord.instagram?.pseudo)}
-      </a>
+      ${reseaux()
+        .map(
+          (reseau) => `<a href="${esc(reseau.url)}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-encre-doux transition hover:text-vert-700">
+        ${icone(reseau.id, 'h-4 w-4 text-vert-600')}${esc(reseau.pseudo || reseau.nom)}
+      </a>`
+        )
+        .join('')}
       <a href="contact.html" class="flex items-center gap-2.5 font-semibold text-vert-700 transition hover:text-vert-800">
         ${icone('fleche-droite', 'h-4 w-4')}Page contact
       </a>

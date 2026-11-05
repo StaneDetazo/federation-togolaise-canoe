@@ -1,0 +1,158 @@
+{
+  "entete": {
+    "etiquette": "Institution",
+    "titre": "La Fédération Togolaise de Canoë",
+    "fil_ariane": "La Fédération"
+  },
+
+  "presentation": {
+    "etiquette": "Présentation",
+    "titre": "Qui sommes-nous ?",
+    "chapeau": "La Fédération Togolaise de Canoë (FETOC) est l'instance nationale chargée de promouvoir, de structurer et de développer le canoë-kayak et les sports de pagaie au Togo.",
+    "paragraphes": [
+      "Elle œuvre à la démocratisation de la pratique, à la formation des athlètes et des encadreurs, ainsi qu'à l'organisation des compétitions et des activités fédérales.",
+      "En collaboration avec ses clubs affiliés, ses partenaires et les institutions sportives nationales et internationales, la FETOC s'engage à faire des sports de pagaie un levier de développement sportif, d'inclusion et de rayonnement du Togo."
+    ],
+    "illustration": {
+      "image": "assets/img/gallery/galerie-02.jpeg",
+      "legende": "La Fédération Togolaise de Canoë en images"
+    }
+  },
+
+  "identite_officielle": {
+    "etiquette": "Identité",
+    "titre": "Identité officielle",
+    "liste": [
+      { "libelle": "Dénomination", "valeur": "Fédération Togolaise de Canoë" },
+      { "libelle": "Sigle", "valeur": "FETOC" },
+      { "libelle": "Création", "valeur": "13 février 2024" },
+      { "libelle": "Siège", "valeur": "Agbodrafo, préfecture des Lacs (Togo)" },
+      { "libelle": "Président", "valeur": "Simedo Comlan Mawuko (élu en février 2024)" },
+      { "libelle": "Mandat", "valeur": "4 ans, renouvelable une fois" },
+      { "libelle": "Comité exécutif", "valeur": "7 membres" },
+      { "libelle": "Affiliation internationale", "valeur": "Fédération internationale de canoë-kayak (ICF)" }
+    ]
+  },
+
+  "histoire": {
+    "etiquette": "Histoire",
+    "titre": "Une nouvelle dynamique pour les sports de pagaie au Togo",
+    "chapeau": "Créée le 13 février 2024 à Agbodrafo, la Fédération Togolaise de Canoë marque une étape importante dans la structuration et le développement des sports de pagaie au Togo.",
+    "paragraphes": [
+      "Depuis sa création, elle œuvre à la mise en place d'un cadre fédéral favorisant la pratique, la formation, l'organisation des compétitions et la valorisation des disciplines nautiques.",
+      "Portée par une ambition de développement durable du sport, la FETOC entend contribuer à l'émergence de nouveaux talents et à la représentation du Togo sur les scènes sportive régionale, continentale et internationale."
+    ],
+    "chronologie": [
+      {
+        "annee": "13 février 2024",
+        "titre": "Assemblée générale constitutive",
+        "texte": "À Agbodrafo, dans la préfecture des Lacs, les clubs fondateurs adoptent les statuts et le règlement intérieur et désignent un comité exécutif de sept membres, présidé par Simedo Comlan Mawuko."
+      },
+      {
+        "annee": "2024",
+        "titre": "Relai Autour du Monde",
+        "texte": "La fédération participe à l'organisation du Relai Autour du Monde au Togo, avec la mobilisation d'athlètes et la promotion du kayak et de la pirogue traditionnelle."
+      },
+      {
+        "annee": "Avril 2025",
+        "titre": "Formation d'entraîneurs de niveau 1",
+        "texte": "Une formation d'entraîneurs de niveau 1 est organisée à Aného, selon le cadre de la Fédération internationale de canoë-kayak (ICF)."
+      },
+      {
+        "annee": "Septembre 2025",
+        "titre": "Championnat national",
+        "texte": "Le championnat national se clôture à Kpémé, avec 13 clubs et 193 athlètes engagés."
+      }
+    ]
+  },
+
+  "missions": {
+    "etiquette": "Missions",
+    "titre": "Les missions de la FETOC",
+    "chapeau": "La Fédération Togolaise de Canoë poursuit les missions suivantes :",
+    "liste": [
+      {
+        "titre": "Promotion et développement",
+        "texte": "Promouvoir et développer le canoë-kayak et les sports de pagaie sur l'ensemble du territoire national.",
+        "icone": "pagaie"
+      },
+      {
+        "titre": "Structuration des clubs",
+        "texte": "Structurer et accompagner les clubs affiliés.",
+        "icone": "pousse"
+      },
+      {
+        "titre": "Organisation des compétitions",
+        "texte": "Organiser les compétitions et les manifestations sportives fédérales.",
+        "icone": "trophee"
+      },
+      {
+        "titre": "Formation et perfectionnement",
+        "texte": "Assurer la formation et le perfectionnement des athlètes, entraîneurs, officiels et encadreurs.",
+        "icone": "diplome"
+      },
+      {
+        "titre": "Détection des jeunes talents",
+        "texte": "Détecter, former et accompagner les jeunes talents.",
+        "icone": "etoile"
+      },
+      {
+        "titre": "Inclusion et accessibilité",
+        "texte": "Favoriser l'inclusion et l'accessibilité des sports de pagaie, notamment à travers le para-canoë.",
+        "icone": "inclusion"
+      },
+      {
+        "titre": "Partenariats institutionnels",
+        "texte": "Développer des partenariats avec les institutions sportives nationales et internationales.",
+        "icone": "globe"
+      },
+      {
+        "titre": "Rayonnement du sport togolais",
+        "texte": "Contribuer au rayonnement du sport togolais à travers les disciplines nautiques.",
+        "icone": "drapeau"
+      }
+    ]
+  },
+
+  "comite_executif": {
+    "etiquette": "Gouvernance",
+    "titre": "Comité exécutif",
+    "chapeau": "Le comité exécutif issu de l'assemblée générale constitutive du 13 février 2024 compte sept membres, pour un mandat de quatre ans renouvelable une fois.",
+    "composition": "7 membres",
+    "note": "La composition complète du comité exécutif sera communiquée prochainement.",
+    "liste": [
+      {
+        "poste": "Président",
+        "nom": "Simedo Comlan Mawuko",
+        "attribution": "Élu en février 2024 pour un mandat de 4 ans renouvelable une fois.",
+        "initiale": "SM"
+      }
+    ]
+  },
+
+  "affiliations": {
+    "etiquette": "Affiliations",
+    "titre": "Affiliation et coopérations",
+    "liste": [
+      {
+        "organisation": "Fédération internationale de canoë-kayak",
+        "sigle": "ICF",
+        "statut": "Fédération internationale de référence",
+        "note": "Formation technique et développement du canoë au Togo."
+      },
+      {
+        "organisation": "Comité national olympique du Togo",
+        "sigle": "CNOT",
+        "statut": "Coopération",
+        "note": "Coopération pour le développement de la discipline."
+      }
+    ]
+  },
+
+  "appel": {
+    "etiquette": "Contact",
+    "titre": "Une question sur la Fédération ?",
+    "chapeau": "Notre équipe est à votre écoute pour toute demande d'information, de partenariat ou d'accompagnement.",
+    "cta": { "libelle": "Nous contacter", "url": "contact.html" }
+  }
+}

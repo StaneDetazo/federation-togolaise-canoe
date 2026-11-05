@@ -4,8 +4,8 @@
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
-import { data, agenda, saisons, typesEvenement } from '../core/data.js';
-import { bandeauPage, carteEvenement, blocSquelette } from '../core/cartes.js';
+import { page, agenda, saisons, typesEvenement } from '../core/data.js';
+import { bandeauPage, carteEvenement } from '../core/cartes.js';
 import { qs, qsa, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
@@ -26,18 +26,28 @@ function texte(zone, valeur) {
 }
 
 function rendre() {
-  const entete = data.competitions?.entete ?? {};
-  const infos = data.competitions?.informations_pratiques ?? {};
+  const pageCompetitions = page('competitions');
+  const entete = pageCompetitions.entete ?? {};
+  const calendrier = pageCompetitions.calendrier ?? {};
+  const infos = pageCompetitions.informations_pratiques ?? {};
+  const reglement = pageCompetitions.reglement ?? {};
 
   /* ------------------------------------------------ bandeau */
   remplir(
     'bandeau',
     bandeauPage({
-      titre: entete.titre || 'Compétitions & calendrier',
-      chapeau: entete.chapeau || 'Les rendez-vous de la fédération.',
-      fil: 'Vie sportive',
-      section: 'Compétitions & calendrier'
+      titre: entete.titre,
+      chapeau: entete.chapeau,
+      fil: entete.etiquette,
+      section: entete.fil_ariane
     })
+  );
+
+  /* ------------------------------------------------ calendrier fédéral */
+  texte('calendrier-titre', calendrier.titre);
+  remplir(
+    'calendrier-texte',
+    (calendrier.paragraphes || []).map((paragraphe) => `<p>${esc(paragraphe)}</p>`).join('')
   );
 
   /* ------------------------------------------------ filtres saisons */
@@ -63,9 +73,11 @@ function rendre() {
   });
 
   /* ------------------------------------------------ filtres types */
+  /* Le bouton « Tous les types » est ajouté ici : la taxonomie ne contient
+     que les types réels. */
   const zoneTypes = remplir(
     'filtres-types',
-    typesEvenement()
+    [{ id: 'toutes', libelle: 'Tous les types' }, ...typesEvenement()]
       .map(
         (type) => `
       <button type="button" class="pastille-filtre${type.id === etat.type ? ' est-actif' : ''}"
@@ -82,26 +94,28 @@ function rendre() {
   });
 
   afficherAgenda();
-  // afficherResultats();
-  // afficherClassements();
 
   /* ------------------------------------------------ informations pratiques */
-  texte('infos-titre', infos.titre || 'Informations pratiques');
+  texte('infos-titre', infos.titre);
   remplir(
     'infos-licences',
-    `<li class="revele flex items-start gap-3 text-sm leading-relaxed text-encre-doux">
+    (infos.paragraphes || [])
+      .map(
+        (paragraphe) =>
+          `<li class="revele flex items-start gap-3 text-sm leading-relaxed text-encre-doux">
        <span class="mt-0.5 flex-none text-vert-600">${icone('info', 'h-5 w-5')}</span>
-       <span>${esc(infos.a_confirmer || '')}</span>
+       <span>${esc(paragraphe)}</span>
      </li>`
+      )
+      .join('')
   );
-  texte(
+  remplir(
     'infos-reglement',
-    'Les textes sportifs et le règlement des compétitions seront publiés par la fédération.'
+    (reglement.paragraphes || [])
+      .map((paragraphe) => `<p>${esc(paragraphe)}</p>`)
+      .join('')
   );
-  texte(
-    'infos-contact',
-    'Pour toute question sur les engagements, les licences ou le règlement, écrivez à fetoc228@gmail.com ou contactez la fédération via son compte Instagram officiel (@fetoc_togo).'
-  );
+  texte('infos-contact', infos.question);
   const iconeReglement = qs('[data-icone-reglement]');
   if (iconeReglement) iconeReglement.innerHTML = icone('documents', 'h-4 w-4 text-vert-600');
 
@@ -139,24 +153,3 @@ function afficherAgenda() {
     compteur.textContent = `${liste.length} rendez-vous.`;
   }
 }
-
-/* --------------------------------- résultats & classements (désactivés) */
-/* Sections « Résultats » et « Classements » désactivées : contenu non publié.
-function afficherResultats() {
-  const zoneTitre = qs('[data-zone="resultats-titre"]');
-  if (zoneTitre) zoneTitre.textContent = 'Résultats des compétitions';
-
-  const zone = qs('[data-zone="resultats-liste"]');
-  if (!zone) return;
-  zone.innerHTML = blocSquelette({ nombre: 2, colonnes: '' });
-}
-
-function afficherClassements() {
-  const zoneTitre = qs('[data-zone="classements-titre"]');
-  if (zoneTitre) zoneTitre.textContent = 'Classements de la saison';
-
-  const zone = qs('[data-zone="classements-liste"]');
-  if (!zone) return;
-  zone.innerHTML = blocSquelette({ nombre: 2, colonnes: '' });
-}
-*/

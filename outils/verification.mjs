@@ -1,7 +1,7 @@
 /* ==========================================================================
    FETOC - Vérification automatique du site
    Contrôle :
-     1. la validité des fichiers JSON de /data ;
+     1. la validité des fichiers JSON de /data (site, taxonomies, pages, collections) ;
      2. l'absence de lien interne cassé dans les pages HTML ;
      3. la cohérence des identifiants référencés entre fichiers ;
      4. la présence des fichiers référencés (visuels, styles, scripts) ;
@@ -10,7 +10,7 @@
    Usage : npm run verifier   (le serveur local n'est pas nécessaire)
    ========================================================================== */
 
-import { readFile, readdir, stat } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -32,14 +32,29 @@ const avertir = (message) => {
 
 /* ---------------------------------------------------------------- 1. JSON */
 console.log('\n\u001b[1m1. Fichiers de données JSON\u001b[0m');
-const fichiersData = (await readdir(chemin('data'))).filter((f) => f.endsWith('.json'));
-const donnees = {};
-for (const fichier of fichiersData.sort()) {
+
+const fichiersData = ['site.json', 'taxonomies.json'];
+for (const dossier of ['pages', 'collections']) {
+  const entrees = await readdir(chemin('data', dossier));
+  fichiersData.push(...entrees.filter((f) => f.endsWith('.json')).sort().map((f) => `${dossier}/${f}`));
+}
+
+/** Contenu JSON indexé par chemin relatif : « data/pages/accueil.json ». */
+const jsonParChemin = new Map();
+const donnees = { site: {}, taxonomies: {}, pages: {}, collections: {} };
+
+for (const relatif of fichiersData) {
+  const cle = `data/${relatif}`;
   try {
-    donnees[fichier.replace('.json', '')] = JSON.parse(await readFile(chemin('data', fichier), 'utf8'));
-    ok(`data/${fichier}`);
+    const valeur = JSON.parse(await readFile(chemin(cle), 'utf8'));
+    jsonParChemin.set(cle, valeur);
+    if (relatif === 'site.json') donnees.site = valeur;
+    else if (relatif === 'taxonomies.json') donnees.taxonomies = valeur;
+    else if (relatif.startsWith('pages/')) donnees.pages[relatif.replace(/^pages\//, '').replace('.json', '')] = valeur;
+    else donnees.collections[relatif.replace(/^collections\//, '').replace('.json', '')] = valeur;
+    ok(cle);
   } catch (e) {
-    erreur(`data/${fichier} - ${e.message}`);
+    erreur(`${cle} - ${e.message}`);
   }
 }
 
@@ -95,22 +110,34 @@ if (urlSite && existsSync(chemin('sitemap.xml'))) {
 
 /* ---------------------------------------------------------------- 3. cohérence des identifiants */
 console.log('\n\u001b[1m3. Cohérence des identifiants\u001b[0m');
-const idsClubs = new Set((donnees.clubs?.liste ?? []).map((c) => c.id));
-const idsDisciplines = new Set((donnees.disciplines?.liste ?? []).map((d) => d.id));
-const places = (titre, liste, valide, champ = 'id') => {
-  const fautifs = liste.filter((e) => !valide(e[champ]));
-  if (fautifs.length) erreur(`${titre} - référence inconnue : ${fautifs.map((f) => `${f.id}→${f[champ]}`).join(', ')}`);
-  else ok(titre);
-};
 
-const evenements = donnees.competitions?.evenements ?? [];
-for (const evenement of evenements) {
-  if (evenement.discipline_id && !idsDisciplines.has(evenement.discipline_id))
-    erreur(`Événement ${evenement.id} - discipline inconnue « ${evenement.discipline_id} »`);
+const tax = donnees.taxonomies;
+const collections = donnees.collections;
+const ids = (liste) => new Set((liste ?? []).map((entree) => entree.id));
+
+const idsClubs = ids(collections.clubs);
+const idsDisciplines = ids(collections.disciplines);
+const idsEvenements = ids(collections.evenements);
+const idsPartenaires = ids(collections.partenaires);
+const idsFamilles = ids(tax.familles_disciplines);
+const idsCategories = ids(tax.categories_actualites);
+const idsRegions = ids(tax.regions);
+const idsTypes = ids(tax.types_evenements);
+const idsSaisons = ids(tax.saisons);
+const idsCategoriesPartenaires = ids(tax.categories_partenaires);
+const statuts = new Set(Object.keys(tax.statuts_evenements ?? {}));
+
+// Disciplines : famille référencée dans les taxonomies.
+for (const discipline of collections.disciplines ?? []) {
+  if (discipline.famille && !idsFamilles.has(discipline.famille))
+    erreur(`Discipline ${discipline.id} - famille inconnue « ${discipline.famille} »`);
 }
-ok(`Compétitions - ${evenements.length} événement(s) vérifié(s)`);
+ok(`Disciplines - ${idsDisciplines.size} discipline(s) vérifiée(s)`);
 
-for (const club of donnees.clubs?.liste ?? []) {
+// Clubs : région référencée dans les taxonomies.
+for (const club of collections.clubs ?? []) {
+  if (club.region && !idsRegions.has(club.region))
+    erreur(`Club ${club.id} - région inconnue « ${club.region} »`);
   for (const discipline of club.disciplines ?? []) {
     if (!idsDisciplines.has(discipline))
       erreur(`Club ${club.id} - discipline inconnue « ${discipline} »`);
@@ -118,29 +145,56 @@ for (const club of donnees.clubs?.liste ?? []) {
 }
 ok(`Clubs - ${idsClubs.size} club(s) vérifié(s)`);
 
-for (const classement of donnees.competitions?.classements ?? []) {
-  if (classement.discipline_id && !idsDisciplines.has(classement.discipline_id))
-    erreur(`Classement ${classement.id} - discipline inconnue « ${classement.discipline_id} »`);
+// Événements : discipline, type, saison et statut référencés.
+for (const evenement of collections.evenements ?? []) {
+  if (evenement.discipline_id && !idsDisciplines.has(evenement.discipline_id))
+    erreur(`Événement ${evenement.id} - discipline inconnue « ${evenement.discipline_id} »`);
+  if (evenement.type && !idsTypes.has(evenement.type))
+    erreur(`Événement ${evenement.id} - type inconnu « ${evenement.type} »`);
+  if (evenement.saison && !idsSaisons.has(evenement.saison))
+    erreur(`Événement ${evenement.id} - saison inconnue « ${evenement.saison} »`);
+  if (evenement.statut && !statuts.has(evenement.statut))
+    erreur(`Événement ${evenement.id} - statut inconnu « ${evenement.statut} »`);
 }
-ok('Classements - disciplines vérifiées');
+ok(`Événements - ${idsEvenements.size} événement(s) vérifié(s)`);
 
-// articles liés
-const slugs = new Set((donnees.actualites?.liste ?? []).map((a) => a.slug));
-for (const article of donnees.actualites?.liste ?? []) {
+// Articles : catégorie et articles liés.
+const slugs = new Set((collections.articles ?? []).map((article) => article.slug));
+for (const article of collections.articles ?? []) {
+  if (article.categorie && !idsCategories.has(article.categorie))
+    erreur(`Article « ${article.slug} » - catégorie inconnue « ${article.categorie} »`);
   for (const lien of article.articles_lies ?? []) {
     if (!slugs.has(lien)) avertir(`Article « ${article.slug} » - article lié inconnu « ${lien} »`);
   }
 }
 ok(`Actualités - ${slugs.size} article(s), liens internes contrôlés`);
 
-// catégories
-const catsActu = new Set((donnees.actualites?.categories ?? []).map((c) => c.id));
-for (const a of donnees.actualites?.liste ?? [])
-  if (!catsActu.has(a.categorie)) erreur(`Article « ${a.slug} » - catégorie inconnue « ${a.categorie} »`);
+// Partenaires : catégorie référencée.
+for (const partenaire of collections.partenaires ?? []) {
+  if (partenaire.categorie && !idsCategoriesPartenaires.has(partenaire.categorie))
+    erreur(`Partenaire ${partenaire.id} - catégorie inconnue « ${partenaire.categorie} »`);
+}
+ok(`Partenaires - ${idsPartenaires.size} partenaire(s) vérifié(s)`);
 
-const catsGal = new Set((donnees.galerie?.categories ?? []).map((c) => c.id));
-for (const g of donnees.galerie?.liste ?? [])
-  if (!catsGal.has(g.categorie)) erreur(`Image « ${g.id} » - catégorie inconnue « ${g.categorie} »`);
+// Pages : chaque « collection » référencée doit exister.
+const collectionsReferencees = [];
+const parcourirPage = (valeur) => {
+  if (Array.isArray(valeur)) {
+    valeur.forEach(parcourirPage);
+  } else if (valeur && typeof valeur === 'object') {
+    for (const [cle, contenu] of Object.entries(valeur)) {
+      if (cle === 'collection' && typeof contenu === 'string') collectionsReferencees.push(contenu);
+      else parcourirPage(contenu);
+    }
+  }
+};
+Object.values(donnees.pages).forEach(parcourirPage);
+const collectionsInconnues = [...new Set(collectionsReferencees)].filter(
+  (nom) => !Object.prototype.hasOwnProperty.call(collections, nom)
+);
+if (collectionsInconnues.length)
+  erreur(`Pages - collection(s) inconnue(s) : ${collectionsInconnues.join(', ')}`);
+else ok(`Pages - ${collectionsReferencees.length} référence(s) de collection valide(s)`);
 
 /* ---------------------------------------------------------------- 4. fichiers référencés */
 console.log('\n\u001b[1m4. Fichiers référencés (données et scripts)\u001b[0m');
@@ -194,35 +248,36 @@ try {
   const { chargerDonnees } = await import('../js/core/data.js');
   const cartes = await import('../js/core/cartes.js');
 
-  // fetch local simulé pour charger les JSON déjà lus
+  // fetch local simulé : chaque URL « data/…/fichier.json » renvoie le JSON déjà lu.
   globalThis.fetch = async (url) => {
-    const fichier = path.basename(String(url).split('?')[0]);
-    const cle = fichier.replace('.json', '');
-    if (!donnees[cle]) return { ok: false, status: 404 };
-    return { ok: true, status: 200, json: async () => donnees[cle] };
+    const correspondance = String(url).match(/data\/[A-Za-z0-9_./-]+\.json/);
+    const valeur = correspondance ? jsonParChemin.get(correspondance[0]) : undefined;
+    if (valeur === undefined) return { ok: false, status: 404 };
+    return { ok: true, status: 200, json: async () => valeur };
   };
   await chargerDonnees();
 
   const premier = (liste) => (Array.isArray(liste) && liste.length ? liste[0] : undefined);
+  const membres = donnees.pages.federation?.comite_executif?.liste ?? [];
   const controles = [
-    ['carteDiscipline', cartes.carteDiscipline, premier(donnees.disciplines.liste)],
-    ['carteArticle', cartes.carteArticle, premier(donnees.actualites.liste)],
-    ['carteClub', cartes.carteClub, premier(donnees.clubs.liste)],
-    ['carteClub (liste)', (c) => cartes.carteClub(c, { variante: 'liste' }), donnees.clubs.liste?.[1]],
-    ['carteEvenement', cartes.carteEvenement, donnees.competitions.evenements?.[1]],
-    ['carteEvenement (sombre)', (e) => cartes.carteEvenement(e, { variante: 'sombre' }), donnees.competitions.evenements?.[1]],
-    ['ligneEvenement', cartes.ligneEvenement, donnees.competitions.evenements?.[2]],
-    ['vignetteGalerie', cartes.vignetteGalerie, premier(donnees.galerie.liste)],
-    ['carteMembre', cartes.carteMembre, premier(donnees.federation.bureau_executif?.membres)],
-    ['cartePartenaire', cartes.cartePartenaire, premier(donnees.partenaires.liste)],
+    ['carteDiscipline', cartes.carteDiscipline, premier(collections.disciplines)],
+    ['carteArticle', cartes.carteArticle, premier(collections.articles)],
+    ['carteClub', cartes.carteClub, premier(collections.clubs)],
+    ['carteClub (liste)', (c) => cartes.carteClub(c, { variante: 'liste' }), collections.clubs?.[1]],
+    ['carteEvenement', cartes.carteEvenement, collections.evenements?.[1]],
+    ['carteEvenement (sombre)', (e) => cartes.carteEvenement(e, { variante: 'sombre' }), collections.evenements?.[1]],
+    ['ligneEvenement', cartes.ligneEvenement, collections.evenements?.[2]],
+    ['vignetteGalerie', cartes.vignetteGalerie, premier(collections.galerie)],
+    ['carteMembre', cartes.carteMembre, premier(membres)],
+    ['cartePartenaire', cartes.cartePartenaire, premier(collections.partenaires)],
     ['blocSquelette', cartes.blocSquelette, { titre: 'Test', texte: 'Texte', nombre: 2 }],
     ['bandeauPage', cartes.bandeauPage, { titre: 'Test', chapeau: 'Chapô', fil: 'Test' }],
-    ['carteDisciplineAccueil', (d) => cartes.carteDisciplineAccueil(d, 0), premier(donnees.disciplines.liste)],
-    ['carteArticleAccueil (vedette)', (a) => cartes.carteArticleAccueil(a, { vedette: true }), premier(donnees.actualites.liste)],
-    ['carteArticleAccueil', cartes.carteArticleAccueil, donnees.actualites.liste?.[1]],
-    ['carteClubAccueil', cartes.carteClubAccueil, premier(donnees.clubs.liste)],
-    ['ligneEvenementAccueil', cartes.ligneEvenementAccueil, premier(donnees.competitions.evenements)],
-    ['vignetteGalerieAccueil', cartes.vignetteGalerieAccueil, premier(donnees.galerie.liste)]
+    ['carteDisciplineAccueil', (d) => cartes.carteDisciplineAccueil(d, 0), premier(collections.disciplines)],
+    ['carteArticleAccueil (vedette)', (a) => cartes.carteArticleAccueil(a, { vedette: true }), premier(collections.articles)],
+    ['carteArticleAccueil', cartes.carteArticleAccueil, collections.articles?.[1]],
+    ['carteClubAccueil', cartes.carteClubAccueil, premier(collections.clubs)],
+    ['ligneEvenementAccueil', cartes.ligneEvenementAccueil, premier(collections.evenements)],
+    ['vignetteGalerieAccueil', cartes.vignetteGalerieAccueil, premier(collections.galerie)]
   ].filter(([, , entree]) => entree !== undefined);
 
   for (const [nom, fonction, entree] of controles) {
@@ -236,25 +291,25 @@ try {
 
   // rendu de toutes les entités : détecte les données incomplètes
   let total = 0;
-  for (const d of donnees.disciplines.liste || []) { cartes.carteDiscipline(d); total += 1; }
-  for (const a of donnees.actualites.liste || []) { cartes.carteArticle(a); total += 1; }
-  for (const c of donnees.clubs.liste || []) { cartes.carteClub(c); total += 1; }
-  for (const e of donnees.competitions.evenements || []) { cartes.carteEvenement(e); total += 1; }
-  for (const m of donnees.federation.bureau_executif?.membres || []) { cartes.carteMembre(m); total += 1; }
-  for (const p of donnees.partenaires.liste || []) { cartes.cartePartenaire(p); total += 1; }
-  for (const g of donnees.galerie.liste || []) { cartes.vignetteGalerie(g); total += 1; }
+  for (const d of collections.disciplines ?? []) { cartes.carteDiscipline(d); total += 1; }
+  for (const a of collections.articles ?? []) { cartes.carteArticle(a); total += 1; }
+  for (const c of collections.clubs ?? []) { cartes.carteClub(c); total += 1; }
+  for (const e of collections.evenements ?? []) { cartes.carteEvenement(e); total += 1; }
+  for (const m of membres) { cartes.carteMembre(m); total += 1; }
+  for (const p of collections.partenaires ?? []) { cartes.cartePartenaire(p); total += 1; }
+  for (const g of collections.galerie ?? []) { cartes.vignetteGalerie(g); total += 1; }
   ok(`${total} rendus complets sans erreur (disciplines, articles, clubs, événements, bureau, partenaires, galerie)`);
 
   // rendu des variantes d'accueil (pages d'accueil)
   let totalAccueil = 0;
-  (donnees.disciplines.liste || []).forEach((d, i) => { cartes.carteDisciplineAccueil(d, i); totalAccueil += 1; });
-  (donnees.actualites.liste || []).forEach((a, i) => {
+  (collections.disciplines ?? []).forEach((d, i) => { cartes.carteDisciplineAccueil(d, i); totalAccueil += 1; });
+  (collections.articles ?? []).forEach((a, i) => {
     cartes.carteArticleAccueil(a, { vedette: i === 0 });
     totalAccueil += 1;
   });
-  (donnees.clubs.liste || []).forEach((c) => { cartes.carteClubAccueil(c); totalAccueil += 1; });
-  (donnees.competitions.evenements || []).forEach((e) => { cartes.ligneEvenementAccueil(e); totalAccueil += 1; });
-  (donnees.galerie.liste || []).forEach((g) => { cartes.vignetteGalerieAccueil(g); totalAccueil += 1; });
+  (collections.clubs ?? []).forEach((c) => { cartes.carteClubAccueil(c); totalAccueil += 1; });
+  (collections.evenements ?? []).forEach((e) => { cartes.ligneEvenementAccueil(e); totalAccueil += 1; });
+  (collections.galerie ?? []).forEach((g) => { cartes.vignetteGalerieAccueil(g); totalAccueil += 1; });
   ok(`${totalAccueil} rendus d'accueil sans erreur (disciplines, actualités, clubs, rendez-vous, galerie)`);
 } catch (e) {
   erreur(`Rendu impossible - ${e.message}`);
@@ -262,7 +317,7 @@ try {
 
 /* ---------------------------------------------------------------- 6. structure */
 console.log('\n\u001b[1m6. Structure du projet\u001b[0m');
-for (const dossier of ['css', 'js/core', 'js/pages', 'data', 'assets/img']) {
+for (const dossier of ['css', 'js/core', 'js/pages', 'data', 'data/pages', 'data/collections', 'assets/img']) {
   if (!existsSync(chemin(dossier))) avertir(`dossier manquant : ${dossier}/`);
 }
 const nbImages = existsSync(chemin('assets/img'))

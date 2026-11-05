@@ -352,7 +352,7 @@ export function initFormulaire(formulaire, { surEnvoi } = {}) {
       );
       qs('[data-confirmation]', formulaire)?.removeAttribute('hidden');
     } catch (erreur) {
-      notifier("L'envoi a échoué. Merci de réessayer ou de contacter la fédération via son compte Instagram.", 'alerte');
+      notifier("L'envoi a échoué. Merci de réessayer ou de contacter la fédération via ses réseaux sociaux officiels.", 'alerte');
     } finally {
       if (bouton) {
         bouton.disabled = false;

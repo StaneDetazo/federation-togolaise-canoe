@@ -1,12 +1,12 @@
 /* ==========================================================================
    FETOC - Page « Contact »
    Coordonnées officielles : e-mail, téléphone (dont WhatsApp),
-   compte Instagram et fiche auprès de la Fédération internationale
-   de canoë-kayak.
+   réseaux sociaux officiels et fiche auprès de la Fédération
+   internationale de canoë-kayak.
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
-import { contact, partenairesAffiches } from '../core/data.js';
+import { page, site, contact, partenairesAffiches, reseaux } from '../core/data.js';
 import { bandeauPage, cartePartenaire } from '../core/cartes.js';
 import { qs, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
@@ -19,20 +19,37 @@ function remplir(zone, html) {
   return element;
 }
 
+function texte(zone, valeur) {
+  const element = qs(`[data-zone="${zone}"]`);
+  if (element) element.textContent = valeur ?? '';
+  return element;
+}
+
 function rendre() {
   const coord = contact();
+  const identite = site();
+  const pageContact = page('contact');
+  const entete = pageContact.entete ?? {};
+  const coordonnees = pageContact.coordonnees ?? {};
+  const textes = coordonnees.cartes ?? {};
+  const orientation = pageContact.orientation ?? {};
+  const partenairesPage = pageContact.partenaires ?? {};
 
   /* ------------------------------------------------ bandeau */
   remplir(
     'bandeau',
     bandeauPage({
-      titre: 'Contact',
-      chapeau:
-        'Écrire, appeler ou passer par les canaux officiels : voici les coordonnées de la Fédération Togolaise de Canoë.',
-      fil: 'Nous joindre',
-      section: 'Contact'
+      titre: entete.titre,
+      chapeau: entete.chapeau,
+      fil: entete.etiquette,
+      section: entete.fil_ariane
     })
   );
+
+  /* ------------------------------------------------ en-tête des coordonnées */
+  texte('coordonnees-etiquette', coordonnees.etiquette);
+  texte('coordonnees-titre', coordonnees.titre);
+  texte('coordonnees-organisation', coordonnees.organisation);
 
   /* ------------------------------------------------ coordonnées */
   const cartes = [];
@@ -44,11 +61,15 @@ function rendre() {
         <span class="grid h-12 w-12 place-items-center rounded-xl bg-vert-50 text-vert-700">
           ${icone('mail', 'h-6 w-6')}
         </span>
-        <span class="mt-5 font-display text-lg font-bold text-vert-950">E-mail</span>
+        <span class="mt-5 font-display text-lg font-bold text-vert-950">${esc(
+          textes.email?.titre
+        )}</span>
         <span class="mt-1 break-all text-sm font-semibold text-vert-700">${esc(coord.email.libelle)}</span>
-        <span class="mt-3 text-sm leading-relaxed text-encre-doux">Pour les demandes d’affiliation, de partenariat et toute question officielle.</span>
+        <span class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(
+          textes.email?.description
+        )}</span>
         <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-vert-700">
-          Écrire à la fédération ${icone('fleche-droite', 'h-4 w-4')}
+          ${esc(textes.email?.action)} ${icone('fleche-droite', 'h-4 w-4')}
         </span>
       </a>`);
   }
@@ -59,7 +80,9 @@ function rendre() {
         <span class="grid h-12 w-12 place-items-center rounded-xl bg-vert-50 text-vert-700">
           ${icone('telephone', 'h-6 w-6')}
         </span>
-        <span class="mt-5 font-display text-lg font-bold text-vert-950">Téléphone &amp; WhatsApp</span>
+        <span class="mt-5 font-display text-lg font-bold text-vert-950">${esc(
+          textes.telephone?.titre
+        )}</span>
         <ul class="mt-3 space-y-2.5">
           ${coord.telephones
             .map(
@@ -72,34 +95,42 @@ function rendre() {
             )
             .join('')}
         </ul>
-        <span class="mt-4 text-sm leading-relaxed text-encre-doux">Le numéro signalé « WhatsApp » permet aussi les échanges par messagerie.</span>
+        <span class="mt-4 text-sm leading-relaxed text-encre-doux">${esc(
+          textes.telephone?.note
+        )}</span>
       </div>`);
   }
 
-  if (coord.instagram) {
+  reseaux().forEach((reseau) => {
     cartes.push(`
-      <a href="${esc(coord.instagram.url)}" target="_blank" rel="noopener noreferrer"
+      <a href="${esc(reseau.url)}" target="_blank" rel="noopener noreferrer"
          class="revele group flex flex-col rounded-2xl border border-sable-200 bg-white p-6 transition hover:border-vert-200 hover:shadow-doux">
         <span class="grid h-12 w-12 place-items-center rounded-xl bg-vert-50 text-vert-700">
-          ${icone('instagram', 'h-6 w-6')}
+          ${icone(reseau.id, 'h-6 w-6')}
         </span>
-        <span class="mt-5 font-display text-lg font-bold text-vert-950">${esc(coord.instagram.nom)}</span>
-        <span class="mt-1 text-sm font-semibold text-vert-700">${esc(coord.instagram.pseudo)}</span>
-        <span class="mt-3 text-sm leading-relaxed text-encre-doux">Les annonces et la vie de la fédération sont relayées sur le compte officiel.</span>
+        <span class="mt-5 font-display text-lg font-bold text-vert-950">${esc(reseau.nom)}</span>
+        <span class="mt-1 text-sm font-semibold text-vert-700">${esc(reseau.pseudo || 'Page officielle')}</span>
+        <span class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(
+          textes.reseaux?.description
+        )}</span>
         <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-vert-700">
-          Ouvrir le compte ${icone('fleche-droite', 'h-4 w-4')}
+          ${esc(textes.reseaux?.action)} ${icone('fleche-droite', 'h-4 w-4')}
         </span>
       </a>`);
-  }
+  });
 
   cartes.push(`
       <div class="revele flex flex-col rounded-2xl border border-sable-200 bg-sable-50 p-6">
         <span class="grid h-12 w-12 place-items-center rounded-xl bg-white text-vert-700">
           ${icone('lieu', 'h-6 w-6')}
         </span>
-        <span class="mt-5 font-display text-lg font-bold text-vert-950">Siège social</span>
-        <span class="mt-1 text-sm font-semibold text-vert-700">${esc(coord.siege || 'Agbodrafo, préfecture des Lacs')}</span>
-        <span class="mt-3 text-sm leading-relaxed text-encre-doux">Siège de la fédération, lieu de l’assemblée générale constitutive du 13 février 2024.</span>
+        <span class="mt-5 font-display text-lg font-bold text-vert-950">${esc(
+          textes.siege?.titre
+        )}</span>
+        <span class="mt-1 text-sm font-semibold text-vert-700">${esc(identite.siege)}</span>
+        <span class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(
+          textes.siege?.description
+        )}</span>
       </div>`);
 
   if (coord.federation_internationale) {
@@ -109,11 +140,15 @@ function rendre() {
         <span class="grid h-12 w-12 place-items-center rounded-xl bg-soleil-100 text-soleil-700">
           ${icone('globe', 'h-6 w-6')}
         </span>
-        <span class="mt-5 font-display text-lg font-bold text-vert-950">Fédération internationale</span>
+        <span class="mt-5 font-display text-lg font-bold text-vert-950">${esc(
+          textes.federation_internationale?.titre
+        )}</span>
         <span class="mt-1 text-sm font-semibold text-vert-700">${esc(coord.federation_internationale.nom)}</span>
-        <span class="mt-3 text-sm leading-relaxed text-encre-doux">La FETOC figure parmi les fédérations nationales référencées par l’ICF.</span>
+        <span class="mt-3 text-sm leading-relaxed text-encre-doux">${esc(
+          textes.federation_internationale?.description
+        )}</span>
         <span class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-vert-700">
-          Consulter l’ICF ${icone('fleche-droite', 'h-4 w-4')}
+          ${esc(textes.federation_internationale?.action)} ${icone('fleche-droite', 'h-4 w-4')}
         </span>
       </a>`);
   }
@@ -121,33 +156,14 @@ function rendre() {
   remplir('coordonnees-grille', cartes.join(''));
 
   /* ------------------------------------------------ orientation */
-  const orientations = [
-    {
-      icone: 'pagaie',
-      titre: 'Pratiquer',
-      texte: 'Découvrir les activités encadrées par la fédération et ses clubs.',
-      libelle: 'Disciplines & activités',
-      url: 'disciplines.html'
-    },
-    {
-      icone: 'reseau',
-      titre: 'Rejoindre un club',
-      texte: 'Consulter les clubs affiliés.',
-      libelle: 'Clubs affiliés',
-      url: 'clubs.html'
-    },
-    {
-      icone: 'trophee',
-      titre: 'Suivre la compétition',
-      texte: 'Les rendez-vous et le calendrier de la fédération.',
-      libelle: 'Compétitions & calendrier',
-      url: 'competitions.html'
-    }
-  ];
+  texte('orientation-etiquette', orientation.etiquette);
+  texte('orientation-titre', orientation.titre);
+  texte('orientation-chapeau', orientation.chapeau);
+  texte('orientation-note', orientation.note);
 
   remplir(
     'orientation-grille',
-    orientations
+    (orientation.liste || [])
       .map(
         (bloc, index) => `
       <article class="revele flex flex-col rounded-2xl border border-sable-200 bg-white p-6" data-delai="${index * 70}">
@@ -157,8 +173,8 @@ function rendre() {
         )}</span>
         <h3 class="mt-5 font-display text-lg font-bold text-vert-950">${esc(bloc.titre)}</h3>
         <p class="mt-2 flex-1 text-sm leading-relaxed text-encre-doux">${esc(bloc.texte)}</p>
-        <a href="${esc(bloc.url)}" class="lien-fleche mt-5 inline-flex items-center gap-2 text-sm font-semibold text-vert-700 transition hover:text-vert-900">
-          ${esc(bloc.libelle)}${icone('fleche-droite', 'h-4 w-4')}
+        <a href="${esc(bloc.lien?.url)}" class="lien-fleche mt-5 inline-flex items-center gap-2 text-sm font-semibold text-vert-700 transition hover:text-vert-900">
+          ${esc(bloc.lien?.libelle)}${icone('fleche-droite', 'h-4 w-4')}
         </a>
       </article>`
       )
@@ -172,10 +188,12 @@ function rendre() {
     `
     <div class="rounded-3xl border border-sable-200 bg-sable-50 p-8 sm:p-10">
       <div class="max-w-2xl">
-        <p class="etiquette text-vert-600">Partenaires</p>
-        <h2 class="mt-4 font-display text-2xl font-bold text-vert-950">Institutions &amp; partenaires</h2>
+        <p class="etiquette text-vert-600">${esc(partenairesPage.etiquette)}</p>
+        <h2 class="mt-4 font-display text-2xl font-bold text-vert-950">${esc(
+          partenairesPage.titre
+        )}</h2>
         <p class="mt-3 text-sm leading-relaxed text-encre-doux">
-          Institutions et organisations qui accompagnent les activités de la fédération.
+          ${esc(partenairesPage.chapeau)}
         </p>
       </div>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -20,7 +20,6 @@ import {
   libelleDiscipline,
   libelleStatut,
   libelleCategoriePartenaire,
-  libelleCategorieGalerie,
   videoHeroPage
 } from './data.js';
 
@@ -414,15 +413,8 @@ function legendeGalerie(image) {
   return { titre, details, texte, alt: texte || LEGENDE_GALERIE_DEFAUT };
 }
 
-const etiquetteCategorieGalerie = (categorie) =>
-  categorie && categorie !== 'toutes'
-    ? `<span class="absolute left-2 top-2 rounded-full bg-white/95 px-2.5 py-1 font-display text-[0.6rem] font-bold uppercase tracking-wider text-vert-800">
-          ${esc(libelleCategorieGalerie(categorie))}
-        </span>`
-    : '';
-
 export function vignetteGalerie(image, { delai = 0, grande = false } = {}) {
-  const photo = imageOuDefaut(image.src);
+  const photo = imageOuDefaut(image.image);
   const { titre, details, texte, alt } = legendeGalerie(image);
   const voile =
     titre || details
@@ -445,7 +437,7 @@ export function vignetteGalerie(image, { delai = 0, grande = false } = {}) {
 /* « Mur de photos » d'accueil : cadre blanc, légende sous l'image et léger
    devers (rotation passée par la page). Le clic ouvre la visionneuse. */
 export function vignetteGalerieAccueil(image, { ratio = 'aspect-[4/3]', rotation = '', delai = 0 } = {}) {
-  const photo = imageOuDefaut(image.src);
+  const photo = imageOuDefaut(image.image);
   const { titre, details, texte, alt } = legendeGalerie(image);
   const legendeVisible =
     titre || details
@@ -461,7 +453,6 @@ export function vignetteGalerieAccueil(image, { ratio = 'aspect-[4/3]', rotation
             data-legende="${esc(texte || alt)}">
       <span class="relative block ${ratio} overflow-hidden rounded-[0.75rem] bg-vert-900">
         ${img(photo, alt, 'h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105', 'loading="lazy" decoding="async"', 900, 900)}
-        ${etiquetteCategorieGalerie(image.categorie)}
       </span>
       ${legendeVisible}
     </figure>
@@ -483,10 +474,23 @@ export function carteMembre(membre, { delai = 0 } = {}) {
 
 /* ---------------------------------------------------------------- partenaires */
 export function cartePartenaire(partenaire) {
+  const sigle = partenaire.sigle || partenaire.nom.slice(0, 3).toUpperCase();
+  /* Le logo officiel n'est utilisé que si son emploi est autorisé ; à défaut,
+     on affiche le favicon du site partenaire, puis le sigle. */
+  const vignette =
+    partenaire.logo_autorise && partenaire.logo ? partenaire.logo : partenaire.favicon;
+
+  const visuel = vignette
+    ? `<span class="grid h-14 w-20 flex-none place-items-center overflow-hidden rounded-xl border border-sable-200 bg-white p-1.5">
+        <img src="${esc(vignette)}" alt="${esc(sigle)}" width="80" height="56"
+             loading="lazy" decoding="async" class="h-full w-full object-contain">
+      </span>`
+    : `<span class="grid h-14 w-20 flex-none place-items-center rounded-xl bg-vert-50 font-display text-sm font-bold text-vert-700">
+        ${esc(sigle)}
+      </span>`;
+
   const contenu = `
-    <span class="grid h-12 w-12 flex-none place-items-center rounded-xl bg-vert-50 font-display text-sm font-bold text-vert-700">
-      ${esc(partenaire.sigle || partenaire.nom.slice(0, 3).toUpperCase())}
-    </span>
+    ${visuel}
     <span class="min-w-0">
       <span class="block font-display text-sm font-bold leading-snug text-vert-950">${esc(partenaire.nom)}</span>
       <span class="mt-0.5 block text-xs text-encre-clair">${esc(libelleCategoriePartenaire(partenaire.categorie))}</span>

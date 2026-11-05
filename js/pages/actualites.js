@@ -4,14 +4,14 @@
    ========================================================================== */
 
 import { demarrer, ui } from '../core/app.js';
-import { data, filtrerActualites, categoriesActualites, imagesGalerie } from '../core/data.js';
+import { page, filtrerActualites, categoriesActualites, imagesGalerie, reseaux } from '../core/data.js';
 import { bandeauPage, carteArticle, vignetteGalerie, blocSquelette } from '../core/cartes.js';
 import { qs, qsa, esc } from '../core/utils.js';
 import { icone } from '../core/icons.js';
 
 demarrer().then(rendre);
 
-const etat = { categorie: 'toutes', requete: '', galerie: 'toutes' };
+const etat = { categorie: 'toutes', requete: '' };
 
 function remplir(zone, html) {
   const element = qs(`[data-zone="${zone}"]`);
@@ -26,17 +26,17 @@ function texte(zone, valeur) {
 }
 
 function rendre() {
-  const entete = data.actualites?.entete ?? {};
-  const galerie = data.galerie ?? {};
+  const pageActualites = page('actualites');
+  const entete = pageActualites.entete ?? {};
 
   /* ------------------------------------------------ bandeau */
   remplir(
     'bandeau',
     bandeauPage({
-      titre: entete.titre || 'Actualités',
-      chapeau: entete.chapeau || 'La vie de la pagaie togolaise.',
-      fil: 'Média',
-      section: 'Actualités'
+      titre: entete.titre,
+      chapeau: entete.chapeau,
+      fil: entete.etiquette,
+      section: entete.fil_ariane
     })
   );
 
@@ -44,9 +44,11 @@ function rendre() {
   if (iconeRecherche) iconeRecherche.innerHTML = icone('recherche', 'h-5 w-5');
 
   /* ------------------------------------------------ filtres actualités */
+  /* Le bouton « Toutes les actualités » est ajouté ici : la taxonomie ne
+     contient que les catégories réelles. */
   const zoneCategories = remplir(
     'filtres-categories',
-    categoriesActualites()
+    [{ id: 'toutes', libelle: 'Toutes les actualités' }, ...categoriesActualites()]
       .map(
         (categorie) => `
       <button type="button" class="pastille-filtre${categorie.id === etat.categorie ? ' est-actif' : ''}"
@@ -76,35 +78,32 @@ function rendre() {
 
   afficherArticles();
 
-  /* ------------------------------------------------ galerie */
-  texte('galerie-titre', galerie.entete?.titre);
-  texte('galerie-intro', galerie.entete?.chapeau);
-  texte('galerie-note', galerie.entete?.note);
-
-  const categoriesGalerie = galerie.categories || [];
-  const zoneGalerie = remplir(
-    'filtres-galerie',
-    categoriesGalerie.length > 1
-      ? categoriesGalerie
-          .map(
-            (categorie) => `
-      <button type="button" class="pastille-filtre${categorie.id === etat.galerie ? ' est-actif' : ''}"
-        data-galerie-categorie="${esc(categorie.id)}" aria-pressed="${categorie.id === etat.galerie}">
-        ${esc(categorie.libelle)}
-      </button>`
-          )
-          .join('')
-      : ''
+  /* ------------------------------------------------ introduction */
+  const introduction = pageActualites.introduction ?? {};
+  texte('introduction-titre', introduction.titre);
+  remplir(
+    'introduction-texte',
+    (introduction.paragraphes || []).map((paragraphe) => `<p>${esc(paragraphe)}</p>`).join('')
   );
-  zoneGalerie?.addEventListener('click', (evenement) => {
-    const bouton = evenement.target.closest('[data-galerie-categorie]');
-    if (!bouton) return;
-    etat.galerie = bouton.dataset.galerieCategorie;
-    qsa('[data-galerie-categorie]', zoneGalerie).forEach((b) =>
-      b.classList.toggle('est-actif', b === bouton)
-    );
-    afficherGalerie();
-  });
+
+  /* ------------------------------------------------ réseaux sociaux */
+  remplir(
+    'suivre-reseaux',
+    reseaux()
+      .map(
+        (reseau) =>
+          `<a href="${esc(reseau.url)}" target="_blank" rel="noopener noreferrer" class="btn btn--fantome">${esc(
+            reseau.nom
+          )}${reseau.pseudo ? ` : ${esc(reseau.pseudo)}` : ''}</a>`
+      )
+      .join('')
+  );
+
+  /* ------------------------------------------------ galerie */
+  const galerie = pageActualites.galerie ?? {};
+  texte('galerie-titre', galerie.titre);
+  texte('galerie-intro', galerie.chapeau);
+  texte('galerie-note', galerie.note);
 
   afficherGalerie();
   ui.initRevelation();
@@ -140,7 +139,7 @@ function afficherArticles() {
 
 /* ------------------------------------------------------------------ galerie */
 function afficherGalerie() {
-  const images = imagesGalerie({ categorie: etat.galerie });
+  const images = imagesGalerie();
   const zone = qs('[data-zone="galerie-grille"]');
   if (!zone) return;
 

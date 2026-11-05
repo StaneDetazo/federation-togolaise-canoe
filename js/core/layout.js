@@ -5,7 +5,15 @@
 
 import { qs, esc } from './utils.js';
 import { icone } from './icons.js';
-import { data, site, contact, reseaux, navigation, appelAction } from './data.js';
+import {
+  site,
+  contact,
+  reseaux,
+  navigation,
+  appelAction,
+  pied,
+  reseauParId
+} from './data.js';
 
 /* ---------------------------------------------------------------- réseaux sociaux */
 export function pastillesSociales(classes = '', variante = 'clair') {
@@ -42,11 +50,11 @@ function gabaritEntete(pageActive) {
       <div class="mx-auto flex max-w-ecran flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-1.5 sm:px-6">
         <p class="flex items-center gap-2 text-[0.72rem] font-medium tracking-wide text-vert-100">
           ${icone('ancre', 'h-3.5 w-3.5 text-soleil-400')}
-          <span class="hidden sm:inline">${esc(identite.baseline)}</span>
+          <span class="hidden sm:inline">${esc(identite.slogan)}</span>
           <span class="sm:hidden">${esc(identite.sigle)} - ${esc(identite.pays)}</span>
         </p>
         <div class="flex flex-wrap items-center gap-x-3 gap-y-0.5">
-          <a href="https://www.canoeicf.com/" target="_blank" rel="noopener noreferrer"
+          <a href="https://paddleworldwide.com/news/coaching-boost-francophone-nations-africa" target="_blank" rel="noopener noreferrer"
              class="hidden items-center gap-1.5 text-[0.72rem] font-medium text-vert-100 transition hover:text-white lg:flex">
             ${icone('globe', 'h-3.5 w-3.5')}Fédération internationale (ICF)</a>
           <div class="flex items-center gap-1.5">${pastillesSociales('', 'clair')}</div>
@@ -62,7 +70,9 @@ function gabaritEntete(pageActive) {
           <span class="entete__nom block font-display text-[1.05rem] font-extrabold sm:text-[1.12rem]">${esc(
             identite.sigle
           )}</span>
-          <span class="entete__sous-titre block max-w-[13rem] text-[0.62rem] font-medium uppercase leading-tight tracking-[0.12em]">Fédération Togolaise de Canoë</span>
+          <span class="entete__sous-titre block max-w-[13rem] text-[0.62rem] font-medium uppercase leading-tight tracking-[0.12em]">${esc(
+            identite.nom
+          )}</span>
         </span>
       </a>
 
@@ -90,6 +100,7 @@ function gabaritEntete(pageActive) {
 function gabaritMenuMobile(pageActive) {
   const identite = site();
   const coord = contact();
+  const instagram = reseauParId('instagram');
   return `
   <div class="voile-mobile fixed inset-0 z-[55] bg-vert-950/60 backdrop-blur-sm xl:hidden" id="voile-mobile" hidden></div>
   <aside id="panneau-mobile" aria-hidden="true" aria-label="Menu mobile"
@@ -128,7 +139,7 @@ function gabaritMenuMobile(pageActive) {
         <p class="flex items-start gap-2.5">${icone(
           'lieu',
           'mt-0.5 h-4 w-4 flex-none text-vert-600'
-        )}<span>Siège : ${esc(coord.siege)}<br>${esc(coord.pays)}</span></p>
+        )}<span>Siège : ${esc(identite.siege)}<br>${esc(identite.pays)}</span></p>
         ${
           coord.email
             ? `<p class="flex items-center gap-2.5">${icone(
@@ -150,8 +161,8 @@ function gabaritMenuMobile(pageActive) {
         <p class="flex items-center gap-2.5">${icone(
           'instagram',
           'h-4 w-4 flex-none text-vert-600'
-        )}<a class="hover:text-vert-700" href="${esc(coord.instagram?.url)}" target="_blank" rel="noopener noreferrer">${esc(
-          coord.instagram?.pseudo
+        )}<a class="hover:text-vert-700" href="${esc(instagram?.url)}" target="_blank" rel="noopener noreferrer">${esc(
+          instagram?.pseudo
         )}</a></p>
       </div>
       <div class="flex items-center gap-2">${pastillesSociales('', 'sombre')}</div>
@@ -163,7 +174,8 @@ function gabaritMenuMobile(pageActive) {
 function gabaritPied() {
   const identite = site();
   const coord = contact();
-  const pied = data.site?.pied ?? {};
+  const infosPied = pied();
+  const instagram = reseauParId('instagram');
   const lien = (l) => `<li><a href="${esc(l.url)}" class="group flex items-center gap-2 text-sm text-vert-100/85 transition hover:text-white">
         <span class="h-px w-3 bg-soleil-400/70 transition-all group-hover:w-5"></span>${esc(l.libelle)}</a></li>`;
 
@@ -183,7 +195,9 @@ function gabaritPied() {
               <p class="text-[0.68rem] uppercase tracking-[0.16em] text-soleil-300">${esc(identite.pays)}</p>
             </div>
           </div>
-          <p class="mt-4 max-w-sm text-sm leading-relaxed text-vert-100/80">${esc(pied.description || '')}</p>
+          <p class="mt-4 max-w-sm text-sm leading-relaxed text-vert-100/80">${esc(
+            infosPied.description || ''
+          )}</p>
           <p class="mt-4 flex items-center gap-2 text-sm font-medium text-soleil-300">${icone('ancre', 'h-4 w-4')}Fondée le 13 février 2024 à Agbodrafo</p>
           <div class="mt-5 flex items-center gap-2">${pastillesSociales('', 'clair')}</div>
         </div>
@@ -195,15 +209,15 @@ function gabaritPied() {
 
         <nav aria-labelledby="pied-liens">
           <p id="pied-liens" class="font-display text-sm font-bold uppercase tracking-[0.12em]">Liens utiles</p>
-          <ul class="mt-4 space-y-2.5">${(pied.liens_utiles || []).map(lien).join('')}</ul>
+          <ul class="mt-4 space-y-2.5">${(infosPied.liens_utiles || []).map(lien).join('')}</ul>
         </nav>
 
         <div>
           <p class="font-display text-sm font-bold uppercase tracking-[0.12em]">Nous joindre</p>
           <ul class="mt-4 space-y-3 text-sm text-vert-100/85">
             <li class="flex items-start gap-2.5">${icone('lieu', 'mt-0.5 h-4 w-4 flex-none text-soleil-400')}<span>Siège : ${esc(
-    coord.siege
-  )}<br>${esc(coord.pays)}</span></li>
+    identite.siege
+  )}<br>${esc(identite.pays)}</span></li>
             ${
               coord.email
                 ? `<li class="flex items-center gap-2.5">${icone(
@@ -225,8 +239,8 @@ function gabaritPied() {
             <li class="flex items-center gap-2.5">${icone(
               'instagram',
               'h-4 w-4 flex-none text-soleil-400'
-            )}<a href="${esc(coord.instagram?.url)}" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">${esc(
-    coord.instagram?.pseudo
+            )}<a href="${esc(instagram?.url)}" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">${esc(
+    instagram?.pseudo
   )}</a></li>
             <li class="flex items-center gap-2.5">${icone(
               'globe',
@@ -240,10 +254,10 @@ function gabaritPied() {
 
       <div class="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-[0.78rem] text-vert-100/70 md:flex-row md:items-center md:justify-between">
         <p>© <span id="annee-courante">${new Date().getFullYear()}</span> ${esc(identite.nom)}${
-    pied.credit ? ` - ${esc(pied.credit)}` : ''
+    infosPied.credit ? ` - ${esc(infosPied.credit)}` : ''
   }</p>
         <ul class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          ${(pied.mentions || [])
+          ${(infosPied.mentions || [])
             .map((m) => `<li><a href="${esc(m.url)}" class="transition hover:text-white">${esc(m.libelle)}</a></li>`)
             .join('')}
         </ul>

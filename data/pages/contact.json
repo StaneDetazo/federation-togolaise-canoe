@@ -1,0 +1,90 @@
+{
+  "entete": {
+    "etiquette": "Nous joindre",
+    "titre": "Contactez la Fédération Togolaise de Canoë",
+    "chapeau": "Une question, un projet, une demande d'information ou une proposition de partenariat ? La FETOC est à votre écoute.",
+    "fil_ariane": "Contact"
+  },
+
+  "coordonnees": {
+    "etiquette": "Coordonnées",
+    "titre": "Ensemble, faisons avancer la pagaie togolaise.",
+    "organisation": "Fédération Togolaise de Canoë",
+    "cartes": {
+      "email": {
+        "titre": "E-mail",
+        "description": "Pour les demandes d’affiliation, de partenariat et toute question officielle.",
+        "action": "Écrire à la fédération"
+      },
+      "telephone": {
+        "titre": "Téléphone & WhatsApp",
+        "note": "Le numéro signalé « WhatsApp » permet aussi les échanges par messagerie."
+      },
+      "reseaux": {
+        "description": "Les annonces et la vie de la fédération sont relayées sur ce réseau officiel.",
+        "action": "Ouvrir la page"
+      },
+      "siege": {
+        "titre": "Siège social",
+        "description": "Siège de la fédération, lieu de l’assemblée générale constitutive du 13 février 2024."
+      },
+      "federation_internationale": {
+        "titre": "Fédération internationale",
+        "description": "La FETOC figure parmi les fédérations nationales référencées par l’ICF.",
+        "action": "Consulter l’ICF"
+      }
+    }
+  },
+
+  "orientation": {
+    "etiquette": "Orientation des demandes",
+    "titre": "À qui adresser votre demande ?",
+    "chapeau": "Afin de vous orienter efficacement, nous vous invitons à préciser la nature de votre demande :",
+    "liste": [
+      {
+        "icone": "batiment",
+        "titre": "Informations sur la fédération et ses activités",
+        "texte": "Présentation, histoire, missions et fonctionnement de la FETOC.",
+        "lien": { "libelle": "La Fédération", "url": "federation.html" }
+      },
+      {
+        "icone": "pagaie",
+        "titre": "Pratique du canoë-kayak et affiliation des clubs",
+        "texte": "Disciplines, activités et démarches pour rejoindre un club affilié.",
+        "lien": { "libelle": "Clubs affiliés", "url": "clubs.html" }
+      },
+      {
+        "icone": "trophee",
+        "titre": "Compétitions et calendrier sportif",
+        "texte": "Rendez-vous, engagements et informations pratiques.",
+        "lien": { "libelle": "Compétitions et calendrier", "url": "competitions.html" }
+      },
+      {
+        "icone": "diplome",
+        "titre": "Formations et perfectionnement",
+        "texte": "Programmes de formation des athlètes, entraîneurs et encadreurs.",
+        "lien": { "libelle": "Disciplines et activités", "url": "disciplines.html" }
+      },
+      {
+        "icone": "main",
+        "titre": "Partenariats et sponsoring",
+        "texte": "Institutions, entreprises et organisations qui accompagnent la fédération.",
+        "lien": { "libelle": "Nous contacter", "url": "contact.html" }
+      },
+      {
+        "icone": "partage",
+        "titre": "Presse et communication",
+        "texte": "Demandes d’information, interviews et supports de communication.",
+        "lien": { "libelle": "Actualités", "url": "actualites.html" }
+      }
+    ],
+    "note": "Notre équipe vous accompagnera dans votre démarche."
+  },
+
+  "partenaires": {
+    "etiquette": "Partenaires",
+    "titre": "Institutions & partenaires",
+    "chapeau": "Institutions et organisations qui accompagnent les activités de la fédération.",
+    "collection": "partenaires"
+  }
+}

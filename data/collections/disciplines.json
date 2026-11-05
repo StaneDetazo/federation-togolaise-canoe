@@ -1,0 +1,45 @@
+[
+  {
+    "id": "canoe-kayak-vitesse",
+    "nom": "Canoë-kayak de vitesse",
+    "nom_court": "Canoë-kayak de vitesse",
+    "famille": "course",
+    "icone": "kayak",
+    "a_la_une": true,
+    "description": "Entraînement, formation d'entraîneurs et compétitions nationales. Une formation d'entraîneurs de niveau 1 a été organisée selon le cadre de la Fédération internationale de canoë-kayak (ICF).",
+    "source": "Fédération internationale de canoë-kayak (ICF)",
+    "image": "assets/img/discipline/vitesse.jpg",
+    "galerie": [
+      "assets/img/discipline/vitesse.jpg",
+      "assets/img/discipline/vitesse2.jpg"
+    ]
+  },
+  {
+    "id": "pirogue-traditionnelle",
+    "nom": "Pirogue traditionnelle",
+    "nom_court": "Pirogue traditionnelle",
+    "famille": "tradition",
+    "icone": "pirogue",
+    "a_la_une": true,
+    "description": "La promotion de la pirogue traditionnelle figure parmi les activités de la FETOC, notamment lors du Relai Autour du Monde 2024 au Togo.",
+    "source": "France Volontaires",
+    "image": "assets/img/discipline/pirogue.jpg",
+    "galerie": [
+      "assets/img/discipline/pirogue.jpg"
+    ]
+  },
+  {
+    "id": "para-canoe",
+    "nom": "Para-canoë et inclusion",
+    "nom_court": "Para-canoë",
+    "famille": "inclusif",
+    "icone": "inclusion",
+    "a_la_une": true,
+    "description": "Des formations consacrées à l'encadrement des sportifs en situation de handicap ont été organisées à Aného.",
+    "source": "Ahouévi Info",
+    "image": "assets/img/discipline/inclusion.jpg",
+    "galerie": [
+      "assets/img/discipline/inclusion.jpg"
+    ]
+  }
+]

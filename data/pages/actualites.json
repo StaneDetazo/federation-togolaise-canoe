@@ -1,0 +1,32 @@
+{
+  "entete": {
+    "etiquette": "Média",
+    "titre": "Actualités de la FETOC",
+    "chapeau": "Toute l'actualité des sports de pagaie au Togo.",
+    "fil_ariane": "Actualités"
+  },
+
+  "introduction": {
+    "etiquette": "Introduction",
+    "titre": "Au cœur de la vie fédérale",
+    "paragraphes": [
+      "Retrouvez les dernières actualités de la Fédération Togolaise de Canoë : compétitions, formations, activités des clubs, initiatives institutionnelles et temps forts de la pagaie togolaise.",
+      "Découvrez les actions qui contribuent au développement et au rayonnement des sports de pagaie au Togo."
+    ]
+  },
+
+  "galerie": {
+    "etiquette": "Galerie",
+    "titre": "Les temps forts en images",
+    "chapeau": "Plongez au cœur des activités de la FETOC à travers une sélection de photographies et de moments marquants.",
+    "note": "Compétitions, formations, cérémonies et vie des clubs : revivez les instants qui font la richesse de la pagaie togolaise.",
+    "collection": "galerie"
+  },
+
+  "suivre_actualite": {
+    "etiquette": "Suivre l'actualité",
+    "titre": "Restez connectés à la pagaie togolaise",
+    "chapeau": "Suivez les publications officielles de la FETOC sur Instagram pour ne rien manquer de nos activités, de nos événements et de nos actualités.",
+    "cta": { "libelle": "Nous contacter", "url": "contact.html" }
+  }
+}

@@ -2,8 +2,7 @@
   "identite": {
     "nom": "Fédération Togolaise de Canoë",
     "sigle": "FETOC",
-    "baseline": "Fédération sportive togolaise de canoë-kayak et des disciplines associées",
-    "accroche": "Initiée le 13 Février 2024 à AGBODRAFO dans la préfecture des Lacs à la suite de la scission de la FETAC ( Fédération Togolaise d'aviron et de Canoë depuis 1994), la FETOC rassemble les clubs et associations qui pratiquent le canoë-kayak et les disciplines associées au Togo.",
+    "slogan": "Au service du développement des sports de pagaie au Togo.",
     "pays": "Togo",
     "langue": "fr",
     "creation": "2024-02-13",
@@ -16,10 +15,7 @@
   },
 
   "contact": {
-    "pays": "Togo",
-    "siege": "Agbodrafo, préfecture des Lacs",
     "email": {
-      "nom": "Adresse e-mail",
       "libelle": "fetoc228@gmail.com",
       "url": "mailto:fetoc228@gmail.com"
     },
@@ -28,33 +24,39 @@
       { "libelle": "(+228) 90 77 67 29", "url": "tel:+22890776729" },
       { "libelle": "+33 7 58 65 77 81", "url": "https://wa.me/33758657781", "whatsapp": true }
     ],
-    "instagram": {
-      "nom": "Instagram",
-      "pseudo": "@fetoc_togo",
-      "url": "https://www.instagram.com/fetoc_togo/"
-    },
     "federation_internationale": {
       "nom": "Fédération internationale de canoë-kayak (ICF)",
       "url": "https://paddleworldwide.com/news/coaching-boost-francophone-nations-africa"
     },
-    "note": "Retrouvez ci-dessous les coordonnées officielles de la fédération : e-mail, téléphone (dont WhatsApp) et compte Instagram."
+    "note": "Retrouvez ci-dessous les coordonnées officielles de la fédération : e-mail, téléphone (dont WhatsApp) et réseaux sociaux officiels (Instagram, Facebook, TikTok)."
   },
 
   "reseaux": [
     {
       "id": "instagram",
       "nom": "Instagram",
-      "url": "https://www.instagram.com/fetoc_togo/",
-      "pseudo": "@fetoc_togo"
+      "pseudo": "@fetoc_togo",
+      "url": "https://www.instagram.com/fetoc_togo/"
+    },
+    {
+      "id": "facebook",
+      "nom": "Facebook",
+      "url": "https://www.facebook.com/share/1A9YFeY1VW/"
+    },
+    {
+      "id": "tiktok",
+      "nom": "TikTok",
+      "pseudo": "@fetoc.togo",
+      "url": "https://www.tiktok.com/@fetoc.togo"
     }
   ],
 
   "navigation": [
     { "id": "accueil", "libelle": "Accueil", "url": "index.html" },
     { "id": "federation", "libelle": "La Fédération", "url": "federation.html" },
-    { "id": "disciplines", "libelle": "Disciplines & activités", "url": "disciplines.html" },
+    { "id": "disciplines", "libelle": "Disciplines et activités", "url": "disciplines.html" },
     { "id": "clubs", "libelle": "Clubs affiliés", "url": "clubs.html" },
-    { "id": "competitions", "libelle": "Compétitions & calendrier", "url": "competitions.html" },
+    { "id": "competitions", "libelle": "Compétitions et calendrier", "url": "competitions.html" },
     { "id": "actualites", "libelle": "Actualités", "url": "actualites.html" },
     { "id": "contact", "libelle": "Contact", "url": "contact.html" }
   ],
@@ -69,8 +71,8 @@
     "liens_utiles": [
       { "libelle": "La Fédération", "url": "federation.html" },
       { "libelle": "Clubs affiliés", "url": "clubs.html" },
-      { "libelle": "Compétitions & calendrier", "url": "competitions.html" },
-      { "libelle": "Fédération internationale (ICF)", "url": "https://www.canoeicf.com/" }
+      { "libelle": "Compétitions et calendrier", "url": "competitions.html" },
+      { "libelle": "Fédération internationale (ICF)", "url": "https://paddleworldwide.com/news/coaching-boost-francophone-nations-africa" }
     ],
     "mentions": [
       { "libelle": "Mentions légales", "url": "mentions-legales.html" },
@@ -80,7 +82,7 @@
     "credit": "Site conçu pour la Fédération Togolaise de Canoë"
   },
 
-  "videos_heros": {
+  "videos": {
     "accueil": "https://videos.pexels.com/video-files/12881094/12881094-hd_1280_720_30fps.mp4",
     "federation": "https://videos.pexels.com/video-files/12313502/12313502-hd_1280_720_60fps.mp4",
     "disciplines": "https://videos.pexels.com/video-files/6943301/6943301-hd_1280_720_25fps.mp4",

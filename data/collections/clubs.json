@@ -1,0 +1,32 @@
+[
+  {
+    "id": "as-donsa",
+    "nom": "AS Donsa",
+    "region": "maritime",
+    "ville": "Kpémé",
+    "site_pratique": "Kpémé",
+    "a_la_une": true,
+    "presentation": "Club affilié à la FETOC, engagé au championnat national 2025, où il s'est distingué par son nombre de médailles.",
+    "source": "Championnat national 2025 - ahouevinfo.tg",
+    "image": "assets/img/gallery/galerie-09.jpeg"
+  },
+  {
+    "id": "anguilles-aneho",
+    "nom": "Anguilles d'Aného",
+    "region": "maritime",
+    "ville": "Aného",
+    "site_pratique": "Aného",
+    "a_la_une": true,
+    "presentation": "Club affilié à la FETOC, engagé au championnat national 2025.",
+    "source": "Championnat national 2025 - ahouevinfo.tg",
+    "image": "assets/img/gallery/galerie-10.jpeg"
+  },
+  {
+    "id": "as-barracuda",
+    "nom": "AS Barracuda",
+    "a_la_une": true,
+    "presentation": "Club affilié à la FETOC, engagé au championnat national 2025 dans la catégorie senior masculine.",
+    "source": "Championnat national 2025 - ahouevinfo.tg",
+    "image": "assets/img/gallery/galerie-11.jpeg"
+  }
+]

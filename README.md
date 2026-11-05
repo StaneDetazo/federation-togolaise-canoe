@@ -35,10 +35,12 @@ npm run verifier
 
 Le script `outils/verification.mjs` contrôle :
 
-1. la validité JSON des 8 fichiers de `data/` ;
+1. la validité des fichiers JSON de `data/` (site, taxonomies, pages et
+   collections) ;
 2. la présence des ressources locales, des liens des pages HTML et la
    cohérence de l'URL publique (`seo.url_site`) dans les pages et le sitemap ;
-3. la cohérence des identifiants (événements, clubs, classements, articles) ;
+3. la cohérence des identifiants (clubs, disciplines, événements, articles,
+   partenaires) et des références de collection des pages ;
 4. la présence des fichiers référencés dans les données et les scripts
    (visuels `assets/`, styles, scripts) ;
 5. le rendu des composants à partir des données réelles ;
@@ -85,15 +87,16 @@ federation-canoe/
 │       ├── actualites.js      article.js       contact.js
 │       └── legal.js           (partagé par les 3 pages légales)
 ├── data/                      ★ Contenus (futur back-office)
-│   ├── site.json              Identité, navigation, contacts, réseaux
-│   ├── federation.json        Histoire, missions, vision, bureau
-│   ├── disciplines.json       Disciplines, familles, parcours, formations
-│   ├── clubs.json             Clubs affiliés
-│   ├── competitions.json      Calendrier, résultats, classements
-│   ├── actualites.json        Articles et communiqués
-│   ├── partenaires.json       Partenaires et offre de partenariat
-│   └── galerie.json           Galerie photographique
-├── assets/img/                Visuels locaux (logo.png, og-image.png, galerie/)
+│   ├── site.json              Identité, contacts, réseaux, navigation, pied
+│   ├── taxonomies.json        Listes de référence (familles, régions, types…)
+│   ├── pages/                 Textes propres à chaque page
+│   │   ├── accueil.json       federation.json    disciplines.json
+│   │   ├── clubs.json         competitions.json  actualites.json
+│   │   └── contact.json
+│   └── collections/           Objets réutilisables (tableaux)
+│       ├── disciplines.json   clubs.json         evenements.json
+│       └── articles.json      galerie.json       partenaires.json
+├── assets/img/                Visuels locaux (logo.png, og-image.png, galerie/, discipline/, partenaires/)
 ├── outils/verification.mjs    Contrôle qualité
 ├── package.json
 └── README.md
@@ -120,8 +123,21 @@ comportement est le suivant :
 
 `js/core/data.js` est la **seule** couche qui connaît les fichiers JSON. Les
 pages n'accèdent jamais directement à `data/… .json` ; elles passent par des
-petits accesseurs (`clubs()`, `evenementsAvenir()`, `articleParSlug(slug)`, …).
-Les composants d'affichage sont dans `js/core/cartes.js`.
+petits accesseurs (`page('accueil')`, `clubs()`, `agenda()`,
+`articleParSlug(slug)`, …). Les composants d'affichage sont dans
+`js/core/cartes.js`.
+
+Trois familles de fichiers coexistent :
+
+- `site.json` : configuration globale (identité, contacts, réseaux, menu, pied
+  de page, vidéos, SEO) ;
+- `taxonomies.json` : listes de référence partagées (familles de disciplines,
+  régions, types d'événements, saisons, catégories…) ;
+- `pages/*.json` : textes d'une page ; `collections/*.json` : objets affichés
+  dans les listes (clubs, articles, événements…).
+
+Une page référence une collection avec la clé `"collection": "<nom>"` ; le
+texte de la section reste dans le fichier de page.
 
 Pour ajouter un contenu, en général :
 
@@ -156,10 +172,10 @@ galerie, prose `.prose-fetoc`, héros, etc.) sont définis dans `css/styles.css`
 
 Chaque héros (bannière d'accueil et bandeaux des pages intérieures) affiche une
 **vidéo de fond**. Les liens sont centralisés dans `data/site.json` →
-`videos_heros`, une entrée par identifiant de page (`data-page` du `<body>`) :
+`videos`, une entrée par identifiant de page (`data-page` du `<body>`) :
 
 ```json
-"videos_heros": {
+"videos": {
   "accueil": "https://…/video.mp4",
   "federation": "https://…/video.mp4"
 }
@@ -201,12 +217,48 @@ les vidéos, la fédération peut la remplacer par une de ses propres photograph
 
 ### 3.6 Règle d'affichage des partenaires
 
-Un partenaire apparaît sur le site si `participation_confirmee === true`
-(voir `partenairesAffiches()` dans `js/core/data.js`). Sa carte affiche le
-`sigle` (ou les trois premières lettres du `nom`), la catégorie et le `role` ;
-si `url` est renseignée, la carte devient cliquable. Le champ `logo` n'est pas
-utilisé à ce jour. La page `contact.html` affiche en plus l'offre
-`devenir_partenaire`.
+La collection `partenaires` ne contient que les partenariats confirmés ; un
+partenaire peut être masqué ponctuellement avec `"participation_confirmee":
+false` (voir `partenairesAffiches()` dans `js/core/data.js`). Sa carte affiche
+une vignette, la catégorie et le `role` ; si `url` est renseignée, la carte
+devient cliquable. La vignette suit cet ordre de priorité :
+
+1. `logo` si `logo_autorise` vaut `true` (logo officiel) ;
+2. `favicon` (icône du site partenaire, fichier local dans
+   `assets/img/partenaires/`) ;
+3. à défaut, le `sigle` (ou les trois premières lettres du `nom`).
+
+La page `contact.html` affiche en plus les textes du bloc `partenaires` de
+`pages/contact.json`.
+
+### 3.7 Utiliser ses propres photos
+
+Tous les visuels des listes sont pilotés par un champ `image` dans les fichiers
+JSON. Une valeur peut être une URL (`https://…`) ou un chemin local
+(`assets/img/…`). Pour remplacer une photo par la vôtre :
+
+1. déposer le fichier dans le dossier correspondant, par exemple
+   `assets/img/discipline/`, `assets/img/clubs/`, `assets/img/actualites/`… ;
+2. renseigner le champ `image` de l'élément concerné ;
+3. pour une discipline, mettre aussi à jour `galerie[]` (les visuels de la
+   fiche détaillée) ;
+4. lancer `npm run verifier` : un chemin local absent est signalé.
+
+| Contenu | Fichier | Champ |
+| --- | --- | --- |
+| Disciplines | `data/collections/disciplines.json` | `image`, `galerie[]` |
+| Clubs | `data/collections/clubs.json` | `image` |
+| Événements | `data/collections/evenements.json` | `image` |
+| Actualités | `data/collections/articles.json` | `image` |
+| Galerie | `data/collections/galerie.json` | `image` |
+| Accueil (« en bref ») | `data/pages/accueil.json` | `bref.image` |
+| Fédération (illustration) | `data/pages/federation.json` | `presentation.illustration.image` |
+| Partenaires | `data/collections/partenaires.json` | `favicon` ou `logo` |
+
+Conseils : privilégier des photos **paysage** (les cartes recadrent en 16/10),
+1280 à 1600 px de large, au format JPEG ou WebP et sous ~300 Ko. Le seul visuel
+encore codé en dur est l'arrière-plan de l'appel final dans `index.html` : son
+`src` peut être remplacé par un fichier local.
 
 ---
 
@@ -214,43 +266,47 @@ utilisé à ce jour. La page `contact.html` affiche en plus l'offre
 
 | Page | Fichier(s) de données | Zones principales |
 | --- | --- | --- |
-| Accueil | `site`, `federation.chiffres_cles`, `disciplines`, `actualites`, `competitions`, `clubs`, `galerie`, `partenaires` | 9 blocs : bannière, fédération en bref, disciplines, actualités (3), prochains événements, clubs, images, partenaires, appel final |
-| La Fédération | `federation` | `presentation`, `illustration`, `histoire`, `missions` |
-| Disciplines | `disciplines` | `entete`, `familles`, `liste`, `parcours`, `formations`, `sites_de_pratique` |
-| Clubs | `clubs` | `entete`, `annuaire`, `reperes`, `regions`, `liste`, `devenir_club` |
-| Fiche club | `clubs` | lecture de `?id=<club.id>` |
-| Compétitions | `competitions` | `entete`, `saison_courante`, `saisons`, `types`, `statuts`, `evenements`, `classements`, `informations_pratiques` |
-| Actualités | `actualites`, `galerie` | `entete`, `categories`, `liste` |
-| Article | `actualites`, `galerie` | lecture de `?slug=<article.slug>` |
-| Contact | `site.contact`, `partenaires` | coordonnées, orientation, partenaires |
+| Accueil | `pages/accueil.json`, `site`, collections `disciplines`, `articles`, `evenements`, `clubs`, `galerie`, `partenaires` | 9 blocs : bannière, fédération en bref, disciplines, actualités (3), prochains événements, clubs, images, partenaires, appel final |
+| La Fédération | `pages/federation.json` | `entete`, `presentation`, `histoire`, `missions`, `appel` |
+| Disciplines | `pages/disciplines.json`, collections `disciplines` | `entete`, `presentation`, `formations`, `sites_de_pratique`, `appel` |
+| Clubs | `pages/clubs.json`, collections `clubs` | `entete`, `annuaire`, `reperes`, `devenir_club` |
+| Fiche club | `collections/clubs.json` | lecture de `?id=<club.id>` |
+| Compétitions | `pages/competitions.json`, collections `evenements` | `entete`, `calendrier`, `informations_pratiques`, `reglement` |
+| Actualités | `pages/actualites.json`, collections `articles`, `galerie` | `entete`, `introduction`, `galerie`, `suivre_actualite` |
+| Article | `collections/articles.json`, `collections/galerie.json` | lecture de `?slug=<article.slug>` |
+| Contact | `pages/contact.json`, `site.contact`, collections `partenaires` | `coordonnees`, `orientation`, `partenaires` |
 | Pages légales | `site` | date de mise à jour |
 
-### Chiffres clés (Accueil / Fédération)
+### Chiffres clés (Accueil)
 
-`federation.chiffres_cles` présente les indicateurs de la fédération :
-
-- `indicatifs` : valeurs calculées automatiquement à partir des données
-  (`source: "calcule"`, ex. nombre de clubs, de régions, de disciplines) ou
-  fixes (`source: "fixe"`, ex. base nautique de Togoville).
+`pages/accueil.json` → `bref.chiffres_cles` présente les indicateurs affichés
+sous « La fédération en bref » (`id`, `libelle`, `valeur`, `note`). L'accueil
+affiche également les repères du héros (`reperes_heros`).
 
 ### Valeurs de statut d'un événement
 
-`competitions.statuts` définit les libellés des statuts utilisés dans
-`evenements[].statut` : `a_venir`, `en_cours`, `termine`, `reporte`, `annule`.
+`taxonomies.json` → `statuts_evenements` définit les libellés des statuts
+utilisés dans `evenements[].statut` : `a_venir`, `en_cours`, `termine`,
+`reporte`, `annule`.
 
 ---
 
-## 5. Guide : mettre à jour les contenus (`data/*.json`)
+## 5. Guide : mettre à jour les contenus (`data/`)
 
-Tous les contenus affichés proviennent de `data/` : un fichier par rubrique. On
-modifie le JSON et la page se met à jour, sans toucher au code.
+Tous les contenus affichés proviennent de `data/`. Les textes d'une page sont
+dans `pages/<page>.json` ; les objets des listes sont dans
+`collections/<collection>.json` ; les listes de référence partagées sont dans
+`taxonomies.json`. On modifie le JSON et la page se met à jour, sans toucher au
+code.
 
 ### 5.1 Écrire un JSON valide
 
 - guillemets **doubles**, une virgule **entre** les éléments et **jamais après
   le dernier** ;
 - accents acceptés (fichiers en UTF-8) ;
-- champ vide : `null`, `""` ou `[]` — jamais de texte « à confirmer » visible ;
+- **omettre les champs vides** plutôt que d'écrire `null` ou `[]` ;
+- un filtre « Toutes / Tous » n'est jamais stocké : le code l'ajoute devant la
+  liste de référence ;
 - **ne pas modifier un `"id"` ni un `"slug"`** : ils servent aux liens internes
   (`club.html?id=…`, `article.html?slug=…`) ;
 - le champ `"source"` est une métadonnée interne, jamais affichée ;
@@ -263,13 +319,13 @@ modifie le JSON et la page se met à jour, sans toucher au code.
 
 | Bloc | Rôle | Champs |
 | --- | --- | --- |
-| `identite` | Nom, sigle, accroche, siège | `nom`, `sigle`, `baseline`, `accroche`, `siege`, `creation` |
-| `contact` | Coordonnées (page Contact, pied de page, menu mobile) | `siege`, `email`, `telephones[]`, `instagram`, `federation_internationale`, `note` |
-| `reseaux` | Réseaux du pied de page | `id`, `nom`, `url`, `pseudo` |
+| `identite` | Nom, sigle, slogan, siège | `nom`, `sigle`, `slogan`, `pays`, `langue`, `creation`, `siege`, `couleurs` |
+| `contact` | Coordonnées (page Contact, pied de page, article) | `email`, `telephones[]`, `federation_internationale`, `note` |
+| `reseaux` | Réseaux sociaux officiels | `id`, `nom`, `url`, `pseudo` |
 | `navigation` | Menu principal (ordre affiché) | `id`, `libelle`, `url` |
 | `appel_action` | Bouton d'en-tête | `libelle`, `url` |
-| `pied` | Pied de page | `description`, `liens_utiles[]`, `mentions[]` |
-| `videos_heros` | Vidéo de fond, une entrée par page | clé = `data-page` de la `<body>` |
+| `pied` | Pied de page | `description`, `liens_utiles[]`, `mentions[]`, `credit` |
+| `videos` | Vidéo de fond, une entrée par page | clé = `data-page` de la `<body>` |
 | `seo` | URL publique et description par défaut | `url_site`, `title_suffixe`, `description`, `mots_cles` |
 
 Coordonnées : un numéro normal utilise `url` en `tel:` ; un numéro WhatsApp
@@ -283,68 +339,77 @@ utilise `url` en `https://wa.me/…` **et** `"whatsapp": true`.
 ]
 ```
 
-### 5.3 `federation.json` - page « La Fédération »
+### 5.3 `pages/federation.json` - page « La Fédération »
 
 | Bloc | Affiche | Champs |
 | --- | --- | --- |
-| `presentation` | Intro + image | `titre`, `chapeau`, `paragraphes[]`, `image` |
-| `illustration` | Grande image | `image`, `legende` |
-| `histoire` | Frise historique | `titre`, `introduction`, `etapes[]` (`annee`, `titre`, `texte`) |
-| `missions` | Missions | `titre`, `introduction`, `liste[]` (`titre`, `texte`, `icone`) |
-| `chiffres_cles` | « La fédération en bref » | `titre`, `indicatifs[]` (`id`, `libelle`, `source`, `valeur` **ou** `cle`, `suffixe`, `note`) |
+| `entete` | Bandeau | `etiquette`, `titre`, `fil_ariane` |
+| `presentation` | Intro + image | `etiquette`, `titre`, `chapeau`, `paragraphes[]`, `illustration` (`image`, `legende`) |
+| `histoire` | Frise historique | `etiquette`, `titre`, `chapeau`, `paragraphes[]`, `chronologie[]` (`annee`, `titre`, `texte`) |
+| `missions` | Missions | `etiquette`, `titre`, `chapeau`, `liste[]` (`titre`, `texte`, `icone`) |
+| `appel` | Appel de clôture | `etiquette`, `titre`, `chapeau`, `cta` |
 
-Un indicateur `"source": "fixe"` affiche la `valeur` écrite ; `"source":
-"calcule"` compte automatiquement la collection nommée par `cle` (`clubs`,
-`athetes`, `disciplines`).
-
-> Les blocs `identite_officielle`, `bureau_executif` et `affiliations` existent
+> Les blocs `identite_officielle`, `comite_executif` et `affiliations` existent
 > encore mais ne sont plus affichés : conservés en réserve.
 
-### 5.4 `disciplines.json` - page « Disciplines & activités »
+### 5.4 `pages/disciplines.json` et `collections/disciplines.json`
 
-- `entete` : `titre`, `chapeau` ;
-- `familles[]` : `id`, `libelle` (filtres) ;
-- `liste[]` (une activité) : `id`, `nom`, `nom_court`, `famille` (id d'une
-  famille), `icone`, `a_la_une`, `description`, `image` (visuel de la carte),
-  `images: []` (visuels de la fiche), `source` ;
-- `formations.liste[]` : `nom`, `date`, `lieu`, `cadre` ;
-- `sites_de_pratique.liste[]` : `nom`, `region`, `usage`.
+Textes de page :
 
-### 5.5 `clubs.json` - page « Clubs affiliés »
+- `entete`, `presentation`, `appel` : titres, chapeaux et paragraphes ;
+- `formations` : `etiquette`, `titre`, `chapeau`, `paragraphes[]`, `liste[]`
+  (`nom`, `date`, `lieu`, `cadre`, `source`), `note` ;
+- `sites_de_pratique` : `etiquette`, `titre`, `chapeau`, `paragraphes[]`,
+  `liste[]` (`nom`, `region`, `usage`).
 
-- `entete` : `titre`, `chapeau` ;
-- `annuaire` et `reperes` : titres et textes de section ; `reperes.liste[]` =
-  `valeur`, `libelle`, `texte`, `icone` ;
-- `regions[]` : `id`, `libelle` (filtres) ;
-- `liste[]` (un club) : `id`, `nom`, `region` (id), `ville`, `site_pratique`,
-  `presentation`, `image`, `a_la_une`, `labels[]` ;
-- `devenir_club` : `titre`, `texte`, `a_confirmer`.
+Collection des activités (`collections/disciplines.json`) : `id`, `nom`,
+`nom_court`, `famille` (id de `taxonomies.familles_disciplines`), `icone`,
+`a_la_une`, `description`, `image` (visuel de la carte), `galerie[]` (visuels
+de la fiche), `source`.
 
-Pour **ajouter un club**, copier un bloc de `liste` et changer au minimum
+### 5.5 `pages/clubs.json` et `collections/clubs.json`
+
+Textes de page :
+
+- `entete`, `annuaire`, `reperes` (`liste[]` : `valeur`, `libelle`, `texte`,
+  `icone`), `devenir_club` (`etiquette`, `titre`, `chapeau`, `note`, `cta`).
+
+Collection des clubs : `id`, `nom`, `region` (id de
+`taxonomies.regions`), `ville`, `site_pratique`, `presentation`, `image`,
+`a_la_une`, `source`.
+
+Pour **ajouter un club**, copier un bloc de la collection et changer au minimum
 `id`, `nom`, `presentation` et `image`.
 
-### 5.6 `competitions.json` - page « Compétitions & calendrier »
+### 5.6 `pages/competitions.json` et `collections/evenements.json`
 
-- `entete` : `titre`, `chapeau` ;
-- `saisons[]` (`id`, `libelle`), `types[]` (`id`, `libelle`), `statuts{}` ;
-- `evenements[]` (un rendez-vous) : `id`, `titre`, `type` (id d'un `types`),
-  `discipline_id` (id d'une discipline), `saison` (id d'une `saisons`),
-  `periode`, `date_debut` (`AAAA-MM-JJ`), `lieu`, `ville`, `organisateur`,
-  `statut`, `description`, `chiffres[]` (`libelle`, `valeur`), `a_la_une`,
-  `image` ;
-- `informations_pratiques` : `titre`, `a_confirmer`.
+Textes de page :
 
-> Les sections **Résultats** et **Classements** sont désactivées (commentées
-> dans `competitions.html` et `js/pages/competitions.js`) ; `classements` peut
-> rester vide.
+- `entete` ;
+- `calendrier` : `etiquette`, `titre`, `paragraphes[]`, `collection` ;
+- `informations_pratiques` : `etiquette`, `titre`, `paragraphes[]`, `question`,
+  `cta` ;
+- `reglement` : `titre`, `paragraphes[]`.
 
-### 5.7 `actualites.json` - page « Actualités » et articles
+Collection des événements : `id`, `titre`, `type` (id de
+`taxonomies.types_evenements`), `discipline_id` (id d'une discipline), `saison`
+(id de `taxonomies.saisons`), `periode`, `date_debut` (`AAAA-MM-JJ`), `lieu`,
+`organisateur`, `statut` (clé de `taxonomies.statuts_evenements`),
+`description`, `chiffres[]` (`libelle`, `valeur`), `a_la_une`, `image`,
+`source`.
 
-- `entete` : `titre`, `chapeau` ; `categories[]` : `id`, `libelle` ;
-- `liste[]` (un article) : `id`, `slug`, `titre`, `categorie`, `date`, `periode`,
-  `auteur`, `lieu`, `temps_lecture`, `a_la_une`, `chapeau`, `image`, `tags[]`,
-  `articles_lies[]` (slugs), `galerie[]` ;
-- `contenu[]` : le corps de l'article, une entrée par bloc :
+### 5.7 `pages/actualites.json`, `collections/articles.json` et `collections/galerie.json`
+
+Textes de page :
+
+- `entete`, `introduction`, `suivre_actualite` (réseaux sociaux) ;
+- `galerie` : `etiquette`, `titre`, `chapeau`, `note`, `collection`.
+
+Collection des articles : `id`, `slug`, `titre`, `categorie` (id de
+`taxonomies.categories_actualites`), `date`, `periode`, `auteur`, `lieu`,
+`temps_lecture`, `a_la_une`, `chapeau`, `image`, `tags[]`, `source`,
+`articles_lies[]` (slugs), `contenu[]`. Le corps de l'article est une suite de
+blocs :
 
 | `type` | Champs |
 | --- | --- |
@@ -353,22 +418,19 @@ Pour **ajouter un club**, copier un bloc de `liste` et changer au minimum
 | `ul` | `items[]` |
 | `quote` | `texte`, `auteur` (facultatif) |
 
-### 5.8 `galerie.json` - galerie photos
-
-- `entete` : `titre`, `chapeau`, `note` ;
-- `categories[]` : `id`, `libelle` ;
-- `liste[]` : `id`, `titre`, `categorie`, `lieu`, `date`, `src`, `source`.
+Collection de la galerie : `id`, `image`, `source`.
 
 Pour **ajouter une photo** : déposer le fichier dans `assets/img/gallery/`, puis
-ajouter une ligne avec un `id` unique.
+ajouter une entrée avec un `id` unique.
 
-### 5.9 `partenaires.json` - partenaires
+### 5.8 `collections/partenaires.json`
 
-- `entete`, `devenir_partenaire` ;
-- `liste[]` : `id`, `nom`, `sigle`, `categorie`, `role`, `logo`, `url`,
-  `participation_confirmee`, `utilisation_logo_autorisee`, `niveau` ;
-- un partenaire s'affiche si `participation_confirmee === true` (le `logo`
-  n'est pas utilisé à ce jour).
+Chaque partenaire : `id`, `nom`, `sigle`, `categorie` (id de
+`taxonomies.categories_partenaires`), `role`, `url`, `niveau`, `favicon`
+(chemin local vers l'icône du site partenaire), `logo` (logo officiel,
+facultatif) et `logo_autorise`. La collection ne contient que les partenariats
+confirmés ; un partenaire peut être masqué ponctuellement avec
+`"participation_confirmee": false`.
 
 ---
 

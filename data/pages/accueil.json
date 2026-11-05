@@ -1,0 +1,135 @@
+{
+  "entete": {
+    "etiquette": "Togo",
+    "titre": "La Fédération Togolaise de Canoë",
+    "chapeau": "Au service du développement des sports de pagaie au Togo.",
+    "cta": [
+      { "libelle": "Découvrir la fédération", "url": "federation.html", "style": "principal" },
+      { "libelle": "Nous contacter", "url": "contact.html", "style": "secondaire" }
+    ]
+  },
+
+  "reperes_heros": [
+    {
+      "libelle": "Clubs affiliés",
+      "valeur": "13",
+      "detail": "engagés au championnat national 2025"
+    },
+    {
+      "libelle": "Athlètes engagés",
+      "valeur": "193",
+      "detail": "championnat national 2025"
+    },
+    {
+      "libelle": "Création de la fédération",
+      "valeur": "2024",
+      "detail": "Agbodrafo, préfecture des Lacs"
+    }
+  ],
+
+  "bref": {
+    "etiquette": "La fédération en bref",
+    "titre": "Une fédération au service du développement du canoë-kayak et des sports de pagaie au Togo.",
+    "paragraphes": [
+      "La Fédération Togolaise de Canoë œuvre pour la promotion, la structuration et le développement de la pratique des sports de pagaie sur l'ensemble du territoire national.",
+      "À travers ses clubs, ses formations et ses compétitions, elle contribue à l'émergence de nouveaux talents et au rayonnement du sport togolais."
+    ],
+    "image": "assets/img/gallery/galerie-01.jpeg",
+    "cta": { "libelle": "Découvrir notre présentation officielle", "url": "federation.html" },
+    "chiffres_cles": [
+      {
+        "id": "clubs",
+        "libelle": "Clubs affiliés",
+        "valeur": "13",
+        "note": "championnat national 2025"
+      },
+      {
+        "id": "athletes",
+        "libelle": "Athlètes engagés",
+        "valeur": "193",
+        "note": "championnat national 2025"
+      },
+      {
+        "id": "creation",
+        "libelle": "Année de création",
+        "valeur": "2024"
+      },
+      {
+        "id": "disciplines",
+        "libelle": "Disciplines",
+        "valeur": "3"
+      }
+    ]
+  },
+
+  "disciplines": {
+    "etiquette": "Disciplines et activités",
+    "titre": "Les sports de pagaie au cœur de notre engagement",
+    "chapeau": "Du canoë-kayak de compétition aux activités de pagaie traditionnelles, la FETOC accompagne le développement de disciplines qui conjuguent performance sportive, formation, inclusion et valorisation du patrimoine nautique togolais. Découvrez nos disciplines et nos activités.",
+    "collection": "disciplines",
+    "cta": { "libelle": "Toutes les disciplines", "url": "disciplines.html" }
+  },
+
+  "actualites": {
+    "etiquette": "Actualités",
+    "titre": "Au rythme de la pagaie togolaise",
+    "chapeau": "Compétitions, formations, initiatives des clubs et actualités institutionnelles : retrouvez les temps forts qui font vivre le canoë-kayak et les sports de pagaie au Togo.",
+    "collection": "articles",
+    "lien": {
+      "libelle": "Suivez les initiatives et les réalisations de la FETOC et de ses clubs affiliés.",
+      "url": "actualites.html"
+    }
+  },
+
+  "competitions": {
+    "etiquette": "Compétitions et calendrier",
+    "titre": "Les rendez-vous de la pagaie togolaise",
+    "chapeau": "Découvrez les compétitions, les formations et les événements inscrits au calendrier de la Fédération. Des rendez-vous sportifs qui contribuent à la progression des athlètes, à la détection des talents et à la promotion des sports de pagaie.",
+    "collection": "evenements",
+    "cta": { "libelle": "Voir les compétitions et le calendrier", "url": "competitions.html" }
+  },
+
+  "clubs": {
+    "etiquette": "Clubs affiliés",
+    "titre": "Un réseau de clubs au service de la pratique",
+    "paragraphes": [
+      "Les clubs affiliés constituent le socle du développement des sports de pagaie au Togo.",
+      "Ils accueillent les pratiquants, accompagnent les athlètes et participent activement à la formation, à l'encadrement et à la promotion des disciplines fédérales."
+    ],
+    "collection": "clubs",
+    "resume": "clubs engagés au championnat national 2025.",
+    "cta": { "libelle": "Voir les clubs", "url": "clubs.html" }
+  },
+
+  "galerie": {
+    "etiquette": "La fédération en images",
+    "titre": "La pagaie togolaise en action",
+    "chapeau": "Revivez en images les moments forts de la vie fédérale : compétitions, formations, activités des clubs et initiatives de développement des sports de pagaie.",
+    "collection": "galerie"
+  },
+
+  "partenaires": {
+    "etiquette": "Partenaires",
+    "titre": "Ensemble, faisons grandir la pagaie togolaise",
+    "paragraphes": [
+      "La FETOC s'appuie sur l'engagement de ses partenaires institutionnels, techniques et financiers pour promouvoir les sports de pagaie et accompagner leur développement au Togo.",
+      "Unis par une ambition commune, nous œuvrons pour un sport plus accessible, plus performant et tourné vers l'avenir."
+    ],
+    "collection": "partenaires",
+    "cta": { "libelle": "Contacter la fédération", "url": "contact.html" }
+  },
+
+  "appel_final": {
+    "etiquette": "Appel final",
+    "titre": "Rejoignez le mouvement de la pagaie togolaise !",
+    "paragraphes": [
+      "Vous souhaitez pratiquer le canoë-kayak, intégrer un club, participer à une formation, organiser une compétition ou accompagner le développement des sports de pagaie ?",
+      "La Fédération Togolaise de Canoë vous accompagne et vous oriente vers les structures et les opportunités adaptées à votre projet.",
+      "Ensemble, faisons avancer la pagaie togolaise."
+    ],
+    "cta": [
+      { "libelle": "Trouver un club affilié", "url": "clubs.html", "style": "principal" },
+      { "libelle": "Nous contacter", "url": "contact.html", "style": "secondaire" }
+    ]
+  }
+}
