@@ -41,58 +41,53 @@
   <main id="main">
     <div data-zone="bandeau"></div>
 
-    <!-- Calendrier fédéral -->
-    <section class="bg-white py-14 lg:py-16">
+    <!-- Calendrier -->
+    <section class="bg-sable-50 py-12 lg:py-14">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <header class="revele max-w-3xl">
           <p class="etiquette text-vert-600">Calendrier fédéral</p>
-          <h2 data-zone="calendrier-titre" class="mt-5 titre-section text-vert-950"></h2>
-          <div data-zone="calendrier-texte" class="prose-fetoc prose-fetoc--compact mt-5"></div>
+          <h2 data-zone="calendrier-titre" class="mt-4 titre-section text-vert-950"></h2>
+          <div data-zone="calendrier-texte" class="prose-fetoc prose-fetoc--compact mt-4"></div>
         </header>
-      </div>
-    </section>
 
-    <!-- Calendrier -->
-    <section class="bg-sable-50 py-16 lg:py-20">
-      <div class="mx-auto max-w-ecran px-4 sm:px-6">
-        <div class="revele flex flex-col gap-6">
+        <div class="revele mt-6 flex flex-col gap-4 md:flex-row md:flex-wrap md:items-start md:gap-x-10">
           <div>
             <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Saison</p>
-            <div data-zone="filtres-saisons" class="mt-3 flex flex-wrap gap-2"></div>
+            <div data-zone="filtres-saisons" class="mt-2.5 flex flex-wrap gap-2"></div>
           </div>
           <div>
             <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-encre-clair">Type de rendez-vous</p>
-            <div data-zone="filtres-types" class="mt-3 flex flex-wrap gap-2"></div>
+            <div data-zone="filtres-types" class="mt-2.5 flex flex-wrap gap-2"></div>
           </div>
         </div>
 
-        <p data-zone="compteur-evenements" class="revele mt-6 text-sm text-encre-clair"></p>
-        <div data-zone="agenda-liste" class="mt-8 grid gap-6 lg:grid-cols-2"></div>
+        <p data-zone="compteur-evenements" class="revele mt-4 text-sm text-encre-clair"></p>
+        <div data-zone="agenda-liste" class="mt-6 grid gap-4 lg:grid-cols-2"></div>
       </div>
     </section>
 
     <!-- Informations pratiques -->
-    <section class="bg-white py-16 lg:py-20">
+    <section class="bg-white py-12 lg:py-14">
       <div class="mx-auto max-w-ecran px-4 sm:px-6">
         <header class="revele max-w-2xl">
           <p class="etiquette text-vert-600">Engagements</p>
-          <h2 data-zone="infos-titre" class="mt-5 titre-section text-vert-950"></h2>
+          <h2 data-zone="infos-titre" class="mt-4 titre-section text-vert-950"></h2>
         </header>
-        <div class="mt-10 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+        <div class="mt-6 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
           <div class="revele">
             <ul data-zone="infos-licences" class="space-y-3"></ul>
           </div>
-          <div class="revele revele--droite space-y-5">
-            <div class="rounded-2xl border border-sable-200 bg-sable-50 p-6">
+          <div class="revele revele--droite space-y-4">
+            <div class="rounded-2xl border border-sable-200 bg-sable-50 p-5">
               <p class="flex items-center gap-2 font-display text-sm font-bold text-vert-900">
                 <span data-icone-reglement></span>Le règlement sportif
               </p>
               <div data-zone="infos-reglement" class="prose-fetoc prose-fetoc--compact mt-2 text-sm text-encre-doux"></div>
             </div>
-            <div class="rounded-2xl border border-soleil-300 bg-soleil-50 p-6">
+            <div class="rounded-2xl border border-soleil-300 bg-soleil-50 p-5">
               <p class="font-display text-sm font-bold text-vert-900">Une question ?</p>
               <p data-zone="infos-contact" class="mt-2 text-sm leading-relaxed text-encre-doux"></p>
-              <a href="contact.html" class="btn btn--vert btn--sm mt-5">Contacter la fédération</a>
+              <a href="contact.html" class="btn btn--vert btn--sm mt-4">Contacter la fédération</a>
             </div>
           </div>
         </div>

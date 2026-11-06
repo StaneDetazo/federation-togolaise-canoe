@@ -272,6 +272,7 @@ export function carteEvenement(evenement, { variante = 'clair' } = {}) {
   const { jour, mois } = jourMois(evenement.date_debut);
   const discipline = evenement.discipline_id ? libelleDiscipline(evenement.discipline_id) : 'Rendez-vous fédéral';
   const restant = joursRestants(evenement.date_debut);
+  const photo = imageOuDefaut(evenement.image);
 
   const socle = sombre
     ? 'border-white/12 bg-white/[0.06] hover:border-soleil-400/60'
@@ -287,36 +288,40 @@ export function carteEvenement(evenement, { variante = 'clair' } = {}) {
   const chiffres = (evenement.chiffres || [])
     .map(
       (c) =>
-        `<li class="inline-flex items-baseline gap-1.5"><span class="font-display text-base font-extrabold ${titre}">${esc(
+        `<li class="inline-flex items-baseline gap-1.5"><span class="font-display text-sm font-extrabold ${titre}">${esc(
           c.valeur
         )}</span><span class="text-xs ${texte}">${esc(c.libelle)}</span></li>`
     )
     .join('');
 
-  const action = `<span class="pastille pastille--${sombre ? 'sombre' : 'vert'}">${icone(
-    'horloge',
-    'h-3.5 w-3.5'
-  )}${esc(libelleStatut(evenement.statut))}</span>`;
-
   return `
-  <article class="revele flex flex-col gap-5 rounded-2xl border p-6 transition ${socle} sm:flex-row sm:items-start">
-    <div class="flex flex-none items-center gap-4 sm:flex-col sm:gap-0">
-      <span class="grid h-16 w-16 place-items-center rounded-2xl ${sombre ? 'bg-soleil-400 text-vert-950' : 'bg-vert-700 text-white'}">
+  <article class="revele group flex flex-col overflow-hidden rounded-2xl border transition ${socle} sm:flex-row">
+    <div class="relative h-40 w-full shrink-0 overflow-hidden bg-sable-100 sm:h-auto sm:min-h-[11rem] sm:w-44 lg:w-48">
+      ${img(
+        photo,
+        evenement.titre,
+        'absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105',
+        'loading="lazy" decoding="async"',
+        1280,
+        900
+      )}
+      <span class="absolute left-3 top-3 grid h-12 w-12 place-items-center rounded-xl bg-soleil-400 text-vert-950 shadow-doux">
         <span class="text-center leading-none">
-          <span class="block font-display text-xl font-extrabold">${esc(jour)}</span>
-          <span class="block text-[0.62rem] font-bold uppercase tracking-wider">${esc(mois)}</span>
+          <span class="block font-display text-base font-extrabold">${esc(jour)}</span>
+          <span class="block text-[0.55rem] font-bold uppercase tracking-wider">${esc(mois)}</span>
         </span>
       </span>
-      <span class="sm:hidden">${statut}</span>
     </div>
 
-    <div class="flex-1">
-      <div class="hidden sm:block">${statut}</div>
-      <p class="mt-0 text-[0.68rem] font-semibold uppercase tracking-[0.14em] ${sombre ? 'text-soleil-300' : 'text-vert-600'} sm:mt-2">
-        ${esc(discipline)} · ${esc(evenement.type)}
-      </p>
+    <div class="flex flex-1 flex-col p-4 sm:p-5">
+      <div class="flex flex-wrap items-center gap-2">
+        <p class="text-[0.68rem] font-semibold uppercase tracking-[0.14em] ${
+          sombre ? 'text-soleil-300' : 'text-vert-600'
+        }">${esc(discipline)} · ${esc(evenement.type)}</p>
+        ${statut}
+      </div>
       <h3 class="mt-1.5 font-display text-[1.05rem] font-bold leading-snug ${titre}">${esc(evenement.titre)}</h3>
-      <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-sm ${texte}">
+      <ul class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs ${texte}">
         <li class="inline-flex items-center gap-1.5">${icone('calendrier', 'h-4 w-4')}${esc(
           evenement.periode || periode(evenement.date_debut, evenement.date_fin)
         )}</li>
@@ -325,9 +330,12 @@ export function carteEvenement(evenement, { variante = 'clair' } = {}) {
         )}</li>
         ${evenement.heure ? `<li class="inline-flex items-center gap-1.5">${icone('horloge', 'h-4 w-4')}${esc(evenement.heure)}</li>` : ''}
       </ul>
-      <p class="mt-3 text-sm leading-relaxed ${texte}">${esc(tronquer(evenement.description, 165))}</p>
-      ${chiffres ? `<ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">${chiffres}</ul>` : ''}
-      <div class="mt-4 flex flex-wrap items-center gap-4">${action}</div>
+      <p class="mt-2.5 text-sm leading-relaxed ${texte}">${esc(tronquer(evenement.description, 120))}</p>
+      ${
+        chiffres
+          ? `<ul class="mt-auto flex flex-wrap gap-x-4 gap-y-1 border-t border-sable-200/70 pt-2.5">${chiffres}</ul>`
+          : ''
+      }
     </div>
   </article>`;
 }
