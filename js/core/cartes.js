@@ -104,29 +104,35 @@ export function carteDisciplineAccueil(discipline, index = 0) {
 export function carteArticle(article, { variante = 'grille' } = {}) {
   const lien = `article.html?slug=${encodeURIComponent(article.slug)}`;
   const compact = variante === 'compact';
+  const photo = imageOuDefaut(article.image);
 
   return `
-  <article class="revele carte group flex flex-col p-6">
-    <div class="flex flex-wrap items-center gap-2">
-      ${badge(libelleCategorie(article.categorie), 'soleil')}
+  <article class="revele carte group flex flex-col">
+    <a href="${lien}" class="carte__media relative block aspect-[16/10] overflow-hidden bg-sable-100" aria-label="${esc(
+      article.titre
+    )}">
+      ${img(photo, article.titre, 'absolute inset-0 h-full w-full object-cover', 'loading="lazy" decoding="async"', 1280, 800)}
+      <span class="absolute left-4 top-4">${badge(libelleCategorie(article.categorie), 'soleil')}</span>
+    </a>
+    <div class="flex flex-1 flex-col p-6">
       <span class="text-xs text-encre-clair">${esc(dateLongue(article.date))}</span>
-    </div>
-    <h3 class="mt-4 font-display ${compact ? 'text-base' : 'text-[1.08rem]'} font-bold leading-snug text-vert-950">
-      <a href="${lien}" class="transition hover:text-vert-700">${esc(article.titre)}</a>
-    </h3>
-    <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(tronquer(article.chapeau, 150))}</p>
-    <div class="mt-auto flex items-center justify-between gap-3 pt-5">
-      <a href="${lien}" class="lien-fleche text-sm font-semibold text-vert-700">
-        Lire l'article ${icone('fleche-droite', 'h-4 w-4')}
-      </a>
-      <span class="text-xs text-encre-clair">${esc(article.lieu || '')}</span>
+      <h3 class="mt-2.5 font-display ${compact ? 'text-base' : 'text-[1.08rem]'} font-bold leading-snug text-vert-950">
+        <a href="${lien}" class="transition hover:text-vert-700">${esc(article.titre)}</a>
+      </h3>
+      <p class="mt-2.5 text-sm leading-relaxed text-encre-doux">${esc(tronquer(article.chapeau, 150))}</p>
+      <div class="mt-auto flex items-center justify-between gap-3 pt-5">
+        <a href="${lien}" class="lien-fleche text-sm font-semibold text-vert-700">
+          Lire l'article ${icone('fleche-droite', 'h-4 w-4')}
+        </a>
+        <span class="text-xs text-encre-clair">${esc(article.lieu || '')}</span>
+      </div>
     </div>
   </article>`;
 }
 
 /* ------------------------------------------- actualités (bloc d'accueil) */
 /* Bloc d'accueil : une « une » éditoriale photographique, puis des brèves
-   illustrées. La page Actualités conserve, elle, la carte standard. */
+   illustrées. La page Actualités utilise la carte standard, elle aussi illustrée. */
 export function carteArticleAccueil(article, { vedette = false } = {}) {
   const lien = `article.html?slug=${encodeURIComponent(article.slug)}`;
   const photo = imageOuDefaut(article.image);
