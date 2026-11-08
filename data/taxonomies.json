@@ -1,8 +1,8 @@
 {
   "familles_disciplines": [
     { "id": "course", "libelle": "Vitesse & compétition" },
-    { "id": "tradition", "libelle": "Pirogue traditionnelle" },
-    { "id": "inclusif", "libelle": "Pagaie inclusive" }
+    { "id": "eau-vive", "libelle": "Eau vive & descente" },
+    { "id": "tradition", "libelle": "Pirogue traditionnelle" }
   ],
 
   "categories_actualites": [
@@ -34,6 +34,7 @@
 
   "categories_partenaires": [
     { "id": "institutionnel-sportif", "libelle": "Institutions sportives" },
+    { "id": "collectivite", "libelle": "Collectivités locales" },
     { "id": "cooperation", "libelle": "Coopération et appuis" },
     { "id": "evenement", "libelle": "Partenaires d'événements" }
   ]

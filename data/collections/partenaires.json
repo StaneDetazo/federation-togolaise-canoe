@@ -1,13 +1,42 @@
 [
   {
     "id": "icf",
-    "nom": "Fédération internationale de canoë-kayak",
+    "nom": "Fédération internationale de canoë (Paddle Worldwide)",
     "sigle": "ICF",
     "categorie": "institutionnel-sportif",
     "role": "Formation technique et développement du canoë au Togo.",
-    "url": "https://paddleworldwide.com/news/coaching-boost-francophone-nations-africa",
+    "url": "https://paddleworldwide.com",
     "niveau": "principal",
     "favicon": "assets/img/partenaires/icf.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "federation-rafting",
+    "nom": "Fédération internationale de rafting (World Rafting)",
+    "sigle": "IRF",
+    "categorie": "institutionnel-sportif",
+    "role": "Encadrement technique et développement du rafting.",
+    "url": "https://internationalrafting.com/",
+    "niveau": "principal",
+    "favicon": "assets/img/partenaires/world-rafting.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "confederation-africaine-canoe",
+    "nom": "Confédération africaine de canoë",
+    "sigle": "CAC",
+    "categorie": "institutionnel-sportif",
+    "role": "Structure continentale du canoë auprès des fédérations africaines.",
+    "niveau": "principal",
+    "logo_autorise": false
+  },
+  {
+    "id": "confederation-africaine-rafting",
+    "nom": "Confédération africaine de rafting",
+    "sigle": "CAR",
+    "categorie": "institutionnel-sportif",
+    "role": "Structure continentale du rafting auprès des fédérations africaines.",
+    "niveau": "principal",
     "logo_autorise": false
   },
   {
@@ -21,12 +50,54 @@
     "logo_autorise": false
   },
   {
-    "id": "france-volontaires",
-    "nom": "France Volontaires et acteurs de l'équipe France",
+    "id": "ambassade-de-france",
+    "nom": "Ambassade de France",
+    "sigle": "France",
     "categorie": "cooperation",
-    "role": "Participation au Relai Autour du Monde 2024 au Togo.",
+    "role": "Coopération institutionnelle et appui au développement des sports de pagaie.",
+    "url": "https://tg.diplomatie.gouv.fr/",
+    "niveau": "principal",
+    "favicon": "assets/img/partenaires/ambassade-france.svg",
+    "logo": "assets/img/partenaires/ambassade-france.svg",
+    "logo_autorise": true
+  },
+  {
+    "id": "mairie-aneho",
+    "nom": "Mairie d'Aného",
+    "sigle": "ANÉ",
+    "categorie": "collectivite",
+    "role": "Soutien aux actions de la fédération à Aného.",
     "niveau": "soutien",
-    "favicon": "assets/img/partenaires/france-volontaires.png",
+    "favicon": "assets/img/partenaires/mairie-aneho.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "mairie-agbodrafo",
+    "nom": "Mairie d'Agbodrafo",
+    "sigle": "AGB",
+    "categorie": "collectivite",
+    "role": "Soutien à la fédération, siège à Agbodrafo.",
+    "niveau": "soutien",
+    "favicon": "assets/img/partenaires/mairie-agbodrafo.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "mairie-zio-2",
+    "nom": "Mairie Zio 2",
+    "sigle": "ZIO",
+    "categorie": "collectivite",
+    "role": "Partenaire local de la fédération.",
+    "niveau": "soutien",
+    "favicon": "assets/img/partenaires/mairie-zio2.png",
+    "logo_autorise": false
+  },
+  {
+    "id": "miadjoe",
+    "nom": "Miadjoé",
+    "sigle": "MIA",
+    "categorie": "collectivite",
+    "role": "Partenaire local de la fédération.",
+    "niveau": "soutien",
     "logo_autorise": false
   },
   {
@@ -45,14 +116,6 @@
     "role": "Partenaire présent à la clôture du championnat national 2025.",
     "niveau": "soutien",
     "favicon": "assets/img/partenaires/aprodat.png",
-    "logo_autorise": false
-  },
-  {
-    "id": "ong-padie",
-    "nom": "ONG PADIE",
-    "categorie": "evenement",
-    "role": "Partenaire présente à la clôture du championnat national 2025.",
-    "niveau": "soutien",
     "logo_autorise": false
   }
 ]

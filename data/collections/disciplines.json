@@ -1,13 +1,27 @@
 [
   {
-    "id": "canoe-kayak-vitesse",
-    "nom": "Canoë-kayak de vitesse",
-    "nom_court": "Canoë-kayak de vitesse",
+    "id": "canoe",
+    "nom": "Canoë",
+    "nom_court": "Canoë",
+    "famille": "course",
+    "icone": "pagaie",
+    "a_la_une": true,
+    "description": "Discipline de vitesse pratiquée en solo ou en équipage. Entraînement, formation d'entraîneurs et compétitions nationales, dans le cadre de la Fédération internationale de canoë (Paddle Worldwide).",
+    "source": "Wikimedia Commons - Thetaxiphotographer (CC BY-SA 4.0)",
+    "image": "assets/img/discipline/canoe.jpg",
+    "galerie": [
+      "assets/img/discipline/canoe.jpg"
+    ]
+  },
+  {
+    "id": "kayak",
+    "nom": "Kayak",
+    "nom_court": "Kayak",
     "famille": "course",
     "icone": "kayak",
     "a_la_une": true,
-    "description": "Entraînement, formation d'entraîneurs et compétitions nationales. Une formation d'entraîneurs de niveau 1 a été organisée selon le cadre de la Fédération internationale de canoë-kayak (ICF).",
-    "source": "Fédération internationale de canoë-kayak (ICF)",
+    "description": "Entraînement, formation d'entraîneurs et compétitions nationales : le kayak est au cœur du championnat national 2025, qui a réuni 13 clubs et 193 athlètes.",
+    "source": "FETOC",
     "image": "assets/img/discipline/vitesse.jpg",
     "galerie": [
       "assets/img/discipline/vitesse.jpg",
@@ -15,31 +29,31 @@
     ]
   },
   {
-    "id": "pirogue-traditionnelle",
-    "nom": "Pirogue traditionnelle",
-    "nom_court": "Pirogue traditionnelle",
+    "id": "rafting",
+    "nom": "Rafting",
+    "nom_court": "Rafting",
+    "famille": "eau-vive",
+    "icone": "riviere",
+    "a_la_une": true,
+    "description": "Descente en radeau sur les eaux vives : sécurité, progression technique et découverte du milieu naturel, dans le cadre de la Fédération internationale de rafting (World Rafting).",
+    "source": "Wikimedia Commons - KimonBerlin (CC BY-SA 2.0)",
+    "image": "assets/img/discipline/rafting.jpg",
+    "galerie": [
+      "assets/img/discipline/rafting.jpg"
+    ]
+  },
+  {
+    "id": "courses-de-pirogue",
+    "nom": "Courses de pirogue",
+    "nom_court": "Courses de pirogue",
     "famille": "tradition",
     "icone": "pirogue",
     "a_la_une": true,
-    "description": "La promotion de la pirogue traditionnelle figure parmi les activités de la FETOC, notamment lors du Relai Autour du Monde 2024 au Togo.",
+    "description": "La promotion de la course de pirogue traditionnelle figure parmi les activités de la FETOC, notamment lors du Relai Autour du Monde 2024 au Togo.",
     "source": "France Volontaires",
     "image": "assets/img/discipline/pirogue.jpg",
     "galerie": [
       "assets/img/discipline/pirogue.jpg"
-    ]
-  },
-  {
-    "id": "para-canoe",
-    "nom": "Para-canoë et inclusion",
-    "nom_court": "Para-canoë",
-    "famille": "inclusif",
-    "icone": "inclusion",
-    "a_la_une": true,
-    "description": "Des formations consacrées à l'encadrement des sportifs en situation de handicap ont été organisées à Aného.",
-    "source": "Ahouévi Info",
-    "image": "assets/img/discipline/inclusion.jpg",
-    "galerie": [
-      "assets/img/discipline/inclusion.jpg"
     ]
   }
 ]

@@ -110,8 +110,11 @@ function rendre() {
     ? disciplines().filter((d) => d.a_la_une)
     : disciplines()
   ).slice(0, 6);
+  /* Mise en avant de la première tuile uniquement si la grille reste sur
+     trois activités : au-delà, la tuile double laisse un trou dans la grille. */
+  const tuileMiseEnAvant = listeDisciplines.length <= 3;
   qs('[data-zone="disciplines-grille"]').innerHTML = listeDisciplines
-    .map((d, index) => carteDisciplineAccueil(d, index))
+    .map((d, index) => carteDisciplineAccueil(d, index, { grand: tuileMiseEnAvant }))
     .join('');
 
   /* ------------------------------------------------ actualités */

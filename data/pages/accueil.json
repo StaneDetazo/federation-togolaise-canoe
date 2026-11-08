@@ -57,7 +57,7 @@
       {
         "id": "disciplines",
         "libelle": "Disciplines",
-        "valeur": "3"
+        "valeur": "4"
       }
     ]
   },
@@ -65,7 +65,7 @@
   "disciplines": {
     "etiquette": "Disciplines et activités",
     "titre": "Les sports de pagaie au cœur de notre engagement",
-    "chapeau": "Du canoë-kayak de compétition aux activités de pagaie traditionnelles, la FETOC accompagne le développement de disciplines qui conjuguent performance sportive, formation, inclusion et valorisation du patrimoine nautique togolais. Découvrez nos disciplines et nos activités.",
+    "chapeau": "Du canoë et du kayak de compétition au rafting et aux courses de pirogue, la FETOC accompagne le développement de disciplines qui conjuguent performance sportive, formation, sécurité et valorisation du patrimoine nautique togolais. Découvrez nos disciplines et nos activités.",
     "collection": "disciplines",
     "cta": { "libelle": "Toutes les disciplines", "url": "disciplines.html" }
   },

@@ -62,12 +62,12 @@ export function carteDiscipline(discipline) {
 }
 
 /* ------------------------------------------- disciplines (tuiles d'accueil) */
-/* Tuile photographique d'accueil : la première activité est mise en avant
-   (2 colonnes × 2 lignes) sur les grands écrans. */
-export function carteDisciplineAccueil(discipline, index = 0) {
+/* Tuile photographique d'accueil : sur les grands écrans, la première activité
+   peut être mise en avant (2 colonnes × 2 lignes) — uniquement lorsque la
+   grille compte trois activités ou moins, sinon la mise en page laisse un vide. */
+export function carteDisciplineAccueil(discipline, index = 0, { grand = index === 0 } = {}) {
   const famille = familles().find((f) => f.id === discipline.famille)?.libelle ?? 'Discipline';
   const photo = imageOuDefaut(discipline.image);
-  const grand = index === 0;
   const lien = `disciplines.html#${esc(discipline.id)}`;
 
   return `
